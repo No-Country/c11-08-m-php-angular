@@ -25,7 +25,8 @@
 - id **(PK)**
 - user_id **(FK)**
 - title
-- description
+- about_me
+- about_class
 - years_experience
 - job_title
 - certificate_file
