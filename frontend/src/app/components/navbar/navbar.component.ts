@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { faDiscord } from '@fortawesome/free-brands-svg-icons';
 
 @Component({
   selector: 'app-navbar',
@@ -7,6 +6,6 @@ import { faDiscord } from '@fortawesome/free-brands-svg-icons';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
-    faDiscord = faDiscord;
+   
 
 }
