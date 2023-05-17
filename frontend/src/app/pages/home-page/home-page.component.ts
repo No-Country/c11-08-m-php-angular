@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { faGraduationCap,faLocationDot } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-home-page',
@@ -6,5 +7,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./home-page.component.css']
 })
 export class HomePageComponent {
-
+  faGraduationCap = faGraduationCap;
+  faLocationDot = faLocationDot;
 }
