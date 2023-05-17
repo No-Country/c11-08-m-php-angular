@@ -99,7 +99,7 @@
 - created_at
 - updated_at
 
-### countries **(EC)**
+### provinces **(EC)**
 
 - id **(PK)**
 - name **(UQ)**
@@ -111,7 +111,7 @@
 
 - id **(PK)**
 - name **(UQ)**
-- country_id **(FK)**
+- province_id **(FK)**
 - deleted_at
 - created_at
 - updated_at
