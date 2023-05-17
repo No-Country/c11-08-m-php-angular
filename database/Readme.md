@@ -12,7 +12,6 @@
 - password
 - birthday
 - identification
-- address
 - phone
 - city_id **(FK)**
 - last_connection
@@ -87,8 +86,8 @@
 - id **(PK)**
 - teacher_id **(FK)**
 - active
-- day (0,1,2,3,4,5,6)
-- name (lunes, martes, miercoles, jueves, sabado, domingo)
+- day (0,1,2,3,4,5)
+- name (lunes, martes, miercoles, jueves, sabado)
 - start_morning
 - end_morning
 - start_afternoon
