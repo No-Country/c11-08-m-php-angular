@@ -27,3 +27,10 @@ circle{
         width: 100%!important;
     }
 }
+
+.navbar .dropdown-toggle:focus,
+.btn.dropdown-toggle:focus {
+    border: none!important;
+    outline: none!important;
+}
+

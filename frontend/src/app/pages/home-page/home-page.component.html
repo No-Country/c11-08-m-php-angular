@@ -1,7 +1,7 @@
 <app-navbar></app-navbar>
-<div class="container" style="background-color: rgb(138, 138, 247);">
-    <div class="row" style="background-color: rgb(66, 64, 64);">
-        <div class="col-md-6 col-lg-7 d-flex" style="background-color: rgb(247, 145, 145);">
+<div class="container pb-5">
+    <div class="row pt-5">
+        <div class="col-md-6 col-lg-7 d-flex" >
             <div class="m-auto">
                 <div class="tpm w-75">
                     <h1 class="fs-2 fw-semibold">Encuentra los mejores docentes en <span
@@ -10,23 +10,35 @@
                         aliquam qui voluptas dolorem quae blanditiis?</p>
                 </div>
                 <div class="border srccontainer tpm w-75 d-flex justify-content-between">
-                    <button class="btn"> <fa-icon [icon]="faGraduationCap"></fa-icon> Quiero aprender</button>
-                    <button class="btn"><fa-icon [icon]="faLocationDot"></fa-icon>Donde</button>
+                    <div class="btn-group">
+                        <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          <fa-icon [icon]="faGraduationCap"></fa-icon> {{ selectedOption }}
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-end mt-2 pe-5">
+                            <button class="dropdown-item btn" (click)="selectedOption = 'Aprende Python'">Python</button>
+                            <button class="dropdown-item btn" (click)="selectedOption = 'Aprende Java'">Java</button>
+                            <button class="dropdown-item btn" (click)="selectedOption = 'Aprende JavaScript'">JavaScript</button>
+                            <button class="dropdown-item btn" (click)="selectedOption = 'Aprende Ruby'">Ruby</button>
+                        </div>
+                      </div>
+                    <!-- <button class="btn"><fa-icon [icon]="faLocationDot"></fa-icon> Donde</button> -->
                     <button class="btn btn-src px-4"> Comienza</button>
-                </div>
+               </div>
             </div>
         </div>
-        <div class="col-lg-5 col-md-6  d-flex" style="background-color: rgb(241, 241, 149);">
+        <div class="col-lg-5 col-md-6  d-flex" >
             <img class="w-full img-fluid m-auto" src="../../../assets/images/homePage/bannerHomePage.png" alt="">
         </div>
     </div>
-
-    <div class="row">
+</div>
+<div class="w-100" style="background-color: #abebd1;">
+    <div class="container">
+        <div class="row d-flex justify-content-center">
             <div class="col py-5">
-                <div clas="d-flex">
-                    <div class="border w-25 h-25 rounded-circle circle m-auto">
+                <div>
+                    <div class="border w-25 h-25 rounded-circle circle m-auto" style="width: 74.16px !important; height: 74.16px!important">
                         <img src="../../../assets/images/homePage/bannerHomePage.png" alt=""
-                            class="rounded-circle w-full img-fluid m-auto">
+                            class="rounded-circle w-100 h-100 img-fluid m-auto">
                     </div>
                     <h1 class="fs-4 fw-semibold text-center pt-3">Real y honesto</h1>
                     <p class="text-center px-4 fs-6">Lorem, ipsum pisicing elit. Sit, aliquam culpa voluptatem debitis
@@ -35,8 +47,8 @@
                 </div>
             </div>
             <div class="col py-5">
-                <div clas="d-flex">
-                    <div class="border w-25 h-25 rounded-circle circle m-auto">
+                <div>
+                    <div class="border w-25 h-25 rounded-circle circle m-auto" style="width: 74.16px !important; height: 74.16px!important">
                         <img src="../../../assets/images/homePage/bannerHomePage.png" alt=""
                             class="rounded-circle w-full img-fluid m-auto">
                     </div>
@@ -47,8 +59,8 @@
                 </div>
             </div>
             <div class="col col-ssm-7 py-5">
-                <div clas="d-flex">
-                    <div class="border w-25 h-25 rounded-circle circle m-auto">
+                <div>
+                    <div class="border w-25 h-25 rounded-circle circle m-auto" style="width: 74.16px !important; height: 74.16px!important">
                         <img src="../../../assets/images/homePage/bannerHomePage.png" alt=""
                             class="rounded-circle w-full img-fluid m-auto">
                     </div>
@@ -58,11 +70,13 @@
                     </p>
                 </div>
             </div>
+        </div>
     </div>
+</div>
 
-    
-    <div class="row py-5 justify-content-center" style="background-color: rgb(66, 64, 64);">
-        <div class="col-md-6 col-lg-7 d-flex" style="background-color: rgb(247, 145, 145);">
+<div class="container">
+    <div class="row py-5 justify-content-center" >
+        <div class="col-md-6 col-lg-7 d-flex" >
             <div class="m-auto">
                 <div class="w-75 tpm">
                     <h1 class="fs-2 fw-semibold">Colabora con nosotros</h1>
@@ -70,10 +84,12 @@
                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Distinctio veniam sint deserunt sequi
                         aliquam qui voluptas dolorem quae blanditiis?</p>
                 </div>
-                    <button class="btn srccontainer text-center btn-start px-4">Comienza ahora</button>
+                <button class="btn srccontainer text-center btn-start px-4">Comienza ahora</button>
             </div>
         </div>
-        <div class="col-lg-5 col-md-6 d-flex" style="background-color: rgb(241, 241, 149);">
+        <div class="col-lg-5 col-md-6 d-flex" >
             <img class="w-full img-fluid m-auto" src="../../../assets/images/homePage/HomePage.png" alt="">
         </div>
-    </div> 
+    </div>
+</div>
+<app-footer></app-footer>
