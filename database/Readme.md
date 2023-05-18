@@ -109,7 +109,7 @@
 ### cities **(EC)**
 
 - id **(PK)**
-- name **(UQ)**
+- name
 - province_id **(FK)**
 - deleted_at
 - created_at
