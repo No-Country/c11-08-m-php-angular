@@ -20,4 +20,8 @@ class Student extends Model
     public function students_subjects(){
         return $this->hasMany(Student_subject::class);
     }
+
+    public function classes(){
+        return $this->hasMany(Clase::class);
+    }
 }
