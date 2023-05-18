@@ -17,7 +17,7 @@ class CitySeeder extends Seeder
     {
     }
 
-    public static function storeDepartmentsByProvince($id, $province_id)
+    public static function storeDepartmentsByProvince($id, $province_id): void
     {
 
         $url =  "https://apis.datos.gob.ar/georef/api/departamentos?provincia=$id&max=1000";
