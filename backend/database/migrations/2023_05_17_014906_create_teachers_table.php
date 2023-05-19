@@ -23,7 +23,6 @@ return new class extends Migration
             $table->string('job_title');
             $table->integer('years_experience');
             $table->string('certificate_file');
-            $table->decimal('price_hour', 10, 2);
             $table->tinyInteger('sample_class')->default(false);
             $table->string('photo');
             $table->softDeletes();
