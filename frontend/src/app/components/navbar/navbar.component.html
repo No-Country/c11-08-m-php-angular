@@ -5,7 +5,7 @@
       <img src="../../../assets/images/homePage/bannerHomePage.png" alt="" class="rounded-circle w-100 h-100 img-fluid m-auto">
     </div>
     </div>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarText">
@@ -33,3 +33,42 @@
     </div>
   </div>
 </nav>
+
+
+
+
+<div class="offcanvas offcanvas-start" data-bs-backdrop="static" tabindex="-1" id="staticBackdrop" aria-labelledby="staticBackdropLabel">
+  <div class="offcanvas-header">
+    <div class="border rounded-circle position-relative" style="width: 60px; height: 60px;">
+      <img src="../../../assets/images/homePage/bannerHomePage.png" alt="" class="rounded-circle w-100 h-100 img-fluid m-auto">
+    </div>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <div>
+     
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Buscar docentes</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Dictar clases</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contacto</a>
+          </li>
+        </ul>
+        <ul class="navbar-nav end ms-auto">
+          <button type="button" class="nav-link">
+            <button class="nav-link">Inicia sesión</button>
+          </button>
+       
+          <li class="nav-item">
+            <a class="nav-link nav-register border px-4 py-2 tpm" href="#">Registrate</a>
+          </li>
+    
+        </ul>
+    
+    </div>
+  </div>
+</div>
