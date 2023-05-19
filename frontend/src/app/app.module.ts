@@ -8,6 +8,7 @@ import { CardsComponent } from './components/cards/cards.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SrcPageComponent } from './pages/src-page/src-page/src-page.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { AnimationsComponent } from './components/animations/animations.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { FooterComponent } from './components/footer/footer.component';
     CardsComponent,
     FooterComponent,
     SrcPageComponent,
+    AnimationsComponent,
   ],
   imports: [
     BrowserModule,
