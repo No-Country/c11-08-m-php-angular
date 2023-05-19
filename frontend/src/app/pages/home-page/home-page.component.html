@@ -11,10 +11,20 @@
                         aliquam qui voluptas dolorem quae blanditiis?</p>
                 </div>
                 <div class="border srccontainer tpm w-75 d-flex justify-content-between">
-                    <button class="btn"> <fa-icon [icon]="faGraduationCap"></fa-icon> Quiero aprender</button>
-                    <!-- <button class="btn"><fa-icon [icon]="faLocationDot"></fa-icon>Donde</button> -->
+                    <div class="btn-group">
+                        <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          <fa-icon [icon]="faGraduationCap"></fa-icon> {{ selectedOption }}
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-end mt-2 pe-5">
+                            <button class="dropdown-item btn" (click)="selectedOption = 'Aprende Python'">Python</button>
+                            <button class="dropdown-item btn" (click)="selectedOption = 'Aprende Java'">Java</button>
+                            <button class="dropdown-item btn" (click)="selectedOption = 'Aprende JavaScript'">JavaScript</button>
+                            <button class="dropdown-item btn" (click)="selectedOption = 'Aprende Ruby'">Ruby</button>
+                        </div>
+                      </div>
+                    <!-- <button class="btn"><fa-icon [icon]="faLocationDot"></fa-icon> Donde</button> -->
                     <button class="btn btn-src px-4"> Comienza</button>
-                </div>
+               </div>
             </div>
         </div>
         <div class="col-lg-5 col-md-6  d-flex" style="background-color: rgb(241, 241, 149);">

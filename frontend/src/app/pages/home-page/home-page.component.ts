@@ -7,6 +7,7 @@ import { faGraduationCap, faLocationDot } from '@fortawesome/free-solid-svg-icon
   styleUrls: ['./home-page.component.css']
 })
 export class HomePageComponent {
+  selectedOption: string = 'Quiero aprender';
   faGraduationCap = faGraduationCap;
   faLocationDot = faLocationDot;
 }
