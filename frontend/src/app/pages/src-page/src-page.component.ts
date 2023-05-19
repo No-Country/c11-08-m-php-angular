@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { faGraduationCap, faLocationDot } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-src-page',
@@ -6,5 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./src-page.component.css']
 })
 export class SrcPageComponent {
-
+  selectedOption: string = 'Quiero aprender';
+  faGraduationCap = faGraduationCap;
+  faLocationDot = faLocationDot;
 }
