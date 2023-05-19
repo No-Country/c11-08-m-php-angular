@@ -24,4 +24,8 @@ class Student extends Model
     public function classes(){
         return $this->hasMany(Clase::class);
     }
+
+    public function reviews(){
+        return $this->hasMany(Review::class);
+    }
 }
