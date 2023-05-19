@@ -18,6 +18,7 @@ import { AnimationsComponent } from './components/animations/animations.componen
     CardsComponent,
     FooterComponent,
     AnimationsComponent,
+    SrcPageComponent
   ],
   imports: [
     BrowserModule,
