@@ -1,7 +1,18 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { HomePageComponent } from './pages/home-page/home-page.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+  {
+    path: '',
+    redirectTo: 'home' , // if loading is add, change this "home" for loading path
+    pathMatch: 'full'
+  },
+  {
+    path: 'home',
+    component: HomePageComponent,
+  },
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
