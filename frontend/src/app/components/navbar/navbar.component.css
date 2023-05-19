@@ -1,0 +1,19 @@
+.navbar-end  {
+    display: flex;
+    justify-content: end;
+}
+button{
+    border: 0;
+    padding: 0;
+    background: none;
+}
+.nav-register{
+    border-radius: 1000px;
+    border-color: black!important;
+    border-width: 2px!important;
+}
+
+.nav-link{
+    color: black!important;
+}
+
