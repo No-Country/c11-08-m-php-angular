@@ -1,6 +1,5 @@
 <?php
 
-use App\Models\Province;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -14,12 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('cities', function (Blueprint $table) {
+        Schema::create('students_subjects', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->foreignIdFor(Province::class);
-            $table->softDeletes();
+            $table->unsignedBigInteger('student_id');
+            $table->unsignedBigInteger('subject_id');
             $table->timestamps();
+        });
+
+        Schema::table('students_subjects', function($table){
+            $table->foreign('student_id')->references('id')->on('students');
+            $table->foreign('subject_id')->references('id')->on('subjects');
         });
     }
 
@@ -30,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cities');
+        Schema::dropIfExists('students_subjects');
     }
 };
