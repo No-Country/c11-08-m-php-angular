@@ -135,6 +135,16 @@
 - created_at
 - updated_at
 
+### rates **(ED)**
+
+- id **(PK)**
+- type (por hora, por pack, por semana, por mes)
+- duration
+- price
+- teacher_id **(FK)**
+- deleted_at
+- created_at
+- updated_at
 
 ## Diagrama
 
