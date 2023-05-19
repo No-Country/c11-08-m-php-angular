@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
-import * as $ from 'jquery';
+
 
 @Component({
   selector: 'app-cards',
