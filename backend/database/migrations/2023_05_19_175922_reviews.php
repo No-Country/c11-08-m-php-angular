@@ -13,15 +13,19 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('rates', function (Blueprint $table) {
+        Schema::create('reviews', function (Blueprint $table) {
             $table->id();
-            $table->enum('type', ['1 Clase', '2 Clases', '4 Clases']);
-            $table->decimal('price', 10, 2);
-            $table->tinyInteger('active')->default(false);
             $table->unsignedBigInteger('teacher_id');
-            $table->foreign('teacher_id')->references('id')->on('teachers');
+            $table->unsignedBigInteger('student_id');
+            $table->text('comment');
+            $table->enum('qualification',[1,2,3,4,5]);
             $table->softDeletes();
             $table->timestamps();
+        });
+
+        Schema::table('reviews', function($table){
+            $table->foreign('teacher_id')->references('id')->on('teachers');
+            $table->foreign('student_id')->references('id')->on('students');
         });
     }
 
@@ -32,6 +36,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('rates');
+        Schema::dropIfExists('reviews');
     }
 };

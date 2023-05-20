@@ -22,6 +22,9 @@ return new class extends Migration
             $table->text('about_class')->nullable();
             $table->string('job_title')->nullable();
             $table->integer('years_experience')->nullable();
+            $table->decimal('price_one_class', 10, 2)->nullable();
+            $table->decimal('price_two_classes', 10, 2)->nullable();
+            $table->decimal('price_four_classes', 10, 2)->nullable();
             $table->string('certificate_file')->nullable();
             $table->tinyInteger('sample_class')->default(false);
             $table->softDeletes();

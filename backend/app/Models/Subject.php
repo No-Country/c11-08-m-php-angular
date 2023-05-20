@@ -15,6 +15,11 @@ class Subject extends Model
 
     public function teachers(): BelongsToMany
     {
-        return $this->belongsToMany(Teacher::class)->withPivot('years_experience', 'level', 'certificate_file');
+        return $this->belongsToMany(Teacher::class, 'teachers_subjects')->withPivot('years_experience', 'level', 'certificate_file');
+    }
+
+    public function students(): BelongsToMany
+    {
+        return $this->belongsToMany(Student::class, 'students_subjects');
     }
 }

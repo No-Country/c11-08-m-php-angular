@@ -4,21 +4,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Rate extends Model
+class Schedule extends Model
 {
     use HasFactory, SoftDeletes;
+    protected $fillable = ['day','name', 'active', 'start_morning','end_morning','start_afternoon','end_afternoon','start_night',
+    'end_night', 'teacher_id'];
 
-    protected $fillable = [
-        'type',
-        'price',
-        'teacher_id',
-    ];
-
-    public function teacher(): BelongsTo
-    {
+    public function teacher(){
         return $this->belongsTo(Teacher::class);
     }
 }
