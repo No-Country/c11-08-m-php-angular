@@ -13,7 +13,18 @@ return new class extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('reviews', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('teacher_id');
+            $table->unsignedBigInteger('student_id');
+            $table->text('comment');
+            $table->enum('qualification',['mala','regular','buena','muy buena','excelente']);
+        });
+
+        Schema::table('reviews', function($table){
+            $table->foreign('teacher_id')->references('id')->on('teachers');
+            $table->foreign('student_id')->references('id')->on('students');
+        });
     }
 
     /**
@@ -23,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('reviews');
     }
 };
