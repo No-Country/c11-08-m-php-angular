@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { faGraduationCap, faLocationDot } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-home-page',
@@ -6,5 +8,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./home-page.component.css']
 })
 export class HomePageComponent {
+  selectedOption: string = 'Quiero aprender';
+  faGraduationCap = faGraduationCap;
+  faLocationDot = faLocationDot;
 
+  constructor(private router: Router){}
+
+
+  seleccionarOpcion(opcion: string) {
+    this.router.navigate(['/src'], { queryParams: { seleccion: opcion } });
+  }
+  
 }

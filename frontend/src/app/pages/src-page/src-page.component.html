@@ -1,0 +1,46 @@
+<app-navbar></app-navbar>
+<div class="container pb-5" style="background-color: #ffecef!important;">
+    <div class="row">
+        <div class="col-5">
+            <div class="tpm w-75">
+                <h1 class="fs-4 fw-semibold">Encuentra los mejores docentes en <span
+                        class="fs-3 fw-bold ">{{programacion}}</span></h1>
+                
+        </div>
+        <div class="col-2">
+            <div class="border srccontainer tpm w-75 d-flex justify-content-between">
+            <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <fa-icon [icon]="faGraduationCap"></fa-icon> {{ selectedOption }}
+              </button>
+              <div class="dropdown-menu dropdown-menu-end mt-2 pe-5">
+                  <button class="dropdown-item btn" (click)="selectedOption = 'Aprende Python'">Python</button>
+                  <button class="dropdown-item btn" (click)="selectedOption = 'Aprende Java'">Java</button>
+                  <button class="dropdown-item btn" (click)="selectedOption = 'Aprende JavaScript'">JavaScript</button>
+                  <button class="dropdown-item btn" (click)="selectedOption = 'Aprende Ruby'">Ruby</button>
+              </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<div class="container">
+    <div class="pt-2 pb-3 d-flex justify-content-between w-100 ">
+        <h1 class="fs-4">40 docentes <span class="fs-6"> De matematicas</span></h1>
+        <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Ordenar por</button>
+        <div class="dropdown-menu dropdown-menu-end mt-2 pe-5">
+            <button class="dropdown-item btn" >Edad</button>
+            <button class="dropdown-item btn" >Nombre</button>
+            <button class="dropdown-item btn" >Apellido</button>
+            <button class="dropdown-item btn" >Pais</button>
+        </div>
+    </div>
+    <div class="mb-5 mt-5 row g-5">
+        <!-- TODO:agregar ngfor y moack para simular base de datos -->
+    <app-cards class="col-12 col-xl-4 col-md-6 "></app-cards>
+    <app-cards class="col-12 col-xl-4 col-md-6 "></app-cards>
+    <app-cards class="col-12 col-xl-4 col-md-6 "></app-cards>
+    </div>
+</div>
+
+<app-footer></app-footer>

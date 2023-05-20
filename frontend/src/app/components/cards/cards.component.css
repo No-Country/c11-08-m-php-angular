@@ -1,0 +1,19 @@
+
+.btn-contact{
+    border-color: black;
+    border-radius: 1000px;
+    border-width: 1px!important;
+    background-color: rgb(148, 148, 148);
+    color: white;
+}
+.etiquetas{
+    border-color: black!important;
+    border-radius: 7px;
+    border-width: 1px!important;
+    color: black;
+    font-size: 80%;
+}
+
+.transparent{
+    color: #919191;
+}

@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import { faLocationDot, faStar } from '@fortawesome/free-solid-svg-icons';
+
+
 
 @Component({
   selector: 'app-cards',
@@ -6,5 +9,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./cards.component.css']
 })
 export class CardsComponent {
-
+faStar = faStar;
+faLocationDot = faLocationDot;
 }

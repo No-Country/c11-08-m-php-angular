@@ -1,0 +1,35 @@
+.srccontainer{
+    border-radius: 1000px;
+    border-color: black!important;
+    border-width: 1px!important;
+
+}
+
+.btn-src{
+    border-color: black;
+    border-radius: 1000px;
+    border-width: 1px!important;
+    background-color: black;
+    color: white;
+}
+
+circle{
+    border-radius: 1000px;
+    border-color: black;
+}
+
+.btn-start{
+    background-color: rgba(148, 147, 147, 0.705);
+}
+
+@media only screen and (max-width: 758px) {
+    .tpm{
+        width: 100%!important;
+    }
+}
+
+.navbar .dropdown-toggle:focus,
+.btn.dropdown-toggle:focus {
+    border: none!important;
+    outline: none!important;
+}

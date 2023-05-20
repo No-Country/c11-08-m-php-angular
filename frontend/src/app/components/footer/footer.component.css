@@ -1,0 +1,32 @@
+.footer {
+    padding: 20px 0;
+  }
+  .footer p {
+    margin-bottom: 0;
+  }
+  .footer ul.list-inline {
+    padding: 0;
+    margin-bottom: 0;
+  }
+  .footer ul.list-inline li {
+    display: inline-block;
+    margin-right: 10px;
+  }
+  .footer ul.list-inline li:last-child {
+    margin-right: 0;
+  }
+  .footer ul.list-inline li a {
+    color: white;
+    text-decoration: none;
+  }
+  
+  .iconColorf {
+    color: black;
+  }
+
+  @media only screen and (max-width: 576px) {
+    .centerFooter{
+        display: flex!important;
+        justify-content: center!important;
+    }
+}
