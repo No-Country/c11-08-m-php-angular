@@ -17,14 +17,13 @@ return new class extends Migration
         Schema::create('teachers', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(User::class);
-            $table->string('title');
-            $table->text('about_me');
-            $table->text('about_class');
-            $table->string('job_title');
-            $table->integer('years_experience');
-            $table->string('certificate_file');
+            $table->string('title')->nullable();
+            $table->text('about_me')->nullable();
+            $table->text('about_class')->nullable();
+            $table->string('job_title')->nullable();
+            $table->integer('years_experience')->nullable();
+            $table->string('certificate_file')->nullable();
             $table->tinyInteger('sample_class')->default(false);
-            $table->string('photo');
             $table->softDeletes();
             $table->timestamps();
         });

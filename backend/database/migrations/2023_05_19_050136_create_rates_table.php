@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->enum('type', ['1 Clase', '2 Clases', '4 Clases']);
             $table->decimal('price', 10, 2);
+            $table->tinyInteger('active')->default(false);
             $table->unsignedBigInteger('teacher_id');
             $table->foreign('teacher_id')->references('id')->on('teachers');
             $table->softDeletes();

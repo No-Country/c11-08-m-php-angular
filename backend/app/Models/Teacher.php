@@ -21,8 +21,7 @@ class Teacher extends Model
         'job_title',
         'years_experience',
         'certificate_file',
-        'sample_class',
-        'photo'
+        'sample_class'
     ];
 
     public function user(): BelongsTo

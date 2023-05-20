@@ -19,9 +19,9 @@ return new class extends Migration
             $table->foreign('teacher_id')->references('id')->on('teachers');
             $table->unsignedBigInteger('subject_id');
             $table->foreign('subject_id')->references('id')->on('subjects');
-            $table->integer('years_experience');
-            $table->enum('level', ['Básico', 'Intermedio', 'Avanzado']);
-            $table->string('certificate_file');
+            $table->integer('years_experience')->nullable();
+            $table->enum('level', ['Básico', 'Intermedio', 'Avanzado'])->nullable();
+            $table->string('certificate_file')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });
