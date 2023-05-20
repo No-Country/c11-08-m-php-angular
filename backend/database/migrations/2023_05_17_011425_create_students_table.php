@@ -21,7 +21,7 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        Schema::table('users', function($table){
+        Schema::table('students', function($table){
             $table->foreign('user_id')->references('id')->on('users');
         });
     }
