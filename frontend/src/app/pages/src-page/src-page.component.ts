@@ -7,13 +7,18 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./src-page.component.css']
 })
 export class SrcPageComponent implements OnInit {
-  elegir!: string;
+  elegir: string = "Cualquiera";
+  precio:string = 'Cualquiera';
+  provincia:string = 'Cualquiera'
+  disponibilidad: string = 'Cualquier';
   faGraduationCap = faGraduationCap;
   faLocationDot = faLocationDot;
   
   constructor(private route: ActivatedRoute) {}
   ngOnInit(): void {
-    this.elegir = this.route.snapshot.queryParams['seleccion'] 
+    if ( this.route.snapshot.queryParams['seleccion'] != 'Quiero aprender') {
+      this.elegir = this.route.snapshot.queryParams['seleccion'] 
+    } 
     
   }
 

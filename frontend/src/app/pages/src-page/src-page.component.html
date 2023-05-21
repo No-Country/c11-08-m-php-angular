@@ -13,9 +13,9 @@
                 <p>Quiero aprender</p>
                 <div class="border srccontainer tpm w-100 d-flex justify-content-between">
                     <button class="btn dropdown-toggle w-100 text-start rounded-pill" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <fa-icon [icon]="faGraduationCap"></fa-icon> {{ elegir }}
+                        <fa-icon [icon]="faGraduationCap" class="text-end"></fa-icon> {{elegir}}
                     </button>
-                    <div class="dropdown-menu box-sizing" style="max-width: auto;">
+                    <div class="dropdown-menu">
                         <button class="dropdown-item btn" (click)="elegir = 'Aprende Python'">Python</button>
                         <button class="dropdown-item btn" (click)="elegir = 'Aprende Java'">Java</button>
                         <button class="dropdown-item btn" (click)="elegir = 'Aprende JavaScript'">JavaScript</button>
@@ -26,42 +26,45 @@
             <div class="col">
                 <p>Rango de precio</p>
                 <div class="border srccontainer tpm w-100 d-flex justify-content-between">
-                    <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <fa-icon [icon]="faGraduationCap"></fa-icon> {{ elegir }}
+                    <button class="btn dropdown-toggle rounded-pill w-100 text-start" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <fa-icon [icon]="faGraduationCap"></fa-icon> {{ precio }}
                     </button>
-                    <div class="dropdown-menu dropdown-menu-end mt-2 pe-5">
-                        <button class="dropdown-item btn" (click)="elegir = 'Aprende Python'">Python</button>
-                        <button class="dropdown-item btn" (click)="elegir = 'Aprende Java'">Java</button>
-                        <button class="dropdown-item btn" (click)="elegir = 'Aprende JavaScript'">JavaScript</button>
-                        <button class="dropdown-item btn" (click)="elegir = 'Aprende Ruby'">Ruby</button>
+                    
+                    <div class="dropdown-menu">
+                        <button class="dropdown-item btn" (click)="precio = '0 - 2000 ARS'">0 - 2000 ARS</button>
+                        <button class="dropdown-item btn" (click)="precio = '2000 ARS - 4000 ARS'">2000 ARS - 4000 ARS</button>
+                        <button class="dropdown-item btn" (click)="precio = '4000 ARS - 6000 ARS'">4000 ARS - 6000 ARS</button>
+                        <button class="dropdown-item btn" (click)="precio = '+6000 ARS'">+6000 ARS</button>
                     </div>
                 </div>
             </div>
             <div class="col">
-                <p>Provincia</p>
+                <p>Provincia / Ciudad</p>
                 <div class="border srccontainer tpm w-100 d-flex justify-content-between">
-                    <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <fa-icon [icon]="faGraduationCap"></fa-icon> {{ elegir }}
+                    <button class="btn dropdown-toggle rounded-pill w-100 text-start" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <fa-icon [icon]="faGraduationCap"></fa-icon> {{ precio }}
                     </button>
-                    <div class="dropdown-menu dropdown-menu-end mt-2 pe-5">
-                        <button class="dropdown-item btn" (click)="elegir = 'Aprende Python'">Python</button>
-                        <button class="dropdown-item btn" (click)="elegir = 'Aprende Java'">Java</button>
-                        <button class="dropdown-item btn" (click)="elegir = 'Aprende JavaScript'">JavaScript</button>
-                        <button class="dropdown-item btn" (click)="elegir = 'Aprende Ruby'">Ruby</button>
+                    
+                    <div class="dropdown-menu">
+                        <button class="dropdown-item btn" (click)="precio = '0 - 2000 ARS'">0 - 2000 ARS</button>
+                        <button class="dropdown-item btn" (click)="precio = '2000 ARS - 4000 ARS'">2000 ARS - 4000 ARS</button>
+                        <button class="dropdown-item btn" (click)="precio = '4000 ARS - 6000 ARS'">4000 ARS - 6000 ARS</button>
+                        <button class="dropdown-item btn" (click)="precio = '+6000 ARS'">+6000 ARS</button>
                     </div>
                 </div>
             </div>
             <div class="col">
                 <p>Disponibilidad</p>
                 <div class="border srccontainer tpm w-100 d-flex justify-content-between">
-                    <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <fa-icon [icon]="faGraduationCap"></fa-icon> {{ elegir }}
+                    <button class="btn dropdown-toggle rounded-pill w-100 text-start" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <fa-icon [icon]="faGraduationCap"></fa-icon> {{ precio }}
                     </button>
-                    <div class="dropdown-menu dropdown-menu-end mt-2 pe-5">
-                        <button class="dropdown-item btn" (click)="elegir = 'Aprende Python'">Python</button>
-                        <button class="dropdown-item btn" (click)="elegir = 'Aprende Java'">Java</button>
-                        <button class="dropdown-item btn" (click)="elegir = 'Aprende JavaScript'">JavaScript</button>
-                        <button class="dropdown-item btn" (click)="elegir = 'Aprende Ruby'">Ruby</button>
+                    
+                    <div class="dropdown-menu">
+                        <button class="dropdown-item btn" (click)="precio = '0 - 2000 ARS'">0 - 2000 ARS</button>
+                        <button class="dropdown-item btn" (click)="precio = '2000 ARS - 4000 ARS'">2000 ARS - 4000 ARS</button>
+                        <button class="dropdown-item btn" (click)="precio = '4000 ARS - 6000 ARS'">4000 ARS - 6000 ARS</button>
+                        <button class="dropdown-item btn" (click)="precio = '+6000 ARS'">+6000 ARS</button>
                     </div>
                 </div>
             </div>
