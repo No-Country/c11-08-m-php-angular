@@ -7,13 +7,15 @@ import { HomePageComponent } from './pages/home-page/home-page.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { CardsComponent } from './components/cards/cards.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { PerfilProfeComponent } from './pages/perfil-profe/perfil-profe.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomePageComponent,
     NavbarComponent,
-    CardsComponent
+    CardsComponent,
+    PerfilProfeComponent
   ],
   imports: [
     BrowserModule,
