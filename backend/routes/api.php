@@ -20,3 +20,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('/provinces','App\Http\Controllers\ProvinceController@index');//Todas las provincias
 Route::get('/provinces/{id}','App\Http\Controllers\ProvinceController@getProvince');//Una provincia
+
+Route::get('/cities','App\Http\Controllers\CityController@index');//Todas las ciudades
+Route::get('/cities/{id}','App\Http\Controllers\CityController@getCity');//Una ciudad
+Route::get('/cities/province/{id}','App\Http\Controllers\CityController@citiesProvince');//Ciudades de una provincia
