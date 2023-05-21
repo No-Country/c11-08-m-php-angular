@@ -27,7 +27,7 @@ return new class extends Migration
             $table->time('end_night');
         });
 
-        Schema::table('reviews', function($table){
+        Schema::table('schedules', function($table){
             $table->foreign('teacher_id')->references('id')->on('teachers');
         });
     }
