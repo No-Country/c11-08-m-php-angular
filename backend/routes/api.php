@@ -17,3 +17,6 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/provinces','App\Http\Controllers\ProvinceController@index');//Todas las provincias
+Route::get('/provinces/{id}','App\Http\Controllers\ProvinceController@getProvince');//Una provincia
