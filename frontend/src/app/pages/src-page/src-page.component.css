@@ -20,6 +20,13 @@
     align-items: center;
 }
 
+.scrollable-menu {
+    max-height: 100px; /* Altura máxima del menú desplegable */
+    overflow-y: auto; /* Habilita el desplazamiento vertical */
+    white-space: nowrap;
+  }
+  
+
 @media only screen and (max-width: 1399px) {
     .dropdown-menu{
         width: 255px!important;

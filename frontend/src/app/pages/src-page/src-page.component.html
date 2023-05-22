@@ -41,16 +41,44 @@
             <div class="col">
                 <p>Provincia / Ciudad</p>
                 <div class="border srccontainer tpm w-100 d-flex justify-content-between">
-                    <button class="btn dropdown-toggle rounded-pill w-100 text-start" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <!-- <button class="btn dropdown-toggle rounded-pill w-100 text-start" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <fa-icon [icon]="faGraduationCap"></fa-icon> {{ precio }}
                     </button>
                     
                     <div class="dropdown-menu">
-                        <button class="dropdown-item btn" (click)="precio = '0 - 2000 ARS'">0 - 2000 ARS</button>
-                        <button class="dropdown-item btn" (click)="precio = '2000 ARS - 4000 ARS'">2000 ARS - 4000 ARS</button>
-                        <button class="dropdown-item btn" (click)="precio = '4000 ARS - 6000 ARS'">4000 ARS - 6000 ARS</button>
-                        <button class="dropdown-item btn" (click)="precio = '+6000 ARS'">+6000 ARS</button>
-                    </div>
+                        <button *ngFor="let prov of provinciasArgentina" (click)="provincia = '{{ prov }}'" value="1"></button>{{ prov }}
+                        <button (click)="provincia = ''" value="2"></button>
+                        <button (click)="provincia = ''" value="3"></button>
+                        <button (click)="provincia = ''" value="4"></button>
+                        <button (click)="provincia = ''" value="5"></button>
+                        <button (click)="provincia = ''" value="6"></button>
+                        <button (click)="provincia = ''" value="7"></button>
+                        <button (click)="provincia = ''" value="8"></button>
+                        <button (click)="provincia = ''" value="9"></button>
+                        <button (click)="provincia = ''" value="10"></button>
+                        <button (click)="provincia = ''" value="11"></button>
+                        <button (click)="provincia = ''" value="12"></button>
+                        <button (click)="provincia = ''" value="13"></button>
+                        <button (click)="provincia = ''" value="14"></button>
+                        <button (click)="provincia = ''" value="15"></button>
+                        <button (click)="provincia = ''" value="16"></button>
+                        <button (click)="provincia = ''" value="17"></button>
+                        <button (click)="provincia = ''" value="18"></button>
+                        <button (click)="provincia = ''" value="19"></button>
+                        <button (click)="provincia = ''" value="20"></button>
+                        <button (click)="provincia = ''" value="21"></button>
+                        <button (click)="provincia = ''" value="22"></button>
+                        <button disabled="true" selected="true" value="">Seleccionar una Provincia</button>
+                    </div> -->
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          {{ provincia }}
+                        </button>
+                        <div class="dropdown-menu scrollable-menu" aria-labelledby="dropdownMenuButton">
+                          <button *ngFor="let prov of provinciasArgentina" class="dropdown-item" (click)="seleccionarProvincia(prov)">{{ prov }}</button>
+                        </div>
+                      </div>
+                      
                 </div>
             </div>
             <div class="col">
