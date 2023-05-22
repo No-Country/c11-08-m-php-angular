@@ -16,15 +16,17 @@ return new class extends Migration
         Schema::create('schedules', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('teacher_id');
-            $table->enum('day',['0','1','2','3','4','5']);
-            $table->enum('name',['lunes','martes','miercoles','jueves','viernes','sabado']);
+            $table->enum('day',['1','2','3','4','5','6']);
+            $table->enum('name',['Lunes','Martes','Miércoles','Jueves','Viernes','Sábado']);
             $table->tinyInteger('active')->default(false);
-            $table->time('start_morning');
-            $table->time('end_morning');
-            $table->time('start_afternoon');
-            $table->time('end_afternoon');
-            $table->time('start_night');
-            $table->time('end_night');
+            $table->time('start_morning')->nullable();
+            $table->time('end_morning')->nullable();
+            $table->time('start_afternoon')->nullable();
+            $table->time('end_afternoon')->nullable();
+            $table->time('start_night')->nullable();
+            $table->time('end_night')->nullable();
+            $table->softDeletes();
+            $table->timestamps();
         });
 
         Schema::table('schedules', function($table){

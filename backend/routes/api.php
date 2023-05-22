@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\TeacherController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -27,3 +28,6 @@ Route::get('/cities/province/{id}','App\Http\Controllers\CityController@citiesPr
 
 Route::get('/subjects','App\Http\Controllers\SubjectController@index');//Todas las materias
 Route::get('/subjects/{id}','App\Http\Controllers\SubjectController@getSubject');//Una materia
+
+Route::get('/teachers/search-by', [TeacherController::class, 'searchTeacherBy']);
+Route::apiResource('teachers', TeacherController::class);

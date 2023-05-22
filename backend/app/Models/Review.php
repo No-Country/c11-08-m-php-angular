@@ -4,11 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Review extends Model
 {
-    use HasFactory;
-    protected $fillable = ['comment','qualification'];
+    use HasFactory, SoftDeletes;
+    protected $fillable = ['comment','qualification', 'teacher_id', 'student_id'];
 
     public function teacher(){
         return $this->belongsTo(Teacher::class);
