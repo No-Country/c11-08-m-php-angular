@@ -36,9 +36,11 @@ class TeacherRepository
                         ->whereNotNull($availability[1]);
                 }
                 if ($request->price) {
-                    $result->whereBetween('price_one_class', [$request->price])
-                        ->orWhereBetween('price_two_classes', [$request->price])
-                        ->orWhereBetween('price_four_classes', [$request->price]);
+                    $result->where(function ($query) use ($request){
+                            $query->whereBetween('price_one_class', [$request->price])
+                                  ->orWhereBetween('price_two_classes', [$request->price])
+                                  ->orWhereBetween('price_four_classes', [$request->price]);
+                    });
                 }
             })
             ->distinct('t.id')
