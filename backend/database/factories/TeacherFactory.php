@@ -28,6 +28,7 @@ class TeacherFactory extends Factory
             'price_two_classes' => fake()->randomFloat(2, 500, 700),
             'price_four_classes' => fake()->randomFloat(2, 750, 900),
             'certificate_file' => null,
+            'average' => fake()->randomFloat(1, 2, 5),
             'sample_class' => fake()->boolean(60),
         ];
     }

@@ -26,6 +26,7 @@ return new class extends Migration
             $table->decimal('price_two_classes', 10, 2)->nullable();
             $table->decimal('price_four_classes', 10, 2)->nullable();
             $table->string('certificate_file')->nullable();
+            $table->float('average', 2,1)->nullable();
             $table->tinyInteger('sample_class')->default(false);
             $table->softDeletes();
             $table->timestamps();
