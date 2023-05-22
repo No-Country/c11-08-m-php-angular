@@ -1,46 +1,114 @@
 <app-navbar></app-navbar>
 <div class="container pb-5" style="background-color: #ffecef!important;">
-    <div class="row">
-        <div class="col-5">
+    <div class="row mt-4">
+        <div class="col-5 ms-5">
             <div class="tpm w-75">
                 <h1 class="fs-4 fw-semibold">Encuentra los mejores docentes en <span
                         class="fs-3 fw-bold ">{{programacion}}</span></h1>
-                
-        </div>
-        <div class="col-2">
-            <div class="border srccontainer tpm w-75 d-flex justify-content-between">
-            <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <fa-icon [icon]="faGraduationCap"></fa-icon> {{ selectedOption }}
-              </button>
-              <div class="dropdown-menu dropdown-menu-end mt-2 pe-5">
-                  <button class="dropdown-item btn" (click)="selectedOption = 'Aprende Python'">Python</button>
-                  <button class="dropdown-item btn" (click)="selectedOption = 'Aprende Java'">Java</button>
-                  <button class="dropdown-item btn" (click)="selectedOption = 'Aprende JavaScript'">JavaScript</button>
-                  <button class="dropdown-item btn" (click)="selectedOption = 'Aprende Ruby'">Ruby</button>
-              </div>
+
             </div>
         </div>
     </div>
-</div>
+    <div class="row d-flex w-100 mt-2  py-0 justify-content-center px-5">
+
+        <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-1 mx-0 px-0 ">
+            <div class="mx-2 d-flex flex-column">
+
+                <div>
+                    <p class="ms-2 my-1">Quiero aprender</p>
+                </div>
+            
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2 border pe-5 " type="search" placeholder="Search" aria-label="Search">
+                 
+                </form>
+                
+            </div>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-1 mx-0 px-0">
+
+            <div class="mx-2 d-flex flex-column">
+                <div>
+                    <p class="ms-2 my-1">Rango de precio</p>
+                </div>
+                <button class="btn dropdown-toggle border pe-5 " type="button" data-bs-toggle="dropdown"
+                    aria-expanded="false" style="border-color: black!important;">
+                    <fa-icon [icon]="faGraduationCap"></fa-icon> {{ selectedOption }}
+                </button>
+                <div class="dropdown-menu dropdown-menu-end mt-2 pe-5">
+                    <button class="dropdown-item btn" (click)="selectedOption = 'Aprende Python'">Python</button>
+                    <button class="dropdown-item btn" (click)="selectedOption = 'Aprende Java'">Java</button>
+                    <button class="dropdown-item btn"
+                        (click)="selectedOption = 'Aprende JavaScript'">JavaScript</button>
+                    <button class="dropdown-item btn" (click)="selectedOption = 'Aprende Ruby'">Ruby</button>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-1 mx-0 px-0 ">
+            <div class="mx-2 d-flex flex-column">
+                <div>
+                    <p class="ms-2 my-1">Provincia</p>
+                </div>
+                <button class="btn dropdown-toggle border pe-5 " type="button" data-bs-toggle="dropdown"
+                    aria-expanded="false" style="border-color: black!important;">
+                    <fa-icon [icon]="faGraduationCap"></fa-icon> {{ selectedOption }}
+                </button>
+                <div class="dropdown-menu dropdown-menu-end mt-2 pe-5">
+                    <button class="dropdown-item btn" (click)="selectedOption = 'Aprende Python'">Python</button>
+                    <button class="dropdown-item btn" (click)="selectedOption = 'Aprende Java'">Java</button>
+                    <button class="dropdown-item btn"
+                        (click)="selectedOption = 'Aprende JavaScript'">JavaScript</button>
+                    <button class="dropdown-item btn" (click)="selectedOption = 'Aprende Ruby'">Ruby</button>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-1 mx-0 px-0 ">
+            <div class="mx-2 d-flex flex-column">
+                <div>
+                    <p class="ms-2 my-1">Disponibilidad</p>
+                </div>
+                <button class="btn dropdown-toggle border pe-5 " type="button" data-bs-toggle="dropdown"
+                    aria-expanded="false" style="border-color: black!important;">
+                    <fa-icon [icon]="faGraduationCap"></fa-icon> {{ selectedOption }}
+                </button>
+                <div class="dropdown-menu dropdown-menu-end mt-2 pe-5">
+                    <button class="dropdown-item btn" (click)="selectedOption = 'Aprende Python'">Python</button>
+                    <button class="dropdown-item btn" (click)="selectedOption = 'Aprende Java'">Java</button>
+                    <button class="dropdown-item btn"
+                        (click)="selectedOption = 'Aprende JavaScript'">JavaScript</button>
+                    <button class="dropdown-item btn" (click)="selectedOption = 'Aprende Ruby'">Ruby</button>
+                </div>
+            </div>
+
+        </div>
+
+
+
+
+    </div>
+
 </div>
 
 <div class="container">
     <div class="pt-2 pb-3 d-flex justify-content-between w-100 ">
         <h1 class="fs-4">40 docentes <span class="fs-6"> De matematicas</span></h1>
-        <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Ordenar por</button>
+        <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Ordenar
+            por</button>
         <div class="dropdown-menu dropdown-menu-end mt-2 pe-5">
-            <button class="dropdown-item btn" >Edad</button>
-            <button class="dropdown-item btn" >Nombre</button>
-            <button class="dropdown-item btn" >Apellido</button>
-            <button class="dropdown-item btn" >Pais</button>
+            <button class="dropdown-item btn">Edad</button>
+            <button class="dropdown-item btn">Nombre</button>
+            <button class="dropdown-item btn">Apellido</button>
+            <button class="dropdown-item btn">Pais</button>
         </div>
     </div>
-    <div class="mb-5 mt-5 row g-5">
-        <!-- TODO:agregar ngfor y moack para simular base de datos -->
-    <app-cards class="col-12 col-xl-4 col-md-6 "></app-cards>
-    <app-cards class="col-12 col-xl-4 col-md-6 "></app-cards>
-    <app-cards class="col-12 col-xl-4 col-md-6 "></app-cards>
-    </div>
+
+    <app-cards></app-cards>
+
 </div>
 
 <app-footer></app-footer>

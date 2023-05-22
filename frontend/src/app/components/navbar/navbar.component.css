@@ -1,8 +1,8 @@
-button{
+.border-none{
     border: 0;
     padding: 0;
     background: none;
-}
+} 
 .nav-register{
     border-radius: 1000px;
     border-color: black!important;
@@ -13,3 +13,6 @@ button{
     color: black!important;
 }
 
+.custom-close-btn{
+    color: black!important;
+}

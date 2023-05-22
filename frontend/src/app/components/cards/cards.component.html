@@ -1,26 +1,31 @@
-<div class="card border" style="border-color: rgb(110, 109, 109)!important ; border-radius: 20px;">
-  <div class="ratio ratio-16x9" >
-    <img src="../../../assets/images/homePage/bannerHomePage.png" class="card-img-top img-fluid object-fit-cover"  alt="...">
+<div class="mb-5 mt-5 row g-5">
+  <div class="col-12 col-xl-4 col-md-6" *ngFor="let card of cardList">
+    <div class="card border" style="border-color: rgb(110, 109, 109)!important ; border-radius: 20px;">
+      <div class="ratio ratio-16x9">
+        <img src="../../../assets/images/homePage/bannerHomePage.png" class="card-img-top img-fluid object-fit-cover" alt="...">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title mb-2">{{card.nombre}}</h5>
+        <div class="d-flex justify-content-start flex-wrap">
+          <p><fa-icon [icon]="faLocationDot"></fa-icon> {{card.ubicacion}}</p>
+          <div class="d-flex">
+            <p class="px-3"><fa-icon [icon]="faStar"></fa-icon> {{card.puntuacion}}</p>
+            <p>({{card.numeroDeOpiniones}})</p>
+          </div>
+        </div>
+        <div class="d-flex justify-content-start flex-wrap">
+          <p class="border etiquetas py-1 px-2">{{card.etiquetas[0]}}</p>
+          <p class="mx-2 border etiquetas py-1 px-2">{{card.etiquetas[1]}}</p>
+          <p class="border etiquetas py-1 px-2">{{card.etiquetas[2]}}</p>
+        </div>
+        <p>{{card.parrafo}}</p>
+        <div class="d-flex justify-content-between mb-2">
+          <div>
+            <p class="fs-3 fw-bold d-flex">{{card.precioHora}}<span class="m-auto ms-1 fs-6 fw-semibold transparent"> Hora</span></p>
+          </div>
+          <div><a href="#" class="btn btn-contact">Contactar</a></div>
+        </div>
+      </div>
+    </div>
   </div>
-    <div class="card-body">
-      <h5 class="card-title mb-2">Esteban Gonzales</h5>
-      <div class="d-flex justify-content-start flex-wrap">
-        <p> <fa-icon [icon]="faLocationDot"></fa-icon> San Isidro</p>
-        <div class="d-flex">
-          <p class="px-3"><fa-icon [icon]="faStar"></fa-icon> 4,0</p>
-          <p>(15 opiniones)</p>
-        </div>
-       </div>
-     <div class="d-flex justify-content-start flex-wrap">
-      <p class="border etiquetas py-1 px-2">Matematicas</p>
-      <p class="mx-2 border etiquetas py-1 px-2">1 clase gratuita</p>
-      <p class="border etiquetas py-1 px-2">Noche</p>
-     </div>
-      <p>Estudiante de ingeniería civil de la UNI, me gusta ayudar a los alumnos que tienen</p>
-      <div class="d-flex justify-content-between mb-2">
-        <div><p class="fs-3 fw-bold d-flex">$2200<span class="m-auto ms-1 fs-6 fw-semibold transparent"> Hora</span></p>
-        </div>
-        <div> <a href="#" class="btn btn-contact">Contactar</a></div>
-    </div>
-    </div>
 </div>
