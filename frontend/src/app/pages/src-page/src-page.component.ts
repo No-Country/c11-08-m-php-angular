@@ -8,7 +8,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class SrcPageComponent implements OnInit {
   elegir: string = "Cualquiera";
-  precio:string = 'Cualquiera';
+  precio: string = 'Cualquiera';
   provinciasArgentina: string[] = [
     'Buenos Aires',
     'Catamarca',
@@ -37,24 +37,24 @@ export class SrcPageComponent implements OnInit {
 
   provincia: string = 'Cualquiera';
 
-seleccionarProvincia(prov: string) {
-  this.provincia = prov;
-}
+  seleccionarProvincia(prov: string) {
+    this.provincia = prov;
+  }
 
   disponibilidad: string = 'Cualquier';
   faGraduationCap = faGraduationCap;
   faLocationDot = faLocationDot;
-  
-  constructor(private route: ActivatedRoute) {}
+
+  constructor(private route: ActivatedRoute) { }
   ngOnInit(): void {
-    if ( this.route.snapshot.queryParams['seleccion'] != 'Quiero aprender') {
-      this.elegir = this.route.snapshot.queryParams['seleccion'] 
-    } 
-    
+    if (this.route.snapshot.queryParams['seleccion'] != 'Quiero aprender') {
+      this.elegir = this.route.snapshot.queryParams['seleccion']
+    }
+
   }
 
 
-   
+
 }
 
 

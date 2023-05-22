@@ -21,9 +21,9 @@
 }
 
 .scrollable-menu {
-    max-height: 100px; /* Altura máxima del menú desplegable */
+    
     overflow-y: auto; /* Habilita el desplazamiento vertical */
-    white-space: nowrap;
+
   }
   
 
