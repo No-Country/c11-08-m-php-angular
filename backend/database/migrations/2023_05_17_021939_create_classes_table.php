@@ -21,7 +21,7 @@ return new class extends Migration
             $table->date('scheduled_date');
             $table->time('start_time');
             $table->time('end_time');
-            $table->text('description');
+            $table->text('description')->nullable();
             $table->enum('state',['pendiente','confirmado','finalizado','cancelado']);
             $table->timestamps();
         });

@@ -18,7 +18,9 @@ return new class extends Migration
             $table->unsignedBigInteger('teacher_id');
             $table->unsignedBigInteger('student_id');
             $table->text('comment');
-            $table->enum('qualification',['mala','regular','buena','muy buena','excelente']);
+            $table->enum('qualification',[1,2,3,4,5]);
+            $table->softDeletes();
+            $table->timestamps();
         });
 
         Schema::table('reviews', function($table){

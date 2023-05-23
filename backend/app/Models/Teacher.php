@@ -20,9 +20,12 @@ class Teacher extends Model
         'about_class',
         'job_title',
         'years_experience',
+        'price_one_class',
+        'price_two_classes',
+        'price_four_classes',
         'certificate_file',
-        'sample_class',
-        'photo'
+        'average',
+        'sample_class'
     ];
 
     public function user(): BelongsTo
@@ -32,11 +35,21 @@ class Teacher extends Model
 
     public function subjects(): BelongsToMany
     {
-        return $this->belongsToMany(Subject::class)->withPivot('years_experience', 'level', 'certificate_file');
+        return $this->belongsToMany(Subject::class, 'teachers_subjects')->withPivot('years_experience', 'level', 'certificate_file');
     }
 
-    public function rates(): HasMany
+    public function reviews(): HasMany
     {
-        return $this->hasMany(Rate::class);
+        return $this->hasMany(Review::class);
+    }
+
+    public function schedules(): HasMany
+    {
+        return $this->hasMany(Schedule::class);
+    }
+
+    public function classes(): HasMany
+    {
+        return $this->hasMany(Clase::class);
     }
 }
