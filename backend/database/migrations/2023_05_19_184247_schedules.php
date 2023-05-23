@@ -17,7 +17,6 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('teacher_id');
             $table->enum('day',['1','2','3','4','5','6']);
-            $table->enum('name',['Lunes','Martes','Miércoles','Jueves','Viernes','Sábado']);
             $table->tinyInteger('active')->default(false);
             $table->time('start_morning')->nullable();
             $table->time('end_morning')->nullable();
