@@ -2,7 +2,6 @@
 
 namespace App\Services;
 
-use App\Http\Requests\TeacherRequest;
 use App\Models\Teacher;
 use App\Repositories\TeacherRepository;
 use Illuminate\Http\Request;

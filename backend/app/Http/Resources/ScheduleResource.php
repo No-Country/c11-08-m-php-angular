@@ -16,8 +16,7 @@ class ScheduleResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'day' => $this->day,
-            'name' => $this->name, 
+            'day' => $this->day, 
             'active' => $this->active, 
             'start_morning' => $this->start_morning,
             'end_morning' => $this->end_morning,
@@ -26,8 +25,7 @@ class ScheduleResource extends JsonResource
             'start_night' => $this->start_night,
             'end_night' => $this->end_night,
             'teacher_id' => $this->teacher_id,
-            // 'teacher' => $this->teacher,
-            'teacher' => new TeacherResource($this->teacher),
+            //falta
         ];
     }
 }
