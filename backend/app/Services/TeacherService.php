@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Http\Requests\TeacherRequest;
 use App\Models\Teacher;
 use App\Repositories\TeacherRepository;
 use Illuminate\Http\Request;
@@ -16,28 +17,76 @@ class TeacherService
         $this->repository = $repository;
     }
 
-    public function getAll()
+    public function getTeachers()
     {
         try {
-            return Teacher::all();
+            return Teacher::paginate();
         } catch (\Exception $e) {
             throw $e;
         }
     }
 
-    public function getTeacher(int $id)
+    public function getTeacher(Teacher $teacher)
     {
         try {
-            return Teacher::find($id);
+            return $teacher;
         } catch (\Exception $e) {
             throw $e;
         }
     }
 
-    public function deleteTeacher(Teacher $product)
+    public function createTeacherByRegister(array $request)
     {
         try {
-            $product->delete();
+            $teacher = Teacher::create(
+                [
+                    'user_id' => $request['user_id']
+                ]
+            );
+            return $teacher;
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    public function createTeacher(array $request)
+    {
+        try {
+            $teacher = Teacher::create(
+                [
+                    'user_id' => $request['user_id'],
+                    'title' => $request['title'],
+                    'about_me' => $request['about_me'],
+                    'about_class' => $request['about_class'],
+                    'job_title' => $request['job_title'],
+                    'years_experience' => $request['years_experience'],
+                    'price_one_class' => $request['price_one_class'],
+                    'price_two_classes' => $request['price_two_classes'],
+                    'price_four_classes' => $request['price_four_classes'],
+                    'certificate_file' => $request['certificate_file'],
+                    'average' => $request['average'],
+                    'sample_class' => $request['sample_class'],
+                ]
+            );
+            return $teacher;
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    public function updateTeacher(array $request, Teacher $teacher)
+    {
+        try {
+            $teacher->update($request);
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    public function deleteTeacher(Teacher $teacher)
+    {
+        try {
+            $teacher->delete();
         } catch (\Exception $e) {
             throw $e;
         }
@@ -96,11 +145,11 @@ class TeacherService
                     break;
             }
 
-            if(count($filters) != 0 || !$request->availability || count($request->price) != 0){
+            if(count($filters) != 0 || $request->availability || count($request->price) != 0){
                 $teachers = $this->repository->searchTeacherBy($request, $filters, $availability, $order);
             }
             else{
-                $teachers = Teacher::all();
+                $teachers = Teacher::paginate();
             }
             
             return $teachers;
