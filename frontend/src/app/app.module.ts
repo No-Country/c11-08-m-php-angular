@@ -9,7 +9,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SrcPageComponent } from './pages/src-page/src-page.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { AnimationsComponent } from './components/animations/animations.component';
-
+import { LoginRegisterComponent } from './components/login-register/login-register.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,12 +19,15 @@ import { AnimationsComponent } from './components/animations/animations.componen
     CardsComponent,
     FooterComponent,
     AnimationsComponent,
-    SrcPageComponent
+    SrcPageComponent,
+    LoginRegisterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    BrowserAnimationsModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
