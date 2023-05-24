@@ -11,12 +11,11 @@ import { interval } from 'rxjs';
   styleUrls: ['./home-page.component.css'],
   animations: [
     trigger('textAnimation', [
-      transition('* <=> *', [
-        animate(500, keyframes([
-          style({ opacity: 0, transform: 'translateX(100%)', offset: 0 }),
-          style({ opacity: 1, transform: 'translateX(0)', offset: 1 }),
-        ])),
-      ]),
+      transition('* => *', animate('1000ms linear', keyframes([
+        style({ opacity: 0, transform: 'translateX(100%)', offset: 0 }),
+        style({ opacity: 1, transform: 'translateX(50%)', offset: 0.5 }),
+        style({ opacity: 1, transform: 'translateX(0)', offset: 1 }),
+      ]))),
     ]),
     trigger('imageAnimation', [
       transition(':enter', [

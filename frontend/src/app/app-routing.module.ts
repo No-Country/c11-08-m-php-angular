@@ -19,6 +19,10 @@ const routes: Routes = [
     path: 'src',
     component: SrcPageComponent,
   },
+  {
+    path: 'perfil-profe',
+    component:PerfilProfeComponent,
+  }
 
 ];
 

@@ -45,5 +45,5 @@ export const CARD_LIST: ICard[] = [
         parrafo:'Estudiante de ingeniería civil de la UNI, me gusta ayudar a los alumnos que tienen',
         precioHora:2000,
         img:'../../../assets/images/homePage/image 133.png'
-        },
+    },
 ]
