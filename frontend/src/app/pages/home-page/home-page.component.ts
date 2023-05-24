@@ -34,7 +34,7 @@ import { interval } from 'rxjs';
 })
 
 export class HomePageComponent implements OnInit {
-  selectedOption: string = 'Quiero aprender';
+  selectedOption: string = '';
   faGraduationCap = faGraduationCap;
   faLocationDot = faLocationDot;
   textList = ['Programacion', 'Matematicas', 'Fisica', 'Quimica'];
@@ -73,7 +73,11 @@ export class HomePageComponent implements OnInit {
   }
 
   seleccionarOpcion(opcion: string) {
-    this.router.navigate(['/src'], { queryParams: { seleccion: opcion } });
+    if (opcion !== '') {
+      this.router.navigate(['/src'], { queryParams: { seleccion: opcion } });
+    } else{
+      alert('Debe ingresar una opcion')
+    }
   }
   
 }
