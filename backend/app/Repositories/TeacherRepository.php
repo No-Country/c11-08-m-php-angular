@@ -4,13 +4,12 @@ namespace App\Repositories;
 
 use App\Models\Teacher;
 use Illuminate\Http\Request;
-use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 
 class TeacherRepository
 {
 
-    public function searchTeacherBy(Request $request, $filters = [], $availability = [], $order): Collection
+    public function searchTeacherBy(Request $request, $filters = [], $availability = [], $order)
     {
 
         $teachers = DB::table('teachers as t')
@@ -50,7 +49,7 @@ class TeacherRepository
         foreach ($teachers as $teacher) {
             $array[] = $teacher->id;
         }
-        $teachers = Teacher::whereIn('id', $array)->orderBy($order[0], $order[1])->get();
+        $teachers = Teacher::whereIn('id', $array)->orderBy($order[0], $order[1])->paginate();
 
         return $teachers;
     }
