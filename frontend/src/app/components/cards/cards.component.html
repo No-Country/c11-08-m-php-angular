@@ -1,8 +1,8 @@
 <div class="mb-5 mt-5 row g-5">
   <div class="col-12 col-xl-4 col-md-6" *ngFor="let card of cardList">
-    <div class="card border" >
-      <div class="ratio ratio-16x9">
-        <img src="../../../assets/images/homePage/bannerHomePage.png" class="card-img-top img-fluid object-fit-cover" alt="...">
+    <div class="card overflow-hidden">
+      <div class="ratio ratio-16x9 ">
+        <img  src="{{card.img}}" class="card-img-top img-fluid object-fit-cover" alt="...">
       </div>
       <div class="card-body">
         <h5 class="card-title mb-2">{{card.nombre}}</h5>
@@ -23,7 +23,7 @@
           <div>
             <p class="fs-3 fw-bold d-flex">{{card.precioHora}}<span class="m-auto ms-1 fs-6 fw-semibold transparent"> Hora</span></p>
           </div>
-          <div><a href="#" class="btn btn-contact">Contactar</a></div>
+          <div><a href="#" class="btn btn-contact py-2 px-4">Contactar</a></div>
         </div>
       </div>
     </div>

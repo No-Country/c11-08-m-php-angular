@@ -6,6 +6,7 @@ export interface INewCard {
     etiquetas:string[];
     parrafo:string;
     precioHora:number;
+    img:string;
 }
 
 export interface ICard extends INewCard {

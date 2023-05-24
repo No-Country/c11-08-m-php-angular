@@ -1,7 +1,7 @@
-import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
+import { Component, HostListener, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 import { faGraduationCap, faLocationDot } from '@fortawesome/free-solid-svg-icons';
-import { trigger, transition, animate, style, AnimationEvent, keyframes } from '@angular/animations';
+import { trigger, transition, animate, style, keyframes } from '@angular/animations';
 import { interval } from 'rxjs';
 
 
@@ -54,8 +54,6 @@ export class HomePageComponent implements OnInit {
       this.changeText();
     });
    
- 
-    
   }
 
   
