@@ -5,23 +5,23 @@
         <img src="../../../assets/images/homePage/bannerHomePage.png" class="card-img-top img-fluid object-fit-cover" alt="...">
       </div>
       <div class="card-body">
-        <h5 class="card-title mb-2">{{card.nombre}}</h5>
+        <h5 class="card-title mb-2">{{card.title}}</h5>
         <div class="d-flex justify-content-start flex-wrap">
-          <p><fa-icon [icon]="faLocationDot"></fa-icon> {{card.ubicacion}}</p>
+          <p><fa-icon [icon]="faLocationDot"></fa-icon> {{card.about_me}}</p>
           <div class="d-flex">
-            <p class="px-3"><fa-icon [icon]="faStar"></fa-icon> {{card.puntuacion}}</p>
-            <p>({{card.numeroDeOpiniones}})</p>
+            <p class="px-3"><fa-icon [icon]="faStar"></fa-icon> {{card.years_experience}}</p>
+            <p>({{card.deleted_at}})</p>
           </div>
         </div>
         <div class="d-flex justify-content-start flex-wrap">
-          <p class="border etiquetas py-1 px-2">{{card.etiquetas[0]}}</p>
+         <!--  <p class="border etiquetas py-1 px-2">{{card.average[0]}}</p>
           <p class="mx-2 border etiquetas py-1 px-2">{{card.etiquetas[1]}}</p>
-          <p class="border etiquetas py-1 px-2">{{card.etiquetas[2]}}</p>
+          <p class="border etiquetas py-1 px-2">{{card.etiquetas[2]}}</p> -->
         </div>
-        <p>{{card.parrafo}}</p>
+        <p>{{card.about_class}}</p>
         <div class="d-flex justify-content-between mb-2">
           <div>
-            <p class="fs-3 fw-bold d-flex">{{card.precioHora}}<span class="m-auto ms-1 fs-6 fw-semibold transparent"> Hora</span></p>
+            <p class="fs-3 fw-bold d-flex">{{card.created_at}}<span class="m-auto ms-1 fs-6 fw-semibold transparent"> Hora</span></p>
           </div>
           <div><a href="#" class="btn btn-contact">Contactar</a></div>
         </div>

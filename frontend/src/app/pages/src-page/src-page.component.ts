@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { faGraduationCap, faLocationDot, faCaretDown } from '@fortawesome/free-solid-svg-icons';
 import { map } from 'rxjs';
-import { ICard } from 'src/app/interfaces/card';
 import { CardService } from 'src/app/services/card.service';
 
 @Component({
