@@ -1,59 +1,33 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { faGraduationCap, faLocationDot } from '@fortawesome/free-solid-svg-icons';
-import { Router, ActivatedRoute } from '@angular/router';
+import { map } from 'rxjs';
+import { ICard } from 'src/app/interfaces/card';
+import { CardService } from 'src/app/services/card.service';
+
 @Component({
   selector: 'app-src-page',
   templateUrl: './src-page.component.html',
   styleUrls: ['./src-page.component.css']
 })
-export class SrcPageComponent implements OnInit {
-  elegir: string = "Cualquiera";
-  precio: string = 'Cualquiera';
-  provinciasArgentina: string[] = [
-    'Buenos Aires',
-    'Catamarca',
-    'Chaco',
-    'Chubut',
-    'Córdoba',
-    'Corrientes',
-    'Entre Ríos',
-    'Formosa',
-    'Jujuy',
-    'La Pampa',
-    'La Rioja',
-    'Mendoza',
-    'Misiones',
-    'Neuquén',
-    'Río Negro',
-    'Salta',
-    'San Juan',
-    'San Luis',
-    'Santa Cruz',
-    'Santa Fe',
-    'Santiago del Estero',
-    'Tierra del Fuego, Antártida e Islas del Atlántico Sur',
-    'Tucumán'
-  ];
-
-  provincia: string = 'Cualquiera';
-
-  seleccionarProvincia(prov: string) {
-    this.provincia = prov;
-  }
-
-  disponibilidad: string = 'Cualquier';
+export class SrcPageComponent implements OnInit{
+  selectedOption: string = 'Quiero aprender';
   faGraduationCap = faGraduationCap;
   faLocationDot = faLocationDot;
+  programacion: string = '';
+  cardList: ICard[] = []
+  constructor(private route: ActivatedRoute, private cardService: CardService) {}
 
-  constructor(private route: ActivatedRoute) { }
-  ngOnInit(): void {
-    if (this.route.snapshot.queryParams['seleccion'] != 'Quiero aprender') {
-      this.elegir = this.route.snapshot.queryParams['seleccion']
-    }
-
+  ngOnInit(): void{
+    this.cardList = this.cardService.cardList;
+    this.route.queryParams.pipe(
+      map(params => params['seleccion'])
+    ).subscribe(seleccion => {
+      if (seleccion) {
+        this.programacion = seleccion.replace('Aprende', '').trim();
+      }
+    });
   }
-
-
 
 }
 
