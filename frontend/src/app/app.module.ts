@@ -9,6 +9,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SrcPageComponent } from './pages/src-page/src-page.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { AnimationsComponent } from './components/animations/animations.component';
+import { PerfilProfeComponent } from './pages/perfil-profe/perfil-profe.component';
 import { LoginRegisterComponent } from './components/login-register/login-register.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
@@ -20,7 +21,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     FooterComponent,
     AnimationsComponent,
     SrcPageComponent,
-    LoginRegisterComponent
+    LoginRegisterComponent,
+    PerfilProfeComponent
   ],
   imports: [
     BrowserModule,

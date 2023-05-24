@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { faGraduationCap, faLocationDot } from '@fortawesome/free-solid-svg-icons';
+import { faGraduationCap, faLocationDot, faCaretDown } from '@fortawesome/free-solid-svg-icons';
 import { map } from 'rxjs';
 import { ICard } from 'src/app/interfaces/card';
 import { CardService } from 'src/app/services/card.service';
@@ -11,22 +11,59 @@ import { CardService } from 'src/app/services/card.service';
   styleUrls: ['./src-page.component.css']
 })
 export class SrcPageComponent implements OnInit{
-  selectedOption: string = 'Quiero aprender';
-  faGraduationCap = faGraduationCap;
-  faLocationDot = faLocationDot;
-  programacion: string = '';
-  cardList: ICard[] = []
-  constructor(private route: ActivatedRoute, private cardService: CardService) {}
+  elegir= "";
+  precio: string = 'Cualquiera';
+  turno: string = 'Cualquiera';
+  provinciasArgentina: string[] = [
+    'Buenos Aires',
+    'Catamarca',
+    'Chaco',
+    'Chubut',
+    'Córdoba',
+    'Corrientes',
+    'Entre Ríos',
+    'Formosa',
+    'Jujuy',
+    'La Pampa',
+    'La Rioja',
+    'Mendoza',
+    'Misiones',
+    'Neuquén',
+    'Río Negro',
+    'Salta',
+    'San Juan',
+    'San Luis',
+    'Santa Cruz',
+    'Santa Fe',
+    'Santiago del Estero',
+    'Tierra del Fuego, Antártida e Islas del Atlántico Sur',
+    'Tucumán'
+  ];
 
-  ngOnInit(): void{
-    this.cardList = this.cardService.cardList;
-    this.route.queryParams.pipe(
-      map(params => params['seleccion'])
-    ).subscribe(seleccion => {
-      if (seleccion) {
-        this.programacion = seleccion.replace('Aprende', '').trim();
-      }
-    });
+  provincia: string = 'Cualquiera';
+
+  busqueda(valor: Event){
+    this.elegir = (<HTMLInputElement>event?.target).value;
+
+  } 
+
+  seleccionarProvincia(prov: string) {
+    this.provincia = prov;
   }
 
+  disponibilidad: string = 'Cualquiera';
+  faGraduationCap = faGraduationCap;
+  faLocationDot = faLocationDot;
+  faCaretDown = faCaretDown
+
+  constructor(private route: ActivatedRoute) { }
+  ngOnInit(): void {
+      this.elegir = this.route.snapshot.queryParams['seleccion']
+    
+
+  }
+
+
 }
+
+

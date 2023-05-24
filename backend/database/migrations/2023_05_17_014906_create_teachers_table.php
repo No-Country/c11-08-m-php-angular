@@ -17,15 +17,17 @@ return new class extends Migration
         Schema::create('teachers', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(User::class);
-            $table->string('title');
-            $table->text('about_me');
-            $table->text('about_class');
-            $table->string('job_title');
-            $table->integer('years_experience');
-            $table->string('certificate_file');
-            $table->decimal('price_hour', 10, 2);
+            $table->string('title')->nullable();
+            $table->text('about_me')->nullable();
+            $table->text('about_class')->nullable();
+            $table->string('job_title')->nullable();
+            $table->integer('years_experience')->nullable();
+            $table->decimal('price_one_class', 10, 2)->nullable();
+            $table->decimal('price_two_classes', 10, 2)->nullable();
+            $table->decimal('price_four_classes', 10, 2)->nullable();
+            $table->string('certificate_file')->nullable();
+            $table->float('average', 2,1)->nullable();
             $table->tinyInteger('sample_class')->default(false);
-            $table->string('photo');
             $table->softDeletes();
             $table->timestamps();
         });
