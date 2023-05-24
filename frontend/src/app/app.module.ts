@@ -21,7 +21,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     FooterComponent,
     AnimationsComponent,
     SrcPageComponent,
-    LoginRegisterComponent
+    LoginRegisterComponent,
+    PerfilProfeComponent
   ],
   imports: [
     BrowserModule,

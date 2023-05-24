@@ -15,6 +15,11 @@ const routes: Routes = [
     path: 'home',
     component: HomePageComponent,
   },
+  {
+    path: 'src',
+    component: SrcPageComponent,
+  },
+
 ];
 
 @NgModule({
