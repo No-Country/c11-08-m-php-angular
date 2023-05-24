@@ -69,14 +69,14 @@
                         <button (click)="provincia = ''" value="22"></button>
                         <button disabled="true" selected="true" value="">Seleccionar una Provincia</button>
                     </div> -->
-                    <div class="dropdown">
+                    
                         <button class="btn dropdown-toggle rounded-pill w-100 text-start" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                           {{ provincia }}
                         </button>
                         <div class="dropdown-menu scrollable-menu" aria-labelledby="dropdownMenuButton">
                           <button *ngFor="let prov of provinciasArgentina" class="dropdown-item" (click)="seleccionarProvincia(prov)">{{ prov }}</button>
                         </div>
-                      </div>
+
                       
                 </div>
             </div>
