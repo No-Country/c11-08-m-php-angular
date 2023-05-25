@@ -1,23 +1,15 @@
-<<<<<<< HEAD
-.navbar-end  {
-    display: flex;
-    justify-content: end;
-}
-button{
-=======
 .border-none{
->>>>>>> 255c6b9b23b6ed7b0e14d8d0b62a61b545e8e7b9
     border: 0;
     padding: 0;
     background: none;
-} 
+}
 .nav-register{
     border-radius: 1000px;
     border-color: #C3F6F7!important;
     border-width: 2px!important;
     background-color: #C3F6F7;
-  
-   
+
+
 }
 
 .custom-close-btn, .register-btn, .nav-link{
