@@ -21,12 +21,12 @@ class DatabaseSeeder extends Seeder
             ProvinceSeeder::class,
             SubjectSeeder::class,
             UserSeeder::class,
-            /*
+            
             StudentSeeder::class,
             TeacherSeeder::class,
             ScheduleSeeder::class,
             //RewiewSeeder::class,
-            ClaseSeeder::class,*/
+            ClaseSeeder::class,
         ]);
 
     }
