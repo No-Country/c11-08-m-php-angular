@@ -13,7 +13,8 @@ class TeacherResource extends JsonResource
      * @return array|\Illuminate\Contracts\Support\Arrayable|\JsonSerializable
      */
     public function toArray($request)
-    {   $schedules = [];
+    {   
+        $schedules = [];
         $schedules = $this->schedules->map(function($schedule){
             $turn = [];
             if(!is_null($schedule['start_morning']) && !is_null($schedule['end_morning'])){
@@ -29,7 +30,9 @@ class TeacherResource extends JsonResource
 
         });
         
-        $schedules = array_unique(array_merge($schedules[0], $schedules[1], $schedules[2], $schedules[3], $schedules[4], $schedules[5]));
+        if(count($schedules) > 0){
+            $schedules = array_unique(array_merge($schedules[0], $schedules[1], $schedules[2], $schedules[3], $schedules[4], $schedules[5]));
+        }
         
         return [
             'id' => $this->id,
@@ -39,9 +42,9 @@ class TeacherResource extends JsonResource
             'about_class' => $this->about_class,
             'job_title' => $this->job_title,
             'years_experience' => $this->years_experience,
-            'price_one_class' => $this->price_one_class,
-            'price_two_classes' => $this->price_two_classes,
-            'price_four_classes' => $this->price_four_classes,
+            'price_one_class' => number_format($this->price_one_class, 2, ',', '.'),
+            'price_two_classes' => number_format($this->price_two_classes, 2, ',', '.'),
+            'price_four_classes' => number_format($this->price_four_classes, 2, ',', '.'),
             'certificate_file' => $this->certificate_file,
             'average' => $this->average,
             'sample_class' => $this->sample_class,
@@ -50,7 +53,8 @@ class TeacherResource extends JsonResource
             'updated_at' => $this->updated_at,
             'name' => $this->user->first_name . " " . $this->user->last_name,
             'photo' => $this->user->photo,
-            'city' => $this->user->city->name,
+            'city' => ($this->user->city) ? $this->user->city->name : null,
+            'province' => ($this->user->city) ? $this->user->city->province->name : null,
             'subjects' => $this->subjects->map->name,
             'schedules' => $schedules,
             'total_students' => $this->students->count(),
