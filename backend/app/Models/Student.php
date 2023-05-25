@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Student extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
 
     protected $fillable = [
         'description', 'user_id'
@@ -32,5 +33,10 @@ class Student extends Model
 
     public function reviews(){
         return $this->hasMany(Review::class);
+    }
+
+    public function teachers()
+    {
+        return $this->belongsToMany(Teacher::class, 'classes')->withPivot('subject_id', 'scheduled_date', 'start_time', 'end_time', 'description', 'state');
     }
 }
