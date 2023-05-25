@@ -52,4 +52,9 @@ class Teacher extends Model
     {
         return $this->hasMany(Clase::class);
     }
+
+    public function students(): BelongsToMany
+    {
+        return $this->belongsToMany(Student::class, 'classes')->withPivot('subject_id', 'scheduled_date', 'start_time', 'end_time', 'description', 'state');
+    }
 }

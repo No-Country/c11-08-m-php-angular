@@ -13,7 +13,24 @@ class TeacherResource extends JsonResource
      * @return array|\Illuminate\Contracts\Support\Arrayable|\JsonSerializable
      */
     public function toArray($request)
-    {
+    {   $schedules = [];
+        $schedules = $this->schedules->map(function($schedule){
+            $turn = [];
+            if(!is_null($schedule['start_morning']) && !is_null($schedule['end_morning'])){
+                $turn[] = 'Mañana';
+            }
+            if(!is_null($schedule['start_afternoon']) && !is_null($schedule['end_afternoon'])){
+                $turn[] = 'Tarde';
+            }
+            if(!is_null($schedule['start_night']) && !is_null($schedule['end_night'])){
+                $turn[] = 'Noche';
+            }
+            return $turn;
+
+        });
+        
+        $schedules = array_unique(array_merge($schedules[0], $schedules[1], $schedules[2], $schedules[3], $schedules[4], $schedules[5]));
+        
         return [
             'id' => $this->id,
             'user_id' => $this->user_id,
@@ -31,11 +48,13 @@ class TeacherResource extends JsonResource
             'deleted_at' => $this->deleted_at,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
-            'user' => $this->user,
-            'city' => $this->user->city,
-            'subjects' => $this->subjects,
-            'schedules' => $this->schedules,
-            'reviews' => $this->reviews,
+            'name' => $this->user->first_name . " " . $this->user->last_name,
+            'photo' => $this->user->photo,
+            'city' => $this->user->city->name,
+            'subjects' => $this->subjects->map->name,
+            'schedules' => $schedules,
+            'total_students' => $this->students->count(),
+            'total_reviews' => $this->reviews->count(),
         ];
     }
 }
