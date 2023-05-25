@@ -1,9 +1,7 @@
+
 import { Component,Output,EventEmitter} from '@angular/core';
 
-
 import { faAngleRight, faUser, faLocationDot,faStar,faAngleLeft} from '@fortawesome/free-solid-svg-icons';
-
-
 
 @Component({
   selector: 'app-perfil-profe',

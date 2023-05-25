@@ -21,7 +21,7 @@
   }
   
   .iconColorf {
-    color: black;
+    color: #15ADA5;
   }
 
   @media only screen and (max-width: 576px) {
@@ -29,4 +29,8 @@
         display: flex!important;
         justify-content: center!important;
     }
+}
+
+.nav-link:hover, a:hover{
+  color:#019FA2 !important;
 }

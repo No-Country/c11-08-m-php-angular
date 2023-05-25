@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\TeacherController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -16,4 +17,22 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
+});
+
+Route::get('/provinces','App\Http\Controllers\ProvinceController@index');//Todas las provincias
+Route::get('/provinces/{id}','App\Http\Controllers\ProvinceController@getProvince');//Una provincia
+
+Route::get('/cities','App\Http\Controllers\CityController@index');//Todas las ciudades
+Route::get('/cities/{id}','App\Http\Controllers\CityController@getCity');//Una ciudad
+Route::get('/cities/province/{id}','App\Http\Controllers\CityController@citiesProvince');//Ciudades de una provincia
+
+Route::get('/subjects','App\Http\Controllers\SubjectController@index');//Todas las materias
+Route::get('/subjects/{id}','App\Http\Controllers\SubjectController@getSubject');//Una materia
+
+Route::get('/teachers/search-by', [TeacherController::class, 'searchTeacherBy']); //Obtener profesores por
+Route::get('/teachers', [TeacherController::class, 'index']); //Todos los profesores
+Route::get('/teachers/{teacher}', [TeacherController::class, 'show']); //Obtener un profesor
+
+Route::middleware(['auth:sanctum'])->group(function () {
+    Route::apiResource('teachers', TeacherController::class)->except(['index', 'show']);
 });
