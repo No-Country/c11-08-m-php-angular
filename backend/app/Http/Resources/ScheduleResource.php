@@ -25,7 +25,6 @@ class ScheduleResource extends JsonResource
             'start_night' => $this->start_night,
             'end_night' => $this->end_night,
             'teacher_id' => $this->teacher_id,
-            //falta
         ];
     }
 }
