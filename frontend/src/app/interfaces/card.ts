@@ -11,6 +11,7 @@ export interface INewCard {
     price_four_classes: string;
     certificate_file: null;
     average: number;
+    img:string;
     sample_class: number;
     deleted_at: null;
     created_at: string;

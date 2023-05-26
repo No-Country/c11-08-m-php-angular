@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Subject;
 use App\Models\Teacher;
+use Illuminate\Support\Str;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -31,7 +32,7 @@ class TeacherSeeder extends Seeder
                 [
                     'years_experience' => fake()->numberBetween(3,10),
                     'level' => fake()->randomElement(['Básico', 'Intermedio', 'Avanzado']), 
-                    'certificate_file' => fake()->sentence(),
+                    'certificate_file' => Str::random(40),
                 ]
             ); 
         });

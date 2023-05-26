@@ -30,3 +30,7 @@
         justify-content: center!important;
     }
 }
+
+.nav-link:hover, a:hover{
+  color:#019FA2 !important;
+}

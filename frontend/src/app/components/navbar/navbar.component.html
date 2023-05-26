@@ -3,7 +3,7 @@
     <div class="navbar-nav mr-auto">
       
         <img src="../../../assets/images/homePage/logo.png" routerLink="/home" alt=""
-          class="w-50 h-50 img-fluid m-auto ">
+          class="w-75 h-75 img-fluid m-auto ">
       
     </div>
     <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop"
@@ -13,7 +13,7 @@
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="#">Buscar docentes</a>
+          <a class="nav-link" routerLink="/src">Buscar docentes</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Dictar clases</a>
@@ -24,7 +24,7 @@
       </ul>
       <ul class="navbar-nav end ms-auto">
         <button class="nav-link border-none me-3 fw-bold login-btn" data-bs-toggle="modal"  data-bs-target="#loginModal">Inicia sesión</button>
-        <app-login-register></app-login-register>
+      
         <li class="nav-item">
           <button class="nav-link nav-register border px-4 py-2 tpm register-btn" data-bs-toggle="modal" data-bs-target="#registerModal" >Registrate</button>
         </li>
@@ -33,7 +33,7 @@
   </div>
 </nav>
 
-
+<app-login-register></app-login-register>
 
 
 <div class="offcanvas offcanvas-start" data-bs-backdrop="static" tabindex="-1" id="staticBackdrop"
@@ -41,7 +41,7 @@
   <div class="offcanvas-header">
     <div class="position-relative" >
       <img src="../../../assets/images/homePage/logo.png" alt=""
-          class="w-50 h-50 img-fluid m-auto ">
+          class="w-75 h-75 img-fluid m-auto ">
     </div>
     <button type="button" class="btn-close " data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>

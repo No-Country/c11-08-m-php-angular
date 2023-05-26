@@ -1,7 +1,7 @@
-import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
+import { Component, HostListener, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 import { faGraduationCap, faLocationDot } from '@fortawesome/free-solid-svg-icons';
-import { trigger, transition, animate, style, AnimationEvent, keyframes } from '@angular/animations';
+import { trigger, transition, animate, style, keyframes } from '@angular/animations';
 import { interval } from 'rxjs';
 
 
@@ -11,12 +11,11 @@ import { interval } from 'rxjs';
   styleUrls: ['./home-page.component.css'],
   animations: [
     trigger('textAnimation', [
-      transition('* <=> *', [
-        animate(500, keyframes([
-          style({ opacity: 0, transform: 'translateX(100%)', offset: 0 }),
-          style({ opacity: 1, transform: 'translateX(0)', offset: 1 }),
-        ])),
-      ]),
+      transition('* => *', animate('1000ms linear', keyframes([
+        style({ opacity: 0, transform: 'translateX(100%)', offset: 0 }),
+        style({ opacity: 1, transform: 'translateX(50%)', offset: 0.5 }),
+        style({ opacity: 1, transform: 'translateX(0)', offset: 1 }),
+      ]))),
     ]),
     trigger('imageAnimation', [
       transition(':enter', [
@@ -54,8 +53,6 @@ export class HomePageComponent implements OnInit {
       this.changeText();
     });
    
- 
-    
   }
 
   
