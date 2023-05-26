@@ -1,0 +1,171 @@
+<app-navbar></app-navbar>
+
+ <div class="container pt-3">
+  <div class="row row-cols-auto">
+    <div class="col">Home</div>
+      <div class="col"><fa-icon [icon]="faAngleRight"></fa-icon></div>
+        <div class="col">Profesores</div>
+          <div class="col"><fa-icon [icon]="faAngleRight"></fa-icon></div>
+        <div class="col-sm-4">Esteban Gonzales</div>
+      </div>
+    <div class="row">
+     <div class="col-sm-12 col-lg-4 col-md-6 ">
+        <div class=" card mt-4 p-3">
+          <img src="../../../assets/images/perfil-profe/Rectangle 6.png" class="card-img-top" [width]="320" [height]="255" alt="...">
+          <div class="card-body">
+            <h4 class="card-title fw-bold">ESTEBAN GONZALES</h4>
+            <br>
+            <br>
+              <p class="card-text gap-4 pb-2 ml-4 fw-normal"> <fa-icon [icon]="faLocationDot"> </fa-icon> San Isidro/Lima/Peru</p>
+              <p class="card-text gap-4 pb-2  fw-normal"> <fa-icon [icon]="faUser"> </fa-icon> 32 alumnos actuales</p>
+              <p class="card-text gap-4 fw-normal"> <fa-icon [icon]="faStar"> </fa-icon> 5(28)</p>
+              <button type="button" class="btn btn-dark btn-lg btn-block center">CONTACTAR PROFE</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-12 col-lg-8 g-2 mt-4 mx-0">
+        <div class="d-flex justify-content-start " >
+          <p class="border etiquetas py-1 px-2 mx-2">Matematicas</p>
+          <p class="border etiquetas py-1 px-2">1 clase gratuita</p>
+          <p class="border etiquetas py-1 px-2 mx-2">Virtual</p>
+          <p class="border etiquetas py-1 px-3">Presencial</p>
+        </div>
+        <div class="bordered-row justify-content-between mt-3 mx-2">
+          <h3>Acerca del docente</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi voluptas modi quos a nemo iure, est quas quod nisi id similique obcaecati provident ut, eveniet ea. Possimus ab deleniti pariatur accusamus. Vero quae, recusandae exercitationem perferendis vitae enim vel consequatur?</p>
+        </div>
+        <div class="bordered-row justify-content-between mt-3 mx-2">
+          <h3>Acerca del docente</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi voluptas modi quos a nemo iure, est quas quod nisi id similique obcaecati provident ut, eveniet ea. Possimus ab deleniti pariatur accusamus. Vero quae, recusandae exercitationem perferendis vitae enim vel consequatur?</p>
+        </div>
+        <div class="bordered-row justify-content-between mt-3 mx-2">
+         <div class="row">
+          <div class="col-4">1 CLASE(1 Hora)<i class="fa-solid fa-pipe fa-xl"></i>
+          </div>
+
+          <div class="col-4">2 CLASES
+             <i class="fa-solid fa-pipe fa-xl"></i>
+          </div>
+          <div class="col-4">4 CLASES
+            <i class="fa-solid fa-pipe fa-xl"></i>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="bordered-row mt-3 mx-2" d-flex>
+          <h3>DIAS Y HORARIOS DISPONIBLES</h3>
+          <div class="row pt-4">
+            <div class="col-5 d-flex justify-content-center"><fa-icon [icon]="faAngleLeft"></fa-icon></div>
+            <div class="col-3 d-flex justify-content-start"> Mayo 15-21 </div>
+            <div class="col-2 d-flex justify-content-end"><fa-icon [icon]="faAngleRight"></fa-icon></div>
+          </div>
+        <div class="row">
+          <table #tabla>
+            <thead>
+              <tr>
+                <th></th> <!-- Celda vacía para la esquina superior izquierda -->
+                <th>Lunes</th>
+                <th>Martes</th>
+                <th>Miércoles</th>
+                <th>Jueves</th>
+                <th>Viernes</th>
+              </tr>
+            </thead>
+            <tbody >
+              <tr>
+                <td></td>
+                <td >08hs a 09hs</td>
+                <td >08hs a 09hs</td>
+                <td  >08hs a 09hs</td>
+                <td  >08hs a 09hs</td>
+                <td  >08hs a 09hs</td>
+
+              </tr>
+              <tr>
+                <td ></td> <!-- Celda vacía para el espacio debajo de la hora -->
+                <td  >09hs a 10hs</td>
+                <td >09hs a 10hs</td>
+                <td >09hs a 10hs</td>
+                <td >09hs a 10hs</td>
+                <td >09hs a 10hs</td>
+
+              </tr>
+              <tr>
+                <td></td> <!-- Celda vacía para el espacio debajo de la hora -->
+                <td >10hs a 11hs</td>
+                <td >10hs a 11hs</td>
+                <td >10hs a 11hs</td>
+                <td >10hs a 11hs</td>
+                <td >10hs a 11hs</td>
+
+              </tr>
+              <tr>
+                <td></td> <!-- Celda vacía para el espacio debajo de la hora -->
+                <td>11hs a 12hs</td>
+                <td>11hs a 12hs</td>
+                <td>11hs a 12hs</td>
+                <td>11hs a 12hs</td>
+                <td>11hs a 12hs</td>
+
+              </tr>
+              <tr>
+                <td></td> <!-- Celda vacía para el espacio debajo de la hora -->
+                <td>12hs a 13hs</td>
+                <td>12hs a 13hs</td>
+                <td>12hs a 13hs</td>
+                <td>12hs a 13hs</td>
+                <td>12hs a 13hs</td>
+
+              </tr>
+              <tr>
+                <td></td> <!-- Celda vacía para el espacio debajo de la hora -->
+                <td>13hs a 14hs</td>
+                <td>13hs a 14hs</td>
+                <td>13hs a 14hs</td>
+                <td>13hs a 14hs</td>
+                <td>13hs a 14hs</td>
+
+              </tr>
+              <tr>
+                <td></td> <!-- Celda vacía para el espacio debajo de la hora -->
+                <td>14hs a 15hs</td>
+                <td>14hs a 15hs</td>
+                <td>14hs a 15hs</td>
+                <td>14hs a 15hs</td>
+                <td>14hs a 15hs</td>
+
+              </tr>
+              <tr>
+                <td></td> <!-- Celda vacía para el espacio debajo de la hora -->
+                <td>15hs a 16hs</td>
+                <td>15hs a 16hs</td>
+                <td>15hs a 16hs</td>
+                <td>15hs a 16hs</td>
+                <td>15hs a 16hs</td>
+
+              </tr>
+              <!-- Agrega más filas para las demás horas -->
+            </tbody>
+          </table>
+        </div>
+     </div>
+     <div class="bordered-row justify-content-between mt-3 mx-2">
+
+      <h3>Opiniones de Estudiantes</h3>
+      <div class="row">
+
+      </div>
+      <div class="col d-flex justify-content-start"><fa-icon [icon]="faStar"> </fa-icon><fa-icon [icon]="faStar"> </fa-icon> <fa-icon [icon]="faStar"> </fa-icon> <fa-icon [icon]="faStar"> </fa-icon> <fa-icon [icon]="faStar"> </fa-icon>  </div>
+      <div class="col d-flex justify-content-end">FECHA</div>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi voluptas modi quos a nemo iure, est quas quod nisi id similique obcaecati provident ut, eveniet ea. Possimus ab deleniti pariatur accusamus. Vero quae, recusandae exercitationem perferendis vitae enim vel consequatur?</p>
+    </div>
+
+    </div>
+
+
+
+
+

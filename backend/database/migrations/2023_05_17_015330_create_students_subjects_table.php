@@ -13,17 +13,17 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('teachers_subjects', function (Blueprint $table) {
+        Schema::create('students_subjects', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('teacher_id');
-            $table->foreign('teacher_id')->references('id')->on('teachers');
+            $table->unsignedBigInteger('student_id');
             $table->unsignedBigInteger('subject_id');
-            $table->foreign('subject_id')->references('id')->on('subjects');
-            $table->integer('years_experience')->nullable();
-            $table->enum('level', ['Básico', 'Intermedio', 'Avanzado'])->nullable();
-            $table->string('certificate_file')->nullable();
             $table->softDeletes();
             $table->timestamps();
+        });
+
+        Schema::table('students_subjects', function($table){
+            $table->foreign('student_id')->references('id')->on('students');
+            $table->foreign('subject_id')->references('id')->on('subjects');
         });
     }
 
@@ -34,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('teachers_subjects');
+        Schema::dropIfExists('students_subjects');
     }
 };
