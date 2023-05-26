@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\TeacherController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -33,6 +34,10 @@ Route::get('/teachers/search-by', [TeacherController::class, 'searchTeacherBy'])
 Route::get('/teachers', [TeacherController::class, 'index']); //Todos los profesores
 Route::get('/teachers/{teacher}', [TeacherController::class, 'show']); //Obtener un profesor
 
+Route::post('/register', [AuthController::class, 'register']);
+Route::post('/login', [AuthController::class, 'login']);
+
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::apiResource('teachers', TeacherController::class)->except(['index', 'show']);
+    Route::post('/logout', [AuthController::class, 'logout']);
 });

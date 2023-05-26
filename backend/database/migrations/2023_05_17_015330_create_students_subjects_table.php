@@ -13,22 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('classes', function (Blueprint $table) {
+        Schema::create('students_subjects', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('teacher_id');
             $table->unsignedBigInteger('student_id');
             $table->unsignedBigInteger('subject_id');
-            $table->date('scheduled_date');
-            $table->time('start_time');
-            $table->time('end_time');
-            $table->text('description')->nullable();
-            $table->enum('state',['Pendiente','Confirmado','Finalizado','Cancelado']);
             $table->softDeletes();
             $table->timestamps();
         });
 
-        Schema::table('classes', function($table){
-            $table->foreign('teacher_id')->references('id')->on('teachers');
+        Schema::table('students_subjects', function($table){
             $table->foreign('student_id')->references('id')->on('students');
             $table->foreign('subject_id')->references('id')->on('subjects');
         });
@@ -41,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('classes');
+        Schema::dropIfExists('students_subjects');
     }
 };
