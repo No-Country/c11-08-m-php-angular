@@ -6,24 +6,96 @@
 }
 
 .btn-src{
-    border-color: black;
+    border-color: #019FA2;
     border-radius: 1000px;
     border-width: 1px!important;
-    background-color: black;
+    background-color: #019FA2;
     color: white;
 }
 
 circle{
     border-radius: 1000px;
-    border-color: black;
+    border-color: #019FA2;
 }
 
 .btn-start{
-    background-color: rgba(148, 147, 147, 0.705);
+    background-color: #019FA2;
+    color: #FFFF;
+    border-color: #019FA2!important;
 }
 
 @media only screen and (max-width: 758px) {
     .tpm{
         width: 100%!important;
     }
+}
+
+.navbar .dropdown-toggle:focus,
+.btn.dropdown-toggle:focus {
+    border: none!important;
+    outline: none!important;
+}
+
+
+
+
+.button{
+    position: relative;
+    background-color: #019FA2;
+    font-size: 20px;
+    letter-spacing: 1px;
+    outline: none;
+    border-radius: 50px;
+    font-weight: 600;
+    border: 1px solid #2C2C2C;
+    overflow: hidden;
+    cursor: pointer;
+    font-family: "Inter", sans-serif;
+
+}
+  
+.button span{
+    width: 100%;
+    height: auto;
+    position: relative;
+    z-index: 2;
+    transition: 0.5s ease;
+    pointer-events: none;
+    color: #FFFF;
+}
+
+.button::before{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color:#FFFF;
+    left: 0;
+    border-radius: 50%;
+    top: 0;
+    transform: translateY(110%);
+    pointer-events: none;
+    z-index: 1;
+    transition: transform 0.5s cubic-bezier(0 , 0, 0.1, 1),
+    border-radius 0.5s cubic-bezier(0, 0.4, 0.1, 1)
+}
+
+.button:hover > span {
+    color: #019FA2;
+}
+
+.button:hover::before {
+    border-radius: 0;
+    transform: translateY(0%);
+    transition: transform 0.5s cubic-bezier(0, 5, 0.1, 1),
+    border-radius 0.8s cubic-bezier(0, 0.4, 0.1, 1);
+}
+
+.orange-btn:hover > span {
+    color: #F1770F!important;
+}
+
+.orange-btn{
+   background-color: #F1770F!important;
+   border-color: #F1770F!important;
 }
