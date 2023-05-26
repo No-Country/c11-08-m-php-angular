@@ -33,7 +33,6 @@ class ScheduleFactory extends Factory
 
         return [
             'day' => fake()->randomElement([1,2,3,4,5,6]),
-            'name' => fake()->randomElement(['Lunes','Martes','Miércoles','Jueves','Viernes','Sábado']),
             'active' => $value,
             'start_morning' => $morning[0],
             'end_morning' => $morning[1],

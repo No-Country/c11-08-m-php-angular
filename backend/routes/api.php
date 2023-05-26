@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\TeacherController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -29,12 +31,16 @@ Route::get('/cities/province/{id}','App\Http\Controllers\CityController@citiesPr
 Route::get('/subjects','App\Http\Controllers\SubjectController@index');//Todas las materias
 Route::get('/subjects/{id}','App\Http\Controllers\SubjectController@getSubject');//Una materia
 
-Route::get('/teachers/search-by', [TeacherController::class, 'searchTeacherBy'])->name('teachers.search');
-Route::get('/teachers', [TeacherController::class, 'index'])->name('teachers.index'); //Todos los profesores
-Route::get('/teachers/{teacher}', [TeacherController::class, 'show'])->name('teachers.show'); //Obtener un profesor
+Route::get('/teachers/search-by', [TeacherController::class, 'searchTeacherBy']); //Obtener profesores por
+Route::get('/teachers', [TeacherController::class, 'index']); //Todos los profesores
+Route::get('/teachers/{teacher}', [TeacherController::class, 'show']); //Obtener un profesor
+Route::get('/reviews/by-teacher/{teacher_id}', [ReviewController::class, 'getReviewsByTeacher']); //Obtener reviews por profesor
+
+Route::post('/register', [AuthController::class, 'register']);
+Route::post('/login', [AuthController::class, 'login']);
 
 Route::middleware(['auth:sanctum'])->group(function () {
-    Route::apiResource('teachers', TeacherController::class)->except([
-        'index', 'show'
-    ]);
+    Route::apiResource('teachers', TeacherController::class)->except(['index', 'show']);
+    Route::apiResource('reviews', ReviewController::class);
+    Route::post('/logout', [AuthController::class, 'logout']);
 });

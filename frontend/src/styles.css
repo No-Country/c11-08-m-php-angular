@@ -1,1 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
+body{
+    background-color: #FFFFFF;
+}
+
+.nav-link:hover{
+    color:#019FA2 !important;
+}

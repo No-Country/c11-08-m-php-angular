@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('password');
             $table->date('birthdate')->nullable();
             $table->string('identification', 20)->nullable();
+            $table->string('address')->nullable();
             $table->string('phone', 20)->nullable();
             $table->string('photo')->nullable();
             $table->foreignIdFor(\App\Models\City::class)->nullable();

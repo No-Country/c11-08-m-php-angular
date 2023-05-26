@@ -2,7 +2,6 @@
 
 namespace App\Services;
 
-use App\Http\Requests\TeacherRequest;
 use App\Models\Teacher;
 use App\Repositories\TeacherRepository;
 use Illuminate\Http\Request;
@@ -107,20 +106,14 @@ class TeacherService
             }
 
             $availability = [];
-            switch ($request->availability) {
-                
-                case 'mañana':
-                    $availability = ['start_morning', 'end_morning'];
-                    break;
-                case 'tarde':
-                    $availability = ['start_afternoon', 'end_afternoon'];
-                    break;
-                case 'noche':
-                    $availability = ['start_night', 'end_night'];
-                    break;
-                default:
-                    
-                    break;
+            if(in_array('mañana', $request->availability)){
+                $availability[] = ['start_morning', 'end_morning'];
+            }
+            if(in_array('tarde', $request->availability)){
+                $availability[] = ['start_afternoon', 'end_afternoon'];
+            }
+            if(in_array('noche', $request->availability)){
+                $availability[] = ['start_night', 'end_night'];
             }
 
             switch ($request->order) {
@@ -137,7 +130,7 @@ class TeacherService
                     $order = ['price_one_class', 'asc'];
                     break;
                 case 'Más recientes':
-                    $order = ['created_at', 'desc'];
+                    $order = ['updated_at', 'desc'];
                     break;
                     
                 default:
@@ -145,7 +138,7 @@ class TeacherService
                     break;
             }
 
-            if(count($filters) != 0 || $request->availability || count($request->price) != 0){
+            if(count($filters) != 0 || count($request->availability) != 0 || count($request->price) != 0){
                 $teachers = $this->repository->searchTeacherBy($request, $filters, $availability, $order);
             }
             else{
@@ -157,4 +150,15 @@ class TeacherService
             throw $e;
         }
     }
+
+    public function updateTeacherAverage(int $teacher_id, float $totalAverage)
+    {
+        try {
+            $teacher = Teacher::find($teacher_id);
+            $teacher->update(['average' => $totalAverage]);
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
 }

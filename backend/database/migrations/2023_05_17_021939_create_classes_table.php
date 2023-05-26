@@ -22,7 +22,8 @@ return new class extends Migration
             $table->time('start_time');
             $table->time('end_time');
             $table->text('description')->nullable();
-            $table->enum('state',['pendiente','confirmado','finalizado','cancelado']);
+            $table->enum('state',['Pendiente','Confirmado','Finalizado','Cancelado']);
+            $table->softDeletes();
             $table->timestamps();
         });
 

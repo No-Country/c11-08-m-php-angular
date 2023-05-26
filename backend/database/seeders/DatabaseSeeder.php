@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        // \App\Models\User::factory(10)->create();
 
         $this->call([
             ProvinceSeeder::class,
@@ -25,7 +26,8 @@ class DatabaseSeeder extends Seeder
             StudentSeeder::class,
             TeacherSeeder::class,
             ScheduleSeeder::class,
-            RewiewSeeder::class,
+            //RewiewSeeder::class,
+            ClaseSeeder::class,
         ]);
 
     }
