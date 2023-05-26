@@ -1,9 +1,11 @@
+import { CARD_LIST } from './../../mock/card.mock';
+import { CardService } from './../../services/card.service';
+import { ICard } from 'src/app/interfaces/card';
+
 import { Component,Output,EventEmitter} from '@angular/core';
 
 
 import { faAngleRight, faUser, faLocationDot,faStar,faAngleLeft} from '@fortawesome/free-solid-svg-icons';
-
-
 
 @Component({
   selector: 'app-perfil-profe',
@@ -33,4 +35,6 @@ cambiarColorTd(event: Event): void {
   const color = colors[nextIndex];
   td.style.color = color;
 }
+
+cardList: ICard[] = CARD_LIST;
 }
