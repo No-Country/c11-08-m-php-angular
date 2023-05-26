@@ -3,12 +3,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { PerfilProfeComponent } from './pages/perfil-profe/perfil-profe.component';
 import { SrcPageComponent } from './pages/src-page/src-page.component';
+import { AgendaComponent } from './pages/agenda/agenda.component';
 
 const routes: Routes = [
   {
     path: '',
     redirectTo: 'home' , // if loading is add, change this "home" for loading path
-
     pathMatch: 'full'
   },
   {
@@ -22,6 +22,10 @@ const routes: Routes = [
   {
     path: 'perfil-profe',
     component:PerfilProfeComponent,
+  },
+  {
+    path: 'agenda',
+    component:AgendaComponent,
   }
 
 ];

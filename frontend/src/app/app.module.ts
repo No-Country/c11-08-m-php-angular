@@ -12,6 +12,7 @@ import { AnimationsComponent } from './components/animations/animations.componen
 import { PerfilProfeComponent } from './pages/perfil-profe/perfil-profe.component';
 import { LoginRegisterComponent } from './components/login-register/login-register.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AgendaComponent } from './pages/agenda/agenda.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,7 +23,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AnimationsComponent,
     SrcPageComponent,
     LoginRegisterComponent,
-    PerfilProfeComponent
+    PerfilProfeComponent,
+    AgendaComponent
   ],
   imports: [
     BrowserModule,
