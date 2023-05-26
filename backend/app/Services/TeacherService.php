@@ -150,4 +150,15 @@ class TeacherService
             throw $e;
         }
     }
+
+    public function updateTeacherAverage(int $teacher_id, float $totalAverage)
+    {
+        try {
+            $teacher = Teacher::find($teacher_id);
+            $teacher->update(['average' => $totalAverage]);
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
 }
