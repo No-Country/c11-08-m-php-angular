@@ -16,28 +16,76 @@ class TeacherService
         $this->repository = $repository;
     }
 
-    public function getAll()
+    public function getTeachers()
     {
         try {
-            return Teacher::all();
+            return Teacher::paginate();
         } catch (\Exception $e) {
             throw $e;
         }
     }
 
-    public function getTeacher(int $id)
+    public function getTeacher(Teacher $teacher)
     {
         try {
-            return Teacher::find($id);
+            return $teacher;
         } catch (\Exception $e) {
             throw $e;
         }
     }
 
-    public function deleteTeacher(Teacher $product)
+    public function createTeacherByRegister(array $request)
     {
         try {
-            $product->delete();
+            $teacher = Teacher::create(
+                [
+                    'user_id' => $request['user_id']
+                ]
+            );
+            return $teacher;
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    public function createTeacher(array $request)
+    {
+        try {
+            $teacher = Teacher::create(
+                [
+                    'user_id' => $request['user_id'],
+                    'title' => $request['title'],
+                    'about_me' => $request['about_me'],
+                    'about_class' => $request['about_class'],
+                    'job_title' => $request['job_title'],
+                    'years_experience' => $request['years_experience'],
+                    'price_one_class' => $request['price_one_class'],
+                    'price_two_classes' => $request['price_two_classes'],
+                    'price_four_classes' => $request['price_four_classes'],
+                    'certificate_file' => $request['certificate_file'],
+                    'average' => $request['average'],
+                    'sample_class' => $request['sample_class'],
+                ]
+            );
+            return $teacher;
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    public function updateTeacher(array $request, Teacher $teacher)
+    {
+        try {
+            $teacher->update($request);
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    public function deleteTeacher(Teacher $teacher)
+    {
+        try {
+            $teacher->delete();
         } catch (\Exception $e) {
             throw $e;
         }
@@ -58,20 +106,14 @@ class TeacherService
             }
 
             $availability = [];
-            switch ($request->availability) {
-                
-                case 'mañana':
-                    $availability = ['start_morning', 'end_morning'];
-                    break;
-                case 'tarde':
-                    $availability = ['start_afternoon', 'end_afternoon'];
-                    break;
-                case 'noche':
-                    $availability = ['start_night', 'end_night'];
-                    break;
-                default:
-                    
-                    break;
+            if(in_array('mañana', $request->availability)){
+                $availability[] = ['start_morning', 'end_morning'];
+            }
+            if(in_array('tarde', $request->availability)){
+                $availability[] = ['start_afternoon', 'end_afternoon'];
+            }
+            if(in_array('noche', $request->availability)){
+                $availability[] = ['start_night', 'end_night'];
             }
 
             switch ($request->order) {
@@ -88,7 +130,7 @@ class TeacherService
                     $order = ['price_one_class', 'asc'];
                     break;
                 case 'Más recientes':
-                    $order = ['created_at', 'desc'];
+                    $order = ['updated_at', 'desc'];
                     break;
                     
                 default:
@@ -96,11 +138,11 @@ class TeacherService
                     break;
             }
 
-            if(count($filters) != 0 || !$request->availability || count($request->price) != 0){
+            if(count($filters) != 0 || count($request->availability) != 0 || count($request->price) != 0){
                 $teachers = $this->repository->searchTeacherBy($request, $filters, $availability, $order);
             }
             else{
-                $teachers = Teacher::all();
+                $teachers = Teacher::paginate();
             }
             
             return $teachers;
@@ -108,4 +150,15 @@ class TeacherService
             throw $e;
         }
     }
+
+    public function updateTeacherAverage(int $teacher_id, float $totalAverage)
+    {
+        try {
+            $teacher = Teacher::find($teacher_id);
+            $teacher->update(['average' => $totalAverage]);
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
 }
