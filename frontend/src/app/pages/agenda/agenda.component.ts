@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { faStar } from '@fortawesome/free-regular-svg-icons';
-import { faStar as StarSolid} from '@fortawesome/free-solid-svg-icons'
+import { faStar as StarSolid, faAngleLeft} from '@fortawesome/free-solid-svg-icons'
 import { faAngleRight, faLocationDot, faStarHalf, faUser } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -15,7 +15,7 @@ faLocationDot = faLocationDot;
 faUser = faUser;
 faStar = faStar;
 faStarSolid = StarSolid;
-
+faAngleLeft = faAngleLeft;
 profesor = 'Esteban gonzales'
 
 rating = 3;

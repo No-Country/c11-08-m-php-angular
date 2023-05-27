@@ -6,6 +6,8 @@ import { CARD_LIST } from '../mock/card.mock';
   providedIn: 'root'
 })
 export class CardService {
+  
+
 
   cardList: ICard[] = CARD_LIST;
 

@@ -2,7 +2,7 @@
     color: #FA9744;
 }
 
-.card{
+.card, .calendar{
     box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
     border-radius: 16px;
     border: none;
@@ -34,11 +34,34 @@ li{
 
 
 .first-day{
-    grid-column-start: 2;
+    grid-column-start: 1;
 }
 
 ol > li{
-    border:1px solid #FA9744;
+    border:1px solid #aaa7a5;
+    background-color: #FAFAFA;
     border-radius: 50%;
     margin: 3px;
+    aspect-ratio: 1/1;
+    width: 40px;
+    text-align: center;
+    
 }
+
+ol > li:hover{
+    background-color: #019FA2;
+    color: #FFFF;
+    cursor: pointer;
+}
+
+ol > li::after{
+    background-color: #019FA2;
+    color: #FFFF;
+    cursor: pointer;
+}
+
+.list-group-item{
+    text-align: center;
+    border: 0;
+}
+
