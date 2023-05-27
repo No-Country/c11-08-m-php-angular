@@ -53,7 +53,7 @@ class ScheduleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Schedule $schedule)
     {
         try {
             $schedule = $this->service->getSchedule($schedule);
@@ -70,7 +70,7 @@ class ScheduleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(ScheduleRequest $request, $id)
+    public function update(ScheduleRequest $request, Schedule $schedule)
     {
         try {
             $this->service->updateSchedule($request->all(), $schedule);
@@ -86,7 +86,7 @@ class ScheduleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Schedule $schedule)
     {
         try {
             $this->service->deleteSchedule($schedule);

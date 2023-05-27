@@ -24,7 +24,7 @@ class UserSeeder extends Seeder
                 'first_name' => fake()->firstName(),
                 'last_name' => fake()->lastName(),
                 'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-                'birthday' => fake()->dateTimeBetween('-50 years', '-25 years')->format('Y-m-d'),
+                'birthdate' => fake()->dateTimeBetween('-50 years', '-25 years')->format('Y-m-d'),
                 'identification' => fake('ar_SA')->idNumber,
                 'phone' => fake('en_US')->tollFreePhoneNumber(),
                 'city_id' => fake()->numberBetween(1,529),

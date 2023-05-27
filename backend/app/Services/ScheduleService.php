@@ -11,7 +11,7 @@ class ScheduleService
     public function getSchedules()
     {
         try {
-            return Schedule::paginate();
+            return Schedule::all();
         } catch (\Exception $e) {
             throw $e;
         }
@@ -33,7 +33,7 @@ class ScheduleService
                 [
 
                     'day'=> $request['day'],
-                    'name'=> $request['name'], 
+                    //'name'=> $request['name'], 
                     'active'=> $request['active'], 
                     'start_morning'=> $request['start_morning'],
                     'end_morning'=> $request['end_morning'],
