@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\TeacherController;
+use App\Http\Controllers\StudentController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -43,4 +44,9 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::apiResource('teachers', TeacherController::class)->except(['index', 'show']);
     Route::apiResource('reviews', ReviewController::class);
     Route::post('/logout', [AuthController::class, 'logout']);
+    
 });
+
+Route::get('/students',[StudentController::class,'index']);//Todas los estudiantes
+Route::get('/students/{student}',[StudentController::class,'show']);//Obtener estudiante
+Route::apiResource('students', StudentController::class)->except(['index', 'show']);
