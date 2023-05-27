@@ -12,7 +12,6 @@
 - password
 - birthday
 - identification
-- address
 - phone
 - city_id **(FK)**
 - last_connection
@@ -87,8 +86,8 @@
 - id **(PK)**
 - teacher_id **(FK)**
 - active
-- day (0,1,2,3,4,5,6)
-- name (lunes, martes, miercoles, jueves, sabado, domingo)
+- day (0,1,2,3,4,5)
+- name (lunes, martes, miercoles, jueves, sabado)
 - start_morning
 - end_morning
 - start_afternoon
@@ -110,7 +109,7 @@
 ### cities **(EC)**
 
 - id **(PK)**
-- name **(UQ)**
+- name
 - province_id **(FK)**
 - deleted_at
 - created_at
@@ -136,6 +135,16 @@
 - created_at
 - updated_at
 
+### rates **(ED)**
+
+- id **(PK)**
+- type (por hora, por pack, por semana, por mes)
+- duration
+- price
+- teacher_id **(FK)**
+- deleted_at
+- created_at
+- updated_at
 
 ## Diagrama
 
