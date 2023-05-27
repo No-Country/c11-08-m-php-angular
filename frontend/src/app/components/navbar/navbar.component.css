@@ -1,15 +1,24 @@
-button{
+.border-none{
     border: 0;
     padding: 0;
     background: none;
 }
 .nav-register{
     border-radius: 1000px;
-    border-color: black!important;
+    border-color: #C3F6F7!important;
     border-width: 2px!important;
+    background-color: #C3F6F7;
+
+
 }
 
-.nav-link{
-    color: black!important;
+.custom-close-btn, .register-btn, .nav-link{
+    color: #2C2C2C!important;
 }
 
+.login-btn{
+    color:#019FA2!important;
+}
+.nav-link:hover{
+    color:#019FA2 !important;
+}
