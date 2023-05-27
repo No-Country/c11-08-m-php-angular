@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('teacher_id');
             $table->unsignedBigInteger('student_id');
-            $table->text('comment');
+            $table->text('comment')->nullable();
             $table->enum('qualification',[1,2,3,4,5]);
             $table->softDeletes();
             $table->timestamps();
