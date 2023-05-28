@@ -31,6 +31,16 @@ class ScheduleController extends Controller
         }
     }
 
+    public function getScheduleByTeacher(int $teacher_id)
+    {
+        try {
+            $schedule = $this->service->getScheduleByTeacher($teacher_id);
+            return ScheduleResource::collection($schedule);
+        } catch (\Exception $e) {
+            return response()->json(['message' => $e->getMessage(), 'type' => 'error'],500);
+        }
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -62,6 +72,8 @@ class ScheduleController extends Controller
             return response()->json(['message' => $e->getMessage(), 'type' => 'error'],500);
         }
     }
+
+
 
     /**
      * Update the specified resource in storage.
