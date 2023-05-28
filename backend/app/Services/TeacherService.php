@@ -161,4 +161,13 @@ class TeacherService
         }
     }
 
+    public function getTeacherByUser(int $user_id)
+    {
+        try {
+            return Teacher::where('user_id', $user_id)->firstOrFail();
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
 }

@@ -35,6 +35,7 @@ Route::get('/subjects/{id}','App\Http\Controllers\SubjectController@getSubject')
 Route::get('/teachers/search', [TeacherController::class, 'searchTeacherBy']); //Obtener profesores por
 Route::get('/teachers', [TeacherController::class, 'index']); //Todos los profesores
 Route::get('/teachers/{teacher}', [TeacherController::class, 'show']); //Obtener un profesor
+Route::get('/teachers/user/{user_id}', [TeacherController::class, 'getTeacherByUser']); //Obtener un profesor por usuario
 
 Route::get('/reviews/teacher/{teacher_id}', [ReviewController::class, 'getReviewsByTeacher']); //Obtener reviews por profesor
 
