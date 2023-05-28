@@ -20,6 +20,7 @@ class StudentResource extends JsonResource
             'photo' => $this->user->photo,
             'city' => ($this->user->city) ? $this->user->city->name : null,
             'province' => ($this->user->city) ? $this->user->city->province->name : null,
+            'classes_subjects' => $this->classes->map->subject->map->name,
             'subjects' => $this->subjects->map->name,
         ];
     }
