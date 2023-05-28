@@ -30,6 +30,7 @@ Route::post('/schedule','App\Http\Controllers\ScheduleController@store');
 Route::get('/schedule/{schedule}','App\Http\Controllers\ScheduleController@show');
 Route::put('/schedule/{schedule}','App\Http\Controllers\ScheduleController@update');
 Route::delete('/schedule/{schedule}','App\Http\Controllers\ScheduleController@destroy');
+Route::get('/schedule/teacher/{teacher_id}','App\Http\Controllers\ScheduleController@getScheduleByTeacher');//Obtener horarios por profesor
 
 Route::get('/cities','App\Http\Controllers\CityController@index');//Todas las ciudades
 Route::get('/cities/{id}','App\Http\Controllers\CityController@getCity');//Una ciudad

@@ -17,6 +17,15 @@ class ScheduleService
         }
     }
 
+    public function getScheduleByTeacher(int $teacher_id)
+    {
+        try {
+            return Schedule::where('teacher_id', $teacher_id)->get();
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
     public function getSchedule(Schedule $schedule)
     {
         try {
