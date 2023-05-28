@@ -3,6 +3,7 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Facades\URL;
 
 class UserResource extends JsonResource
 {
@@ -16,21 +17,22 @@ class UserResource extends JsonResource
     {
         return [
             "id" => $this->id,
-                "email" => $this->email,
-                "role" => $this->role,
-                "first_name" => $this->first_name,
-                "last_name" => $this->last_name,
-                "birthdate" => $this->birthdate,
-                "identification" => $this->identification,
-                "phone" => $this->phone,
-                "photo" => $this->photo,
-                "city_id" => $this->city_id,
-                "last_connection" => $this->last_connection,
-                "email_verified_at" => $this->email_verified_at,
-                "deleted_at" => $this->deleted_at,
-                "created_at" => $this->created_at,
-                "updated_at" => $this->updated_at,
-                "city" => $this->city,
+            "email" => $this->email,
+            "role" => $this->role,
+            "first_name" => $this->first_name,
+            "last_name" => $this->last_name,
+            "birthdate" => $this->birthdate,
+            "identification" => $this->identification,
+            "phone" => $this->phone,
+            "photo" => $this->photo ? URL::to($this->photo) : null,
+            "city_id" => $this->city_id,
+            "last_connection" => $this->last_connection,
+            "email_verified_at" => $this->email_verified_at,
+            "deleted_at" => $this->deleted_at,
+            "created_at" => $this->created_at,
+            "updated_at" => $this->updated_at,
+            'city' => ($this->city) ? $this->city->name : null,
+            'province' => ($this->city) ? $this->city->province->name : null,
         ];
     }
 }

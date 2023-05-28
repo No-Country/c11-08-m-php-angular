@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\TeacherController;
+use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -34,6 +35,7 @@ Route::get('/subjects/{id}','App\Http\Controllers\SubjectController@getSubject')
 Route::get('/teachers/search', [TeacherController::class, 'searchTeacherBy']); //Obtener profesores por
 Route::get('/teachers', [TeacherController::class, 'index']); //Todos los profesores
 Route::get('/teachers/{teacher}', [TeacherController::class, 'show']); //Obtener un profesor
+
 Route::get('/reviews/teacher/{teacher_id}', [ReviewController::class, 'getReviewsByTeacher']); //Obtener reviews por profesor
 
 Route::post('/register', [AuthController::class, 'register']);
@@ -42,5 +44,7 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::apiResource('teachers', TeacherController::class)->except(['index', 'show']);
     Route::apiResource('reviews', ReviewController::class);
+    Route::apiResource('users', UserController::class);
+    
     Route::post('/logout', [AuthController::class, 'logout']);
 });
