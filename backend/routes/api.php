@@ -55,6 +55,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
     
 });
 
+Route::get('/students/user_id/{user_id}',[StudentController::class,'getStudentByUserId']);//Obtener estudiante por user_id
 Route::get('/students',[StudentController::class,'index']);//Todas los estudiantes
 Route::get('/students/{student}',[StudentController::class,'show']);//Obtener estudiante
 Route::apiResource('students', StudentController::class)->except(['index', 'show']);
