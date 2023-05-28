@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { faLocationDot, faStar } from '@fortawesome/free-solid-svg-icons';
-import { INewCard } from 'src/app/interfaces/card';
+import { ICard } from 'src/app/interfaces/card';
 import { CardService } from 'src/app/services/card.service';
 
 
@@ -12,7 +12,7 @@ import { CardService } from 'src/app/services/card.service';
 export class CardsComponent implements OnInit {
   faStar = faStar;
   faLocationDot = faLocationDot;
-  cardList: INewCard[] = [];
+  cardList: ICard[] = [];
 
   constructor(private cardService: CardService) { }
 
@@ -21,7 +21,7 @@ export class CardsComponent implements OnInit {
   }
   getAllCards(): void { 
     this.cardService.verCards()
-    .subscribe((data: INewCard[]) => { 
+    .subscribe((data: ICard[]) => { 
       this.cardList = data; 
     }) 
     }
