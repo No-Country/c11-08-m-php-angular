@@ -25,6 +25,13 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('/provinces','App\Http\Controllers\ProvinceController@index');//Todas las provincias
 Route::get('/provinces/{id}','App\Http\Controllers\ProvinceController@getProvince');//Una provincia
 
+Route::get('/schedule','App\Http\Controllers\ScheduleController@index');
+Route::post('/schedule','App\Http\Controllers\ScheduleController@store');
+Route::get('/schedule/{schedule}','App\Http\Controllers\ScheduleController@show');
+Route::put('/schedule/{schedule}','App\Http\Controllers\ScheduleController@update');
+Route::delete('/schedule/{schedule}','App\Http\Controllers\ScheduleController@destroy');
+Route::get('/schedule/teacher/{teacher_id}','App\Http\Controllers\ScheduleController@getScheduleByTeacher');//Obtener horarios por profesor
+
 Route::get('/cities','App\Http\Controllers\CityController@index');//Todas las ciudades
 Route::get('/cities/{id}','App\Http\Controllers\CityController@getCity');//Una ciudad
 Route::get('/cities/province/{id}','App\Http\Controllers\CityController@citiesProvince');//Ciudades de una provincia
