@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\TeacherRequest;
 use App\Http\Resources\TeacherResource;
+use App\Http\Resources\UserResource;
 use App\Models\Teacher;
 use App\Services\TeacherService;
 use Illuminate\Http\Request;
@@ -75,6 +76,16 @@ class TeacherController extends Controller
             return TeacherResource::collection($teachers);
         } catch (\Exception $e) {
             return response()->json(['message' => $e->getMessage(), 'type' => 'error'], 500);
+        }
+    }
+
+    public function getTeacherByUser(int $user_id)
+    {
+        try {
+            $teacher = $this->service->getTeacherByUser($user_id);
+            return new TeacherResource($teacher);
+        } catch (\Exception $e) {
+            return response()->json(['message' => $e->getMessage(), 'type' => 'error'],500);
         }
     }
 }

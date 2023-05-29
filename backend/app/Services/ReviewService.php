@@ -12,7 +12,7 @@ class ReviewService
     public function getReviews()
     {
         try {
-            return Review::paginate();
+            return Review::all();
         } catch (\Exception $e) {
             throw $e;
         }
