@@ -32,10 +32,9 @@ Route::get('/cities/province/{id}','App\Http\Controllers\CityController@citiesPr
 Route::get('/subjects','App\Http\Controllers\SubjectController@index');//Todas las materias
 Route::get('/subjects/{id}','App\Http\Controllers\SubjectController@getSubject');//Una materia
 
-Route::get('/teachers/search', [TeacherController::class, 'searchTeacherBy']); //Obtener profesores por
+Route::post('/teachers/search', [TeacherController::class, 'searchTeacherBy']); //Obtener profesores por
 Route::get('/teachers', [TeacherController::class, 'index']); //Todos los profesores
 Route::get('/teachers/{teacher}', [TeacherController::class, 'show']); //Obtener un profesor
-Route::get('/teachers/user/{user_id}', [TeacherController::class, 'getTeacherByUser']); //Obtener un profesor por usuario
 
 Route::get('/reviews/teacher/{teacher_id}', [ReviewController::class, 'getReviewsByTeacher']); //Obtener reviews por profesor
 
@@ -48,4 +47,5 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::apiResource('users', UserController::class);
     
     Route::post('/logout', [AuthController::class, 'logout']);
+    Route::get('/teachers/user/{user_id}', [TeacherController::class, 'getTeacherByUser']); //Obtener un profesor por usuario
 });

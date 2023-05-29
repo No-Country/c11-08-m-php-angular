@@ -12,7 +12,7 @@ class UserService
     public function getUsers()
     {
         try {
-            return User::paginate();
+            return User::all();
         } catch (\Exception $e) {
             throw $e;
         }
