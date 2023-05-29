@@ -4,6 +4,8 @@ import { HomePageComponent } from './pages/home-page/home-page.component';
 import { PerfilProfeComponent } from './pages/perfil-profe/perfil-profe.component';
 import { SrcPageComponent } from './pages/src-page/src-page.component';
 import { AgendaComponent } from './pages/agenda/agenda.component';
+import { SubscriptionComponent } from './pages/subscription/subscription.component';
+
 
 const routes: Routes = [
   {
@@ -26,6 +28,10 @@ const routes: Routes = [
   {
     path: 'agenda',
     component:AgendaComponent,
+  },
+  {
+    path: 'suscription',
+    component:SubscriptionComponent,
   }
 
 ];

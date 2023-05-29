@@ -1,12 +1,10 @@
-export interface ICard {
-    id: number;
-    nombre: string;
-    ubicacion: string;
-    puntuacion: number;
-    numeroDeOpiniones: string;
-    etiquetas: object;
-    parrafo: string;
-    precioHora: number;
-    img:string;
-   
+export interface INewCard {
+    name: string;
+    photo: string;
+    city: string;
+    province: string;
+    subjects: string[];
+    schedules: string[];
+    total_students: number;
+    total_reviews: number;
 }

@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { faGraduationCap, faLocationDot, faCaretDown } from '@fortawesome/free-solid-svg-icons';
 import { map } from 'rxjs';
 import { CardService } from 'src/app/services/card.service';
+import { INewCard } from 'src/app/interfaces/card';
 
 @Component({
   selector: 'app-src-page',
@@ -13,6 +14,7 @@ export class SrcPageComponent implements OnInit{
   elegir= "";
   precio: string = 'Cualquiera';
   turno: string = 'Cualquiera';
+  cards: INewCard[] = []
   provinciasArgentina: string[] = [
     'Buenos Aires',
     'Catamarca',
@@ -55,11 +57,19 @@ export class SrcPageComponent implements OnInit{
   faLocationDot = faLocationDot;
   faCaretDown = faCaretDown
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, private cService: CardService) { }
   ngOnInit(): void {
       this.elegir = this.route.snapshot.queryParams['seleccion']
-    
 
+
+  }
+
+  cargarPersona(): void{
+    this.cService.GetCards().subscribe(
+      db => {
+        this.cards = db;
+      }
+    )
   }
 
 

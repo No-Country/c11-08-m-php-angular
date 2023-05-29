@@ -1,6 +1,3 @@
-import { CARD_LIST } from './../../mock/card.mock';
-import { ICard } from 'src/app/interfaces/card';
-
 import { Component,Output,EventEmitter} from '@angular/core';
 
 
@@ -35,5 +32,5 @@ cambiarColorTd(event: Event): void {
   td.style.color = color;
 }
 
-cardList: ICard[] = CARD_LIST;
+;
 }

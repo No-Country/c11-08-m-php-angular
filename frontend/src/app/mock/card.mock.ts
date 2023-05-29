@@ -1,4 +1,4 @@
-import { ICard } from 'src/app/interfaces/card';
+/* import { ICard } from 'src/app/interfaces/card';
 
 
 export const CARD_LIST: ICard[] = [
@@ -46,4 +46,4 @@ export const CARD_LIST: ICard[] = [
         precioHora:2000,
         img:'../../../assets/images/homePage/image 133.png'
     },
-]
+] */
