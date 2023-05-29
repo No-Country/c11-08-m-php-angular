@@ -3,6 +3,7 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Facades\URL;
 
 class ReviewResource extends JsonResource
 {
@@ -20,7 +21,7 @@ class ReviewResource extends JsonResource
             "comment" => $this->comment,
             "qualification" => $this->qualification,
             'student_name' => $this->student->user->first_name . " " . $this->student->user->last_name,
-            'student_photo' => $this->student->user->photo,
+            'student_photo' => $this->student->user->photo ? URL::to($this->student->user->photo) : null,
         ];
     }
 }

@@ -68,7 +68,7 @@ class UserService
                 $request['photo'] = $relativePath;
             }
     
-            if($user->photo){
+            if($user->photo && $user->photo != 'images/fakephotoman.jpg' && $user->photo != 'images/fakephotowoman.png'){
                 $absolutePath = public_path($user->photo);
                 File::delete($absolutePath);
             }

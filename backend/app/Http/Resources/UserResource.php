@@ -25,14 +25,15 @@ class UserResource extends JsonResource
             "identification" => $this->identification,
             "phone" => $this->phone,
             "photo" => $this->photo ? URL::to($this->photo) : null,
-            "city_id" => $this->city_id,
             "last_connection" => $this->last_connection,
             "email_verified_at" => $this->email_verified_at,
             "deleted_at" => $this->deleted_at,
             "created_at" => $this->created_at,
             "updated_at" => $this->updated_at,
-            'city' => ($this->city) ? $this->city->name : null,
-            'province' => ($this->city) ? $this->city->province->name : null,
+            "city_id" => $this->city_id,
+            'city_name' => ($this->city) ? $this->city->name : null,
+            'province_id' => ($this->city) ? $this->city->province->id : null,
+            'province_name' => ($this->city) ? $this->city->province->name : null,
         ];
     }
 }

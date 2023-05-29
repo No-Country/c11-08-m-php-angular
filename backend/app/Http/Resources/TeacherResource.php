@@ -3,6 +3,7 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Facades\URL;
 
 class TeacherResource extends JsonResource
 {
@@ -52,7 +53,7 @@ class TeacherResource extends JsonResource
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
             'name' => $this->user->first_name . " " . $this->user->last_name,
-            'photo' => $this->user->photo,
+            'photo' => $this->user->photo ? URL::to($this->user->photo) : null,
             'city_id' => ($this->user->city) ? $this->user->city->id : null,
             'city_name' => ($this->user->city) ? $this->user->city->name : null,
             'province_id' => ($this->user->city) ? $this->user->city->province->id : null,
