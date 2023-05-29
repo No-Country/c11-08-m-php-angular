@@ -24,7 +24,6 @@ class DatabaseSeeder extends Seeder
             StudentSeeder::class,
             TeacherSeeder::class,
             ScheduleSeeder::class,
-            RewiewSeeder::class,
             ClaseSeeder::class,
         ]);
 
