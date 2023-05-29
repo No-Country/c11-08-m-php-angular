@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\UserRequest;
+use App\Http\Requests\StoreUserRequest;
+use App\Http\Requests\UpdateUserRequest;
 use App\Http\Resources\UserResource;
 use App\Models\User;
 use App\Services\UserService;
@@ -26,7 +27,7 @@ class UserController extends Controller
         }
     }
 
-    public function store(UserRequest $request)
+    public function store(StoreUserRequest $request)
     {
         try {
             $user = $this->service->createUser($request->all());
@@ -46,7 +47,7 @@ class UserController extends Controller
         }
     }
 
-    public function update(UserRequest $request, User $user)
+    public function update(UpdateUserRequest $request, User $user)
     {
         try {
             $this->service->updateUser($request->all(), $user);
