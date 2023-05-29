@@ -18,14 +18,14 @@ class DatabaseSeeder extends Seeder
     {
 
         $this->call([
-            ProvinceSeeder::class,
+            //ProvinceSeeder::class,
             SubjectSeeder::class,
             UserSeeder::class,
             
             StudentSeeder::class,
             TeacherSeeder::class,
             ScheduleSeeder::class,
-            //RewiewSeeder::class,
+            RewiewSeeder::class,
             ClaseSeeder::class,
         ]);
 

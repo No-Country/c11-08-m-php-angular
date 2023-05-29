@@ -27,7 +27,6 @@ class UserSeeder extends Seeder
                 'birthdate' => fake()->dateTimeBetween('-50 years', '-25 years')->format('Y-m-d'),
                 'identification' => fake('ar_SA')->idNumber,
                 'phone' => fake('en_US')->tollFreePhoneNumber(),
-                'photo' => null,
                 'city_id' => fake()->numberBetween(1,529),
                 'last_connection' => fake()->dateTimeBetween('-60 days', 'now')->format('Y-m-d H:i:s'),
                 // 'email_verified_at' => now(),
