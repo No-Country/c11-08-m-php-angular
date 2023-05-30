@@ -66,4 +66,13 @@ class StudentController extends Controller
             return response()->json(['message' => $e->getMessage(), 'type' => 'error'],500);
         }
     }
+
+    public function getStudentByUserId($user_id){
+        try {
+            $student = $this->service->getStudentByUserId($user_id);
+            return new StudentResource($student);
+        } catch (\Exception $e) {
+            return response()->json(['message' => $e->getMessage(), 'type' => 'error'],500);
+        }
+    }
 }

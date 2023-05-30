@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -40,9 +41,10 @@ Route::get('/subjects','App\Http\Controllers\SubjectController@index');//Todas l
 Route::get('/subjects/{id}','App\Http\Controllers\SubjectController@getSubject');//Una materia
 Route::get('/subjects/name/{name}','App\Http\Controllers\SubjectController@subjectsByText');//Todas las materias dado un string
 
-Route::get('/teachers/search', [TeacherController::class, 'searchTeacherBy']); //Obtener profesores por
+Route::post('/teachers/search', [TeacherController::class, 'searchTeacherBy']); //Obtener profesores por
 Route::get('/teachers', [TeacherController::class, 'index']); //Todos los profesores
 Route::get('/teachers/{teacher}', [TeacherController::class, 'show']); //Obtener un profesor
+
 Route::get('/reviews/teacher/{teacher_id}', [ReviewController::class, 'getReviewsByTeacher']); //Obtener reviews por profesor
 
 Route::post('/register', [AuthController::class, 'register']);
@@ -51,10 +53,13 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::apiResource('teachers', TeacherController::class)->except(['index', 'show']);
     Route::apiResource('reviews', ReviewController::class);
-    Route::post('/logout', [AuthController::class, 'logout']);
+    Route::apiResource('users', UserController::class);
     
+    Route::post('/logout', [AuthController::class, 'logout']);
+    Route::get('/teachers/user/{user_id}', [TeacherController::class, 'getTeacherByUser']); //Obtener un profesor por usuario
 });
 
+Route::get('/students/user_id/{user_id}',[StudentController::class,'getStudentByUserId']);//Obtener estudiante por user_id
 Route::get('/students',[StudentController::class,'index']);//Todas los estudiantes
 Route::get('/students/{student}',[StudentController::class,'show']);//Obtener estudiante
 Route::apiResource('students', StudentController::class)->except(['index', 'show']);

@@ -10,7 +10,7 @@ class StudentService
     public function getStudents()
     {
         try {
-            return Student::paginate();
+            return Student::all();
         } catch (\Exception $e) {
             throw $e;
         }
@@ -72,4 +72,11 @@ class StudentService
         }
     }
     
+    public function getStudentByUserId($user_id){
+        try {
+            return Student::where('user_id',$user_id)->firstOrFail();
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
 }
