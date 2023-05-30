@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\ClaseController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -59,3 +60,10 @@ Route::get('/students/user_id/{user_id}',[StudentController::class,'getStudentBy
 Route::get('/students',[StudentController::class,'index']);//Todas los estudiantes
 Route::get('/students/{student}',[StudentController::class,'show']);//Obtener estudiante
 Route::apiResource('students', StudentController::class)->except(['index', 'show']);
+
+Route::get('/clases/teacher/{teacher_id}',[ClaseController::class,'getStudentsByTeacher']);//Todos los estudiantes de un profesor
+Route::get('/clases/student/{student_id}',[ClaseController::class,'getTeachersByStudent']);//Todos los profores de un estudiante
+Route::put('/clases/changeState/{clase}',[ClaseController::class,'updateClaseState']);
+Route::get('/clases',[ClaseController::class,'index']);//Todas los clases
+Route::get('/clases/{clase}',[ClaseController::class,'show']);//Obtener clase
+Route::apiResource('clases', ClaseController::class)->except(['index', 'show']);
