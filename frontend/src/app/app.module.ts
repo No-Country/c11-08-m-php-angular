@@ -1,5 +1,6 @@
-
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,9 +15,9 @@ import { LoginRegisterComponent } from './components/login-register/login-regist
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ScheduleComponent } from './pages/schedule/schedule.component';
 import { PerfilProfeComponent } from './pages/perfil-profe/perfil-profe.component';
-import { FormBuilder, FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
 import { NgxPaginationModule } from 'ngx-pagination';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,16 +31,17 @@ import { NgxPaginationModule } from 'ngx-pagination';
     LoginRegisterComponent,
     ScheduleComponent,
     PerfilProfeComponent
-
+    
   ],
   imports: [
+    HttpClientModule,
+    FormsModule,
     BrowserModule,
     AppRoutingModule,
     FontAwesomeModule,
     BrowserAnimationsModule,
     FormsModule,
-    HttpClientModule,
-    NgxPaginationModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]
