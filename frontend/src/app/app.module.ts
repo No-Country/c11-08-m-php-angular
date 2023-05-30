@@ -11,7 +11,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { AnimationsComponent } from './components/animations/animations.component';
 import { LoginRegisterComponent } from './components/login-register/login-register.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AgendaComponent } from './pages/agenda/agenda.component';
+import { ScheduleComponent } from './pages/schedule/schedule.component';
 import { PerfilProfeComponent } from './pages/perfil-profe/perfil-profe.component';
 @NgModule({
   declarations: [
@@ -23,7 +23,7 @@ import { PerfilProfeComponent } from './pages/perfil-profe/perfil-profe.componen
     AnimationsComponent,
     SrcPageComponent,
     LoginRegisterComponent,
-    AgendaComponent,
+    ScheduleComponent,
     PerfilProfeComponent
   ],
   imports: [

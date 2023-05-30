@@ -24,6 +24,7 @@ ol{
     display: grid;
     grid-template-columns:  repeat(7, 1fr);
     padding: 0px;
+    gap: 4px;
 }
 
 li{
@@ -34,10 +35,10 @@ li{
 
 
 .first-day{
-    grid-column-start: 1;
+    grid-column-start: 5;
 }
 
-ol > li{
+ol > li {
     border:1px solid #aaa7a5;
     background-color: #FAFAFA;
     border-radius: 50%;
@@ -54,14 +55,19 @@ ol > li:hover{
     cursor: pointer;
 }
 
-ol > li::after{
+ol > li.selected {
     background-color: #019FA2;
     color: #FFFF;
-    cursor: pointer;
-}
+  }
+
 
 .list-group-item{
     text-align: center;
     border: 0;
+}
+
+.angleIcon:hover{
+    color: #019FA2;
+    cursor: pointer;
 }
 
