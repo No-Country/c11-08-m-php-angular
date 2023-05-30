@@ -18,8 +18,8 @@ class UserFactory extends Factory
     public function definition()
     {
         $gender = fake()->randomElement($array = array ('male','female'));
-        $photoWoman = 'https://www.transparentpng.com/thumb/user/female-user-transparent-icon--dOtdVA.png';
-        $photoMan = 'https://i.pinimg.com/736x/8b/16/7a/8b167af653c2399dd93b952a48740620.jpg';
+        $photoWoman = 'images/fakephotowoman.png';
+        $photoMan = 'images/fakephotoman.jpg';
         $photo = ($gender == 'male') ? $photoMan : $photoWoman;
         return [
             'role' => fake()->randomElement($array = array ('Profesor','Estudiante')),
