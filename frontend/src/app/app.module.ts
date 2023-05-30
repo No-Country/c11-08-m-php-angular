@@ -31,8 +31,8 @@ import { SubscriptionComponent } from './pages/subscription/subscription.compone
     PerfilProfeComponent,
     LoginRegisterComponent,
     ScheduleComponent,
-    PerfilProfeComponent,
-    SubscriptionComponent
+    SubscriptionComponent,
+    
 
   ],
   imports: [

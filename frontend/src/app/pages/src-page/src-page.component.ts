@@ -11,6 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 import { faGraduationCap, faLocationDot, faCaretDown } from '@fortawesome/free-solid-svg-icons';
 import { Teacher } from 'src/app/interfaces/teacher';
 
+
 @Component({
   selector: 'app-src-page',
   templateUrl: './src-page.component.html',
@@ -21,32 +22,7 @@ export class SrcPageComponent implements OnInit{
   elegir= "";
   precio: string = 'Cualquiera';
   turno: string = 'Cualquiera';
-  cards: INewCard[] = []
-  provinciasArgentina: string[] = [
-    'Buenos Aires',
-    'Catamarca',
-    'Chaco',
-    'Chubut',
-    'Córdoba',
-    'Corrientes',
-    'Entre Ríos',
-    'Formosa',
-    'Jujuy',
-    'La Pampa',
-    'La Rioja',
-    'Mendoza',
-    'Misiones',
-    'Neuquén',
-    'Río Negro',
-    'Salta',
-    'San Juan',
-    'San Luis',
-    'Santa Cruz',
-    'Santa Fe',
-    'Santiago del Estero',
-    'Tierra del Fuego, Antártida e Islas del Atlántico Sur',
-    'Tucumán'
-  ];
+
 
   provincia: string = 'Cualquiera';
 
