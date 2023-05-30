@@ -1,0 +1,171 @@
+<app-navbar></app-navbar>
+<div class="container pt-3">
+  <nav aria-label="breadcrumb">
+    <div class="breadcrumb d-flex">
+      <li class="breadcrumb-item"><a href="#">Home</a></li>
+      <fa-icon [icon]="faAngleRight" class="mx-4"></fa-icon>
+      <li class="breadcrumb-item active" aria-current="page">
+        <a routerLink="/perfil-profe">Profesor</a>
+      </li>
+      <fa-icon [icon]="faAngleRight" class="mx-4"></fa-icon>
+      <li class="breadcrumb-item active" aria-current="page">{{ profesor }}</li>
+    </div>
+  </nav>
+
+  <div class="row ">
+
+    <div class="col-sm-12 col-lg-4  ">
+      <div class=" card mt-4 p-3">
+        
+        <img src="../../../assets/images/homePage/image 130.png" class="card-img-top img-fluid object-fit-cover" [width]="320" [height]="255"
+        
+          alt="...">
+       
+        <div class="card-body">
+          <h4 class="card-title fw-semibold">{{ profesor }}</h4>
+          <p class="card-text mb-1 fw-normal"><fa-icon [icon]="faLocationDot" class="pe-2"> </fa-icon> San Isidro/Buenos
+            Aires</p>
+          <p class="card-text mb-1 fw-normal"><fa-icon [icon]="faUser" class="pe-2"> </fa-icon> 32 alumnos actuales</p>
+          <ul class="star-rating  d-flex ps-0">
+            <ng-container *ngFor="let star of [1, 2, 3, 4, 5]">
+              <fa-icon [icon]="star <= rating ? faStarSolid : faStar" class="faStarSolid"></fa-icon>
+            </ng-container>
+            <div class="d-flex">
+              <p class="px-2 ps-2 fw-bold">{{rating}},0</p>
+              <p>(15 Opiniones)</p>
+            </div>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="col-sm-12  col-lg-8  mt-4 mb-4 ">
+      <div class="ms-1">
+        <h4 class="mb-3 fw-semibold">¿Qué esperas de la clase? <span>(opcional)</span></h4>
+        <textarea class="border card px-2 py-2 d-flex form-control" name="" id="" cols="80" rows="5"
+          placeholder="Contanos que estás estudiando y que te gustaría aprender"></textarea>
+      </div>
+      <h4 class="mb-3 mt-5 fw-semibold">Elige tu fecha y horario ideal</h4>
+
+      <div class="border calendar mb-4 row  p-xl-3 p-xxl-5 ms-lg-1">
+
+
+        <div class=" text-center   col-12 col-xl-7  ">
+          <h6 class="d-flex justify-content-center mb-4 mt-3 mt-md-1">
+            <fa-icon [icon]="faAngleLeft" class="mx-4 angleIcon fs-5" (click)="previousMonth()"></fa-icon>
+            {{ months[selectedMonthIndex].name }}
+            <fa-icon [icon]="faAngleRight" class="mx-4 angleIcon fs-5" (click)="nextMonth()"></fa-icon>
+          </h6>
+          
+          <ol>
+            <ul class="day-name ">L</ul>
+            <ul class="day-name">M</ul>
+            <ul class="day-name">X</ul>
+            <ul class="day-name">J</ul>
+            <ul class="day-name">V</ul>
+            <ul class="day-name">S</ul>
+            <ul class="day-name">D</ul>
+            <li class="d-flex m-auto" *ngFor="let day of daysArray; let i = index" (click)="selectDay(day)" [ngClass]="{'selected': i + 1 === selectedDayIndex}"  [ngStyle]="i === 0 ? {'grid-column-start': getColumnStart(i)} : null">
+              <div class="d-flex m-auto">
+                <p class="m-auto">{{ day }}</p>
+              </div>
+            </li>
+          </ol>
+        </div>
+
+        <div class="d-flex justify-content-center align-items-center col-12 col-xl-5">
+          <ul class="list-group">
+            <li class="list-group-item d-flex">
+              <input class="form-check-input me-1" type="radio" name="listGroupRadio" id="firstRadio" (click)="selectSchedule = '08 a 09h'" checked>
+              <label class="form-check-label" for="firstRadio">08h a 09h</label>
+            </li>
+            <li class="list-group-item d-flex">
+              <input class="form-check-input me-1" type="radio" name="listGroupRadio" id="secondRadio" (click)="selectSchedule = '10h a 11h'">
+              <label class="form-check-label" for="secondRadio">10h a 11h</label>
+            </li>
+            <li class="list-group-item d-flex">
+              <input class="form-check-input me-1" type="radio" name="listGroupRadio" id="thirdRadio" (click)="selectSchedule = '12h a 13h'">
+              <label class="form-check-label" for="thirdRadio">12h a 13h</label>
+            </li>
+            <li class="list-group-item d-flex">
+              <input class="form-check-input me-1" type="radio" name="listGroupRadio" id="fourRadio" (click)="selectSchedule = '14h a 15h'">
+              <label class="form-check-label" for="fourRadio">14h a 15h</label>
+            </li>
+            <li class="list-group-item d-flex">
+              <input class="form-check-input me-1" type="radio" name="listGroupRadio" id="fifthRadio" (click)="selectSchedule = '16h a 17h'">
+              <label class="form-check-label" for="fifthRadio">16h a 17h</label>
+            </li>
+            <li class="list-group-item d-flex">
+              <input class="form-check-input me-1" type="radio" name="listGroupRadio" id="sixthRadio" (click)="selectSchedule = '18h a 19h'">
+              <label class="form-check-label" for="sixthRadio">18h a 19h</label>
+            </li>
+          </ul>
+
+          <ul class="list-group me-4">
+            <li class="list-group-item d-flex">
+              <input class="form-check-input me-1" type="radio" name="listGroupRadio"  id="seventhRadio" (click)="selectSchedule = '09h a 10h'">
+              <label class="form-check-label" for="seventhRadio" >09 a 10h</label>
+            </li>
+            <li class="list-group-item d-flex">
+              <input class="form-check-input me-1" type="radio" name="listGroupRadio"  id="eighthRadio" (click)="selectSchedule = '11h a 12h'">
+              <label class="form-check-label" for="eighthRadio">11h a 12h</label>
+            </li>
+            <li class="list-group-item d-flex">
+              <input class="form-check-input me-1" type="radio" name="listGroupRadio"  id="ninthRadio" (click)="selectSchedule = '13h a 14h'">
+              <label class="form-check-label" for="ninthRadio">13h a 14h</label>
+            </li>
+            <li class="list-group-item d-flex">
+              <input class="form-check-input me-1" type="radio" name="listGroupRadio"  id="tenthGroupRadio" (click)="selectSchedule = '15h a 16h'">
+              <label class="form-check-label" for="tenthRadio">15h 16h</label>
+            </li>
+            <li class="list-group-item d-flex">
+              <input class="form-check-input me-1" type="radio" name="listGroupRadio"  id="eleventhRadio" (click)="selectSchedule = '17h a 18h'">
+              <label class="form-check-label" for="eleventhRadio">17h a 18h</label>
+            </li>
+            <li class="list-group-item d-flex">
+              <input class="form-check-input me-1" type="radio" name="listGroupRadio"  id="twelfthRadio" (click)="selectSchedule = '19h a 20h'">
+              <label class="form-check-label" for="twelfthRadio">19h a 20h</label>
+            </li>
+
+          </ul>
+
+        </div>
+
+        <div></div>
+        <div class="d-flex justify-content-end">
+          <p class="me-4 mt-4" style="opacity: 50%;">Horario de Argentina (GMT-3)</p>
+        </div>
+
+
+      </div>
+
+      <div class="mb-5 ms-1">
+        <h4 class="mb-3 fw-semibold">Confirmar clase</h4>
+        <div class="card">
+          <div class="card-header d-flex justify-content-evenly">
+            <p>Matematicas</p>
+            <p>{{ selectedDayName }}, {{ selectedDayIndex }} de {{ selectedMonth?.name }}</p>
+            <p> {{selectSchedule}}</p>
+          </div>
+          <div class="card-body d-flex justify-content-evenly ">
+            <li class="list-group-item d-flex">
+              <input class="form-check-input me-1" type="checkbox" name="listGroupRadio"  id="emailCheck">
+              <label class="form-check-label" for="emailCheck">Quiero recibir un mail de confirmacion</label>
+            </li>
+            <button class="btn btn-dark border-circle px-4 ">Confirmar</button>
+          </div>
+
+        </div>
+      </div>
+
+
+    </div>
+
+  </div>
+
+
+
+</div>
+
+<app-footer class=""></app-footer>

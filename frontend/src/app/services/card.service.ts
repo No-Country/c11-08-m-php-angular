@@ -8,6 +8,8 @@ import { INewCard } from '../interfaces/card';
   providedIn: 'root'
 })
 export class CardService {
+  
+
 
 
   constructor(private httpClient: HttpClient) { }

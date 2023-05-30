@@ -2,14 +2,14 @@
     border: 0;
     padding: 0;
     background: none;
-} 
+}
 .nav-register{
     border-radius: 1000px;
     border-color: #C3F6F7!important;
     border-width: 2px!important;
     background-color: #C3F6F7;
-  
-   
+
+
 }
 
 .custom-close-btn, .register-btn, .nav-link{

@@ -19,7 +19,7 @@ class TeacherService
     public function getTeachers()
     {
         try {
-            return Teacher::paginate();
+            return Teacher::all();
         } catch (\Exception $e) {
             throw $e;
         }
@@ -99,10 +99,10 @@ class TeacherService
                 $filters['s.name'] = $request->subject;
             }
             if($request->city){
-                $filters['c.name'] = $request->city;
+                $filters['c.id'] = $request->city;
             }
             if($request->province){
-                $filters['p.name'] = $request->province;
+                $filters['p.id'] = $request->province;
             }
 
             $availability = [];
@@ -142,7 +142,7 @@ class TeacherService
                 $teachers = $this->repository->searchTeacherBy($request, $filters, $availability, $order);
             }
             else{
-                $teachers = Teacher::paginate();
+                $teachers = Teacher::all();
             }
             
             return $teachers;
@@ -150,4 +150,24 @@ class TeacherService
             throw $e;
         }
     }
+
+    public function updateTeacherAverage(int $teacher_id, float $totalAverage)
+    {
+        try {
+            $teacher = Teacher::find($teacher_id);
+            $teacher->update(['average' => $totalAverage]);
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    public function getTeacherByUser(int $user_id)
+    {
+        try {
+            return Teacher::where('user_id', $user_id)->firstOrFail();
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
 }
