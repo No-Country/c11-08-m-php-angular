@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class ScheduleRequest extends FormRequest
 {
@@ -24,7 +25,7 @@ class ScheduleRequest extends FormRequest
     public function rules()
     {
         return [
-            'day' => 'required|numeric',
+            "day" => ['required', Rule::in([1,2,3,4,5,6])],
             //'name' => 'required|numeric',
             'active'=> 'nullable|numeric',
             'start_morning' => 'sometimes|date_format:H:i',
