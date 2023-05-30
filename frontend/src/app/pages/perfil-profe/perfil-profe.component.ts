@@ -1,8 +1,4 @@
-import { CARD_LIST } from './../../mock/card.mock';
-import { ICard } from 'src/app/interfaces/card';
-
 import { Component,Output,EventEmitter} from '@angular/core';
-
 
 import { faAngleRight, faUser, faLocationDot,faStar,faAngleLeft} from '@fortawesome/free-solid-svg-icons';
 
@@ -21,10 +17,8 @@ faLocationDot = faLocationDot;
 faUser = faUser;
 faStar = faStar;
 
-
 tdColor = 'black';
 style: any;
-
 
 cambiarColorTd(event: Event): void {
   const td = event.target as HTMLElement;
@@ -35,5 +29,4 @@ cambiarColorTd(event: Event): void {
   td.style.color = color;
 }
 
-cardList: ICard[] = CARD_LIST;
 }
