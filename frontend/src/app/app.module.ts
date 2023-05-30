@@ -15,7 +15,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { AnimationsComponent } from './components/animations/animations.component';
 import { LoginRegisterComponent } from './components/login-register/login-register.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AgendaComponent } from './pages/agenda/agenda.component';
+import { ScheduleComponent } from './pages/schedule/schedule.component';
 import { PerfilProfeComponent } from './pages/perfil-profe/perfil-profe.component';
 
 @NgModule({
@@ -27,9 +27,11 @@ import { PerfilProfeComponent } from './pages/perfil-profe/perfil-profe.componen
     FooterComponent,
     AnimationsComponent,
     SrcPageComponent,
+    PerfilProfeComponent,
     LoginRegisterComponent,
-    AgendaComponent,
+    ScheduleComponent,
     PerfilProfeComponent
+
   ],
   imports: [
     HttpClientModule,
@@ -38,7 +40,8 @@ import { PerfilProfeComponent } from './pages/perfil-profe/perfil-profe.componen
     AppRoutingModule,
     FontAwesomeModule,
     BrowserAnimationsModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    BrowserAnimationsModule
 
   ],
   providers: [],

@@ -51,7 +51,7 @@ class TeacherRepository
         foreach ($teachers as $teacher) {
             $array[] = $teacher->id;
         }
-        $teachers = Teacher::whereIn('id', $array)->orderBy($order[0], $order[1])->paginate();
+        $teachers = Teacher::whereIn('id', $array)->orderBy($order[0], $order[1])->get();
 
         return $teachers;
     }
