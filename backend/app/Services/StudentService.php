@@ -10,7 +10,7 @@ class StudentService
     public function getStudents()
     {
         try {
-            return Student::paginate();
+            return Student::all();
         } catch (\Exception $e) {
             throw $e;
         }

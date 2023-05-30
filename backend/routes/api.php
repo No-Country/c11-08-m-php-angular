@@ -44,6 +44,7 @@ Route::get('/subjects/name/{name}','App\Http\Controllers\SubjectController@subje
 Route::get('/teachers/search', [TeacherController::class, 'searchTeacherBy']); //Obtener profesores por
 Route::get('/teachers', [TeacherController::class, 'index']); //Todos los profesores
 Route::get('/teachers/{teacher}', [TeacherController::class, 'show']); //Obtener un profesor
+
 Route::get('/reviews/teacher/{teacher_id}', [ReviewController::class, 'getReviewsByTeacher']); //Obtener reviews por profesor
 
 Route::post('/register', [AuthController::class, 'register']);
@@ -52,6 +53,8 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::apiResource('teachers', TeacherController::class)->except(['index', 'show']);
     Route::apiResource('reviews', ReviewController::class);
+    Route::apiResource('users', UserController::class);
+    
     Route::post('/logout', [AuthController::class, 'logout']);
     
 });
@@ -63,7 +66,7 @@ Route::apiResource('students', StudentController::class)->except(['index', 'show
 
 Route::get('/clases/teacher/{teacher_id}',[ClaseController::class,'getStudentsByTeacher']);//Todos los estudiantes de un profesor
 Route::get('/clases/student/{student_id}',[ClaseController::class,'getTeachersByStudent']);//Todos los profores de un estudiante
-Route::put('/clases/changeState/{clase}',[ClaseController::class,'updateClaseState']);
+Route::put('/clases/changeState/{clase}',[ClaseController::class,'updateClaseStateCancel']);
 Route::get('/clases',[ClaseController::class,'index']);//Todas los clases
 Route::get('/clases/{clase}',[ClaseController::class,'show']);//Obtener clase
 Route::apiResource('clases', ClaseController::class)->except(['index', 'show']);
