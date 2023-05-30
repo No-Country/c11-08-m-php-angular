@@ -32,7 +32,6 @@ selectedDayIndex: number | null = null;
 selectedDayName: string | null = null;
 
 
-
 ngOnInit() {
   const currentDate = new Date();
   const currentMonth = currentDate.getMonth();
