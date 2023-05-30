@@ -1,7 +1,7 @@
-import { Provinces } from "./provinces";
+import { ProvincesCity } from './provincesCity';
 
-export interface ProvincesCity {
-    id: number;
-    name: string;
-    province: Provinces;
+export interface City {
+  id: number;
+  name: string;
+  province: ProvincesCity;
 }

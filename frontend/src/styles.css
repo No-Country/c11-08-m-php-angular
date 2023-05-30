@@ -6,3 +6,11 @@ body{
 .nav-link:hover{
     color:#019FA2 !important;
 }
+
+.ngx-pagination .current {
+  padding: .1875rem .625rem;
+  background: #019FA2;
+  color: #fefefe;
+  cursor: default;
+  border-radius: 15px;
+}

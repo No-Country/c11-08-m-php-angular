@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Teacher } from './../../interfaces/teacher';
+import { TeacherService } from './../../services/teacher.service';
+import { Component, OnInit, Input } from '@angular/core';
 import { faLocationDot, faStar } from '@fortawesome/free-solid-svg-icons';
 import { INewCard } from 'src/app/interfaces/card';
 import { CardService } from 'src/app/services/card.service';
@@ -10,19 +12,16 @@ import { CardService } from 'src/app/services/card.service';
   styleUrls: ['./cards.component.css']
 })
 export class CardsComponent implements OnInit {
+
   faStar = faStar;
   faLocationDot = faLocationDot;
-  cardList: INewCard[] = [];
 
-  constructor(private cardService: CardService) { }
+  @Input() teachers: Teacher[]=[];
+  public page!: number;
 
-  ngOnInit(): void {
-    this.getAllCards()
+  constructor(
+  ){}
+
+  ngOnInit(): void{
   }
-  getAllCards(): void { 
-    this.cardService.GetCards()
-    .subscribe((data: INewCard[]) => { 
-      this.cardList = data; 
-    }) 
-    }
 }
