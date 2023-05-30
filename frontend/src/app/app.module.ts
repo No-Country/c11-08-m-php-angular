@@ -1,3 +1,4 @@
+
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
@@ -22,16 +23,18 @@ import { PerfilProfeComponent } from './pages/perfil-profe/perfil-profe.componen
     FooterComponent,
     AnimationsComponent,
     SrcPageComponent,
+    PerfilProfeComponent,
     LoginRegisterComponent,
     ScheduleComponent,
     PerfilProfeComponent
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FontAwesomeModule,
     BrowserAnimationsModule
-    
+
   ],
   providers: [],
   bootstrap: [AppComponent]

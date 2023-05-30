@@ -1,4 +1,5 @@
 import { CARD_LIST } from './../../mock/card.mock';
+import { CardService } from './../../services/card.service';
 import { ICard } from 'src/app/interfaces/card';
 
 import { Component,Output,EventEmitter} from '@angular/core';
