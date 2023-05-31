@@ -1,6 +1,7 @@
 import { Teacher } from './../../interfaces/teacher';
 import { Component, OnInit, Input } from '@angular/core';
 import { faLocationDot, faStar } from '@fortawesome/free-solid-svg-icons';
+import { TeacherService } from './../../services/teacher.service';
 
 
 

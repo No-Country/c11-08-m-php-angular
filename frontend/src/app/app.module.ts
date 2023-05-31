@@ -17,10 +17,9 @@ import { LoginRegisterComponent } from './components/login-register/login-regist
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ScheduleComponent } from './pages/schedule/schedule.component';
 import { PerfilProfeComponent } from './pages/perfil-profe/perfil-profe.component';
-
-
-
 import { SubscriptionComponent } from './pages/subscription/subscription.component';
+import { CommonModule } from '@angular/common';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,7 +43,8 @@ import { SubscriptionComponent } from './pages/subscription/subscription.compone
     FontAwesomeModule,
     BrowserAnimationsModule,
     FormsModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    CommonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
