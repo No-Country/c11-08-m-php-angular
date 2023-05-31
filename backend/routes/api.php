@@ -44,6 +44,8 @@ Route::get('/subjects/{id}','App\Http\Controllers\SubjectController@getSubject')
 Route::get('/subjects/name/{name}','App\Http\Controllers\SubjectController@subjectsByText');//Todas las materias dado un string
 Route::get('/subjects/teacher/{teacher_id}', [SubjectController::class, 'getSubjectsByTeacher']); //Obtener materias por profesor
 
+Route::get('/users/teacher/{teacher_id}', [UserController::class, 'getUserByTeacher']); //Obtener un usuario por profesor
+
 Route::post('/teachers/search', [TeacherController::class, 'searchTeacherBy']); //Obtener profesores por
 Route::get('/teachers', [TeacherController::class, 'index']); //Todos los profesores
 Route::get('/teachers/{teacher}', [TeacherController::class, 'show']); //Obtener un profesor

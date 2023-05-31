@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\Teacher;
 use App\Models\User;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\File;
@@ -118,6 +119,16 @@ class UserService
         }
         else{
             throw new \Exception('Uri no coincide con imagen en base 64');
+        }
+    }
+
+    public function getUserByTeacher(int $teacher_id)
+    {
+        try {
+            $teacher = Teacher::find($teacher_id);
+            return $teacher->user;
+        } catch (\Exception $e) {
+            throw $e;
         }
     }
 
