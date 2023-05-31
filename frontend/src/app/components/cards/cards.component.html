@@ -1,5 +1,5 @@
 <div class="mb-5 mt-1 row g-5 ">
-  <div class="col-12 col-xl-4 col-md-6" *ngFor="let teacher of teachers | paginate: {itemsPerPage: 2, currentPage: page}">
+  <div class="col-12 col-xl-4 col-md-6" *ngFor="let teacher of teachers | paginate: {itemsPerPage: 15, currentPage: page}">
     <div class="card overflow-hidden">
       <div class="ratio ratio-16x9 ">
         <img  src="{{teacher.photo}}" class="card-img-top img-fluid object-fit-cover" alt="...">
@@ -18,7 +18,7 @@
           <p class="mx-2 border etiquetas py-1 px-2">{{teacher.id}}</p>
           <p class="border etiquetas py-1 px-2">{{teacher.id}}</p>
         </div>
-        <p>{{teacher.title}}</p>
+        <p>{{ truncateText(teacher.title, 100) }}</p>
         <div class="d-flex justify-content-between mb-2">
           <div>
             <p class="fs-3 fw-bold d-flex">{{teacher.id}}<span class="m-auto ms-1 fs-6 fw-semibold transparent"> Hora</span></p>
