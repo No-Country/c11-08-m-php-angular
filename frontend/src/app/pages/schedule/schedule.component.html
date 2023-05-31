@@ -2,13 +2,13 @@
 <div class="container pt-3">
   <nav aria-label="breadcrumb">
     <div class="breadcrumb d-flex">
-      <li class="breadcrumb-item"><a href="#">Home</a></li>
+      <li class="breadcrumb-item"><a class="text-decoration-none text-black" href="#">Home</a></li>
       <fa-icon [icon]="faAngleRight" class="mx-4"></fa-icon>
       <li class="breadcrumb-item active" aria-current="page">
-        <a routerLink="/perfil-profe">Profesor</a>
+        <a class="text-decoration-none text-black" routerLink="/perfil-profe">Profesor</a>
       </li>
       <fa-icon [icon]="faAngleRight" class="mx-4"></fa-icon>
-      <li class="breadcrumb-item active" aria-current="page">{{ profesor }}</li>
+      <li class="breadcrumb-item fw-bold" aria-current="page">{{ profesor }}</li>
     </div>
   </nav>
 
