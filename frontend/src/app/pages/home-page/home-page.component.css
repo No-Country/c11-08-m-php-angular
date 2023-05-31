@@ -91,3 +91,18 @@ circle{
     border-radius 0.8s cubic-bezier(0, 0.4, 0.1, 1);
 }
 
+.orange-btn:hover > span {
+    color: #F1770F!important;
+}
+
+.orange-btn{
+   background-color: #F1770F!important;
+   border-color: #F1770F!important;
+}
+
+@keyframes textFade {
+    0% { opacity: 0; transform: translateX(100%); }
+    50% { opacity: 1; transform: translateX(50%); }
+    100% { opacity: 1; transform: translateX(0); }
+  }
+  

@@ -1,90 +1,121 @@
 <app-navbar></app-navbar>
+
 <div class="container pb-5">
-    <div class="row">
-        <div class="col-4" style="padding: 20px 0;">
-            <div class="tpm w-100">
-                <h1 class="fs-3 fw-semibold">Encuentra a tu docente ideal en <span
-                        class="fs-2 fw-bold ">{{elegir}}</span></h1>
 
-            </div>
-        </div>
+  <div class="row">
+    <div class="col-4" style="padding: 20px 0;">
+      <div class="tpm w-100">
+        <h1 class="fs-3 fw-semibold">Encuentra a tu docente ideal en <span class="fs-2 fw-bold ">{{materiaSelectHomeNom}}</span></h1>
+      </div>
     </div>
-        <div class="row">
-            <div class="col-12 col-md-6 col-lg-4 col-xl-3 ">
-                <p class="filtros">Quiero aprender</p>
-                <div class="border srccontainer tpm w-100 d-flex justify-content-between">
-                    <form class="d-flex rounded-pill w-100 text-start" role="search">
-                        <input class="form-control input-border rounded-pill" (keydown.enter)="busqueda($event)" type="search" [placeholder]="elegir" aria-label="Search">
-                     
-                    </form>
-                </div>
-            
-                
+  </div>
 
-            </div>
-            <div class="col-12 col-md-6 col-lg-4 col-xl-3  borderleft">
-                <p class="filtros">Rango de precio</p>
-                <div class="border srccontainer tpm w-100 d-flex justify-content-between">
-                    <button class="btn dropdown-toggle rounded-pill w-100 text-start" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        {{ precio }}
-                    </button>
-                    
-                    <div class="dropdown-menu">
-                        <button class="dropdown-item btn" (click)="precio = '0 - 2000 ARS'">0 - 2000 ARS</button>
-                        <button class="dropdown-item btn" (click)="precio = '2000 ARS - 4000 ARS'">2000 ARS - 4000 ARS</button>
-                        <button class="dropdown-item btn" (click)="precio = '4000 ARS - 6000 ARS'">4000 ARS - 6000 ARS</button>
-                        <button class="dropdown-item btn" (click)="precio = '+6000 ARS'">+6000 ARS</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-md-6 col-lg-4 col-xl-3  borderleft">
-                <p class="filtros">Provincia / Ciudad</p>
-                <div class="border srccontainer tpm w-100 d-flex justify-content-between">
-                    
-                        <button class="btn dropdown-toggle rounded-pill w-100 text-start" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          {{ provincia }}
-                        </button>
-                        <div class="dropdown-menu scrollable-menu" aria-labelledby="dropdownMenuButton">
-                          <button *ngFor="let prov of provinciasArgentina" class="dropdown-item" (click)="seleccionarProvincia(prov)">{{ prov }}</button>
-                        </div>
+  <div class="row">
 
-                      
-                </div>
-            </div>
-            <div class="col-12 col-md-6 col-lg-4 col-xl-3  borderleft">
-                <p class="filtros">Disponibilidad</p>
-                <div class="border srccontainer tpm w-100 d-flex justify-content-between">
-                    <button class="btn dropdown-toggle rounded-pill w-100 text-start" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        {{ turno }}
-                    </button>
-                    
-                    <div class="dropdown-menu">
-                        <button class="dropdown-item btn" (click)="turno = 'Cualquiera'">Cualquiera</button>
-                        <button class="dropdown-item btn" (click)="turno = 'Mañana'">Mañana</button>
-                        <button class="dropdown-item btn" (click)="turno = 'Tarde'">Tarde</button>
-                        <button class="dropdown-item btn" (click)="turno = 'Noche'">Noche</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div class="col-12 col-md-6 col-lg-4 col-xl-3 ">
+      <p class="filtros mb-2">Quiero aprender</p>
+      <div>
+        <select class="form-select" (change)="getfilterTeachers()"
+          id="selectSubjects" name="selectSubjects">
+          <option *ngFor="let subject of listSubjects" [value]="subject.id">{{ subject.name }}</option>
+        </select>
+      </div>
+      <!-- <div class="border srccontainer tpm w-100 d-flex justify-content-between">
+        <form class="d-flex rounded-pill w-100 text-start" role="search">
+          <input class="form-control input-border rounded-pill" (keydown.enter)="busqueda($event)" type="search"
+            [placeholder]="materiaSelectHomeNom" aria-label="Search">
+        </form>
+      </div> -->
     </div>
 
+    <!-- <div class="col-12 col-md-6 col-lg-4 col-xl-3  borderleft">
+      <p class="filtros">Rango de precio</p>
+      <div class="border srccontainer tpm w-100 d-flex justify-content-between">
+        <button class="btn dropdown-toggle rounded-pill w-100 text-start" type="button" data-bs-toggle="dropdown"
+          aria-expanded="false">
+          {{ precio }}
+        </button>
+        <div class="dropdown-menu">
+          <button class="dropdown-item btn" (click)="precio = '0 - 2000 ARS'">0 - 2000 ARS</button>
+          <button class="dropdown-item btn" (click)="precio = '2000 ARS - 4000 ARS'">2000 ARS - 4000 ARS</button>
+          <button class="dropdown-item btn" (click)="precio = '4000 ARS - 6000 ARS'">4000 ARS - 6000 ARS</button>
+          <button class="dropdown-item btn" (click)="precio = '+6000 ARS'">+6000 ARS</button>
+        </div>
+      </div>
+    </div> -->
+
+    <div class="col-12 col-md-6 col-lg-4 col-xl-3 ">
+      <p class="filtros mb-2">Provincia</p>
+      <div>
+        <select class="form-select" (change)="getCitys();"
+          id="selectProvinces" name="selectProvinces">
+          <option value="">Seleccione una Provincia</option>
+          <option *ngFor="let province of listProvinces" [value]="province.id">{{ province.name }}</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="col-12 col-md-6 col-lg-4 col-xl-3 ">
+      <p class="filtros mb-2">Ciudad</p>
+      <div>
+        <select class="form-select" (change)="getfilterTeachers()"
+          id="selectCitys" name="selectCitys">
+          <option value="">Seleccione una ciudad</option>
+          <option *ngFor="let city of listCitys" [value]="city.id">{{ city.name }}</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- <div class="col-12 col-md-6 col-lg-4 col-xl-3  borderleft">
+      <p class="filtros">Provincia / Ciudad</p>
+      <div class="border srccontainer tpm w-100 d-flex justify-content-between">
+        <button class="btn dropdown-toggle rounded-pill w-100 text-start" type="button" id="dropdownMenuButton"
+          data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          {{ provincia }}
+        </button>
+        <div class="dropdown-menu scrollable-menu" aria-labelledby="dropdownMenuButton">
+          <button *ngFor="let prov of provinciasArgentina" class="dropdown-item" (click)="seleccionarProvincia(prov)">{{
+            prov }}</button>
+        </div>
+      </div>
+    </div> -->
+
+    <!-- <div class="col-12 col-md-6 col-lg-4 col-xl-3  borderleft">
+      <p class="filtros">Disponibilidad</p>
+      <div class="border srccontainer tpm w-100 d-flex justify-content-between">
+        <button class="btn dropdown-toggle rounded-pill w-100 text-start" type="button" data-bs-toggle="dropdown"
+          aria-expanded="false">
+          {{ turno }}
+        </button>
+        <div class="dropdown-menu">
+          <button class="dropdown-item btn" (click)="turno = 'Cualquiera'">Cualquiera</button>
+          <button class="dropdown-item btn" (click)="turno = 'Mañana'">Mañana</button>
+          <button class="dropdown-item btn" (click)="turno = 'Tarde'">Tarde</button>
+          <button class="dropdown-item btn" (click)="turno = 'Noche'">Noche</button>
+        </div>
+      </div>
+    </div> -->
+
+  </div>
+</div>
 
 <div class="container">
-    <div class="pt-2 pb-3 d-flex justify-content-between w-1000 ">
-        <h1 class="fs-4">40 docentes <span class="fs-6"> {{elegir}}</span></h1>
-        <button class="btn border srccontainer tpm w-40 d-flex justify-content-between" style="width: 20%!important;" type="button" data-bs-toggle="dropdown" aria-expanded="false">Ordenar
-            por<fa-icon [icon]="faCaretDown"></fa-icon></button>
-        <div class="dropdown-menu ordenar col dropdown-menu-end mt-2 pe-5">
-            <button class="dropdown-item btn">Edad</button>
-            <button class="dropdown-item btn">Nombre</button>
-            <button class="dropdown-item btn">Apellido</button>
-            <button class="dropdown-item btn">Pais</button>
-        </div>
+  <div class="pt-2 pb-3 d-flex justify-content-between w-1000 ">
+    <h1 class="fs-4">{{ numTeachers }} docentes <span class="fs-6"> {{materiaSelectHomeNom}}</span></h1>
+    <button class="btn border srccontainer tpm w-40 d-flex justify-content-between" style="width: 20%!important;"
+      type="button" data-bs-toggle="dropdown" aria-expanded="false">Ordenar
+      por<fa-icon [icon]="faCaretDown"></fa-icon></button>
+    <div class="dropdown-menu ordenar col dropdown-menu-end mt-2 pe-5">
+      <button class="dropdown-item btn">Edad</button>
+      <button class="dropdown-item btn">Nombre</button>
+      <button class="dropdown-item btn">Apellido</button>
+      <button class="dropdown-item btn">Pais</button>
     </div>
-    <div class="mb-5 mt-5 cards-section">
-        <app-cards></app-cards>
-    </div>
+  </div>
+
+  <div class="mb-5 mt-5 cards-section">
+    <app-cards [teachers]="teachers"></app-cards>
+  </div>
 </div>
 
 <app-footer></app-footer>
