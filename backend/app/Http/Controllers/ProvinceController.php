@@ -8,7 +8,7 @@ use App\Models\Province;
 class ProvinceController extends Controller
 {
     public function index(){
-        $provincias = Province::all();
+        $provincias = Province::orderBy('name')->get();
         return response()->json($provincias);
     }
 

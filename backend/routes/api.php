@@ -37,6 +37,7 @@ Route::get('/schedule/teacher/{teacher_id}','App\Http\Controllers\ScheduleContro
 
 Route::get('/cities','App\Http\Controllers\CityController@index');//Todas las ciudades
 Route::get('/cities/{id}','App\Http\Controllers\CityController@getCity');//Una ciudad
+Route::get('/cities/name/{name}','App\Http\Controllers\CityController@getCitiesByName');//Obtener las ciudades dado un nombre
 Route::get('/cities/province/{id}','App\Http\Controllers\CityController@citiesProvince');//Ciudades de una provincia
 
 Route::get('/subjects','App\Http\Controllers\SubjectController@index');//Todas las materias
