@@ -1,6 +1,6 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,6 +16,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ScheduleComponent } from './pages/schedule/schedule.component';
 import { PerfilProfeComponent } from './pages/perfil-profe/perfil-profe.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { CommonModule } from '@angular/common';
+import { RegisterComponent } from './components/register/register.component';
 
 
 @NgModule({
@@ -30,18 +32,21 @@ import { NgxPaginationModule } from 'ngx-pagination';
     PerfilProfeComponent,
     LoginRegisterComponent,
     ScheduleComponent,
-    PerfilProfeComponent
+    PerfilProfeComponent,
+    RegisterComponent
     
   ],
   imports: [
     HttpClientModule,
+    CommonModule,
     FormsModule,
     BrowserModule,
     AppRoutingModule,
     FontAwesomeModule,
     BrowserAnimationsModule,
     FormsModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
