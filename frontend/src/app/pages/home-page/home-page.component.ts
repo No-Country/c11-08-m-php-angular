@@ -43,7 +43,7 @@ export class HomePageComponent implements OnInit {
   animationInProgress = false;
   constructor(private router: Router){}
 
-@HostListener('window:scroll', [])
+// @HostListener('window:scroll', [])
 
 
 
