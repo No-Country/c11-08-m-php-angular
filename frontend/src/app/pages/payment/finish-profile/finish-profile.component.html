@@ -1,1 +1,107 @@
-<p>finish-profile works!</p>
+<div class="container">
+    <div class="row pt-5 pb-5 justify-content-center d-flex">
+        <div class="col-12 col-md-5 col-lg-4 d-flex align-self-start">
+            <div class="flex align-items-center p-4 w-100 perfil-box">
+                <div class="text-center">
+                    <span class="fw-semibold fs-5 pb-3 mb-1">Tu foto de perfil</span>
+                    <br>
+                    <img [src]="imgTeacher" class="img-fluid" style="border-radius: 10px;">
+                </div>
+                <div class="text-center mt-2">
+                    <button class="btn rounded-pill w-100 pt-2 pb-2 btn-payment" type="button" aria-haspopup="true"
+                        aria-expanded="false">
+                        Editar foto<fa-icon class="m-1 camera-icon" [icon]="faCamera"></fa-icon>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-8 d-flex">
+            <div class="info-box w-100"
+                style=" padding: 32px; gap: 24px; background: #FFFFFF; box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15); border-radius: 16px;">
+                <div class="w-md-full container">
+
+                    <div class="d-flex justify-content-start mb-4">
+                        <h5>Acerca de la clase</h5>
+                    </div>
+                    <form [formGroup]="finishForm">
+                        <div class="mb-3">
+                            <div class="row">
+                                <div class="col-12">
+                                    <select class="form-select" id="selectSubjects" name="selectSubjects">
+                                        <option *ngFor="let subject of listSubjects" [value]="subject.id">{{
+                                            subject.name }}</option>
+                                    </select>
+                                </div>
+                                <div class="col-12 mt-3">
+                                    <label class="form-label">Acerca de vos</label>
+                                    <textarea class="form-control" rows="5"
+                                        placeholder="Ej: Estudie en el instituto Mariano Moreno. Realizamos ejercicios juntos y luego repasamos los conceptos que considero que no quedaron claros"
+                                        formControlName="aboutYou"></textarea>
+                                </div>
+                                <div class="col-12 mt-3">
+                                    <label class="form-label">¿Qué metodología usas?</label>
+                                    <textarea class="form-control" rows="5"
+                                        placeholder="Ej: Realizamos ejercicios juntos y luego repasamos los conceptos que concidero que no quedaron claros"
+                                        formControlName="metodology"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <h5 class="fw-bold">Tarifa</h5>
+                            <p>Establecé tus tarifas. Los valores de las clases se presentan en horas</p>
+                        </div>
+                        <div class="row d-flex justify-content-center ">
+                            <div class="col-12 col-md-4 border-r">
+                                <div>
+                                    <div class="d-flex m-0 options">
+                                        <label class="label-montos fw-semibold text-center ">1 CLASES <span
+                                                class="fw-normal">(1 HORA)</span></label>
+                                        <input type="text" placeholder="Ingrese monto"
+                                            class="text-center inputs-montos">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-4 border-r">
+                                <div>
+                                    <div class="d-flex m-0 options">
+                                        <label class="label-montos fw-semibold text-center">2 CLASES</label>
+                                        <input type="text" placeholder="Ingrese monto"
+                                            class="text-center inputs-montos">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-4">
+                                <div>
+                                    <div class="d-flex m-0 options">
+                                        <label class="label-montos fw-semibold text-center">4 CLASES</label>
+                                        <input type="text" placeholder="Ingrese monto"
+                                            class="text-center inputs-montos">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row justify-content-between align-items-center mt-3">
+                            <div class="col text-end">
+                                <button class="btn rounded-pill pt-2 pb-2 btn-anterior px-4" type="button"
+                                    routerLink="/payment/confirm-data">
+                                    Anterior
+                                </button>
+                            </div>
+                            <div class="col text-start">
+                                <button class="btn rounded-pill pt-2 pb-2 btn-send" type="button"
+                                    routerLink="/payment/finish-profile">
+                                    Enviar formulario
+                                </button>
+                            </div>
+                        </div>
+
+                    </form>
+
+                </div>
+
+
+            </div>
+
+        </div>
+    </div>
+</div>

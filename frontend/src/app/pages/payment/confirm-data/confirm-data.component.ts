@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { ProvincesCity } from 'src/app/interfaces/provincesCity';
@@ -10,11 +10,11 @@ import { ProvincesService } from 'src/app/services/provinces.service';
   templateUrl: './confirm-data.component.html',
   styleUrls: ['./confirm-data.component.css']
 })
-export class ConfirmDataComponent {
+export class ConfirmDataComponent implements OnInit {
   imgTeacher = '../../../../assets/images/subscription-page/nocountry (1).png';
 
   
-  registerForm: FormGroup;
+  confirmForm: FormGroup;
   
   
   
@@ -23,7 +23,7 @@ export class ConfirmDataComponent {
     private provincesService: ProvincesService,
     private formBuilder: FormBuilder,
     ) {
-      this.registerForm = this.formBuilder.group({
+      this.confirmForm = this.formBuilder.group({
         name: ['', Validators.required],
         lastName: ['', Validators.required],
         email: ['', [Validators.required, Validators.email]],
@@ -32,15 +32,15 @@ export class ConfirmDataComponent {
     
     listProvinces: ProvincesCity[] = [];
   get name() {
-    return this.registerForm.get('name')
+    return this.confirmForm.get('name')
   }
 
   get lastName() {
-    return this.registerForm.get('lastName')
+    return this.confirmForm.get('lastName')
   }
 
   get email() {
-    return this.registerForm.get('email');
+    return this.confirmForm.get('email');
   }
 
   ngOnInit(): void {

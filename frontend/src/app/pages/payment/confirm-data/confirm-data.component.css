@@ -8,3 +8,12 @@
     border: 1px solid #AEAEAE;
     border-radius: 1000px;
 }
+
+.btn-siguiente {
+    border-color: #019FA2;
+    border-radius: 1000px;
+    border-width: 1px!important;
+    background-color: #019FA2;
+    color: white;
+    font-size: .9rem;
+}
