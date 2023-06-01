@@ -67,4 +67,14 @@ class UserController extends Controller
         }
     }
 
+    public function getUserByTeacher(int $teacher_id)
+    {
+        try {
+            $user = $this->service->getUserByTeacher($teacher_id);
+            return new UserResource($user);
+        } catch (\Exception $e) {
+            return response()->json(['message' => $e->getMessage(), 'type' => 'error'],500);
+        }
+    }
+
 }

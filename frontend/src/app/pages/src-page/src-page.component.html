@@ -5,7 +5,7 @@
   <div class="row">
     <div class="col-4" style="padding: 20px 0;">
       <div class="tpm w-100">
-        <h1 class="fs-3 fw-semibold">Encuentra a tu docente ideal en <span class="fs-2 fw-bold ">{{elegir}}</span></h1>
+        <h1 class="fs-3 fw-semibold">Encuentra a tu docente ideal en <span class="fs-2 fw-bold ">{{materiaSelectHomeNom}}</span></h1>
       </div>
     </div>
   </div>
@@ -23,7 +23,7 @@
       <!-- <div class="border srccontainer tpm w-100 d-flex justify-content-between">
         <form class="d-flex rounded-pill w-100 text-start" role="search">
           <input class="form-control input-border rounded-pill" (keydown.enter)="busqueda($event)" type="search"
-            [placeholder]="elegir" aria-label="Search">
+            [placeholder]="materiaSelectHomeNom" aria-label="Search">
         </form>
       </div> -->
     </div>
@@ -101,7 +101,7 @@
 
 <div class="container">
   <div class="pt-2 pb-3 d-flex justify-content-between w-1000 ">
-    <h1 class="fs-4">40 docentes <span class="fs-6"> {{elegir}}</span></h1>
+    <h1 class="fs-4">{{ numTeachers }} docentes <span class="fs-6"> {{materiaSelectHomeNom}}</span></h1>
     <button class="btn border srccontainer tpm w-40 d-flex justify-content-between" style="width: 20%!important;"
       type="button" data-bs-toggle="dropdown" aria-expanded="false">Ordenar
       por<fa-icon [icon]="faCaretDown"></fa-icon></button>

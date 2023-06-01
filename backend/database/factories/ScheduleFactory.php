@@ -22,7 +22,7 @@ class ScheduleFactory extends Factory
         $endMorning = fake()->dateTimeBetween('2023-05-20 11:00:00', '2023-05-20 12:59:00')->format('H').':00';
         $startAfternoon = fake()->dateTimeBetween('2023-05-20 12:00:00', '2023-05-20 14:59:00')->format('H').':00';
         $endAfternoon = fake()->dateTimeBetween('2023-05-20 15:00:00', '2023-05-20 18:59:00')->format('H').':00';
-        $startNight = fake()->dateTimeBetween('2023-05-20 19:00:00', '2023-05-20 20:59:00')->format('H').':00';
+        $startNight = fake()->dateTimeBetween('2023-05-20 18:00:00', '2023-05-20 20:59:00')->format('H').':00';
         $endNight = fake()->dateTimeBetween('2023-05-20 21:00:00', '2023-05-20 22:59:00')->format('H').':00';
 
         $morning = fake()->randomElement([[$startMorning, $endMorning], $null]);
