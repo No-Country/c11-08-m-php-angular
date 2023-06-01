@@ -15,6 +15,7 @@ import { LoginRegisterComponent } from './components/login-register/login-regist
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ScheduleComponent } from './pages/schedule/schedule.component';
 import { PerfilProfeComponent } from './pages/perfil-profe/perfil-profe.component';
+
 import { NgxPaginationModule } from 'ngx-pagination';
 import { SubscriptionComponent } from './pages/subscription/subscription.component';
 import { CheckoutComponent } from './pages/payment/checkout/checkout.component';
