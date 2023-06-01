@@ -35,27 +35,23 @@ import { interval } from 'rxjs';
 
 export class HomePageComponent implements OnInit {
 
-  selectedOption: string = '';
+  selectedOption: string = ''; // borrar
+  faLocationDot = faLocationDot; // borrar
   faGraduationCap = faGraduationCap;
-  faLocationDot = faLocationDot;
-  currentTextIndex = 0;
-  textAnimationState: string | undefined;
 
-  animationInProgress = false;
   constructor(
     private router: Router,
     private subjectsService: SubjectsService
+ 
   ) { }
-
-  @HostListener('window:scroll', [])
 
   listSubjects: Subjects[] = [];
 
   ngOnInit() {
-
     interval(3000).subscribe(() => {
       this.changeText();
     });
+    this.changeText();
 
     this.subjectsService.getSubjects().subscribe(
       res => {
@@ -63,23 +59,39 @@ export class HomePageComponent implements OnInit {
       },
       err => console.log(err)
     );
-
   }
+
+  //inicio animacion
+  @HostListener('window:scroll', [])
+  currentTextIndex = 0;
+  textAnimationState: string | undefined;
+  animationInProgress = false;
+
+
+// @HostListener('window:scroll', [])
+
+
+
+
+
+  
 
   changeText() {
-    if (!this.animationInProgress) {
-      this.animationInProgress = true;
-      setTimeout(() => {
-        this.currentTextIndex = (this.currentTextIndex + 1) % this.listSubjects.length;
+    interval(3000).subscribe(() => {
+      if (!this.animationInProgress) {
+        this.animationInProgress = true;
         setTimeout(() => {
-          this.animationInProgress = false;
+          this.currentTextIndex = (this.currentTextIndex + 1) % this.listSubjects.length;
+          setTimeout(() => {
+            this.animationInProgress = false;
+          }, 500);
         }, 500);
-      }, 500);
-    }
+      }
+    });
   }
+  //fin animacion
 
   seleccionarOpcion() {
-
     const selectSubjects = document.getElementById('selectSubjects') as HTMLSelectElement;
     const selectedOption = selectSubjects.options[selectSubjects.selectedIndex];
     const selectedText = selectedOption ? selectedOption.textContent?.trim() : "";

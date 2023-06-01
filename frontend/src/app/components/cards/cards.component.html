@@ -4,7 +4,7 @@
       <div class="ratio ratio-16x9 ">
         <img  src="{{teacher.photo}}" class="card-img-top img-fluid object-fit-cover" alt="...">
       </div>
-      <div class="card-body">
+      <div class="card-body ">
         <h5 class="card-title mb-2">{{teacher.name}}</h5>
         <div class="d-flex justify-content-start flex-wrap">
           <p><fa-icon [icon]="faLocationDot"></fa-icon> {{teacher.city}}</p>
@@ -13,7 +13,7 @@
             <p>({{teacher.id}})</p>
           </div>
         </div>
-        <div class="d-flex justify-content-start flex-wrap">
+        <div class="d-flex justify-content-start flex-wrap ">
           <p class="border etiquetas py-1 px-2">{{teacher.id}}</p>
           <p class="mx-2 border etiquetas py-1 px-2">{{teacher.id}}</p>
           <p class="border etiquetas py-1 px-2">{{teacher.id}}</p>
@@ -33,36 +33,3 @@
 <div class="d-flex justify-content-center">
   <pagination-controls (pageChange)="page = $event" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>
 </div>
-
-
-<!-- <div class="mb-5 mt-1 row g-5 ">
-  <div class="col-12 col-xl-4 col-md-6" *ngFor="let card of cardList">
-    <div class="card overflow-hidden">
-      <div class="ratio ratio-16x9 ">
-        <img  src="{{card.img}}" class="card-img-top img-fluid object-fit-cover" alt="...">
-      </div>
-      <div class="card-body">
-        <h5 class="card-title mb-2">{{card.nombre}}</h5>
-        <div class="d-flex justify-content-start flex-wrap">
-          <p><fa-icon [icon]="faLocationDot"></fa-icon> {{card.ubicacion}}</p>
-          <div class="d-flex">
-            <p class="px-3"><fa-icon [icon]="faStar"></fa-icon> {{card.puntuacion}}</p>
-            <p>({{card.numeroDeOpiniones}})</p>
-          </div>
-        </div>
-        <div class="d-flex justify-content-start flex-wrap">
-          <p class="border etiquetas py-1 px-2">{{card.etiquetas[0]}}</p>
-          <p class="mx-2 border etiquetas py-1 px-2">{{card.etiquetas[1]}}</p>
-          <p class="border etiquetas py-1 px-2">{{card.etiquetas[2]}}</p>
-        </div>
-        <p>{{card.parrafo}}</p>
-        <div class="d-flex justify-content-between mb-2">
-          <div>
-            <p class="fs-3 fw-bold d-flex">{{card.precioHora}}<span class="m-auto ms-1 fs-6 fw-semibold transparent"> Hora</span></p>
-          </div>
-          <div><a routerLink="/perfil-profe" class="btn btn-contact py-2 px-4">Contactar</a></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div> -->

@@ -35,7 +35,7 @@
 </nav>
 
 <app-login-register></app-login-register>
-
+<app-register></app-register>
 
 <div class="offcanvas offcanvas-start" data-bs-backdrop="static" tabindex="-1" id="staticBackdrop"
   aria-labelledby="staticBackdropLabel" style="background-color: #FFFFFF;">
@@ -60,7 +60,7 @@
           <li class="nav-item">
             <a class="nav-link" href="#">Contacto</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item" *ngIf="!authService.isLoggedIn">
             <button class="nav-link border-none fw-bold" style=" color:#019FA2 !important; " data-bs-toggle="modal" data-bs-target="#loginModal">Inicia sesión</button>
           </li>
         </ul>
@@ -68,7 +68,7 @@
 
       <div class="d-flex justify-content-start mt-4">
         <ul class="navbar-nav">
-          <li class="nav-item">
+          <li class="nav-item" *ngIf="!authService.isLoggedIn ">
             <a class="nav-link nav-register border px-4 py-2 tpm" href="#" data-bs-toggle="modal" data-bs-target="#registerModal">Registrate</a>
           </li>
         </ul>

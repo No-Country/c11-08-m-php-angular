@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router, RouterLink } from '@angular/router';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -8,16 +10,22 @@ import { AuthService } from 'src/app/services/auth.service';
   templateUrl: './login-register.component.html',
   styleUrls: ['./login-register.component.css']
 })
-export class LoginRegisterComponent {
+export class LoginRegisterComponent  {
+  isLoggedIn = false;
+  showModal = false;
+
   mostrarContrasena: boolean = false;
   tipoContrasena: string = 'password';
   faEye = faEye;
   faEyeSlash = faEyeSlash;
   loginForm: FormGroup;
-  registerForm: FormGroup;
+
   loading = false;
   submitted = false;
   error = '';
+
+
+
 
 
   togglePasswordVisibility() {
@@ -29,43 +37,26 @@ export class LoginRegisterComponent {
 
   constructor(
     private formBuilder: FormBuilder,
-    private authService: AuthService
+    public authService: AuthService,
+    private modalService: NgbModal,
+
   ) {
-    this.registerForm = this.formBuilder.group({
-      first_name: ['', Validators.required],
-      last_name: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      role: ['', Validators.required],
-      password: ['', [Validators.required, Validators.minLength(6)]],
-      password_confirmation: ['', Validators.required]
-    });
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]]
     });
   }
 
-  onRegisterFormSubmit() {
-    this.submitted = true;
-
-    if (this.registerForm.invalid) {
-      return;
-    }
-
-    this.loading = true;
-    this.authService.register(this.registerForm.value)
-      .subscribe(
-        (data: any) => {
-          console.log(data);
-          this.loading = false;
-        },
-        error => {
-          console.log(error);
-          this.error = error;
-          this.loading = false;
-        }
-      );
+  get Email()
+  {
+    return this.loginForm.get('email');
   }
+
+  get Password()
+  {
+    return this.loginForm.get('password');
+  }
+
 
   onLoginFormSubmit() {
     this.submitted = true;
@@ -80,7 +71,8 @@ export class LoginRegisterComponent {
         (data: any) => {
           console.log(data);
           this.loading = false;
-          // TODO: Cerrar modal o hacer algo adicional
+          this.isLoggedIn = true;
+         
         },
         error => {
           console.error(error);
