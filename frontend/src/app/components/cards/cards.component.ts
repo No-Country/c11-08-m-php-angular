@@ -1,5 +1,4 @@
 import { Teacher } from './../../interfaces/teacher';
-import { TeacherService } from './../../services/teacher.service';
 import { Component, OnInit, Input } from '@angular/core';
 import { faLocationDot, faStar } from '@fortawesome/free-solid-svg-icons';
 
@@ -20,5 +19,12 @@ export class CardsComponent implements OnInit {
   ){}
 
   ngOnInit(): void{
+  }
+
+  truncateText(text: string, maxLength: number): string {
+    if (text.length > maxLength) {
+      return text.substring(0, maxLength) + '...';
+    }
+    return text;
   }
 }

@@ -37,12 +37,15 @@ Route::get('/schedule/teacher/{teacher_id}','App\Http\Controllers\ScheduleContro
 
 Route::get('/cities','App\Http\Controllers\CityController@index');//Todas las ciudades
 Route::get('/cities/{id}','App\Http\Controllers\CityController@getCity');//Una ciudad
+Route::get('/cities/name/{name}','App\Http\Controllers\CityController@getCitiesByName');//Obtener las ciudades dado un nombre
 Route::get('/cities/province/{id}','App\Http\Controllers\CityController@citiesProvince');//Ciudades de una provincia
 
 Route::get('/subjects','App\Http\Controllers\SubjectController@index');//Todas las materias
 Route::get('/subjects/{id}','App\Http\Controllers\SubjectController@getSubject');//Una materia
 Route::get('/subjects/name/{name}','App\Http\Controllers\SubjectController@subjectsByText');//Todas las materias dado un string
 Route::get('/subjects/teacher/{teacher_id}', [SubjectController::class, 'getSubjectsByTeacher']); //Obtener materias por profesor
+
+Route::get('/users/teacher/{teacher_id}', [UserController::class, 'getUserByTeacher']); //Obtener un usuario por profesor
 
 Route::post('/teachers/search', [TeacherController::class, 'searchTeacherBy']); //Obtener profesores por
 Route::get('/teachers', [TeacherController::class, 'index']); //Todos los profesores

@@ -6,6 +6,12 @@ import { SrcPageComponent } from './pages/src-page/src-page.component';
 import { ScheduleComponent } from './pages/schedule/schedule.component';
 import { PerfilProfeComponent } from './pages/perfil-profe/perfil-profe.component';
 
+import { SubscriptionComponent } from './pages/subscription/subscription.component';
+import { CheckoutComponent } from './pages/payment/checkout/checkout.component';
+import { ConfirmDataComponent } from './pages/payment/confirm-data/confirm-data.component';
+import { FinishProfileComponent } from './pages/payment/finish-profile/finish-profile.component';
+import { PaymentComponent } from './pages/payment/payment/payment.component';
+
 const routes: Routes = [
   {
     path: '',
@@ -27,7 +33,23 @@ const routes: Routes = [
   {
     path: 'schedule',
     component:ScheduleComponent,
+  },
+  {
+    path: 'subscription',
+    component:SubscriptionComponent,
+  },
+  {
+    path:'payment', 
+    component:PaymentComponent,
+    children:[
+      {path: 'checkout',
+      component: CheckoutComponent,},
+      { path:'confirm-data', 
+      component:ConfirmDataComponent},
+      { path:'finish-profile', 
+      component:FinishProfileComponent},]
   }
+
 
 ];
 

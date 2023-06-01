@@ -15,18 +15,15 @@ export class TeacherService {
   private apiUrl = environment.URL;
 
   getfilterTeachers(filterTeacher: FilterTeacher): Observable<Teacher[]> {
-    return this.http.post<Teacher[]>(`${this.apiUrl}/api/teachers`, filterTeacher);
+    return this.http.post<any>(`${this.apiUrl}/api/teachers/search`, filterTeacher).pipe(
+      map(response => response.data)
+    );
   }
 
   getTeachers(): Observable<Teacher[]> {
-
     return this.http.get<any>(`${this.apiUrl}/api/teachers`).pipe(
       map(response => response.data)
     );
-
-    // return this.http.get<Teacher[]>(`${this.apiUrl}/api/teachers`);
-
-    // return this.http.get<any>(`${this.apiUrl}/api/teachers`).pipe(
     //   map(response => {
     //     const data = response.data; // Accede al objeto 'data' dentro de la respuesta
     //     if (Array.isArray(data)) {

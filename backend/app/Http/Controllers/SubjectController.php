@@ -17,7 +17,7 @@ class SubjectController extends Controller
     }
 
     public function index(){
-        $subjects = Subject::all();
+        $subjects = Subject::orderBy('name')->get();
         return response()->json($subjects);
     }
 
@@ -30,7 +30,8 @@ class SubjectController extends Controller
     public function subjectsByText($name){
         try {
             $subjects = Subject::where(DB::raw('upper(name)'),'LIKE','%'.strtoupper($name).'%')
-                            ->get();
+                                ->orderBy('name')
+                                ->get();
             return response()->json($subjects);
         } catch (\Exception $e) {
             return response()->json(['message' => $e->getMessage(), 'type' => 'error'],500);
