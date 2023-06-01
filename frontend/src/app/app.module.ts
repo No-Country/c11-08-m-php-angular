@@ -1,6 +1,6 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,7 +15,15 @@ import { LoginRegisterComponent } from './components/login-register/login-regist
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ScheduleComponent } from './pages/schedule/schedule.component';
 import { PerfilProfeComponent } from './pages/perfil-profe/perfil-profe.component';
+
 import { NgxPaginationModule } from 'ngx-pagination';
+import { CommonModule } from '@angular/common';
+import { RegisterComponent } from './components/register/register.component';
+import { SubscriptionComponent } from './pages/subscription/subscription.component';
+import { CheckoutComponent } from './pages/payment/checkout/checkout.component';
+import { ConfirmDataComponent } from './pages/payment/confirm-data/confirm-data.component';
+import { FinishProfileComponent } from './pages/payment/finish-profile/finish-profile.component';
+import { PaymentComponent } from './pages/payment/payment/payment.component';
 
 
 @NgModule({
@@ -30,18 +38,26 @@ import { NgxPaginationModule } from 'ngx-pagination';
     PerfilProfeComponent,
     LoginRegisterComponent,
     ScheduleComponent,
-    PerfilProfeComponent
+    PerfilProfeComponent,
+    RegisterComponent,
+    SubscriptionComponent,
+    CheckoutComponent,
+    ConfirmDataComponent,
+    FinishProfileComponent,
+    PaymentComponent
     
   ],
   imports: [
     HttpClientModule,
+    CommonModule,
     FormsModule,
     BrowserModule,
     AppRoutingModule,
     FontAwesomeModule,
     BrowserAnimationsModule,
     FormsModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
