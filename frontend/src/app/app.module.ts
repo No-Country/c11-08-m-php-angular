@@ -16,6 +16,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ScheduleComponent } from './pages/schedule/schedule.component';
 import { PerfilProfeComponent } from './pages/perfil-profe/perfil-profe.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { SubscriptionComponent } from './pages/subscription/subscription.component';
+import { CheckoutComponent } from './pages/payment/checkout/checkout.component';
+import { ConfirmDataComponent } from './pages/payment/confirm-data/confirm-data.component';
+import { FinishProfileComponent } from './pages/payment/finish-profile/finish-profile.component';
+import { PaymentComponent } from './pages/payment/payment/payment.component';
 
 
 @NgModule({
@@ -30,7 +35,12 @@ import { NgxPaginationModule } from 'ngx-pagination';
     PerfilProfeComponent,
     LoginRegisterComponent,
     ScheduleComponent,
-    PerfilProfeComponent
+    PerfilProfeComponent,
+    SubscriptionComponent,
+    CheckoutComponent,
+    ConfirmDataComponent,
+    FinishProfileComponent,
+    PaymentComponent
     
   ],
   imports: [
