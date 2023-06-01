@@ -24,6 +24,8 @@
     "@fortawesome/free-brands-svg-icons": "^6.4.0",
     "@fortawesome/free-regular-svg-icons": "^6.4.0",
     "@fortawesome/free-solid-svg-icons": "^6.4.0",
+    "@ng-bootstrap/ng-bootstrap": "^15.0.0",
+    "@popperjs/core": "^2.11.8",
     "@types/select2": "^4.0.57",
     "bootstrap": "^5.2.3",
     "intersection-observer": "^0.12.2",

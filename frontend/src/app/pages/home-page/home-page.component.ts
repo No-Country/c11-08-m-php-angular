@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { faGraduationCap, faLocationDot } from '@fortawesome/free-solid-svg-icons';
 import { trigger, transition, animate, style, keyframes } from '@angular/animations';
 import { interval } from 'rxjs';
+import { AuthService } from 'src/app/services/auth.service';
 
 
 @Component({
@@ -41,7 +42,7 @@ export class HomePageComponent implements OnInit {
   textAnimationState: string | undefined;
 
   animationInProgress = false;
-  constructor(private router: Router){}
+  constructor(private router: Router, public authService:AuthService){}
 
 // @HostListener('window:scroll', [])
 

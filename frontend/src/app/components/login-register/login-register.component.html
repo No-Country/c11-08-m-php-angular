@@ -1,10 +1,11 @@
-<div class="container-fluid  p-0">
-  <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="container-fluid  p-0" >
+  <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
     <div class="modal-dialog modal-dialog-centered w-100 h-100 !important">
       <div class="modal-content">
         <div class="d-flex mx-2 my-2">
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <button type="button" id="closeModalButton" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
+        <ng-template [ngIf]="!isLoggedIn ">
         <div class="modal-body">
           <div class="d-flex justify-content-center mb-3">
             <img src="../../../assets/images/homePage/loginRegister.png" alt="Imagen" class="img-square">
@@ -44,6 +45,11 @@
               <button type="submit" class="btn btn-dark w-100" [disabled]="loginForm.invalid || loading">Iniciar
                 sesión</button>
             </div>
+            <div *ngIf="loading" class="loading__dots d-flex justify-content-center my-2">
+              <div class="loading__dot"></div>
+              <div class="loading__dot"></div>
+              <div class="loading__dot"></div>
+            </div>
           </form>
           <div class="d-flex flex-column align-items-center">
             <p class="font-small">Al continuar aceptas nuestra <ins>Política de privacidad</ins> y <ins>Términos de
@@ -53,6 +59,20 @@
               data-bs-target="#registerModal">Registrate</button>
           </div>
         </div>
+        </ng-template>
+        <ng-template [ngIf]="isLoggedIn">
+          <div class="modal-body">
+            <div class="d-flex justify-content-center mb-3">
+              <img src="../../../assets/images/homePage/loginRegister.png" alt="Imagen" class="img-square">
+            </div>
+            <div class="d-flex justify-content-center text-center mb-3">
+              <h5 class="modal-title w-50 fs-3">Inicio sesión exitoso!</h5>
+            </div>
+              <div class="d-flex justify-content-center m-auto mx-4">
+                <button  class="btn btn-dark w-100"  data-bs-dismiss="modal" aria-label="Close">Finalizar</button>
+              </div>
+          </div>
+          </ng-template>
       </div>
     </div>
   </div>

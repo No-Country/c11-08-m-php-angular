@@ -18,6 +18,7 @@ import { PerfilProfeComponent } from './pages/perfil-profe/perfil-profe.componen
 import { NgxPaginationModule } from 'ngx-pagination';
 import { CommonModule } from '@angular/common';
 import { RegisterComponent } from './components/register/register.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -46,7 +47,9 @@ import { RegisterComponent } from './components/register/register.component';
     BrowserAnimationsModule,
     FormsModule,
     NgxPaginationModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgbModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
