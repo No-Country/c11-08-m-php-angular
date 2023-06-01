@@ -6,7 +6,7 @@ import { ProvincesService } from './../../services/provinces.service';
 import { Subjects } from './../../interfaces/subjects';
 import { SubjectsService } from './../../services/subjects.service';
 import { TeacherService } from './../../services/teacher.service';
-import { AfterContentInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { faGraduationCap, faLocationDot, faCaretDown } from '@fortawesome/free-solid-svg-icons';
 import { Teacher } from 'src/app/interfaces/teacher';
@@ -16,7 +16,7 @@ import { Teacher } from 'src/app/interfaces/teacher';
   templateUrl: './src-page.component.html',
   styleUrls: ['./src-page.component.css']
 })
-export class SrcPageComponent implements OnInit, AfterContentInit {
+export class SrcPageComponent implements OnInit {
 
 
   // precio: string = 'Cualquiera';
@@ -81,15 +81,10 @@ export class SrcPageComponent implements OnInit, AfterContentInit {
 
   ngOnInit(): void {
     this.materiaSelectHomeNom = this.route.snapshot.queryParams['seleValue'];
-    this.materiaSelectHomeId = this.route.snapshot.queryParams['seleId'];
 
-    this.getSubjects();
+    this.getSubjects( this.route.snapshot.queryParams['seleId'] );
     this.getfilterTeachers();
     this.getProvinces();
-  }
-  ngAfterContentInit(): void{
-    const selectSubjects = document.getElementById('selectSubjects') as HTMLSelectElement;
-    selectSubjects.selectedIndex = this.materiaSelectHomeId;
   }
 
   getfilterTeachers(): void {
@@ -115,8 +110,6 @@ export class SrcPageComponent implements OnInit, AfterContentInit {
       res =>{
         this.teachers = res;
         this.numTeachers = res.length;
-        console.log(res);
-
       },
       err=>{
         this.teachers = [];
@@ -125,10 +118,11 @@ export class SrcPageComponent implements OnInit, AfterContentInit {
     );
   }
 
-  getSubjects(): void {
+  getSubjects( selectedIndex:number ): void {
     this.subjectsService.getSubjects().subscribe(
       res =>{
         this.listSubjects = res;
+        this.materiaSelectHomeId = selectedIndex;
       },
       err=>console.log(err)
     );
