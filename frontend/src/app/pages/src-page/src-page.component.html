@@ -16,7 +16,7 @@
       <p class="filtros mb-2">Quiero aprender</p>
       <div>
         <select class="form-select" (change)="getfilterTeachers()"
-          id="selectSubjects" name="selectSubjects">
+          [(ngModel)]="materiaSelectHomeId">
           <option *ngFor="let subject of listSubjects" [value]="subject.id">{{ subject.name }}</option>
         </select>
       </div>

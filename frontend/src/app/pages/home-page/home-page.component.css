@@ -2,7 +2,11 @@
     border-radius: 1000px;
     border-color: black!important;
     border-width: 1px!important;
+}
 
+select {
+  border: none;
+  outline: none;
 }
 
 .btn-src{
@@ -36,9 +40,6 @@ circle{
     outline: none!important;
 }
 
-
-
-
 .button{
     position: relative;
     background-color: #019FA2;
@@ -53,7 +54,7 @@ circle{
     font-family: "Inter", sans-serif;
 
 }
-  
+
 .button span{
     width: 100%;
     height: auto;
@@ -104,5 +105,4 @@ circle{
     0% { opacity: 0; transform: translateX(100%); }
     50% { opacity: 1; transform: translateX(50%); }
     100% { opacity: 1; transform: translateX(0); }
-  }
-  
+}
