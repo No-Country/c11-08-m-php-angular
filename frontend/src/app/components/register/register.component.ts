@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { AuthService } from 'src/app/services/auth.service';
+import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-register',
@@ -9,16 +10,18 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
+  @ViewChild('exampleModalLabel') modal: any;
+  modalRef: NgbModalRef | undefined;
   mostrarContrasena: boolean = false;
   tipoContrasena: string = 'password';
   faEye = faEye;
   faEyeSlash = faEyeSlash;
-
+  isLoggedIn = false;
   registerForm: FormGroup;
   loading = false;
   submitted = false;
   error = '';
-
+  showError:boolean = false;
 
   togglePasswordVisibility() {
     this.mostrarContrasena = !this.mostrarContrasena;
@@ -29,7 +32,8 @@ export class RegisterComponent {
 
   constructor(
     private formBuilder: FormBuilder,
-    private authService: AuthService
+    private authService: AuthService,
+    private modalService: NgbModal
   ) {
     this.registerForm = this.formBuilder.group({
       first_name: ['', Validators.required],
@@ -68,6 +72,11 @@ export class RegisterComponent {
   }
 
 
+  closeModal(): void {
+    this.modalRef?.dismiss();
+  }
+
+
   onRegisterFormSubmit() {
     this.submitted = true;
     console.log(this.registerForm.value)
@@ -80,10 +89,13 @@ export class RegisterComponent {
       next: (data: any) => {
         console.log(data);
         this.loading = false;
+        this.isLoggedIn = true;
+        this.closeModal();
       },
-      error: (error: any) => {
+      error: (error) => {
         console.log(error);
         this.error = error;
+        this.showError = true;
         this.loading = false;
       }
     });}
