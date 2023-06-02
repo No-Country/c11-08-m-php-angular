@@ -17,7 +17,7 @@ import { ScheduleComponent } from './pages/schedule/schedule.component';
 import { PerfilProfeComponent } from './pages/perfil-profe/perfil-profe.component';
 
 import { NgxPaginationModule } from 'ngx-pagination';
-import { CommonModule } from '@angular/common';
+
 import { RegisterComponent } from './components/register/register.component';
 import { SubscriptionComponent } from './pages/subscription/subscription.component';
 import { CheckoutComponent } from './pages/payment/checkout/checkout.component';
@@ -25,6 +25,7 @@ import { ConfirmDataComponent } from './pages/payment/confirm-data/confirm-data.
 import { FinishProfileComponent } from './pages/payment/finish-profile/finish-profile.component';
 import { PaymentComponent } from './pages/payment/payment/payment.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CommonModule } from '@angular/common';
 
 
 
@@ -50,7 +51,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
   ],
   imports: [
-    HttpClientModule
+    HttpClientModule,
     CommonModule,
     FormsModule,
     BrowserModule,
@@ -61,7 +62,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     NgxPaginationModule,
     ReactiveFormsModule,
     NgbModule,
-    AppRoutingModul
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
