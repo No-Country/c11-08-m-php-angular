@@ -12,12 +12,6 @@ body {
 
 }
 
-.bordered-row  {
-  border: 1px solid rgb(121, 111, 111);
-  padding: 25px;
-  box-shadow: 5px 10px 10px 5px rgba(88, 87, 87, 0.15);
-  border-radius: 16px;
-}
 
 h3 p {
 padding: 20px;
@@ -26,9 +20,8 @@ font-family:'Nunito sans'
 }
 
 .bordered-row{
-  border: 1px solid rgb(121, 111, 111);
   padding: 25px;
-  box-shadow: 5px 10px 10px 5px rgba(88, 87, 87, 0.15);
+  box-shadow: 2px 3px 3px 2px rgba(70, 69, 69, 0.15);
   border-radius: 16px;
 
 }
@@ -60,5 +53,32 @@ font-weight: semibold;
 font-size: 16px;
 position: center;
 
+}
+
+.highlighted {
+  background-color: yellow;
+}
+
+.row-precios{
+  display: flex;
+  font-weight: bold;
+  font-size: 14px;
+  border-left: 8px rgb(94, 91, 91);
+}
+.col-valor{
+  font-size: 32px;
+}
+.icon{
+width: 70px;
+height: 70px;
+border-radius: 50px;
+overflow: hidden;
+}
+
+p{
+padding-top :15px;}
+
+.menu {
+  display: none;
 }
 

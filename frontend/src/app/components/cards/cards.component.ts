@@ -14,7 +14,9 @@ export class CardsComponent implements OnInit {
 faStar = faStar;
 faLocationDot = faLocationDot;
 cardList: ICard[] = [];
- 
+
+
+
 constructor(private cardService: CardService){}
 
 ngOnInit(): void{
