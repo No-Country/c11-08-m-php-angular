@@ -47,10 +47,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ConfirmDataComponent,
     FinishProfileComponent,
     PaymentComponent
-    
+
   ],
   imports: [
-    HttpClientModule,
+    HttpClientModule
     CommonModule,
     FormsModule,
     BrowserModule,
@@ -61,7 +61,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     NgxPaginationModule,
     ReactiveFormsModule,
     NgbModule,
-    AppRoutingModule
+    AppRoutingModul
   ],
   providers: [],
   bootstrap: [AppComponent]

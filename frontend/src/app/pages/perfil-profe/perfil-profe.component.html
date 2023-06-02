@@ -36,41 +36,42 @@
         </div>
         <div class="bordered-row justify-content-between mt-3 mx-2">
           <h3>Acerca del docente</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi voluptas modi quos a nemo iure, est quas quod nisi id similique obcaecati provident ut, eveniet ea. Possimus ab deleniti pariatur accusamus. Vero quae, recusandae exercitationem perferendis vitae enim vel consequatur?</p>
+          <p>La experiencia me ha ayudado a detectar de manera eficaz y rápida cual es la falla de cada alumno y trabajar en ello. La idea es aprender a trabajar la matemática logrando confianza en si mismo.</p>
         </div>
         <div class="bordered-row justify-content-between mt-3 mx-2">
           <h3>Acerca del docente</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi voluptas modi quos a nemo iure, est quas quod nisi id similique obcaecati provident ut, eveniet ea. Possimus ab deleniti pariatur accusamus. Vero quae, recusandae exercitationem perferendis vitae enim vel consequatur?</p>
+          <p>Doy tareas personalizadas en base a los temas que estes estudiando, resolviéndolos en clase. Mi método se basa en detectar la falla del alumno en su aprendizaje y trabajar en ello. El error bien analizado es la materia prima para lograr el éxito.</p>
         </div>
         <div class="bordered-row justify-content-between mt-3 mx-2">
-         <div class="row">
-          <div class="col-4">1 CLASE(1 Hora)<i class="fa-solid fa-pipe fa-xl"></i>
+         <div class="row-precios mx-lg-3">
+          <div class="col-4 text-center" style="color:#019FA2">1 CLASE(1 Hora)
+            <div class="col-valor pt-2" style="color:#000">$ 2000
+              </div>
+              <div class="col"><i class="fa-solid fa-pipe fa-xl"></i>
+              </div>
+            </div>
+            <div class="col-4 text-center" style="color:#019FA2 ">2 CLASES
+              <div class="col-valor pt-2"  style="color:#000">$ 3500
+            </div>
+              <i class="fa-solid fa-pipe fa-xl"></i>
+            </div>
+            <div class="col-4 text-center" style="color:#019FA2">4 CLASES
+              <div class="col-valor pt-2"  style="color:#000">$ 7500
+              <i class="fa-solid fa-pipe fa-xl"></i>
+            </div>
           </div>
-
-          <div class="col-4">2 CLASES
-             <i class="fa-solid fa-pipe fa-xl"></i>
-          </div>
-          <div class="col-4">4 CLASES
-            <i class="fa-solid fa-pipe fa-xl"></i>
-          </div>
-
         </div>
 
       </div>
 
       <div class="bordered-row mt-3 mx-2" d-flex>
           <h3>DIAS Y HORARIOS DISPONIBLES</h3>
-          <div class="row pt-4">
-            <div class="col-5 d-flex justify-content-center"><fa-icon [icon]="faAngleLeft"></fa-icon></div>
-            <div class="col-3 d-flex justify-content-start"> Mayo 15-21 </div>
-            <div class="col-2 d-flex justify-content-end"><fa-icon [icon]="faAngleRight"></fa-icon></div>
-          </div>
-        <div class="table-responsive-sm table-responsive-md table-responsive-lg">
-          <table class="table">
+
+        <div class="table-responsive-sm table-responsive-md table-responsive-lg pt-4">
+          <table class="table fw-bold">
             <thead>
               <tr>
-                <th></th> <!-- Celda vacía para la esquina superior izquierda -->
-                <th>Lunes</th>
+               <th>Lunes</th>
                 <th>Martes</th>
                 <th>Miércoles</th>
                 <th>Jueves</th>
@@ -78,77 +79,26 @@
               </tr>
             </thead>
             <tbody >
-              <tr>
-                <td></td>
-                <td >08h-09h</td>
-                <td >08h-09h</td>
-                <td  >08h-09h</td>
-                <td  >08h-09h</td>
-                <td  >08h-09h</td>
-
+              <tr >
+                <td (click)="cambiarColor($event)">08hs a 12hs</td>
+                <td (click)="cambiarColor($event)">08hs a 12hs</td>
+                <td (click)="cambiarColor($event)">08hs a 12hs</td>
+                <td (click)="cambiarColor($event)">08hs a 12hs</td>
+                <td (click)="cambiarColor($event)">08hs a 12hs</td>
               </tr>
               <tr>
-                <td ></td> <!-- Celda vacía para el espacio debajo de la hora -->
-                <td  >09h-10h</td>
-                <td >09h-10h</td>
-                <td >09h-10h</td>
-                <td >09h-10h</td>
-                <td >09h-10h</td>
-
+                <td (click)="cambiarColor($event)" >12hs a 18hs</td>
+                <td (click)="cambiarColor($event)">12hs a 18hs</td>
+                <td (click)="cambiarColor($event)"></td>
+                <td (click)="cambiarColor($event)">12hs a 18hs</td>
+                <td (click)="cambiarColor($event)">12hs a 18hs</td>
               </tr>
               <tr>
-                <td></td> <!-- Celda vacía para el espacio debajo de la hora -->
-                <td >10h-11h</td>
-                <td >10h-11h</td>
-                <td >10h-11h</td>
-                <td >10h-11h</td>
-                <td >10h-11h</td>
-
-              </tr>
-              <tr>
-                <td></td> <!-- Celda vacía para el espacio debajo de la hora -->
-                <td>11h-12h</td>
-                <td>11h-12h</td>
-                <td>11h-12h</td>
-                <td>11h-12h</td>
-                <td>11h-12h</td>
-
-              </tr>
-              <tr>
-                <td></td> <!-- Celda vacía para el espacio debajo de la hora -->
-                <td>12h-13h</td>
-                <td>12h-13h</td>
-                <td>12h-13h</td>
-                <td>12h-13h</td>
-                <td>12h-13h</td>
-
-              </tr>
-              <tr>
-                <td></td> <!-- Celda vacía para el espacio debajo de la hora -->
-                <td>13h-14h</td>
-                <td>13h-14h</td>
-                <td>13h-14h</td>
-                <td>13h-14h</td>
-                <td>13h-14h</td>
-
-              </tr>
-              <tr>
-                <td></td> <!-- Celda vacía para el espacio debajo de la hora -->
-                <td>14h-15h</td>
-                <td>14h-15h</td>
-                <td>14h-15h</td>
-                <td>14h-15h</td>
-                <td>14h-15h</td>
-
-              </tr>
-              <tr>
-                <td></td> <!-- Celda vacía para el espacio debajo de la hora -->
-                <td>15h-16h</td>
-                <td>15h-16h</td>
-                <td>15h-16h</td>
-                <td>15h-16h</td>
-                <td>15h-16h</td>
-
+                <td (click)="cambiarColor($event)">18hs a 21hs</td>
+                <td (click)="cambiarColor($event)"></td>
+                <td (click)="cambiarColor($event)">18hs a 21hs</td>
+                <td (click)="cambiarColor($event)">18hs a 21hs</td>
+                <td (click)="cambiarColor($event)"></td>
               </tr>
               <!-- Agrega más filas para las demás horas -->
             </tbody>
@@ -157,22 +107,66 @@
      </div>
      <div class="bordered-row justify-content-between mt-3 mx-2">
       <h3>Opiniones de Estudiantes</h3>
-      <div class="row">
+      <br>
+        <div class="container">
+          <div class="row">
+            <div class="col-auto px-5"><img src="../../../assets/images/perfil-profe/stephanie-liverani-Zz5LQe-VSMY-unsplash 1.png" class="icon "alt="">
+
+          </div>
+            <div class="col col-md-6 col-xs-4 px-1">
+              <div class="row px-1">Rosangélica Gómez Ruiz</div>
+                <div class="col"><fa-icon [icon]="faStar"> </fa-icon><fa-icon [icon]="faStar"> </fa-icon> <fa-icon [icon]="faStar"> </fa-icon> <fa-icon [icon]="faStar"> <i class="fa-duotone fa-star"></i> </fa-icon></div>
+                </div>
+                <div class="col d-flex justify-content-end pt-2">25 de Abril de 2023</div>
+                <p px-5>Esteban es un gran profesor, asistí con el porque debía rendir el ingreso a la facultad y los temas que no entendí en toda la secundaria los aprendí con el.</p>
+            </div>
+            <br>
+            <div class="row">
+              <div class="col-auto px-5"><img src="../../../assets/images/perfil-profe/sigmund-a19OVaa2rzA-unsplash 1.png" class="icon "alt="">
+             </div>
+              <div class="col col-md-3 px-0">
+                <div class="row px-1"> Juan Luis</div>
+                  <div class="col"><fa-icon [icon]="faStar"> </fa-icon><fa-icon [icon]="faStar"> </fa-icon> <fa-icon [icon]="faStar"> </fa-icon> <fa-icon [icon]="faStar"> <i class="fa-duotone fa-star"></i> </fa-icon></div>
+                  </div>
+                  <div class="col d-flex justify-content-end pt-2">25 de Abril de 2023</div>
+                  <p px-5>Esteban además de enseñar muy bien es una gran persona, aprendí mucho con él y sin dudas me ayudó a aprobar matemática.</p>
+              </div>
+          </div>
+          <div class="row">
+          <button class="btn btn-success bg-light text-dark border-0 fw-bolder"  id="menus" (click)="mostrarMenu()">Ver mas comentarios</button>
+
+            <!-- Menú desplegable -->
+            <ul id="myMenu" class="menu">
+              <div class="container pt-3">
+                <div class="row">
+                  <div class="col-auto px-5"><img src="../../../assets/images/perfil-profe/matheus-ferrero-pg_WCHWSdT8-unsplash.jpg" class="icon "alt="">
+
+                </div>
+                  <div class="col col-md-6 col-xs-4 px-1">
+                    <div class="row px-1">Rosangélica Gómez Ruiz</div>
+                      <div class="col"><fa-icon [icon]="faStar"> </fa-icon><fa-icon [icon]="faStar"> </fa-icon> <fa-icon [icon]="faStar"> </fa-icon> <fa-icon [icon]="faStar"> <i class="fa-duotone fa-star"></i> </fa-icon></div>
+                      </div>
+                      <div class="col d-flex justify-content-end pt-2">25 de Abril de 2023</div>
+                      <p px-5>Esteban es un gran profesor, asistí con el porque debía rendir el ingreso a la facultad y los temas que no entendí en toda la secundaria los aprendí con el.</p>
+                  </div>
+                  <br>
+                  <div class="row">
+                    <div class="col-auto px-5"><img src="../../../assets/images/perfil-profe/jonas-kakaroto-mjRwhvqEC0U-unsplash.jpg" class="icon "alt="">
+                   </div>
+                    <div class="col col-md-3 px-0">
+                      <div class="row px-1"> Juan Luis</div>
+                        <div class="col"><fa-icon [icon]="faStar"> </fa-icon><fa-icon [icon]="faStar"> </fa-icon> <fa-icon [icon]="faStar"> </fa-icon> <fa-icon [icon]="faStar"> <i class="fa-duotone fa-star"></i> </fa-icon></div>
+                        </div>
+                        <div class="col d-flex justify-content-end pt-2">25 de Abril de 2023</div>
+                        <p px-5>Esteban además de enseñar muy bien es una gran persona, aprendí mucho con él y sin dudas me ayudó a aprobar matemática.</p>
+                    </div>
+                </div>
+               </ul>
+          </div>
+        </div>
+
       </div>
-      <div class="col d-flex justify-content-start"><fa-icon [icon]="faStar"> </fa-icon><fa-icon [icon]="faStar"> </fa-icon> <fa-icon [icon]="faStar"> </fa-icon> <fa-icon [icon]="faStar"> <i class="fa-duotone fa-star"></i> </fa-icon>  </div>
-      <div class="col d-flex justify-content-end">FECHA</div>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi voluptas modi quos a nemo iure, est quas quod nisi id similique obcaecati provident ut, eveniet ea. Possimus ab deleniti pariatur accusamus. Vero quae, recusandae exercitationem perferendis vitae enim vel consequatur?</p>
-    </div>
-    <div class="bordered-row justify-content-between mt-3 mx-2">
-      <h3>Opiniones de Estudiantes</h3>
-      <div class="row">
-      </div>
-      <div class="col d-flex justify-content-start"><fa-icon [icon]="faStar"> </fa-icon><fa-icon [icon]="faStar"> </fa-icon> <fa-icon [icon]="faStar"> </fa-icon> <fa-icon [icon]="faStar"> <i class="fa-duotone fa-star"></i> </fa-icon>  </div>
-      <div class="col d-flex justify-content-end">FECHA</div>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi voluptas modi quos a nemo iure, est quas quod nisi id similique obcaecati provident ut, eveniet ea. Possimus ab deleniti pariatur accusamus. Vero quae, recusandae exercitationem perferendis vitae enim vel consequatur?</p>
-    </div>
-  </div>
-  <div class="row pt-3">
+  <div class="row pt-5">
     <div class="col-12">
       <h2 class="text-start">Docentes relacionados</h2>
     <app-cards></app-cards>
