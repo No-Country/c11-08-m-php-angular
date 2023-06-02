@@ -43,7 +43,7 @@ Route::get('/cities/province/{id}','App\Http\Controllers\CityController@citiesPr
 Route::get('/subjects','App\Http\Controllers\SubjectController@index');//Todas las materias
 Route::get('/subjects/{id}','App\Http\Controllers\SubjectController@getSubject');//Una materia
 Route::get('/subjects/name/{name}','App\Http\Controllers\SubjectController@subjectsByText');//Todas las materias dado un string
-Route::get('/subjects/teacher/{teacher_id}', [SubjectController::class, 'getSubjectsByTeacher']); //Obtener materias por profesor
+Route::get('/subjects/user/{user_id}', [SubjectController::class, 'getSubjectsByUser']); //Obtener materias por usuario (Profesor o Estudiante)
 
 Route::get('/users/teacher/{teacher_id}', [UserController::class, 'getUserByTeacher']); //Obtener un usuario por profesor
 
@@ -64,9 +64,9 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::get('/teachers/user/{user_id}', [TeacherController::class, 'getTeacherByUser']); //Obtener un profesor por usuario
 
-    Route::post('/subjects/teacher', [SubjectController::class, 'storeSubjectByTeacher']); //Guardar materia por profesor
-    Route::post('/subjects/teacher/list', [SubjectController::class, 'storeSubjectsByTeacher']); //Guardar lista de materias por profesor
-    Route::delete('/subjects/teacher/{teacher_id}/{subject_id}', [SubjectController::class, 'deleteSubjectByTeacher']); //Eliminar materia por profesor
+    Route::post('/subjects/user', [SubjectController::class, 'storeSubjectByUser']); //Guardar materia por usuario
+    Route::post('/subjects/user/list', [SubjectController::class, 'storeSubjectsByUser']); //Guardar lista de materias por usuario
+    Route::delete('/subjects/user/{user_id}/{subject_id}', [SubjectController::class, 'deleteSubjectByUser']); //Eliminar materia por usuario
 });
 
 Route::get('/students/user_id/{user_id}',[StudentController::class,'getStudentByUserId']);//Obtener estudiante por user_id
