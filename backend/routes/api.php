@@ -29,10 +29,7 @@ Route::get('/provinces','App\Http\Controllers\ProvinceController@index');//Todas
 Route::get('/provinces/{id}','App\Http\Controllers\ProvinceController@getProvince');//Una provincia
 
 Route::get('/schedule','App\Http\Controllers\ScheduleController@index');
-Route::post('/schedule','App\Http\Controllers\ScheduleController@store');
 Route::get('/schedule/{schedule}','App\Http\Controllers\ScheduleController@show');
-Route::put('/schedule/{schedule}','App\Http\Controllers\ScheduleController@update');
-Route::delete('/schedule/{schedule}','App\Http\Controllers\ScheduleController@destroy');
 Route::get('/schedule/teacher/{teacher_id}','App\Http\Controllers\ScheduleController@getScheduleByTeacher');//Obtener horarios por profesor
 
 Route::get('/cities','App\Http\Controllers\CityController@index');//Todas las ciudades
@@ -62,21 +59,29 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::apiResource('users', UserController::class);
     
     Route::post('/logout', [AuthController::class, 'logout']);
+
     Route::get('/teachers/user/{user_id}', [TeacherController::class, 'getTeacherByUser']); //Obtener un profesor por usuario
 
     Route::post('/subjects/user', [SubjectController::class, 'storeSubjectByUser']); //Guardar materia por usuario
     Route::post('/subjects/user/list', [SubjectController::class, 'storeSubjectsByUser']); //Guardar lista de materias por usuario
     Route::delete('/subjects/user/{user_id}/{subject_id}', [SubjectController::class, 'deleteSubjectByUser']); //Eliminar materia por usuario
+
+    Route::post('/schedule','App\Http\Controllers\ScheduleController@store');
+    Route::put('/schedule/teacher/{teacher_id}','App\Http\Controllers\ScheduleController@storeSchedulesByTeacher');//Actualizar y Guardar horarios por profesor
+    Route::put('/schedule/{schedule}','App\Http\Controllers\ScheduleController@update');
+    Route::delete('/schedule/{schedule}','App\Http\Controllers\ScheduleController@destroy');
+    
+    Route::get('/students/user_id/{user_id}',[StudentController::class,'getStudentByUserId']);//Obtener estudiante por user_id
+    Route::get('/students',[StudentController::class,'index']);//Todas los estudiantes
+    Route::get('/students/{student}',[StudentController::class,'show']);//Obtener estudiante
+    Route::apiResource('students', StudentController::class)->except(['index', 'show']);
+
+    Route::get('/clases/teacher/{teacher_id}',[ClaseController::class,'getStudentsByTeacher']);//Obtener estudiante de un profesor
+    Route::get('/clases/student/{student_id}',[ClaseController::class,'getTeachersByStudent']);//Obtener los profesores de un estudiante
+    Route::put('/clases/changeState/{clase}',[ClaseController::class,'updateClaseState']);//Actualizar un estado
+    Route::get('/clases',[ClaseController::class,'index']);//Todas las clases
+    Route::get('/clases/{clase}',[ClaseController::class,'show']);//Obtener una clase
+    Route::apiResource('clases', ClaseController::class)->except(['index', 'show']);
 });
 
-Route::get('/students/user_id/{user_id}',[StudentController::class,'getStudentByUserId']);//Obtener estudiante por user_id
-Route::get('/students',[StudentController::class,'index']);//Todas los estudiantes
-Route::get('/students/{student}',[StudentController::class,'show']);//Obtener estudiante
-Route::apiResource('students', StudentController::class)->except(['index', 'show']);
 
-Route::get('/clases/teacher/{teacher_id}',[ClaseController::class,'getStudentsByTeacher']);//Obtener estudiante de un profesor
-Route::get('/clases/student/{student_id}',[ClaseController::class,'getTeachersByStudent']);//Obtener los profesores de un estudiante
-Route::put('/clases/changeState/{clase}',[ClaseController::class,'updateClaseState']);//Actualizar un estado
-Route::get('/clases',[ClaseController::class,'index']);//Todas las clases
-Route::get('/clases/{clase}',[ClaseController::class,'show']);//Obtener una clase
-Route::apiResource('clases', ClaseController::class)->except(['index', 'show']);
