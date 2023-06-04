@@ -17,50 +17,6 @@ import { Teacher } from 'src/app/interfaces/teacher';
   styleUrls: ['./src-page.component.css']
 })
 export class SrcPageComponent implements OnInit {
-
-
-  // precio: string = 'Cualquiera';
-  // turno: string = 'Cualquiera';
-  // provinciasArgentina: string[] = [
-  //   'Buenos Aires',
-  //   'Catamarca',
-  //   'Chaco',
-  //   'Chubut',
-  //   'Córdoba',
-  //   'Corrientes',
-  //   'Entre Ríos',
-  //   'Formosa',
-  //   'Jujuy',
-  //   'La Pampa',
-  //   'La Rioja',
-  //   'Mendoza',
-  //   'Misiones',
-  //   'Neuquén',
-  //   'Río Negro',
-  //   'Salta',
-  //   'San Juan',
-  //   'San Luis',
-  //   'Santa Cruz',
-  //   'Santa Fe',
-  //   'Santiago del Estero',
-  //   'Tierra del Fuego, Antártida e Islas del Atlántico Sur',
-  //   'Tucumán'
-  // ];
-
-  // provincia: string = 'Cualquiera';
-
-  // busqueda(valor: Event){
-  //   this.materiaSelectHomeNom = (<HTMLInputElement>event?.target).value;
-  // }
-
-  // seleccionarProvincia(prov: string) {
-  //   this.provincia = prov;
-  // }
-
-  // disponibilidad: string = 'Cualquiera';
-
-  // faGraduationCap = faGraduationCap;
-  // faLocationDot = faLocationDot;
   faCaretDown = faCaretDown
 
   constructor(
@@ -81,52 +37,51 @@ export class SrcPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.materiaSelectHomeNom = this.route.snapshot.queryParams['seleValue'];
-
     this.getSubjects( this.route.snapshot.queryParams['seleId'] );
     this.getfilterTeachers();
     this.getProvinces();
   }
 
   getfilterTeachers(): void {
-
-    const selectSubjects = document.getElementById('selectSubjects') as HTMLSelectElement;
-    const selectedOption = selectSubjects.options[selectSubjects.selectedIndex];
+    const selectSubjects = document.getElementById('selectSubjects') as HTMLSelectElement | null;
+    const selectedOption = selectSubjects && selectSubjects.options ? selectSubjects.options[selectSubjects.selectedIndex] : null;
     const selectedText = selectedOption ? selectedOption.textContent?.trim() : "";
-
-    const selectCitys = document.getElementById('selectCitys') as HTMLSelectElement;
-    const selectProvinces = document.getElementById('selectProvinces') as HTMLSelectElement;
-
-    const filterTeacher: FilterTeacher = {
-      subject: selectedText ? (selectedText) : "",
-      city: selectCitys.value !== "" ? (selectCitys.value) : "",
-      province: selectProvinces.value !== "" ? (selectProvinces.value) : "",
-      availability: [],
-      price: [],
-      order: ""
-    };
-    // console.log(filterTeacher);
-
-    this.teacherService.getfilterTeachers(filterTeacher).subscribe(
-      res =>{
-        this.teachers = res;
-        this.numTeachers = res.length;
-      },
-      err=>{
-        this.teachers = [];
-        this.numTeachers = 0;
-      }
-    );
+    const selectCitys = document.getElementById('selectCitys') as HTMLSelectElement | null;
+    const selectProvinces = document.getElementById('selectProvinces') as HTMLSelectElement | null;
+  
+    if (selectSubjects && selectCitys && selectProvinces) {
+      const filterTeacher: FilterTeacher = {
+        subject: selectedText ? selectedText : "",
+        city: selectCitys.value !== "" ? selectCitys.value : "",
+        province: selectProvinces.value !== "" ? selectProvinces.value : "",
+        availability: [],
+        price: [],
+        order: ""
+      };
+  
+      this.teacherService.getfilterTeachers(filterTeacher).subscribe(
+        res => {
+          this.teachers = res;
+          this.numTeachers = res.length;
+        },
+        err => {
+          this.teachers = [];
+          this.numTeachers = 0;
+        }
+      );
+    }
   }
-
-  getSubjects( selectedIndex:number ): void {
+  
+  getSubjects(selectedIndex: number): void {
     this.subjectsService.getSubjects().subscribe(
-      res =>{
+      res => {
         this.listSubjects = res;
         this.materiaSelectHomeId = selectedIndex;
       },
-      err=>console.log(err)
+      err => console.log(err)
     );
   }
+  
   getProvinces(): void {
     this.provincesService.getProvinces().subscribe(
       res =>{
@@ -142,14 +97,16 @@ export class SrcPageComponent implements OnInit {
       this.cityService.getCitys( Number(selectProvinces.value) ).subscribe(
         res => {
           this.listCitys = res;
+          this.getfilterTeachers();
         },
         error => {
+          console.log(error);
         }
       );
     }else{
       this.listCitys = [];
+      this.getfilterTeachers();
     }
-    this.getfilterTeachers();
   }
 }
 

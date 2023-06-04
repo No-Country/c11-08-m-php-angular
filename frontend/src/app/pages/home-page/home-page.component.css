@@ -4,9 +4,15 @@
     border-width: 1px!important;
 }
 
-select {
+.noneStyle {
   border: none;
   outline: none;
+  background-color:  white!important;
+}
+
+.dropdown-menu{
+    overflow: scroll;
+    height: 400px!important;
 }
 
 .btn-src{
@@ -33,6 +39,14 @@ circle{
         width: 100%!important;
     }
 }
+
+@media only screen and (max-width: 1162px) {
+    .btn-src{
+   
+        font-size:medium!important;
+    }
+}
+
 
 .navbar .dropdown-toggle:focus,
 .btn.dropdown-toggle:focus {
