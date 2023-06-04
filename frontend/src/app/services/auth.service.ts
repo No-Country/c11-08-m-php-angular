@@ -1,10 +1,10 @@
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, catchError, map, of, throwError } from 'rxjs';
+import { BehaviorSubject, map,} from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { RegisterData } from '../interfaces/registerData';
 import { LoginData } from '../interfaces/loginData';
-import { error } from 'jquery';
+
 
 @Injectable({
   providedIn: 'root'

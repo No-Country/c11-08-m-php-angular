@@ -37,8 +37,12 @@ export class HomePageComponent implements OnInit {
 
   selectedOption: Subjects | null = null;
   listSubjects: Subjects[] = [];
+  filteredSubjects: Subjects[] = [];
+  searchText: string = '';
+  isOpen: boolean = false;
+  inputText: string = '';
 
-  // borrar
+
   faLocationDot = faLocationDot; // borrar
   faGraduationCap = faGraduationCap;
 
@@ -59,6 +63,7 @@ export class HomePageComponent implements OnInit {
     this.subjectsService.getSubjects().subscribe(
       res => {
         this.listSubjects = res;
+        this.filteredSubjects = res;
       },
       err => console.log(err)
     );
@@ -85,19 +90,26 @@ export class HomePageComponent implements OnInit {
   }
   //fin animacion
 
-
-seleccionarOpcion(subject?: Subjects) {
-  if (subject) {
-    this.selectedOption = subject;
-  } else {
-    if (this.selectedOption) {
-      this.router.navigate(['/src'], {
-        queryParams: { seleValue: this.selectedOption.name, seleId: this.selectedOption.id.toString() }
-      });
+  seleccionarOpcion(subject?: Subjects) {
+    if (subject) {
+      this.selectedOption = subject;
+      this.searchText = 'Aprende: ' + subject.name;
     } else {
-      alert('Debe seleccionar una opción');
+      if (this.selectedOption) {
+        this.router.navigate(['/src'], {
+          queryParams: { seleValue: this.selectedOption.name, seleId: this.selectedOption.id.toString() }
+        });
+      } else {
+        alert('Debe seleccionar una opción');
+      }
     }
   }
 
-}
+  filterSubjects() {
+    this.filteredSubjects = this.listSubjects.filter(subject =>
+      subject.name.toLowerCase().includes(this.searchText.toLowerCase())
+    );
+  }
+
+  
 }

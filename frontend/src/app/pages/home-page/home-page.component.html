@@ -17,16 +17,16 @@
             <div class="srccontainer d-flex ">
               <fa-icon class="d-flex align-items-center ms-3 align-items-center"  [icon]="faGraduationCap"></fa-icon>
            
-              <div class="dropdown srccontainer d-flex ">
-                <button class="srccontainer noneStyle  dropdown-toggle text-wrap" id="selectSubjects" name="selectSubjects" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  {{ selectedOption ? 'Aprende: ' + selectedOption.name : 'Que quieres aprender' }}
-                </button>
+              <div class="dropdown srccontainer d-flex">
+                <input type="text" class="srccontainer noneStyle dropdown-toggle text-wrap"  id="selectSubjects" name="selectSubjects" data-bs-toggle="dropdown" aria-expanded="false" [(ngModel)]="searchText" (input)="filterSubjects()" placeholder="{{ selectedOption ? 'Aprende: ' + selectedOption.name : 'Que quieres aprender' }}">
                 <ul class="dropdown-menu mt-1 flex-column">
-                  <li *ngFor="let subject of listSubjects">
-                    <a class="dropdown-item" (click)="seleccionarOpcion(subject)">{{ subject.name }}</a>
+                  <li *ngFor="let subject of filteredSubjects">
+                    <a class="dropdown-item" (click)="seleccionarOpcion(subject)">{{ subject?.name }}</a>
                   </li>
                 </ul>
               </div>
+              
+
             </div>
 
              <button class="btn btn-src animation button px-lg-4 " (click)="seleccionarOpcion()">
