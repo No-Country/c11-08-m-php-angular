@@ -35,7 +35,13 @@ import { interval } from 'rxjs';
 
 export class HomePageComponent implements OnInit {
 
-  selectedOption: string = ''; // borrar
+  selectedOption: Subjects | null = null;
+  listSubjects: Subjects[] = [] ;
+  filteredSubjects: Subjects[] = [];
+  searchText: string = '';
+  inputText: string = '';
+
+
   faLocationDot = faLocationDot; // borrar
   faGraduationCap = faGraduationCap;
 
@@ -45,7 +51,7 @@ export class HomePageComponent implements OnInit {
  
   ) { }
 
-  listSubjects: Subjects[] = [];
+  
 
   ngOnInit() {
     interval(3000).subscribe(() => {
@@ -56,25 +62,17 @@ export class HomePageComponent implements OnInit {
     this.subjectsService.getSubjects().subscribe(
       res => {
         this.listSubjects = res;
+        this.filteredSubjects = res;
       },
       err => console.log(err)
     );
   }
 
   //inicio animacion
-  @HostListener('window:scroll', [])
+  // @HostListener('window:scroll', [])
   currentTextIndex = 0;
   textAnimationState: string | undefined;
   animationInProgress = false;
-
-
-// @HostListener('window:scroll', [])
-
-
-
-
-
-  
 
   changeText() {
     interval(3000).subscribe(() => {
@@ -91,15 +89,27 @@ export class HomePageComponent implements OnInit {
   }
   //fin animacion
 
-  seleccionarOpcion() {
-    const selectSubjects = document.getElementById('selectSubjects') as HTMLSelectElement;
-    const selectedOption = selectSubjects.options[selectSubjects.selectedIndex];
-    const selectedText = selectedOption ? selectedOption.textContent?.trim() : "";
-
-    if ( selectSubjects.value !== "" ) {
-      this.router.navigate(['/src'], { queryParams: { seleValue: selectedText, seleId: selectSubjects.value } });
+  seleccionarOpcion(subject?: Subjects) {
+    if (subject) {
+      this.selectedOption = subject;
+      this.searchText = 'Aprende: ' + subject.name;
     } else {
-      alert('Debe ingresar una opcion');
+      if (this.selectedOption) {
+        this.router.navigate(['/src'], {
+          queryParams: { seleValue: this.selectedOption.name, seleId: this.selectedOption.id.toString() }
+        });
+      } else {
+        alert('Debe seleccionar una opción');
+      }
     }
   }
+  
+
+  filterSubjects() {
+    this.filteredSubjects = this.listSubjects.filter(subject =>
+      subject.name.toLowerCase().includes(this.searchText.toLowerCase())
+    );
+  }
+
+  
 }

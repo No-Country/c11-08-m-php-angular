@@ -1,10 +1,10 @@
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, catchError, map, of, throwError } from 'rxjs';
+import { BehaviorSubject, map,} from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { RegisterData } from '../interfaces/registerData';
 import { LoginData } from '../interfaces/loginData';
-import { error } from 'jquery';
+
 
 @Injectable({
   providedIn: 'root'
@@ -12,28 +12,31 @@ import { error } from 'jquery';
 export class AuthService {
 
   apiUrl = environment.URL;
-  isLoggedIn:boolean = false;
+  isLoggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  currentUser: BehaviorSubject<any> = new BehaviorSubject<any>(null);
 
   constructor(private http: HttpClient) { 
-    const token = this.getToken();
+    
     console.log("El servicio de autenticacion esta corriendo");
-    this.isLoggedIn=(true);
+ 
   
   }
 
+
   Login(creds: LoginData) {
     return this.http.post(`${this.apiUrl}/api/login`, creds, {
-      observe: 'response' 
+      observe: 'response'
     }).pipe(
       map((response: HttpResponse<any>) => {
         console.log('Login response:', response);
         const body = response.body;
         const bearerToken = body.token;
         if (bearerToken) {
-          const token = bearerToken.replace('Bearer ','');
+          const token = bearerToken.replace('Bearer ', '');
           sessionStorage.setItem('token', token);
-          this.isLoggedIn=(true);
-          console.log(this.isLoggedIn)
+          this.isLoggedIn.next(true);
+          this.currentUser.next(body.user); // Guarda el usuario actual
+          console.log(this.isLoggedIn);
           return body;
         }
       }),
@@ -50,9 +53,28 @@ export class AuthService {
     return token;
   }
   
-  register(user: RegisterData) {
-    return this.http.post(`${this.apiUrl}/api/register`, user);
+  register(creds: RegisterData) {
+    return this.http.post(`${this.apiUrl}/api/register`, creds , {
+      observe: 'response'
+    }).pipe(
+      map((response: HttpResponse<any>) => {
+        console.log('Register response:', response);
+        const body = response.body;
+        const bearerToken = body.token;
+        if (bearerToken) {
+          const token = bearerToken.replace('Bearer ', '');
+          sessionStorage.setItem('token', token);
+          this.isLoggedIn.next(true);
+          this.currentUser.next(body.user); // Guarda el usuario actual
+          console.log(this.isLoggedIn);
+          return body;
+        }
+      }),
+    );
   }
-
+  
 
 }
+
+
+

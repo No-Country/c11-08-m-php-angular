@@ -1,4 +1,6 @@
-
+.btn:hover{
+    color: #8edddf;
+}
 .btn-contact{
     border-color: #019FA2;
     border-radius: 1000px;
@@ -7,10 +9,10 @@
     color: white;
 }
 .etiquetas{
-    border-color: black!important;
+    border-color: #019FA2!important;
     border-radius: 7px;
     border-width: 1px!important;
-    color: black;
+    color: #019FA2;
     font-size: 80%;
 }
 
@@ -33,4 +35,8 @@
 
 .no-bottom-border{
     border-bottom:none !important;
+}
+
+.card:hover{
+    box-shadow: 0px 0px 12px 8px rgba(0,0,0,0.1);
 }

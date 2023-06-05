@@ -1,61 +1,41 @@
 <app-navbar></app-navbar>
 
-<div class="container mx-auto row mb-5 pt-5">
-  <div class="mx-auto row col-xl-11 col-xs-12">
+<div class="container mx-auto row mb-5 pt-5 justify-content-center">
+  <div class="row ">
 
-    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12 d-flex">
-      <div class="m-auto">
-
-        <div class="">
-          <h1 class="fs-2 fw-semibold">Encuentra los mejores docentes en <span class="fs-1 fw-bold"
-              [@textAnimation]="listSubjects[currentTextIndex].name">
-              {{ listSubjects[currentTextIndex].name }}
+    <div class="col-md-6 col-lg-7 d-flex ">
+      <div class="m-auto ">
+        <div class="tpm w-75">
+          <h1 class="fs-1 fw-semibold">Encuentra los mejores docentes en <span class="fs-1 fw-bold"
+              [@textAnimation]="listSubjects[currentTextIndex]?.name">
+              {{ listSubjects[currentTextIndex]?.name }}
             </span></h1>
           <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Distinctio veniam sint deserunt sequi
             aliquam qui voluptas dolorem quae blanditiis?</p>
         </div>
-        <div class="border srccontainer d-flex justify-content-between">
-          <!-- <div class="btn-group"> -->
+       <div class="border srccontainer d-flex justify-content-between w-75 tpm">
+            <div class="srccontainer  d-flex ">
+              <fa-icon class="d-flex align-items-center ms-3 align-items-center"  [icon]="faGraduationCap"></fa-icon>
+           
+              <div class="dropdown srccontainer d-flex">
+                <input type="text" class="srccontainer noneStyle dropdown-toggle text-wrap"  id="selectSubjects" name="selectSubjects" data-bs-toggle="dropdown" aria-expanded="false" [(ngModel)]="searchText" (input)="filterSubjects()" placeholder="{{ selectedOption ? 'Aprende: ' + selectedOption.name : 'Que quieres aprender' }}">
+                <ul class="dropdown-menu mt-1 flex-column">
+                  <li *ngFor="let subject of filteredSubjects">
+                    <a class="dropdown-item" (click)="seleccionarOpcion(subject)">{{ subject?.name }}</a>
+                  </li>
+                </ul>
+              </div>
+              
 
-            <div class="srccontainer d-flex">
-              <fa-icon class="d-flex align-items-center ms-3" [icon]="faGraduationCap"></fa-icon>
-              <select class="" id="selectSubjects" name="selectSubjects">
-                <option value="">Seleccione Que Quieres aprender</option>
-                <option *ngFor="let subject of listSubjects" [value]="subject.id">{{ subject.name }}</option>
-              </select>
             </div>
 
-            <button class="btn btn-src px-4 animation button" (click)="seleccionarOpcion()">
-              <span>Comienza</span>
-            </button>
-
-            <!-- <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-              <fa-icon [icon]="faGraduationCap"></fa-icon> Quiero aprender {{ selectedOption }}
-            </button>
-            <div class="dropdown-menu dropdown-menu-end mt-2 pe-5">
-              <button class="dropdown-item btn" (click)="selectedOption = 'Programacion'">Programacion</button>
-              <button class="dropdown-item btn" (click)="selectedOption = 'Matematicas'">Matematicas</button>
-              <button class="dropdown-item btn" (click)="selectedOption = 'Quimicas'">Quimicas</button>
-              <button class="dropdown-item btn" (click)="selectedOption = 'Fisica'">Fisica</button>
-              <button class="dropdown-item btn" (click)="selectedOption = 'Algebra'">Algebra</button>
-            </div> -->
-
-          <!-- </div> -->
-          <!-- <button class="btn"><fa-icon [icon]="faLocationDot"></fa-icon> Donde</button> -->
-          <!-- <div class="box">
-            <button class="btn btn-src px-4 animation button" (click)="seleccionarOpcion()">
-              <span>Comienza</span>
-            </button>
-
-            <button class="btn btn-src px-4 animation button" (click)="seleccionarOpcion(selectedOption)">
-              <span>Comienza</span>
-            </button>
-          </div> -->
-        </div>
-
+             <button class="btn btn-src animation button px-lg-4 " (click)="seleccionarOpcion()">
+              <span >Comienza</span>
+            </button> 
+        </div> 
       </div>
     </div>
-    <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-xs-12 d-flex m-auto" [@imageAnimation]>
+    <div class="col-lg-5 col-md-6  d-flex" [@imageAnimation]>
       <svg class="w-full img-fluid m-auto" width="490" height="461" viewBox="0 0 490 461" fill="none"
         xmlns="http://www.w3.org/2000/svg">
         <path
@@ -755,14 +735,24 @@
         <div class="col-md-6 col-lg-7 d-flex">
             <div class="m-auto">
                 <div class="w-75 tpm flex-column">
-                    <h1 class="fs-2 fw-semibold w-75 tpm">¿Querés formar parte de nuestra red de docentes?</h1>
+                    <h1 class="fs-1 fw-semibold  tpm">¿Querés formar parte de nuestra red de docentes?</h1>
                     <p class="w-75 tpm">Gestiona tus tiempos, ofrécete a una gran cantidad y variedad de alumnos que
                         necesitan de tu ayuda.</p>
                     <button  class="btn srccontainer text-center btn-start px-4 animation button orange-btn" routerLink="/subscription"> <span>Dar
                             clases</span></button>
+                      <div class="d-flex">
+                        <div class="border d-flex m-auto bg-primary ">
+                          <div class="m-auto">hola</div>
+                        </div>
+                        <div class="border d-flex m-auto bg-primary ">
+                          <div class="m-auto">hola</div>
+                        </div>
+                        <div class="border d-flex m-auto bg-primary ">
+                          <div class="m-auto">hola</div>
+                        </div>
+                      </div>
                 </div>
-
-      </div>
+            </div>
     </div>
     <div class="col-lg-5 col-md-6 d-flex " id="your-element-id">
       <svg class="w-full img-fluid m-auto" width="490" height="461" viewBox="0 0 366 344" fill="none"

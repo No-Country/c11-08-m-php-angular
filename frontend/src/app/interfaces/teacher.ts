@@ -7,9 +7,9 @@ export interface Teacher {
   user_id: number;
   photo: string;
   name: string;
-  city: City;
+  city_name: City;
+  province_name: City;
   title: string;
-
   subjects: Subjects[];
   about_me: string;
   about_class: string;

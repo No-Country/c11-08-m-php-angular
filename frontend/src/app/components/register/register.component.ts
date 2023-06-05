@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { AuthService } from 'src/app/services/auth.service';
 
+import { LoginData } from 'src/app/interfaces/loginData';
 
 @Component({
   selector: 'app-register',
@@ -53,7 +54,8 @@ export class RegisterComponent {
 
   get email()
   {
-    return this.registerForm.get('email');
+    const control = this.registerForm.get('email');
+    return control ? control.value : null;
   }
 
   get role(){
@@ -62,13 +64,20 @@ export class RegisterComponent {
 
   get password()
   {
-    return this.registerForm.get('password');
+    const control = this.registerForm.get('password');
+    return control ? control.value : null;
   }
 
   get password_confirmation(){
     return this.registerForm.get('password_confirmation')
   }
 
+
+
+  creds: LoginData = {
+    email: '',  
+    password: ''  
+  };
 
 
 
@@ -78,21 +87,28 @@ export class RegisterComponent {
     if (this.registerForm.invalid) {
       return;
     }
+
     this.loading = true;
+    
+    
+    this.creds.email = this.email;
+    this.creds.password = this.password;
+
     this.authService.register(this.registerForm.value)
-    .subscribe({
-      next: (data: any) => {
-        console.log(data);
-        this.loading = false;
-        this.isLoggedIn = true;
-      },
-      error: (error) => {
-        console.log(error);
-        this.error = error;
-        this.showError = true;
-        this.loading = false;
-      }
-    });}
+      .subscribe({
+        next: (data: any) => {
+          console.log(data);
+          this.loading = false;
+          this.isLoggedIn = true;
+          },
+        error: (error) => {
+          console.log(error);
+          this.error = error;
+          this.showError = true;
+          this.loading = false;
+        }
+      });
+  }
 
   
 }
