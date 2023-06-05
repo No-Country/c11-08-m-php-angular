@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router, RouterLink } from '@angular/router';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -8,7 +10,10 @@ import { AuthService } from 'src/app/services/auth.service';
   templateUrl: './login-register.component.html',
   styleUrls: ['./login-register.component.css']
 })
-export class LoginRegisterComponent {
+export class LoginRegisterComponent  {
+  isLoggedIn = false;
+  showModal = false;
+
   mostrarContrasena: boolean = false;
   tipoContrasena: string = 'password';
   faEye = faEye;
@@ -20,6 +25,9 @@ export class LoginRegisterComponent {
   error = '';
 
 
+
+
+
   togglePasswordVisibility() {
     this.mostrarContrasena = !this.mostrarContrasena;
     this.tipoContrasena = this.mostrarContrasena ? 'text' : 'password';
@@ -29,7 +37,9 @@ export class LoginRegisterComponent {
 
   constructor(
     private formBuilder: FormBuilder,
-    private authService: AuthService
+    public authService: AuthService,
+    private modalService: NgbModal,
+
   ) {
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
@@ -61,7 +71,8 @@ export class LoginRegisterComponent {
         (data: any) => {
           console.log(data);
           this.loading = false;
-          // TODO: Cerrar modal o hacer algo adicional
+          this.isLoggedIn = true;
+         
         },
         error => {
           console.error(error);

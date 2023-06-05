@@ -42,12 +42,15 @@ export class HomePageComponent implements OnInit {
   constructor(
     private router: Router,
     private subjectsService: SubjectsService
+ 
   ) { }
 
   listSubjects: Subjects[] = [];
 
   ngOnInit() {
-
+    interval(3000).subscribe(() => {
+      this.changeText();
+    });
     this.changeText();
 
     this.subjectsService.getSubjects().subscribe(
@@ -63,6 +66,15 @@ export class HomePageComponent implements OnInit {
   currentTextIndex = 0;
   textAnimationState: string | undefined;
   animationInProgress = false;
+
+
+// @HostListener('window:scroll', [])
+
+
+
+
+
+  
 
   changeText() {
     interval(3000).subscribe(() => {

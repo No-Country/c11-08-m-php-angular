@@ -1,6 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 body{
     background-color: #FFFFFF;
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 16px;
 }
 
 .nav-link:hover{
@@ -14,3 +16,40 @@ body{
   cursor: default;
   border-radius: 15px;
 }
+
+
+
+/* ------------Loading animation for forms------------- */
+.loading__text, .loading__dots {
+
+  text-align: center;
+}
+
+  .loading__dot {
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    background-color:  #019FA2;
+    margin: 0 0.25rem;
+    animation: pulse 1.5s ease-in-out infinite;
+  }
+
+  .loading__dot:nth-child(2) {
+    animation-delay: 0.5s;
+  }
+
+  .loading__dot:nth-child(3) {
+    animation-delay: 1s;
+  }
+
+  @keyframes pulse {
+      0% {
+          transform: scale(1) translateY(0);
+        }
+        50% {
+          transform: scale(1.25) translateY(-15%);
+        }
+        100% {
+          transform: scale(1) translateY(-5%);
+        }
+  }
