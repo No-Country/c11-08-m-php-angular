@@ -62,3 +62,11 @@
         width: 215px !important;
     }
 }
+.dropdown-menu{
+    overflow: scroll;
+    height: 400px!important;
+}
+
+.title-color{
+    color: #019FA2;
+}

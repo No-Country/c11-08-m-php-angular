@@ -5,7 +5,7 @@
   <div class="row">
     <div class="col-12 col-md-4" style="padding: 20px 0;">
       <div class="tpm w-100">
-        <h1 class="fs-3 fw-semibold">Encuentra a tu docente ideal en <span class="fs-2 fw-bold ">{{materiaSelectHomeNom}}</span></h1>
+        <h1 class="fs-3 fw-semibold">Encuentra a tu docente ideal en <span class="fs-2 fw-bold title-color">{{materiaSelectHomeNom}}</span></h1>
       </div>
     </div>
   </div>
@@ -14,19 +14,18 @@
 
     <div class="col-12 col-md-6 col-lg-4 col-xl-3 ">
       <p class="filtros mb-2">Quiero aprender</p>
-      <div>
-        <select class="form-select" (change)="getfilterTeachers()"
-          [(ngModel)]="materiaSelectHomeId">
-          <option *ngFor="let subject of listSubjects" [value]="subject.id">{{ subject.name }}</option>
-        </select>
+      <div class="dropdown  d-flex">
+        <input type="text" class="form-select dropdown-toggle text-wrap" id="selectSubjects"  name="selectSubjects" data-bs-toggle="dropdown" aria-expanded="false" [(ngModel)]="searchText" (ngModelChange)="filterSubjects()" placeholder="{{ selectedOption ? 'Aprende: ' + selectedOption.name : 'Que quieres aprender' }}" >
+        <ul class="dropdown-menu mt-1 flex-column">
+          <li *ngFor="let subject of filteredSubjects ">
+            <a class="dropdown-item" (click)="seleccionarOpcion(subject)">{{ subject?.name }}</a>
+          </li>
+        </ul>
       </div>
-      <!-- <div class="border srccontainer tpm w-100 d-flex justify-content-between">
-        <form class="d-flex rounded-pill w-100 text-start" role="search">
-          <input class="form-control input-border rounded-pill" (keydown.enter)="busqueda($event)" type="search"
-            [placeholder]="materiaSelectHomeNom" aria-label="Search">
-        </form>
-      </div> -->
+      
+
     </div>
+   
 
     <!-- <div class="col-12 col-md-6 col-lg-4 col-xl-3  borderleft">
       <p class="filtros">Rango de precio</p>
@@ -50,7 +49,7 @@
         <select class="form-select" (change)="getCitys();"
           id="selectProvinces" name="selectProvinces">
           <option value="">Seleccione una Provincia</option>
-          <option *ngFor="let province of listProvinces" [value]="province.id">{{ province.name }}</option>
+          <option *ngFor="let province of listProvinces" [value]="province.id">{{ province?.name }}</option>
         </select>
       </div>
     </div>
@@ -61,7 +60,7 @@
         <select class="form-select" (change)="getfilterTeachers()"
           id="selectCitys" name="selectCitys">
           <option value="">Seleccione una ciudad</option>
-          <option *ngFor="let city of listCitys" [value]="city.id">{{ city.name }}</option>
+          <option *ngFor="let city of listCitys" [value]="city.id">{{ city?.name }}</option>
         </select>
       </div>
     </div>

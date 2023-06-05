@@ -40,8 +40,15 @@ circle{
     }
 }
 
+
+@media only screen and (max-width: 758px) {
+    .srccontainer{
+        width: 90%!important;
+        font-size:small!important;
+    }
+}
 @media only screen and (max-width: 1162px) {
-    .btn-src{
+    .btn-src, .srccontainer{
    
         font-size:medium!important;
     }

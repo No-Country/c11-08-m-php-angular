@@ -7,14 +7,14 @@
       <div class="m-auto ">
         <div class="tpm w-75">
           <h1 class="fs-1 fw-semibold">Encuentra los mejores docentes en <span class="fs-1 fw-bold"
-              [@textAnimation]="listSubjects[currentTextIndex].name">
-              {{ listSubjects[currentTextIndex].name }}
+              [@textAnimation]="listSubjects[currentTextIndex]?.name">
+              {{ listSubjects[currentTextIndex]?.name }}
             </span></h1>
           <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Distinctio veniam sint deserunt sequi
             aliquam qui voluptas dolorem quae blanditiis?</p>
         </div>
        <div class="border srccontainer d-flex justify-content-between w-75 tpm">
-            <div class="srccontainer d-flex ">
+            <div class="srccontainer  d-flex ">
               <fa-icon class="d-flex align-items-center ms-3 align-items-center"  [icon]="faGraduationCap"></fa-icon>
            
               <div class="dropdown srccontainer d-flex">
@@ -740,9 +740,10 @@
                         necesitan de tu ayuda.</p>
                     <button  class="btn srccontainer text-center btn-start px-4 animation button orange-btn" routerLink="/subscription"> <span>Dar
                             clases</span></button>
+                      <div>
+                      </div>
                 </div>
-
-      </div>
+            </div>
     </div>
     <div class="col-lg-5 col-md-6 d-flex " id="your-element-id">
       <svg class="w-full img-fluid m-auto" width="490" height="461" viewBox="0 0 366 344" fill="none"

@@ -39,7 +39,6 @@ export class HomePageComponent implements OnInit {
   listSubjects: Subjects[] = [];
   filteredSubjects: Subjects[] = [];
   searchText: string = '';
-  isOpen: boolean = false;
   inputText: string = '';
 
 
@@ -104,6 +103,7 @@ export class HomePageComponent implements OnInit {
       }
     }
   }
+  
 
   filterSubjects() {
     this.filteredSubjects = this.listSubjects.filter(subject =>
