@@ -19,6 +19,20 @@ import { Teacher } from 'src/app/interfaces/teacher';
 export class SrcPageComponent implements OnInit {
   faCaretDown = faCaretDown
 
+ 
+  materiaSelectHomeNom = '';
+  materiaSelectHomeId: number = 0;
+  numTeachers: number = 0;
+  teachers: Teacher[] = [];
+  listSubjects: Subjects[] = [];
+  listProvinces: ProvincesCity[] = [];
+  listCitys: City[] = [];
+  filteredTeachers: Teacher[] = [];
+  selectedOption: Subjects | null = null;
+
+  filteredSubjects: Subjects[] = [];
+  searchText: string = '';
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -27,66 +41,27 @@ export class SrcPageComponent implements OnInit {
     private provincesService: ProvincesService,
     private cityService: CityService
   ) { }
-  materiaSelectHomeNom = '';
-  materiaSelectHomeId: number = 0;
-  numTeachers: number = 0;
-  teachers: Teacher[] = [];
-  listSubjects: Subjects[] = [];
-  listProvinces: ProvincesCity[] = [];
-  listCitys: City[] = [];
-
-  selectedOption: Subjects | null = null;
-
-  filteredSubjects: Subjects[] = [];
-  searchText: string = '';
-  inputText: string = '';
 
   ngOnInit(): void {
     this.materiaSelectHomeNom = this.route.snapshot.queryParams['seleValue'];
-    this.getSubjects(this.route.snapshot.queryParams['seleId']);
-    this.getfilterTeachers();
+    this.materiaSelectHomeId = Number(this.route.snapshot.queryParams['seleId']);
+    this.getSubjects();
     this.getProvinces();
-    this.seleccionarOpcion()
+    this.filteredTeachers = this.teachers;
   }
 
-  getfilterTeachers(): void {
-    const subjects = document.getElementById('selectSubjects') as HTMLSelectElement | null;
-    const selectCitys = document.getElementById('selectCitys') as HTMLSelectElement | null;
-    const selectProvinces = document.getElementById('selectProvinces') as HTMLSelectElement | null;
-
-    if (selectCitys && selectProvinces) {
-      const filterTeacher: FilterTeacher = {
-        subject: this.materiaSelectHomeNom ? this.materiaSelectHomeNom : '',
-        city: selectCitys.value !== '' ? selectCitys.value : '',
-        province: selectProvinces.value !== '' ? selectProvinces.value : '',
-        availability: [],
-        price: [],
-        order: ''
-      };
-
-      this.teacherService.getfilterTeachers(filterTeacher).subscribe(
-        res => {
-          this.teachers = res;
-          this.numTeachers = res.length;
-        },
-      );
-    }
-  }
-
-  getSubjects(selectedIndex: number): void {
+  getSubjects(): void {
     this.subjectsService.getSubjects().subscribe(
       res => {
         this.listSubjects = res;
-        this.materiaSelectHomeId = selectedIndex;
-        this.selectedOption = this.listSubjects.find(subject => subject.id === selectedIndex) || null;
+        this.selectedOption = this.listSubjects.find(subject => subject.id === this.materiaSelectHomeId) || null;
         this.searchText = this.selectedOption ? 'Aprende: ' + this.selectedOption.name : '';
-        this.filterSubjects(); // Aplicar filtro inicial
-        this.getfilterTeachers(); // Llamar a getfilterTeachers después de obtener las asignaturas
+        this.filterSubjects();
+        this.getfilterTeachers();
       },
       err => console.log(err)
     );
   }
-  
 
   getProvinces(): void {
     this.provincesService.getProvinces().subscribe(
@@ -97,7 +72,7 @@ export class SrcPageComponent implements OnInit {
     );
   }
 
-  getCitys() {
+  getCitys(): void {
     const selectProvinces = document.getElementById('selectProvinces') as HTMLSelectElement;
     if (selectProvinces.value !== '') {
       this.cityService.getCitys(Number(selectProvinces.value)).subscribe(
@@ -115,25 +90,45 @@ export class SrcPageComponent implements OnInit {
     }
   }
 
-  seleccionarOpcion(subject?: Subjects) {
+  getfilterTeachers(): void {
+    const selectSubjects = this.selectedOption ? this.selectedOption.name : '';
+    const selectCitys = (document.getElementById('selectCitys') as HTMLSelectElement)?.value || '';
+    const selectProvinces = (document.getElementById('selectProvinces') as HTMLSelectElement)?.value || '';
+
+    const filterTeacher: FilterTeacher = {
+      subject: selectSubjects,
+      city: selectCitys,
+      province: selectProvinces,
+      availability: [],
+      price: [],
+      order: ''
+    };
+
+    this.teacherService.getfilterTeachers(filterTeacher).subscribe(
+      res => {
+        this.teachers = res;
+        this.numTeachers = res.length;
+      },
+      err => console.log(err)
+    );
+  }
+
+  filterSubjects(): void {
+    this.filteredSubjects = this.listSubjects.filter(subject =>
+      subject.name.toLowerCase().includes(this.searchText.toLowerCase())
+    );
+  }
+
+  seleccionarOpcion(subject?: Subjects): void {
     if (subject) {
       this.selectedOption = subject;
       this.searchText = 'Aprende: ' + subject.name;
     } else {
       if (this.selectedOption) {
         this.searchText = 'Aprende: ' + this.selectedOption.name;
-        this.filterSubjects(); // Aplicar filtro según el texto de búsqueda
-        this.getfilterTeachers(); // Obtener la nueva lista de profesores con los filtros actualizados
       }
     }
-  }
-  
- 
-
-  filterSubjects() {
-    this.filteredSubjects = this.listSubjects.filter(subject =>
-      subject.name.toLowerCase().includes(this.searchText.toLowerCase())
-    );
+    this.filterSubjects();
+    this.getfilterTeachers();
   }
 }
-

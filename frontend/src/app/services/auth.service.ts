@@ -16,10 +16,7 @@ export class AuthService {
   currentUser: BehaviorSubject<any> = new BehaviorSubject<any>(null);
 
   constructor(private http: HttpClient) { 
-    
     console.log("El servicio de autenticacion esta corriendo");
- 
-  
   }
 
 
