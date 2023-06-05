@@ -36,7 +36,7 @@ import { interval } from 'rxjs';
 export class HomePageComponent implements OnInit {
 
   selectedOption: Subjects | null = null;
-  listSubjects: Subjects[] = [];
+  listSubjects: Subjects[] = [] ;
   filteredSubjects: Subjects[] = [];
   searchText: string = '';
   inputText: string = '';

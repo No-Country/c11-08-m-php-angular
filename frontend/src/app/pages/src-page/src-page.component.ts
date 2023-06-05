@@ -50,6 +50,7 @@ export class SrcPageComponent implements OnInit {
   }
 
   getfilterTeachers(): void {
+    const subjects = document.getElementById('selectSubjects') as HTMLSelectElement | null;
     const selectCitys = document.getElementById('selectCitys') as HTMLSelectElement | null;
     const selectProvinces = document.getElementById('selectProvinces') as HTMLSelectElement | null;
 
