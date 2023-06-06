@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SearchTeacherRequest;
 use App\Http\Requests\TeacherRequest;
 use App\Http\Resources\TeacherResource;
-use App\Http\Resources\UserResource;
 use App\Models\Teacher;
 use App\Services\TeacherService;
 use Illuminate\Http\Request;
@@ -69,7 +69,7 @@ class TeacherController extends Controller
         }
     }
 
-    public function searchTeacherBy(Request $request)
+    public function searchTeacherBy(SearchTeacherRequest $request)
     {
         try {
             $teachers = $this->service->searchTeacherBy($request);

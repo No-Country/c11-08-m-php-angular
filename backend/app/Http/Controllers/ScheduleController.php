@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ListScheduleRequest;
 use App\Http\Requests\ScheduleRequest;
 use App\Http\Resources\ScheduleResource;
 use App\Models\Schedule;
 use App\Services\ScheduleService;
-use Illuminate\Http\Request;
 
 class ScheduleController extends Controller
 {
@@ -103,6 +103,16 @@ class ScheduleController extends Controller
         try {
             $this->service->deleteSchedule($schedule);
             return response()->json(['type' => 'success', 'message' => 'Eliminado exitosamente'],200);
+        } catch (\Exception $e) {
+            return response()->json(['message' => $e->getMessage(), 'type' => 'error'],500);
+        }
+    }
+
+    public function storeSchedulesByTeacher(ListScheduleRequest $request, int $teacher_id)
+    {
+        try {
+            $schedules = $this->service->storeSchedulesByTeacher($request->all(), $teacher_id);
+            return ScheduleResource::collection($schedules);
         } catch (\Exception $e) {
             return response()->json(['message' => $e->getMessage(), 'type' => 'error'],500);
         }
