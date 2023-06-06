@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\StoreListSubjectRequest;
+use App\Http\Requests\StoreSubjectRequest;
 use App\Models\Subject;
 use App\Services\SubjectService;
 use Illuminate\Support\Facades\DB;
@@ -39,40 +40,40 @@ class SubjectController extends Controller
         
     }
 
-    public function storeSubjectByTeacher(Request $request)
+    public function storeSubjectByUser(StoreSubjectRequest $request)
     {
         try {
-            $subject = $this->service->storeSubjectByTeacher($request->all());
+            $subject = $this->service->storeSubjectByUser($request->all());
             return response()->json($subject);
         } catch (\Exception $e) {
             return response()->json(['message' => $e->getMessage(), 'type' => 'error'],500);
         }
     }
 
-    public function deleteSubjectByTeacher(int $teacher_id, int $subject_id)
+    public function deleteSubjectByUser(int $user_id, int $subject_id)
     {
         try {
-            $this->service->deleteSubjectByTeacher($teacher_id, $subject_id);
-            return response('', 204);
+            $this->service->deleteSubjectByUser($user_id, $subject_id);
+            return response()->json(['type' => 'success', 'message' => 'Eliminado exitosamente'],200);
         } catch (\Exception $e) {
             return response()->json(['message' => $e->getMessage(), 'type' => 'error'],500);
         }
     }
 
-    public function getSubjectsByTeacher(int $teacher_id)
+    public function getSubjectsByUser(int $user_id)
     {
         try {
-            $subjects = $this->service->getSubjectsByTeacher($teacher_id);
+            $subjects = $this->service->getSubjectsByUser($user_id);
             return response()->json($subjects);
         } catch (\Exception $e) {
             return response()->json(['message' => $e->getMessage(), 'type' => 'error'],500);
         }
     }
 
-    public function storeSubjectsByTeacher(Request $request)
+    public function storeSubjectsByUser(StoreListSubjectRequest $request)
     {
         try {
-            $subjects = $this->service->storeSubjectsByTeacher($request->all());
+            $subjects = $this->service->storeSubjectsByUser($request->all());
             return response()->json($subjects);
         } catch (\Exception $e) {
             return response()->json(['message' => $e->getMessage(), 'type' => 'error'],500);

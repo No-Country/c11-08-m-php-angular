@@ -6,17 +6,18 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Schedule extends Model
+class Payment extends Model
 {
     use HasFactory, SoftDeletes;
-    protected $fillable = ['day','active','start_morning','end_morning','start_afternoon','end_afternoon','start_night',
-    'end_night','teacher_id'];
 
-    protected $casts = [
-        'active' => 'boolean',
+    protected $fillable = [
+        'teacher_id','plan_id','fee','total_paid','start_date','end_date'
     ];
 
     public function teacher(){
         return $this->belongsTo(Teacher::class);
+    }
+    public function plan(){
+        return $this->belongsTo(Plan::class);
     }
 }

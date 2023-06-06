@@ -24,8 +24,6 @@ import { CheckoutComponent } from './pages/payment/checkout/checkout.component';
 import { ConfirmDataComponent } from './pages/payment/confirm-data/confirm-data.component';
 import { FinishProfileComponent } from './pages/payment/finish-profile/finish-profile.component';
 import { PaymentComponent } from './pages/payment/payment/payment.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
 
 
 @NgModule({
@@ -47,7 +45,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ConfirmDataComponent,
     FinishProfileComponent,
     PaymentComponent
-    
+
   ],
   imports: [
     HttpClientModule,
@@ -60,7 +58,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     FormsModule,
     NgxPaginationModule,
     ReactiveFormsModule,
-    NgbModule,
     AppRoutingModule
   ],
   providers: [],
