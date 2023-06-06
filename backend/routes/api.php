@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ClaseController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\StudentController;
@@ -82,6 +83,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/clases',[ClaseController::class,'index']);//Todas las clases
     Route::get('/clases/{clase}',[ClaseController::class,'show']);//Obtener una clase
     Route::apiResource('clases', ClaseController::class)->except(['index', 'show']);
+    Route::post('/subscription',[PaymentController::class,'getSubscriptionLink']);//Obtener link de Mercado Pago para pagar subscripción
 });
 
 
