@@ -25,10 +25,12 @@ class SubscriptionRequest extends FormRequest
     public function rules()
     {
         return [
-            "id" => ['required', 'integer', 'exists:plans,id'],
-            "type" => ['required', Rule::in(['3 meses', '6 meses', '1 año'])],
-            "price"  => ['required', 'numeric'],
-            "free_months"  => ['nullable', 'integer'],
+            "plan" => ['required', 'array'],
+            "plan.id" => ['required', 'integer', 'exists:plans,id'],
+            "plan.type" => ['required', Rule::in(['3 meses', '6 meses', '1 año'])],
+            "plan.price"  => ['required', 'numeric'],
+            "plan.free_months"  => ['nullable', 'integer'],
+            "payer_email" => ['required', 'email', 'max:255'],
         ];
     }
 }

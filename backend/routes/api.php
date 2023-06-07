@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ClaseController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\PlanController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\StudentController;
@@ -51,6 +52,9 @@ Route::get('/teachers/{teacher}', [TeacherController::class, 'show']); //Obtener
 
 Route::get('/reviews/teacher/{teacher_id}', [ReviewController::class, 'getReviewsByTeacher']); //Obtener reviews por profesor
 
+Route::get('/plans', [PlanController::class, 'index']); //Todos los planes
+Route::get('/plans/{plan}', [PlanController::class, 'show']); //Obtener un plan
+
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 
@@ -58,6 +62,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::apiResource('teachers', TeacherController::class)->except(['index', 'show']);
     Route::apiResource('reviews', ReviewController::class);
     Route::apiResource('users', UserController::class);
+    Route::apiResource('plans', PlanController::class)->except(['index', 'show']);
     
     Route::post('/logout', [AuthController::class, 'logout']);
 
