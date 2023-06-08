@@ -1,6 +1,6 @@
 # Tu Nexo
 
-![TuNexo Logo](![image](https://github.com/No-Country/c11-08-m-php-angular/assets/90113532/30780355-5e54-4f54-a39c-3cdae6f38b01))
+![TuNexo Logo][![imagen-2023-06-08-161515406.png](https://i.postimg.cc/C1jWcB59/imagen-2023-06-08-161515406.png)](https://postimg.cc/zbGtBfnk)
 
 TuNexo is a web page designed to connect students and teachers, providing a platform where users can register as students, search for teachers by subject and filters, schedule appointments, and establish direct contact with professionals. The main goal of Tu Nexo is to facilitate the search and connection between students and teachers, creating an efficient and secure virtual environment.
 
