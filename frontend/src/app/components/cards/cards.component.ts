@@ -17,7 +17,7 @@ export class CardsComponent implements OnInit, OnChanges {
   filteredTeachers: Teacher[] = []; // Nueva propiedad para almacenar la lista de profesores filtrada
 
   constructor() {}
-  filteredTeachers: Teacher[] = []; // Nueva propiedad para almacenar la lista de profesores filtrada
+   // Nueva propiedad para almacenar la lista de profesores filtrada
 
   ngOnInit(): void {
     // Inicialmente, ambas listas serán iguales
