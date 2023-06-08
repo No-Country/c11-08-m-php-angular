@@ -1,8 +1,10 @@
 export interface EditUser {
-    userName: string;
-    userLastName: string;
-    userEmail: string;
-    userProvince: string;
-    userPhone?: number;
-
+    first_name: string;
+    last_name: string;
+    email: string;
+    birthdate: string;
+    identification: string; 
+    phone: string;
+    photo: string;
+    city_id: string;
 }

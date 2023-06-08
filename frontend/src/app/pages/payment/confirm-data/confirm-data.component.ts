@@ -5,6 +5,7 @@ import { ProvincesCity } from 'src/app/interfaces/provincesCity';
 import { AuthService } from 'src/app/services/auth.service';
 import { EditUserService } from 'src/app/services/edit-user.service';
 import { ProvincesService } from 'src/app/services/provinces.service';
+import { NumericLiteral } from 'typescript';
 
 @Component({
   selector: 'app-confirm-data',
@@ -32,12 +33,14 @@ export class ConfirmDataComponent implements OnInit {
       birthdate: ['', Validators.required],
       selectProvinces: ['', Validators.required],
       phone: ['', Validators.required], */
-      name: '',
-      lastName: '',
+      first_name: '',
+      last_name: '',
       email: '',
       birthdate: '',
-      selectProvinces: '',
+      identification: '',
       phone: '',
+      photo: '',
+      city_id: '',
     });
   }
 
@@ -65,6 +68,7 @@ export class ConfirmDataComponent implements OnInit {
       console.log(this.UserData);
 
       if (this.UserData) {
+        this.userId = this.UserData.id;
         this.userName = this.UserData.first_name;
         this.userLastName = this.UserData.last_name;
         this.userEmail = this.UserData.email;
@@ -74,7 +78,7 @@ export class ConfirmDataComponent implements OnInit {
     })
     this.getProvinces();
   }
-
+  userId: number = 0;
   userName: string = '';
   userLastName: string = '';
   userEmail: string = '';
@@ -99,7 +103,7 @@ export class ConfirmDataComponent implements OnInit {
       
       return;
     }
-    this.tService.updateTeacher(this.confirmForm.value).subscribe(
+    this.tService.updateTeacher(this.userId,this.confirmForm.value).subscribe(
       db => {
         console.log('usuario editado');
         

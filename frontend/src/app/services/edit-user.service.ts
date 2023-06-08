@@ -13,8 +13,8 @@ export class EditUserService {
   private apiUrl = environment.URL;
 
   
-  updateTeacher(user: EditUser): Observable<any> {
-    return this.http.put<any>(this.apiUrl + '/api/teachers/', user);
+  updateTeacher(userId:number, user: EditUser): Observable<any> {
+    return this.http.put<any>(`${this.apiUrl}/api/users/${userId}`, user);
   }
 
 }
