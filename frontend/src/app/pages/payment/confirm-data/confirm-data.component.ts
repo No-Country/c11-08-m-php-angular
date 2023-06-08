@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { ProvincesCity } from 'src/app/interfaces/provincesCity';
 import { AuthService } from 'src/app/services/auth.service';
+import { EditUserService } from 'src/app/services/edit-user.service';
 import { ProvincesService } from 'src/app/services/provinces.service';
 
 @Component({
@@ -22,17 +23,30 @@ export class ConfirmDataComponent implements OnInit {
     private provincesService: ProvincesService,
     private formBuilder: FormBuilder,
     private authService: AuthService,
+    private tService: EditUserService,
   ) {
     this.confirmForm = this.formBuilder.group({
-      name: ['', Validators.required],
+      /* name: ['', Validators.required],
       lastName: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
+      birthdate: ['', Validators.required],
+      selectProvinces: ['', Validators.required],
+      phone: ['', Validators.required], */
+      name: '',
+      lastName: '',
+      email: '',
+      birthdate: '',
+      selectProvinces: '',
+      phone: '',
     });
   }
 
-  UserData : any;
+  UserData: any;
 
   listProvinces: ProvincesCity[] = [];
+  get birthdate() {
+    return this.confirmForm.get('birthdate');
+  }
   get name() {
     return this.confirmForm.get('name')
   }
@@ -48,14 +62,24 @@ export class ConfirmDataComponent implements OnInit {
   ngOnInit(): void {
     this.authService.currentUser.subscribe(user => {
       this.UserData = user;
-      this.userName = this.UserData.first_name;
-      this.userLastName = this.UserData.last_name;
+      console.log(this.UserData);
+
+      if (this.UserData) {
+        this.userName = this.UserData.first_name;
+        this.userLastName = this.UserData.last_name;
+        this.userEmail = this.UserData.email;
+        this.userProvince = this.UserData.province;
+        this.userPhone = this.UserData.phone;
+      }
     })
     this.getProvinces();
   }
 
-  userName : string = '';
-  userLastName: string ='';
+  userName: string = '';
+  userLastName: string = '';
+  userEmail: string = '';
+  userProvince: string = '';
+  userPhone?: number;
 
   getProvinces(): void {
     this.provincesService.getProvinces().subscribe(
@@ -66,28 +90,20 @@ export class ConfirmDataComponent implements OnInit {
     );
   }
 
-  onEnviar(event: Event) {
-    //console.log(this.confirmForm);
+  Enviar() {
+    console.log(this.confirmForm.value)
+    console.log('respuesta');
 
-    /* event.preventDefault();
-    if (this.confirmForm.valid) {
-      console.log(JSON.stringify(this.confirmForm.value));
-      this.autenticarService.loginUser(this.confirmForm.value).subscribe(db => {
-        console.log("DATA: " + JSON.stringify(db.id));
-        if (db.id) {
-          alert("Puedes editar el portfolio");
-          this.ruta.navigate(['/dashboard']);
-          this.confirmForm.reset()
-        } else {
-          alert("Error al iniciar sesión, credenciales no válidas!!!");
-        }
-      }, err => {
-        alert("ERROR!!!");
-      })
-    } else {
-      sessionStorage.setItem('currentUser', "");
-      alert("Error! No tienes acceso");
-      this.ruta.navigate(['/']);
-    } */
-  } 
+    if (this.confirmForm.invalid) {
+      console.log('invalid');
+      
+      return;
+    }
+    this.tService.updateTeacher(this.confirmForm.value).subscribe(
+      db => {
+        console.log('usuario editado');
+        
+      }
+    )
+  }
 }

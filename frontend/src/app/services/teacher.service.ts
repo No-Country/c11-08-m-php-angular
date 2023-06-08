@@ -11,7 +11,7 @@ import { map } from 'rxjs/operators';
 })
 export class TeacherService {
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
   private apiUrl = environment.URL;
 
   getfilterTeachers(filterTeacher: FilterTeacher): Observable<Teacher[]> {
@@ -24,16 +24,19 @@ export class TeacherService {
     return this.http.get<any>(`${this.apiUrl}/api/teachers`).pipe(
       map(response => response.data)
     );
-    //   map(response => {
-    //     const data = response.data; // Accede al objeto 'data' dentro de la respuesta
-    //     if (Array.isArray(data)) {
-    //       return data.filter(item => item instanceof Teacher) as Teacher[]; // Filtra y transforma los objetos al tipo 'Teacher'
-    //     } else {
-    //       throw new Error('La respuesta no tiene una estructura válida.');
-    //     }
-    //   })
-    // );
   }
+
+
+  //   map(response => {
+  //     const data = response.data; // Accede al objeto 'data' dentro de la respuesta
+  //     if (Array.isArray(data)) {
+  //       return data.filter(item => item instanceof Teacher) as Teacher[]; // Filtra y transforma los objetos al tipo 'Teacher'
+  //     } else {
+  //       throw new Error('La respuesta no tiene una estructura válida.');
+  //     }
+  //   })
+  // );
+}
 
   // getTeacherById(id: number): Observable<Teacher> {
   //   return this.http.get<Teacher>(`${this.apiUrl}/teachers/${id}`);
@@ -50,4 +53,4 @@ export class TeacherService {
   // deleteTeacher(id: number): Observable<void> {
   //   return this.http.delete<void>(`${this.apiUrl}/teachers/${id}`);
   // }
-}
+
