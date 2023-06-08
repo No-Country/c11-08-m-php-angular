@@ -17,14 +17,17 @@ class DatabaseSeeder extends Seeder
     {
 
         $this->call([
-            ProvinceSeeder::class,
-            SubjectSeeder::class,
+            // ProvinceSeeder::class,
+            // SubjectSeeder::class,
             UserSeeder::class,
+            PlanSeeder::class,
             
+            /*Factories: Fake Data
             StudentSeeder::class,
             TeacherSeeder::class,
             ScheduleSeeder::class,
             ClaseSeeder::class,
+            */
         ]);
 
     }
