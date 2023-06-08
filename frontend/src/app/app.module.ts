@@ -63,7 +63,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ReactiveFormsModule,
     NgbModule,
     AppRoutingModule
-
   ],
   providers: [],
   bootstrap: [AppComponent]

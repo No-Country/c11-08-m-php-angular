@@ -12,13 +12,14 @@ export class CardsComponent implements OnInit {
   faStar = faStar;
   faLocationDot = faLocationDot;
 
-  @Input() teachers: Teacher[]=[];
+  @Input() teachers: Teacher[] = [];
   public page!: number;
+  filteredTeachers: Teacher[] = []; // Nueva propiedad para almacenar la lista de profesores filtrada
 
   constructor(
-  ){}
+  ) { }
 
-  ngOnInit(): void{
+  ngOnInit(): void {
   }
 
   truncateText(text: string, maxLength: number): string {

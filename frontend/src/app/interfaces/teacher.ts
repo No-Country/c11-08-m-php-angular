@@ -7,7 +7,7 @@ export interface Teacher {
   user_id: number;
   photo: string;
   name: string;
-  city: City;
+  province_name: string;
   title: string;
 
   subjects: Subjects[];
