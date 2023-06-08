@@ -28,7 +28,9 @@ class ProvinceSeeder extends Seeder
                     'name' => $value['nombre'],
                 ]
             );
-            CitySeeder::storeDepartmentsByProvince($value['id'], $province['id']);
+            if($province){
+                CitySeeder::storeDepartmentsByProvince($value['id'], $province['id']);
+            }
         }
     }
 }

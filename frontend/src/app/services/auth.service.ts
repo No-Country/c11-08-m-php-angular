@@ -3,7 +3,8 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, map,} from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { RegisterData } from '../interfaces/registerData';
-import { LoginData } from '../interfaces/loginData'
+import { LoginData } from '../interfaces/loginData';
+
 
 @Injectable({
   providedIn: 'root'
@@ -34,6 +35,7 @@ export class AuthService {
 
   Login(creds: LoginData) {
     return this.http.post(`${this.apiUrl}/api/login`, creds, {
+      observe: 'response'
       observe: 'response'
     }).pipe(
       map((response: HttpResponse<any>) => {
