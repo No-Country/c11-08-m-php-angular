@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "@angular/compiler-cli": "^16.0.4",
+    "@ng-bootstrap/ng-bootstrap": "^15.0.1",
+    "ngx-pagination": "^6.0.3"
+  }
+}

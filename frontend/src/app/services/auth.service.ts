@@ -4,7 +4,7 @@ import { BehaviorSubject, catchError, map, of, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { RegisterData } from '../interfaces/registerData';
 import { LoginData } from '../interfaces/loginData';
-import { error } from 'jquery';
+
 
 @Injectable({
   providedIn: 'root'
@@ -14,16 +14,16 @@ export class AuthService {
   apiUrl = environment.URL;
   isLoggedIn:boolean = false;
 
-  constructor(private http: HttpClient) { 
+  constructor(private http: HttpClient) {
     const token = this.getToken();
     console.log("El servicio de autenticacion esta corriendo");
     this.isLoggedIn=(true);
-  
+
   }
 
   Login(creds: LoginData) {
     return this.http.post(`${this.apiUrl}/api/login`, creds, {
-      observe: 'response' 
+      observe: 'response'
     }).pipe(
       map((response: HttpResponse<any>) => {
         console.log('Login response:', response);
@@ -49,7 +49,7 @@ export class AuthService {
     const token = sessionStorage.getItem('token');
     return token;
   }
-  
+
   register(user: RegisterData) {
     return this.http.post(`${this.apiUrl}/api/register`, user);
   }
