@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ClaseController;
+use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\PlanController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\StudentController;
@@ -29,10 +31,7 @@ Route::get('/provinces','App\Http\Controllers\ProvinceController@index');//Todas
 Route::get('/provinces/{id}','App\Http\Controllers\ProvinceController@getProvince');//Una provincia
 
 Route::get('/schedule','App\Http\Controllers\ScheduleController@index');
-Route::post('/schedule','App\Http\Controllers\ScheduleController@store');
 Route::get('/schedule/{schedule}','App\Http\Controllers\ScheduleController@show');
-Route::put('/schedule/{schedule}','App\Http\Controllers\ScheduleController@update');
-Route::delete('/schedule/{schedule}','App\Http\Controllers\ScheduleController@destroy');
 Route::get('/schedule/teacher/{teacher_id}','App\Http\Controllers\ScheduleController@getScheduleByTeacher');//Obtener horarios por profesor
 
 Route::get('/cities','App\Http\Controllers\CityController@index');//Todas las ciudades
@@ -43,7 +42,7 @@ Route::get('/cities/province/{id}','App\Http\Controllers\CityController@citiesPr
 Route::get('/subjects','App\Http\Controllers\SubjectController@index');//Todas las materias
 Route::get('/subjects/{id}','App\Http\Controllers\SubjectController@getSubject');//Una materia
 Route::get('/subjects/name/{name}','App\Http\Controllers\SubjectController@subjectsByText');//Todas las materias dado un string
-Route::get('/subjects/teacher/{teacher_id}', [SubjectController::class, 'getSubjectsByTeacher']); //Obtener materias por profesor
+Route::get('/subjects/user/{user_id}', [SubjectController::class, 'getSubjectsByUser']); //Obtener materias por usuario (Profesor o Estudiante)
 
 Route::get('/users/teacher/{teacher_id}', [UserController::class, 'getUserByTeacher']); //Obtener un usuario por profesor
 
@@ -53,6 +52,9 @@ Route::get('/teachers/{teacher}', [TeacherController::class, 'show']); //Obtener
 
 Route::get('/reviews/teacher/{teacher_id}', [ReviewController::class, 'getReviewsByTeacher']); //Obtener reviews por profesor
 
+Route::get('/plans', [PlanController::class, 'index']); //Todos los planes
+Route::get('/plans/{plan}', [PlanController::class, 'show']); //Obtener un plan
+
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 
@@ -60,23 +62,34 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::apiResource('teachers', TeacherController::class)->except(['index', 'show']);
     Route::apiResource('reviews', ReviewController::class);
     Route::apiResource('users', UserController::class);
+    Route::apiResource('plans', PlanController::class)->except(['index', 'show']);
     
     Route::post('/logout', [AuthController::class, 'logout']);
+    Route::post('/changePassword', [AuthController::class, 'changePassword']);
+
     Route::get('/teachers/user/{user_id}', [TeacherController::class, 'getTeacherByUser']); //Obtener un profesor por usuario
 
-    Route::post('/subjects/teacher', [SubjectController::class, 'storeSubjectByTeacher']); //Guardar materia por profesor
-    Route::post('/subjects/teacher/list', [SubjectController::class, 'storeSubjectsByTeacher']); //Guardar lista de materias por profesor
-    Route::delete('/subjects/teacher/{teacher_id}/{subject_id}', [SubjectController::class, 'deleteSubjectByTeacher']); //Eliminar materia por profesor
+    Route::post('/subjects/user', [SubjectController::class, 'storeSubjectByUser']); //Guardar materia por usuario
+    Route::post('/subjects/user/list', [SubjectController::class, 'storeSubjectsByUser']); //Guardar lista de materias por usuario
+    Route::delete('/subjects/user/{user_id}/{subject_id}', [SubjectController::class, 'deleteSubjectByUser']); //Eliminar materia por usuario
+
+    Route::post('/schedule','App\Http\Controllers\ScheduleController@store');
+    Route::put('/schedule/teacher/{teacher_id}','App\Http\Controllers\ScheduleController@storeSchedulesByTeacher');//Actualizar y Guardar horarios por profesor
+    Route::put('/schedule/{schedule}','App\Http\Controllers\ScheduleController@update');
+    Route::delete('/schedule/{schedule}','App\Http\Controllers\ScheduleController@destroy');
+    
+    Route::get('/students/user_id/{user_id}',[StudentController::class,'getStudentByUserId']);//Obtener estudiante por user_id
+    Route::get('/students',[StudentController::class,'index']);//Todas los estudiantes
+    Route::get('/students/{student}',[StudentController::class,'show']);//Obtener estudiante
+    Route::apiResource('students', StudentController::class)->except(['index', 'show']);
+
+    Route::get('/clases/teacher/{teacher_id}',[ClaseController::class,'getStudentsByTeacher']);//Obtener estudiante de un profesor
+    Route::get('/clases/student/{student_id}',[ClaseController::class,'getTeachersByStudent']);//Obtener los profesores de un estudiante
+    Route::put('/clases/changeState/{clase}',[ClaseController::class,'updateClaseState']);//Actualizar un estado
+    Route::get('/clases',[ClaseController::class,'index']);//Todas las clases
+    Route::get('/clases/{clase}',[ClaseController::class,'show']);//Obtener una clase
+    Route::apiResource('clases', ClaseController::class)->except(['index', 'show']);
+    Route::post('/subscription',[PaymentController::class,'getSubscriptionLink']);//Obtener link de Mercado Pago para pagar subscripción
 });
 
-Route::get('/students/user_id/{user_id}',[StudentController::class,'getStudentByUserId']);//Obtener estudiante por user_id
-Route::get('/students',[StudentController::class,'index']);//Todas los estudiantes
-Route::get('/students/{student}',[StudentController::class,'show']);//Obtener estudiante
-Route::apiResource('students', StudentController::class)->except(['index', 'show']);
 
-Route::get('/clases/teacher/{teacher_id}',[ClaseController::class,'getStudentsByTeacher']);//Obtener estudiante de un profesor
-Route::get('/clases/student/{student_id}',[ClaseController::class,'getTeachersByStudent']);//Obtener los profesores de un estudiante
-Route::put('/clases/changeState/{clase}',[ClaseController::class,'updateClaseState']);//Actualizar un estado
-Route::get('/clases',[ClaseController::class,'index']);//Todas las clases
-Route::get('/clases/{clase}',[ClaseController::class,'show']);//Obtener una clase
-Route::apiResource('clases', ClaseController::class)->except(['index', 'show']);

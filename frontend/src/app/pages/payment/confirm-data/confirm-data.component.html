@@ -1,70 +1,78 @@
 <div class="container">
-    <div class="row pt-5 pb-5 justify-content-center" style="height: 450px;">
-        <div class="col-12 col-md-5 col-lg-4 d-flex">
-            <div class="flex align-items-center p-4 w-100 perfil-box">
-                <div class="text-center">
-                    <span class="fw-bold fs-5 pb-3 mb-5">Tu foto de perfil</span>
-                    <img [src]="imgTeacher" class="img-fluid" style="border-radius: 10px;">
-                </div>
-                <div class="text-center mt-2">
-                    <button class="btn rounded-pill btn-payment" type="button" aria-haspopup="true"
-                        aria-expanded="false">
-                        Subir una foto
-                    </button>
-                </div>
-            </div>
+  <div class="row pt-5 pb-5 justify-content-center">
+    <div class="col-12 col-md-5 col-lg-4 d-flex mb-3 align-self-start">
+      <div class="flex align-items-center p-4 w-100 perfil-box">
+        <div class="text-center">
+          <span class="fw-bold fs-5 pb-3 mb-5">Tu foto de perfil</span>
+          <img [src]="imgTeacher" class="img-fluid" style="border-radius: 10px;">
         </div>
-        <div class="col-sm-12 col-md-8 d-flex">
-            <div class="info-box w-100"
-                style=" padding: 32px; gap: 24px; background: #FFFFFF; box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15); border-radius: 16px;">
-                <div class="w-md-full container">
-
-                    <div class="d-flex justify-content-start mb-4">
-                        <h5>Informacion Personal</h5>
-                    </div>
-                    <form [formGroup]="confirmForm">
-                        <div class="mb-3">
-                          <div class="row">
-                            <div class="col-6">
-                              <label class="form-label">Nombre</label>
-                              <input type="text" class="form-control" formControlName="first_name">
-                            </div>
-                            <div class="col-6">
-                              <label class="form-label">Apellido</label>
-                              <input type="text" class="form-control" formControlName="last_name">
-                            </div>
-                            <div class="col-6">
-                              <label class="form-label">Fecha de Nacimiento</label>
-                              <input type="date" class="form-control">
-                            </div>
-                            <div class="col-6">
-                              <label class="form-label">Provincia / Ciudad</label>
-                              <select class="form-select" id="selectProvinces" name="selectProvinces">
-                                <option *ngFor="let province of listProvinces" [value]="province.id">{{ province.name }}</option>
-                              </select>
-                            </div>
-                            <div class="col-6">
-                              <label class="form-label">Correo electrónico</label>
-                              <input type="email" class="form-control">
-                            </div>
-                            <div class="col-6">
-                              <label class="form-label">Telefono móvil</label>
-                              <input type="text" class="form-control">
-                            </div>
-                          </div>
-                        </div>
-                        <div class="text-center">
-                          <button class="btn rounded-pill pt-2 pb-2 btn-siguiente" type="button" routerLink="/payment/finish-profile">
-                            Siguiente
-                          </button>
-                        </div>
-                      </form>
-                      
-                </div>
-
-
-            </div>
-
+        <div class="text-center mt-2">
+          <button class="btn rounded-pill btn-payment" type="button" aria-haspopup="true" aria-expanded="false">
+            Subir una foto
+          </button>
         </div>
+      </div>
     </div>
+    <div class="col-sm-12 col-md-8 d-flex">
+      <div class="info-box w-100"
+        style=" padding: 32px; gap: 24px; background: #FFFFFF; box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15); border-radius: 16px;">
+        <div class="w-md-full container">
+
+          <div class="d-flex justify-content-start mb-4">
+            <h5>Informacion Personal</h5>
+          </div>
+          <form [formGroup]="confirmForm">
+            <div class="mb-3">
+              <div class="row">
+                <div class="col-md-6 col-sm-12">
+                  <label class="form-label">Nombre</label>
+                  <input type="text" class="form-control" formControlName="first_name">
+                </div>
+                <div class="col-md-6 col-sm-12">
+                  <label class="form-label">Apellido</label>
+                  <input type="text" class="form-control" formControlName="last_name">
+                </div>
+                <div class="col-md-6 col-sm-12">
+                  <label class="form-label">Fecha de Nacimiento</label>
+                  <input type="date" class="form-control">
+                </div>
+                <div class="col-md-6 col-sm-12">
+                  <label class="form-label">Provincia / Ciudad</label>
+                  <select class="form-select" id="selectProvinces" name="selectProvinces">
+                    <option *ngFor="let province of listProvinces" [value]="province.id">{{ province.name }}</option>
+                  </select>
+                </div>
+                <div class="col-md-6 col-sm-12">
+                  <label class="form-label">Correo electrónico</label>
+                  <input type="email" class="form-control">
+                </div>
+                <div class="col-md-6 col-sm-12">
+                  <label class="form-label">Telefono móvil</label>
+                  <input type="text" class="form-control">
+                </div>
+              </div>
+            </div>
+            <div class="row justify-content-between align-items-center mt-5">
+              <div class="col text-end">
+                <button class="btn rounded-pill pt-2 pb-2 btn-anterior px-4" type="button"
+                  routerLink="/payment/checkout">
+                  Anterior
+                </button>
+              </div>
+              <div class="col text-start">
+                <button class="btn rounded-pill pt-2 pb-2 btn-siguiente" type="button"
+                  routerLink="/payment/finish-profile">
+                  Siguiente
+                </button>
+              </div>
+            </div>
+          </form>
+
+        </div>
+
+
+      </div>
+
+    </div>
+  </div>
 </div>

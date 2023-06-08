@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SearchTeacherRequest;
 use App\Http\Requests\TeacherRequest;
 use App\Http\Resources\TeacherResource;
-use App\Http\Resources\UserResource;
 use App\Models\Teacher;
 use App\Services\TeacherService;
 use Illuminate\Http\Request;
+
+use Mail;
+use App\Mail\TeacherMailable;
+use App\Models\User;
 
 class TeacherController extends Controller
 {
@@ -33,6 +37,7 @@ class TeacherController extends Controller
     {
         try {
             $data = $this->service->createTeacher($request->all());
+            $this->sendMail($request->user_id);
             return new TeacherResource($data);
         } catch (\Exception $e) {
             return response()->json(['message' => $e->getMessage(), 'type' => 'error'],500);
@@ -69,7 +74,7 @@ class TeacherController extends Controller
         }
     }
 
-    public function searchTeacherBy(Request $request)
+    public function searchTeacherBy(SearchTeacherRequest $request)
     {
         try {
             $teachers = $this->service->searchTeacherBy($request);
@@ -87,5 +92,16 @@ class TeacherController extends Controller
         } catch (\Exception $e) {
             return response()->json(['message' => $e->getMessage(), 'type' => 'error'],500);
         }
+    }
+
+    //Enviar Mail
+    private function sendMail($user_id){
+        $teacher = User::find($user_id);
+            $mailData = [
+                'name' => $teacher->first_name,
+                'body' => 'Nos alegra que estes aqui. TuNexo es un grán espacio en donde podras publicar
+                 e impartir tus conocimientos a todas las personas. Tu decides el costo de tus clases.'
+            ];
+            Mail::to($teacher->email)->send(new TeacherMailable($mailData));
     }
 }

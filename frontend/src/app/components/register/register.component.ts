@@ -2,7 +2,7 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { AuthService } from 'src/app/services/auth.service';
-import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+
 
 @Component({
   selector: 'app-register',
@@ -11,7 +11,6 @@ import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 })
 export class RegisterComponent {
   @ViewChild('exampleModalLabel') modal: any;
-  modalRef: NgbModalRef | undefined;
   mostrarContrasena: boolean = false;
   tipoContrasena: string = 'password';
   faEye = faEye;
@@ -33,7 +32,6 @@ export class RegisterComponent {
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
-    private modalService: NgbModal
   ) {
     this.registerForm = this.formBuilder.group({
       first_name: ['', Validators.required],
@@ -72,9 +70,6 @@ export class RegisterComponent {
   }
 
 
-  closeModal(): void {
-    this.modalRef?.dismiss();
-  }
 
 
   onRegisterFormSubmit() {
@@ -90,7 +85,6 @@ export class RegisterComponent {
         console.log(data);
         this.loading = false;
         this.isLoggedIn = true;
-        this.closeModal();
       },
       error: (error) => {
         console.log(error);
