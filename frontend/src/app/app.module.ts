@@ -26,6 +26,7 @@ import { FinishProfileComponent } from './pages/payment/finish-profile/finish-pr
 import { PaymentComponent } from './pages/payment/payment/payment.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,8 +45,9 @@ import { PaymentComponent } from './pages/payment/payment/payment.component';
     CheckoutComponent,
     ConfirmDataComponent,
     FinishProfileComponent,
-    PaymentComponent
-
+    PaymentComponent,
+  
+    
   ],
   imports: [
     HttpClientModule,

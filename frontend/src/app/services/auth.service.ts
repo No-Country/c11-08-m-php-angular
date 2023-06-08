@@ -30,7 +30,7 @@ export class AuthService {
       }
     }
   }
-
+  
 
   Login(creds: LoginData) {
     return this.http.post(${this.apiUrl}/api/login, creds, {
@@ -58,7 +58,7 @@ export class AuthService {
   }
 
   register(creds: RegisterData) {
-    return this.http.post(${this.apiUrl}/api/register, creds, {
+    return this.http.post(`${this.apiUrl}/api/register`, creds, {
       observe: 'response'
     }).pipe(
       map((response: HttpResponse<any>) => {
@@ -76,8 +76,6 @@ export class AuthService {
       }),
     );
   }
-  
-
 }
 
 

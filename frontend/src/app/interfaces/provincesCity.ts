@@ -1,4 +1,5 @@
 export interface ProvincesCity {
   id: number;
-  name: string;
+  city: string;
+  province:string;
 }
