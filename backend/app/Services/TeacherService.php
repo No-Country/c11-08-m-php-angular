@@ -105,14 +105,15 @@ class TeacherService
                 $filters['p.id'] = $request->province;
             }
 
+            $search_array = array_map('strtolower', $request->availability);
             $availability = [];
-            if(in_array('mañana', $request->availability)){
+            if(in_array('mañana', $search_array)){
                 $availability[] = ['start_morning', 'end_morning'];
             }
-            if(in_array('tarde', $request->availability)){
+            if(in_array('tarde', $search_array)){
                 $availability[] = ['start_afternoon', 'end_afternoon'];
             }
-            if(in_array('noche', $request->availability)){
+            if(in_array('noche', $search_array)){
                 $availability[] = ['start_night', 'end_night'];
             }
 

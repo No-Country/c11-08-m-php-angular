@@ -14,13 +14,13 @@ import { PaymentComponent } from './pages/payment/payment/payment.component';
 
 const routes: Routes = [
   {
+    path: 'home',
+    component: HomePageComponent,
+  },
+  {
     path: '',
     redirectTo: 'home' , // if loading is add, change this "home" for loading path
     pathMatch: 'full'
-  },
-  {
-    path: 'home',
-    component: HomePageComponent,
   },
   {
     path: 'src',

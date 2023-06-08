@@ -3,7 +3,9 @@
 namespace App\Services;
 
 use App\Models\Schedule;
-use Illuminate\Http\Request;
+use App\Models\Teacher;
+use Exception;
+use Illuminate\Support\Facades\DB;
 
 class ScheduleService
 {
@@ -77,5 +79,46 @@ class ScheduleService
         }
     }
 
+    public function storeSchedulesByTeacher(array $array, int $teacher_id)
+    {
+        DB::beginTransaction();
+        try {
+            $teacher = Teacher::where('id', $teacher_id)->firstOrFail();
+            $schedules = $teacher->schedules;
+            if($schedules->count() > 0){
+                foreach($schedules as $key => $schedule){
+                    $array_schedule = $array['schedules'][$key];
+                    $this->validateSchedules($array_schedule);
+                    $this->updateSchedule($array['schedules'][$key], $schedule);
+                }
+            }
+            else{
+                foreach($array['schedules'] as $key => $schedule){
+                    $array_schedule = $array['schedules'][$key];
+                    $this->validateSchedules($array_schedule);
+                    $this->createSchedule($schedule);
+                }   
+            }
+            DB::commit();
+            return $teacher->refresh()->schedules;
+        } catch (\Exception $e) {
+            DB::rollBack();
+            throw $e;
+        }
+    }
+
+    private function validateSchedules(array $schedule)
+    {
+        if($schedule['start_morning'] == $schedule['end_morning'] && isset($schedule['start_morning']) && isset($schedule['end_morning'])
+        || $schedule['start_afternoon'] == $schedule['end_afternoon'] && isset($schedule['start_afternoon']) && isset($schedule['end_afternoon'])
+        || $schedule['start_night'] == $schedule['end_night'] && isset($schedule['start_night']) && isset($schedule['end_night'])){
+            throw New Exception('Horario de inicio no puede ser igual al horario final');
+        }
+        if($schedule['start_morning'] > $schedule['end_morning']
+        || $schedule['start_afternoon'] > $schedule['end_afternoon']
+        || $schedule['start_night'] > $schedule['end_night']){
+            throw New Exception('Horario de inicio no puede ser mayor al horario final');
+        }
+    }
     
 }
