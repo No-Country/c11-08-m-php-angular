@@ -1,6 +1,6 @@
 <div class="mb-5 mt-1 row g-5">
-  <div class="col-12 col-xl-4 col-md-6" *ngFor="let teacher of filteredTeachers | paginate: {itemsPerPage: 6, currentPage: page}">
-    <div class="card overflow-hidden">
+  <div class="col-12 col-xl-4 col-md-6 " *ngFor="let teacher of filteredTeachers | paginate: {itemsPerPage: 6, currentPage: page}">
+    <div class="card overflow-hidden ">
       <div class="ratio ratio-16x9 ">
         <img  src="{{teacher.photo}}" class="card-img-top img-fluid object-fit-cover" alt="...">
       </div>
@@ -13,15 +13,15 @@
             <p>({{teacher.total_reviews}} opiniones)</p>
           </div>
         </div>
-        <div class="d-flex justify-content-start flex-wrap ">
-          <p class="border etiquetas py-1 px-2">{{teacher.subjects[0]}}</p>
+        <div class="d-flex justify-content-start flex-wrap overflow-hidden">
+          <p class="border etiquetas py-1 px-2 ">{{teacher.subjects[0]}}</p>
           <p class="mx-2 border etiquetas py-1 px-2">{{teacher.subjects[1]}}</p>
           <p class="border etiquetas py-1 px-2">{{teacher.schedules[0]}}</p>
         </div>
         <p>{{ truncateText(teacher.title, 100) }}</p>
         <div class="d-flex justify-content-between mb-2">
           <div>
-            <p class="fs-3 fw-bold d-flex">{{teacher.price_one_class}}<span class="m-auto ms-1 fs-6 fw-semibold transparent"> Hora</span></p>
+            <p class="fs-3 fw-bold d-flex">${{teacher.price_one_class}}<span class="m-auto ms-1 fs-6 fw-semibold transparent"> Hora</span></p>
           </div>
           <div><a routerLink="/perfil" class="btn btn-contact py-2 px-4">Contactar</a></div>
         </div>

@@ -15,10 +15,23 @@ export class AuthService {
   isLoggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   currentUser: BehaviorSubject<any> = new BehaviorSubject<any>(null);
 
-  constructor(private http: HttpClient) { 
-    console.log("El servicio de autenticacion esta corriendo");
+  constructor(private http: HttpClient) {
+    console.log("El servicio de autenticación está corriendo");
+    this.checkSession();
   }
 
+  private checkSession() {
+    const token = window.localStorage.getItem('token');
+    if (token) {
+      this.isLoggedIn.next(true);
+      const user = window.localStorage.getItem('currentUser');
+      if (user) {
+        const parsedUser = JSON.parse(user);
+        this.currentUser.next(parsedUser);
+      }
+    }
+  }
+  
 
   Login(creds: LoginData) {
     return this.http.post(`${this.apiUrl}/api/login`, creds, {
@@ -30,9 +43,9 @@ export class AuthService {
         const bearerToken = body.token;
         if (bearerToken) {
           const token = bearerToken.replace('Bearer ', '');
-          sessionStorage.setItem('token', token);
+          localStorage.setItem('token', token);
           this.isLoggedIn.next(true);
-          this.currentUser.next(body.user); // Guarda el usuario actual
+          this.currentUser.next(body.user); 
           console.log(this.isLoggedIn);
           return body;
         }
@@ -40,18 +53,13 @@ export class AuthService {
     );
   }
 
-  verifyToken(token: string) {
-    const body = { token };
-    return this.http.post(`${this.apiUrl}/verify`, body);
+  getToken() {
+    const token = window.localStorage.getItem('token') ?? '';
+    return token 
   }
 
-  getToken() {
-    const token = sessionStorage.getItem('token');
-    return token;
-  }
-  
   register(creds: RegisterData) {
-    return this.http.post(`${this.apiUrl}/api/register`, creds , {
+    return this.http.post(`${this.apiUrl}/api/register`, creds, {
       observe: 'response'
     }).pipe(
       map((response: HttpResponse<any>) => {
@@ -60,17 +68,15 @@ export class AuthService {
         const bearerToken = body.token;
         if (bearerToken) {
           const token = bearerToken.replace('Bearer ', '');
-          sessionStorage.setItem('token', token);
+          localStorage.setItem('token', token);
           this.isLoggedIn.next(true);
-          this.currentUser.next(body.user); // Guarda el usuario actual
+          this.currentUser.next(body.user); 
           console.log(this.isLoggedIn);
           return body;
         }
       }),
     );
   }
-  
-
 }
 
 
