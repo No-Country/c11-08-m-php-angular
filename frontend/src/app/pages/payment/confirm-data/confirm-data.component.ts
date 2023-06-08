@@ -16,7 +16,13 @@ export class ConfirmDataComponent implements OnInit {
   imgTeacher = '../../../../assets/images/subscription-page/nocountry (1).png';
   ruta: string = "/payment/finish-profile"
   confirmForm: FormGroup;
-
+  user = localStorage.getItem('currentUser');
+  userId: number = 0;
+  userName: string = '';
+  userLastName: string = '';
+  userEmail: string = '';
+  userProvince: string = '';
+  userPhone?: number;
 
 
 
@@ -44,6 +50,26 @@ export class ConfirmDataComponent implements OnInit {
     });
   }
 
+  ngOnInit(): void {
+
+
+
+    const user = this.authService.getCurrentUser();
+    console.log(this.user + "test");
+    
+    if (user) {
+      this.userId = user.id;
+      this.userName = user.first_name;
+      this.userLastName = user.last_name;
+      this.userEmail = user.email;
+      this.userProvince = user.province;
+      this.userPhone = user.phone;
+      console.log(this.userEmail);
+      
+    }
+    this.getProvinces();
+  }
+
   UserData: any;
 
   listProvinces: ProvincesCity[] = [];
@@ -51,39 +77,19 @@ export class ConfirmDataComponent implements OnInit {
     return this.confirmForm.get('birthdate');
   }
   get name() {
-    return this.confirmForm.get('name')
+    return this.confirmForm.get('first_name')
   }
 
   get lastName() {
-    return this.confirmForm.get('lastName')
+    return this.confirmForm.get('last_name')
   }
 
   get email() {
     return this.confirmForm.get('email');
   }
 
-  ngOnInit(): void {
-    this.authService.currentUser.subscribe(user => {
-      this.UserData = user;
-      console.log(this.UserData);
-
-      if (this.UserData) {
-        this.userId = this.UserData.id;
-        this.userName = this.UserData.first_name;
-        this.userLastName = this.UserData.last_name;
-        this.userEmail = this.UserData.email;
-        this.userProvince = this.UserData.province;
-        this.userPhone = this.UserData.phone;
-      }
-    })
-    this.getProvinces();
-  }
-  userId: number = 0;
-  userName: string = '';
-  userLastName: string = '';
-  userEmail: string = '';
-  userProvince: string = '';
-  userPhone?: number;
+  
+  
 
   getProvinces(): void {
     this.provincesService.getProvinces().subscribe(
@@ -100,13 +106,13 @@ export class ConfirmDataComponent implements OnInit {
 
     if (this.confirmForm.invalid) {
       console.log('invalid');
-      
+
       return;
     }
-    this.tService.updateTeacher(this.userId,this.confirmForm.value).subscribe(
+    this.tService.updateTeacher(this.userId, this.confirmForm.value).subscribe(
       db => {
         console.log('usuario editado');
-        
+
       }
     )
   }

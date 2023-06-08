@@ -1,4 +1,4 @@
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -24,6 +24,7 @@ import { CheckoutComponent } from './pages/payment/checkout/checkout.component';
 import { ConfirmDataComponent } from './pages/payment/confirm-data/confirm-data.component';
 import { FinishProfileComponent } from './pages/payment/finish-profile/finish-profile.component';
 import { PaymentComponent } from './pages/payment/payment/payment.component';
+import { InterceptorInterceptor } from './services/interceptor.interceptor';
 
 
 
@@ -62,7 +63,7 @@ import { PaymentComponent } from './pages/payment/payment/payment.component';
     ReactiveFormsModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: InterceptorInterceptor, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

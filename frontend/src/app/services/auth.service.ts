@@ -33,7 +33,7 @@ export class AuthService {
   
 
   Login(creds: LoginData) {
-    return this.http.post(${this.apiUrl}/api/login, creds, {
+    return this.http.post(`${this.apiUrl}/api/login`, creds, {
       observe: 'response'
     }).pipe(
       map((response: HttpResponse<any>) => {
@@ -43,6 +43,7 @@ export class AuthService {
         if (bearerToken) {
           const token = bearerToken.replace('Bearer ', '');
           localStorage.setItem('token', token);
+          localStorage.setItem('currentUser', JSON.stringify(body.user));
           this.isLoggedIn.next(true);
           this.currentUser.next(body.user); 
           console.log(this.isLoggedIn);
@@ -68,6 +69,7 @@ export class AuthService {
         if (bearerToken) {
           const token = bearerToken.replace('Bearer ', '');
           localStorage.setItem('token', token);
+          localStorage.setItem('currentUser', JSON.stringify(body.user));
           this.isLoggedIn.next(true);
           this.currentUser.next(body.user); 
           console.log(this.isLoggedIn);
@@ -75,6 +77,13 @@ export class AuthService {
         }
       }),
     );
+  }
+  getCurrentUser(): any {
+    const user = localStorage.getItem('currentUser');
+    if (user) {
+      return JSON.parse(user);
+    }
+    return null;
   }
 }
 
