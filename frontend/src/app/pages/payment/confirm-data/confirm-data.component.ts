@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router, RouterLink } from '@angular/router';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { ProvincesCity } from 'src/app/interfaces/provincesCity';
 import { AuthService } from 'src/app/services/auth.service';
@@ -31,6 +32,7 @@ export class ConfirmDataComponent implements OnInit {
     private formBuilder: FormBuilder,
     private authService: AuthService,
     private tService: EditUserService,
+    private router: Router
   ) {
     this.confirmForm = this.formBuilder.group({
       /* name: ['', Validators.required],
@@ -103,7 +105,8 @@ export class ConfirmDataComponent implements OnInit {
   Enviar() {
     console.log(this.confirmForm.value)
     console.log('respuesta');
-
+    console.log(this.userName);
+    
     if (this.confirmForm.invalid) {
       console.log('invalid');
 
@@ -112,7 +115,7 @@ export class ConfirmDataComponent implements OnInit {
     this.tService.updateTeacher(this.userId, this.confirmForm.value).subscribe(
       db => {
         console.log('usuario editado');
-
+        this.router.navigate(['/payment/finish-profile'])
       }
     )
   }
