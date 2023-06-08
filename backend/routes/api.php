@@ -65,6 +65,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::apiResource('plans', PlanController::class)->except(['index', 'show']);
     
     Route::post('/logout', [AuthController::class, 'logout']);
+    Route::post('/changePassword', [AuthController::class, 'changePassword']);
 
     Route::get('/teachers/user/{user_id}', [TeacherController::class, 'getTeacherByUser']); //Obtener un profesor por usuario
 
