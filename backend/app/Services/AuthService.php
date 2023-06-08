@@ -8,6 +8,8 @@ use App\Repositories\TeacherRepository;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
+use Hash;
+
 class AuthService
 {
 
@@ -81,4 +83,23 @@ class AuthService
         }
     }
 
+    public function changePassword(array $request){
+        try {
+            $user = Auth::user();
+            if(Hash::check($request['old_password'],$user->password)){
+                $user->update([
+                    'password'=> Hash::make($request['password'])
+                ]);
+                return response()->json([
+                    'message' => 'Password successfully updated',
+                ],200);
+            }else{
+                return response()->json([
+                    'message' => 'Old password does not matched'
+                ],400);
+            }
+        } catch (\Exception $ex) {
+            throw $ex;
+        }
+    }
 }

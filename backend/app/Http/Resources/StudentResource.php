@@ -18,6 +18,7 @@ class StudentResource extends JsonResource
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
             'name' => $this->user->first_name . " " . $this->user->last_name,
+            'email' => $this->user->email,
             'photo' => $this->user->photo ? URL::to($this->user->photo) : null,
             'city' => ($this->user->city) ? $this->user->city->name : null,
             'province' => ($this->user->city) ? $this->user->city->province->name : null,

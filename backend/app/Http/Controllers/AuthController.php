@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RegisterRequest;
 use App\Services\AuthService;
+use App\Http\Requests\ChangePasswordRequest;
 
 class AuthController extends Controller
 {
@@ -38,6 +39,14 @@ class AuthController extends Controller
     {
         try {
             return $this->service->logout();
+        } catch (\Exception $ex) {
+            return response()->json(['message' => $ex->getMessage()],500);
+        }
+    }
+
+    public function changePassword(ChangePasswordRequest $request){
+        try {
+            return $this->service->changePassword($request->all());
         } catch (\Exception $ex) {
             return response()->json(['message' => $ex->getMessage()],500);
         }
