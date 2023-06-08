@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { faGraduationCap, faLocationDot } from '@fortawesome/free-solid-svg-icons';
 import { trigger, transition, animate, style, keyframes } from '@angular/animations';
 import { interval } from 'rxjs';
-
+import { faStar as StarSolid} from '@fortawesome/free-solid-svg-icons'
 @Component({
   selector: 'app-home-page',
   templateUrl: './home-page.component.html',
@@ -41,7 +41,7 @@ export class HomePageComponent implements OnInit {
   searchText: string = '';
   inputText: string = '';
 
-
+  faStarSolid = StarSolid;
   faLocationDot = faLocationDot; // borrar
   faGraduationCap = faGraduationCap;
 
