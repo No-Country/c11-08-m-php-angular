@@ -99,10 +99,6 @@ export class ConfirmDataComponent implements OnInit {
       this.previsualizacion = imagen.base;
     })
     this.archivos.push(archivoCapturado)
-    
-    
-    
-    // 
     // console.log(event.target.files);
 
   }
@@ -122,7 +118,6 @@ export class ConfirmDataComponent implements OnInit {
           base: null
         });
       };
-
     } catch (e) {
       resolve({
         base: null
