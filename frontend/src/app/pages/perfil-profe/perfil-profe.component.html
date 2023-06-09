@@ -1,0 +1,173 @@
+<app-navbar></app-navbar>
+
+<div class="container pt-3">
+  <div class="row row-cols-auto">
+    <div class="col">Home</div>
+      <div class="col"><fa-icon [icon]="faAngleRight"></fa-icon></div>
+        <div class="col"><a routerLink="/src" class="text-decoration-none text-black">Profesores</a></div>
+          <div class="col"><fa-icon [icon]="faAngleRight"></fa-icon></div>
+        <div class="col-sm-4">Esteban Gonzales</div>
+      </div>
+    <div class="row">
+     <div class="col-sm-12 col-lg-4 col-md-6 ">
+        <div class=" card mt-4 p-3">
+          <img src="../../../assets/images/perfil-profe/Rectangle 6.png" class="card-img-top" [width]="320" [height]="255" alt="...">
+          <div class="col-lg-10 col-md-8 col-m-10 col-sm-6">
+            <div class="card-body">
+              <h4 class="card-title fw-bold">ESTEBAN GONZALES</h4>
+              <br>
+              <br>
+              <p class="card-text gap-4 pb-2 ml-4 fw-normal"> <fa-icon [icon]="faLocationDot"> </fa-icon> San Isidro/Lima/Peru</p>
+              <p class="card-text gap-4 pb-2  fw-normal"> <fa-icon [icon]="faUser"> </fa-icon> 32 alumnos actuales</p>
+              <p class="card-text gap-4 fw-normal"> <fa-icon [icon]="faStar"> </fa-icon> 5(28)</p>
+              <button type="button" class="btn btn-dark btn-lg btn-block center" routerLink="/schedule">CONTACTAR PROFE</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+      <div class="col-sm-12 col-lg-8 g-2 mx-0">
+        <div class="bordered-row justify-content-between mt-3 mx-2">
+          <h3>Acerca del docente</h3>
+          <p>La experiencia me ha ayudado a detectar de manera eficaz y rápida cual es la falla de cada alumno y trabajar en ello. La idea es aprender a trabajar la matemática logrando confianza en si mismo.</p>
+        </div>
+        <div class="bordered-row justify-content-between mt-3 mx-2">
+          <h3>Acerca del docente</h3>
+          <p>Doy tareas personalizadas en base a los temas que estes estudiando, resolviéndolos en clase. Mi método se basa en detectar la falla del alumno en su aprendizaje y trabajar en ello. El error bien analizado es la materia prima para lograr el éxito.</p>
+        </div>
+        <div class="bordered-row justify-content-between mt-3 mx-2">
+         <div class="row-precios mx-lg-3">
+          <div class="col-4 text-center" style="color:#019FA2">1 CLASE(1 Hora)
+            <div class="col-valor pt-2" style="color:#000">$ 2000
+              </div>
+              <div class="col"><i class="fa-solid fa-pipe fa-xl"></i>
+              </div>
+            </div>
+            <div class="col-4 text-center" style="color:#019FA2 ">2 CLASES
+              <div class="col-valor pt-2"  style="color:#000">$ 3500
+            </div>
+              <i class="fa-solid fa-pipe fa-xl"></i>
+            </div>
+            <div class="col-4 text-center" style="color:#019FA2">4 CLASES
+              <div class="col-valor pt-2"  style="color:#000">$ 7500
+              <i class="fa-solid fa-pipe fa-xl"></i>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="bordered-row mt-3 mx-2" d-flex>
+          <h3>DIAS Y HORARIOS DISPONIBLES</h3>
+
+        <div class="table-responsive-sm table-responsive-md table-responsive-lg pt-4">
+          <table class="table fw-bold">
+            <thead>
+              <tr>
+               <th>Lunes</th>
+                <th>Martes</th>
+                <th>Miércoles</th>
+                <th>Jueves</th>
+                <th>Viernes</th>
+              </tr>
+            </thead>
+            <tbody >
+              <tr >
+                <td (click)="cambiarColor($event)">08hs a 12hs</td>
+                <td (click)="cambiarColor($event)">08hs a 12hs</td>
+                <td (click)="cambiarColor($event)">08hs a 12hs</td>
+                <td (click)="cambiarColor($event)">08hs a 12hs</td>
+                <td (click)="cambiarColor($event)">08hs a 12hs</td>
+              </tr>
+              <tr>
+                <td (click)="cambiarColor($event)" >12hs a 18hs</td>
+                <td (click)="cambiarColor($event)">12hs a 18hs</td>
+                <td (click)="cambiarColor($event)"></td>
+                <td (click)="cambiarColor($event)">12hs a 18hs</td>
+                <td (click)="cambiarColor($event)">12hs a 18hs</td>
+              </tr>
+              <tr>
+                <td (click)="cambiarColor($event)">18hs a 21hs</td>
+                <td (click)="cambiarColor($event)"></td>
+                <td (click)="cambiarColor($event)">18hs a 21hs</td>
+                <td (click)="cambiarColor($event)">18hs a 21hs</td>
+                <td (click)="cambiarColor($event)"></td>
+              </tr>
+              <!-- Agrega más filas para las demás horas -->
+            </tbody>
+          </table>
+        </div>
+     </div>
+     <div class="bordered-row justify-content-between mt-3 mx-2">
+      <h3>Opiniones de Estudiantes</h3>
+      <br>
+        <div class="container">
+          <div class="row">
+            <div class="col-auto px-5"><img src="../../../assets/images/perfil-profe/stephanie-liverani-Zz5LQe-VSMY-unsplash 1.png" class="icon "alt="">
+
+          </div>
+            <div class="col col-md-6 col-xs-4 px-1">
+              <div class="row px-1">Rosangélica Gómez Ruiz</div>
+                <div class="col"><fa-icon [icon]="faStar"> </fa-icon><fa-icon [icon]="faStar"> </fa-icon> <fa-icon [icon]="faStar"> </fa-icon> <fa-icon [icon]="faStar"> <i class="fa-duotone fa-star"></i> </fa-icon></div>
+                </div>
+                <div class="col d-flex justify-content-end pt-2">25 de Abril de 2023</div>
+                <p px-5>Esteban es un gran profesor, asistí con el porque debía rendir el ingreso a la facultad y los temas que no entendí en toda la secundaria los aprendí con el.</p>
+            </div>
+            <br>
+            <div class="row">
+              <div class="col-auto px-5"><img src="../../../assets/images/perfil-profe/sigmund-a19OVaa2rzA-unsplash 1.png" class="icon "alt="">
+             </div>
+              <div class="col col-md-3 px-0">
+                <div class="row px-1"> Juan Luis</div>
+                  <div class="col"><fa-icon [icon]="faStar"> </fa-icon><fa-icon [icon]="faStar"> </fa-icon> <fa-icon [icon]="faStar"> </fa-icon> <fa-icon [icon]="faStar"> <i class="fa-duotone fa-star"></i> </fa-icon></div>
+                  </div>
+                  <div class="col d-flex justify-content-end pt-2">25 de Abril de 2023</div>
+                  <p px-5>Esteban además de enseñar muy bien es una gran persona, aprendí mucho con él y sin dudas me ayudó a aprobar matemática.</p>
+              </div>
+          </div>
+          <div class="row">
+          <button class="btn btn-success bg-light text-dark border-0 fw-bolder"  id="menus" (click)="mostrarMenu()">Ver mas comentarios</button>
+
+            <!-- Menú desplegable -->
+            <ul id="myMenu" class="menu">
+              <div class="container pt-3">
+                <div class="row">
+                  <div class="col-auto px-5"><img src="../../../assets/images/perfil-profe/matheus-ferrero-pg_WCHWSdT8-unsplash.jpg" class="icon "alt="">
+
+                </div>
+                  <div class="col col-md-6 col-xs-4 px-1">
+                    <div class="row px-1">Rosangélica Gómez Ruiz</div>
+                      <div class="col"><fa-icon [icon]="faStar"> </fa-icon><fa-icon [icon]="faStar"> </fa-icon> <fa-icon [icon]="faStar"> </fa-icon> <fa-icon [icon]="faStar"> <i class="fa-duotone fa-star"></i> </fa-icon></div>
+                      </div>
+                      <div class="col d-flex justify-content-end pt-2">25 de Abril de 2023</div>
+                      <p px-5>Esteban es un gran profesor, asistí con el porque debía rendir el ingreso a la facultad y los temas que no entendí en toda la secundaria los aprendí con el.</p>
+                  </div>
+                  <br>
+                  <div class="row">
+                    <div class="col-auto px-5"><img src="../../../assets/images/perfil-profe/jonas-kakaroto-mjRwhvqEC0U-unsplash.jpg" class="icon "alt="">
+                   </div>
+                    <div class="col col-md-3 px-0">
+                      <div class="row px-1"> Juan Luis</div>
+                        <div class="col"><fa-icon [icon]="faStar"> </fa-icon><fa-icon [icon]="faStar"> </fa-icon> <fa-icon [icon]="faStar"> </fa-icon> <fa-icon [icon]="faStar"> <i class="fa-duotone fa-star"></i> </fa-icon></div>
+                        </div>
+                        <div class="col d-flex justify-content-end pt-2">25 de Abril de 2023</div>
+                        <p px-5>Esteban además de enseñar muy bien es una gran persona, aprendí mucho con él y sin dudas me ayudó a aprobar matemática.</p>
+                    </div>
+                </div>
+               </ul>
+          </div>
+        </div>
+
+      </div>
+  <div class="row pt-5">
+    <div class="col-12">
+      <h2 class="text-start">Docentes relacionados</h2>
+    <app-cards></app-cards>
+</div>
+</div>
+
+
+
+
+<app-footer></app-footer>

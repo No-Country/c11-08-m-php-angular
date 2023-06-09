@@ -17,11 +17,24 @@ class UserFactory extends Factory
      */
     public function definition()
     {
+        $gender = fake()->randomElement($array = array ('male','female'));
+        $photoWoman = 'images/fakephotowoman.png';
+        $photoMan = 'images/fakephotoman.jpg';
+        $photo = ($gender == 'male') ? $photoMan : $photoWoman;
         return [
-            'name' => fake()->name(),
+            'role' => fake()->randomElement($array = array ('Profesor','Estudiante')),
             'email' => fake()->unique()->safeEmail(),
-            'email_verified_at' => now(),
+            'first_name' => fake('es_ES')->firstName($gender),
+            'last_name' => fake('es_ES')->lastName(),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'birthdate' => fake()->dateTimeBetween('-50 years', '-25 years')->format('Y-m-d'),
+            'identification' => fake('ar_SA')->idNumber,
+            'phone' => fake('es_ES')->mobileNumber(),
+            'photo' => $photo,
+            'city_id' => fake()->numberBetween(1,529),
+            'last_connection' => fake()->dateTimeBetween('-60 days', 'now')->format('Y-m-d H:i:s'),
+            // 'last_connection' => fake()->dateTimeThisMonth()->format('Y-m-d H:i:s'),
+            'email_verified_at' => now(),
             'remember_token' => Str::random(10),
         ];
     }

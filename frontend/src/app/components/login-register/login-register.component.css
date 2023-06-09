@@ -1,0 +1,13 @@
+.font-small{
+    font-size: 12px;
+    text-align: center;
+}
+
+.btn-outline-secondary{
+    border: 0;
+}
+
+.btn-dark{
+    background-color: #019FA2;
+    border-color:  #019FA2!important;
+}

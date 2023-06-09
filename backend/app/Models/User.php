@@ -26,10 +26,10 @@ class User extends Authenticatable
         'first_name',
         'last_name',
         'password',
-        'birthday',
+        'birthdate',
         'identification',
-        'address',
         'phone',
+        'photo',
         'city_id',
         'last_connection',
     ];
@@ -61,5 +61,10 @@ class User extends Authenticatable
     public function teacher(): HasOne
     {
         return $this->hasOne(Teacher::class);
+    }
+
+    public function student(): HasOne
+    {
+        return $this->hasOne(Student::class);
     }
 }

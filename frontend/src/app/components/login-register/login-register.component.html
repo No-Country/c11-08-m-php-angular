@@ -1,0 +1,79 @@
+<div class="container-fluid  p-0" >
+  <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+    <div class="modal-dialog modal-dialog-centered w-100 h-100 !important">
+      <div class="modal-content">
+        <div class="d-flex mx-2 my-2">
+          <button type="button" id="closeModalButton" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <ng-template [ngIf]="!isLoggedIn ">
+        <div class="modal-body">
+          <div class="d-flex justify-content-center mb-3">
+            <img src="../../../assets/images/homePage/loginRegister.png" alt="Imagen" class="img-square">
+          </div>
+          <div class="d-flex justify-content-center text-center mb-3">
+            <h5 class="modal-title w-25">Inicia sesión en <span class="fw-bold">Tunexo</span></h5>
+          </div>
+          <form [formGroup]="loginForm" (ngSubmit)="onLoginFormSubmit()">
+            <div class="mb-3">
+              <label for="correo" class="form-label">Correo electrónico</label>
+              <input type="email" class="form-control" id="email" formControlName="email"
+                placeholder="Ejemplo@gmail.com">
+              <div *ngIf="Email?.errors && Email?.touched">
+                <div *ngIf="Email?.hasError('required')" class="text-danger form-text">El correo electrónico es
+                  requerido</div>
+                <div *ngIf="Email?.hasError('email')" class="text-danger form-text">Correo electrónico inválido</div>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="contrasena" class="form-label">Contraseña</label>
+              <div class="input-group">
+                <input type="{{ tipoContrasena }}" class="form-control" id="contrasena" formControlName="password"
+                  placeholder="***********">
+                <button class="btn btn-outline-secondary input-group-text" type="button" id="togglePassword"
+                  (click)="togglePasswordVisibility()">
+                  <fa-icon [icon]="mostrarContrasena ? faEyeSlash : faEye"></fa-icon>
+                </button>
+              </div>
+              <div *ngIf="Password?.errors && Password?.touched">
+                <div *ngIf="Password?.hasError('required') " class="text-danger form-text">La contraseña es requerida
+                </div>
+                <div *ngIf="Password?.errors?.['minlength']" class="text-danger form-text">La contraseña debe tener al
+                  menos 6 caracteres</div>
+              </div>
+            </div>
+            <div class="d-flex justify-content-center m-auto">
+              <button type="submit" class="btn btn-dark w-100" [disabled]="loginForm.invalid || loading">Iniciar
+                sesión</button>
+            </div>
+            <div *ngIf="loading" class="loading__dots d-flex justify-content-center my-2">
+              <div class="loading__dot"></div>
+              <div class="loading__dot"></div>
+              <div class="loading__dot"></div>
+            </div>
+          </form>
+          <div class="d-flex flex-column align-items-center">
+            <p class="font-small">Al continuar aceptas nuestra <ins>Política de privacidad</ins> y <ins>Términos de
+                uso</ins>.</p>
+            <h5 class="fs-6 text-center">¿No tienes una cuenta?</h5>
+            <button class="fw-bold nav-link pt-0 border-none btn" data-bs-toggle="modal"
+              data-bs-target="#registerModal">Registrate</button>
+          </div>
+        </div>
+        </ng-template>
+        <ng-template [ngIf]="isLoggedIn">
+          <div class="modal-body">
+            <div class="d-flex justify-content-center mb-3">
+              <img src="../../../assets/images/homePage/loginRegister.png" alt="Imagen" class="img-square">
+            </div>
+            <div class="d-flex justify-content-center text-center mb-3">
+              <h5 class="modal-title w-50 fs-3">Inicio sesión exitoso!</h5>
+            </div>
+              <div class="d-flex justify-content-center m-auto mx-4">
+                <button  class="btn btn-dark w-100"  data-bs-dismiss="modal" aria-label="Close">Finalizar</button>
+              </div>
+          </div>
+          </ng-template>
+      </div>
+    </div>
+  </div>
+</div>

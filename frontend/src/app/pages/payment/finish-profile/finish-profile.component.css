@@ -1,0 +1,62 @@
+.perfil-box {
+    gap: 21px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+    border-radius: 24px;
+}
+
+.btn-payment {
+    border-color: #019FA2;
+    border-radius: 1000px;
+    border-width: 1px !important;
+    font-size: .9rem;
+}
+
+.camera-icon {
+    color: #019FA2;
+    font-size: 1rem;
+}
+
+.options {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: .7rem;
+    height: auto;
+}
+
+.border-r {
+    border-right: 1px solid #000;
+}
+
+.label-montos {
+    font-size: 1.1rem;
+    color: #019FA2;
+    margin-bottom: .4rem;
+}
+
+.label-montos span {
+    font-size: 1rem;
+}
+
+.inputs-montos {
+    border-radius: 8px;
+    border: 1px solid #969696;
+    padding: 5px;
+    font-size: .9rem;
+    width: 100%;
+}
+
+.btn-anterior {
+    border-color: #019FA2;
+    border-radius: 1000px;
+    border-width: 1px !important;
+    font-size: 1rem;
+    color: #019FA2;
+}
+
+.btn-send {
+    background: #DDDDDD;
+    border-radius: 24px;
+    color: #AEAEAE
+}

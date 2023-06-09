@@ -5,15 +5,15 @@
 ### users **(ED)**
 
 - id **(PK)**
-- role (profesor, estudiante, admin)
+- role (Profesor, Estudiante, Admin)
 - email **(UQ)**
 - first_name
 - last_name
 - password
-- birthday
+- birthdate
 - identification
-- address
 - phone
+- photo
 - city_id **(FK)**
 - last_connection
 - deleted_at
@@ -30,9 +30,11 @@
 - years_experience
 - job_title
 - certificate_file
-- price_hour
+- price_one_class
+- price_two_classes
+- price_four_classes
 - sample_class
-- photo
+- active
 - deleted_at
 - created_at
 - updated_at
@@ -42,7 +44,6 @@
 - id **(PK)**
 - user_id **(FK)**
 - description
-- photo
 - deleted_at
 - created_at
 - updated_at
@@ -57,7 +58,7 @@
 - start_time
 - end_time
 - description
-- state(pendiente, confirmado, finalizado, cancelado)
+- state(Pendiente, Confirmado, Finalizado, Cancelado)
 - deleted_at
 - created_at
 - updated_at
@@ -87,8 +88,7 @@
 - id **(PK)**
 - teacher_id **(FK)**
 - active
-- day (0,1,2,3,4,5,6)
-- name (lunes, martes, miercoles, jueves, sabado, domingo)
+- day (1,2,3,4,5,6)
 - start_morning
 - end_morning
 - start_afternoon
@@ -110,7 +110,7 @@
 ### cities **(EC)**
 
 - id **(PK)**
-- name **(UQ)**
+- name
 - province_id **(FK)**
 - deleted_at
 - created_at
@@ -122,7 +122,7 @@
 - teacher_id **(FK)**
 - students_id **(FK)**
 - comment
-- qualification (mala, regular, buena, muy buena, excelente)
+- qualification (1,2,3,4,5)
 - deleted_at
 - created_at
 - updated_at
@@ -136,6 +136,28 @@
 - created_at
 - updated_at
 
+### plans **(ED)**
+
+- id **(PK)**
+- type (3 meses, 6 meses, 1 año)
+- price
+- free_months
+- deleted_at
+- created_at
+- updated_at
+
+### payments **(ED)**
+
+- id **(PK)**
+- teacher_id **(FK)**
+- plan_id **(FK)**
+- fee
+- total_paid
+- start_date
+- end_date
+- deleted_at
+- created_at
+- updated_at
 
 ## Diagrama
 
