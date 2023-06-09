@@ -26,8 +26,8 @@ export class ConfirmDataComponent implements OnInit {
   userProvince: string = '';
   userPhone?: number;
   
-  public previsualizacion: string = '../../../../assets/images/subscription-page/nocountry (1).png';
-  public archivos: any = [];
+  previsualizacion: string = '../../../../assets/images/subscription-page/nocountry (1).png';
+  archivos: any = [];
 
 
 
@@ -46,9 +46,9 @@ export class ConfirmDataComponent implements OnInit {
       first_name: [this.userName, Validators.required],
       last_name: [this.userLastName, Validators.required],
       email: [this.userEmail, [Validators.required, Validators.email]],
-      birthdate: ['', Validators.required],
-      selectProvinces: ['', Validators.required],
-      phone: [this.userPhone, Validators.required],
+      birthdate: '',
+      selectProvinces: '',
+      phone: '',
       identification: '',
       photo: '',
       city_id: '',
@@ -65,6 +65,9 @@ export class ConfirmDataComponent implements OnInit {
       this.userEmail = user.email;
       this.userProvince = user.province;
       this.userPhone = user.phone;
+      if (user.photo !== null) {
+        this.previsualizacion = user.photo;
+      }
       console.log(this.userEmail);
     }
     this.getProvinces();
@@ -88,19 +91,26 @@ export class ConfirmDataComponent implements OnInit {
     return this.confirmForm.get('email');
   }
 
+  get photo() {
+    return this.confirmForm.get('photo');
+  }
+
   
   capturarFile(event:any) {
     const archivoCapturado = event.target.files[0]
     this.extraerBase64(archivoCapturado).then((imagen: any) => {
       this.previsualizacion = imagen.base;
-      console.log(imagen);
-
+      this.confirmForm.patchValue({ photo: this.previsualizacion });
     })
     this.archivos.push(archivoCapturado)
+    
+    
+    
     // 
     // console.log(event.target.files);
 
   }
+
 
 
   extraerBase64 = async ($event: any) => new Promise((resolve) => {
@@ -126,8 +136,6 @@ export class ConfirmDataComponent implements OnInit {
       });
     }
   });
-
-
 
   getProvinces(): void {
     this.provincesService.getProvinces().subscribe(
