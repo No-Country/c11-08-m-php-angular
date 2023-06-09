@@ -37,7 +37,7 @@ class TeacherController extends Controller
     {
         try {
             $data = $this->service->createTeacher($request->all());
-            $this->sendMail($request->user_id);
+            //$this->sendMail($request->user_id);
             return new TeacherResource($data);
         } catch (\Exception $e) {
             return response()->json(['message' => $e->getMessage(), 'type' => 'error'],500);
@@ -95,13 +95,13 @@ class TeacherController extends Controller
     }
 
     //Enviar Mail
-    private function sendMail($user_id){
-        $teacher = User::find($user_id);
-            $mailData = [
-                'name' => $teacher->first_name,
-                'body' => 'Nos alegra que estes aqui. TuNexo es un grán espacio en donde podras publicar
-                 e impartir tus conocimientos a todas las personas. Tu decides el costo de tus clases.'
-            ];
-            Mail::to($teacher->email)->send(new TeacherMailable($mailData));
-    }
+    // private function sendMail($user_id){
+    //     $teacher = User::find($user_id);
+    //         $mailData = [
+    //             'name' => $teacher->first_name,
+    //             'body' => 'Nos alegra que estes aqui. TuNexo es un grán espacio en donde podras publicar
+    //              e impartir tus conocimientos a todas las personas. Tu decides el costo de tus clases.'
+    //         ];
+    //         Mail::to($teacher->email)->send(new TeacherMailable($mailData));
+    // }
 }
