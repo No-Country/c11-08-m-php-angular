@@ -33,6 +33,7 @@ Route::get('/provinces/{id}','App\Http\Controllers\ProvinceController@getProvinc
 Route::get('/schedule','App\Http\Controllers\ScheduleController@index');
 Route::get('/schedule/{schedule}','App\Http\Controllers\ScheduleController@show');
 Route::get('/schedule/teacher/{teacher_id}','App\Http\Controllers\ScheduleController@getScheduleByTeacher');//Obtener horarios por profesor
+Route::post('/schedule/teacher/day','App\Http\Controllers\ScheduleController@getUnreservedHoursByDayByTeacher');//Obtener horas no reservadas de un día por profesor
 
 Route::get('/cities','App\Http\Controllers\CityController@index');//Todas las ciudades
 Route::get('/cities/{id}','App\Http\Controllers\CityController@getCity');//Una ciudad
@@ -74,7 +75,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::delete('/subjects/user/{user_id}/{subject_id}', [SubjectController::class, 'deleteSubjectByUser']); //Eliminar materia por usuario
 
     Route::post('/schedule','App\Http\Controllers\ScheduleController@store');
-    Route::put('/schedule/teacher/{teacher_id}','App\Http\Controllers\ScheduleController@storeSchedulesByTeacher');//Actualizar y Guardar horarios por profesor
+    Route::put('/schedule/teacher/{teacher_id}','App\Http\Controllers\ScheduleController@saveSchedulesByTeacher');//Actualizar o Guardar horarios por profesor
     Route::put('/schedule/{schedule}','App\Http\Controllers\ScheduleController@update');
     Route::delete('/schedule/{schedule}','App\Http\Controllers\ScheduleController@destroy');
     

@@ -31,7 +31,7 @@ class StoreUserRequest extends FormRequest
             "last_name" => ['required', 'string', 'max:255'],
             "email" => ['required','email', 'max:255', Rule::unique('users')->ignore($this->user)],
             "password" => ['required', 'confirmed', Password::min(8)],
-            "birthdate" => ['nullable', 'date'],
+            "birthdate" => ['nullable', 'date', 'date_format:Y-m-d'],
             "identification" => ['nullable', 'string', 'max:20'],
             "phone" => ['nullable', 'string', 'max:20'],
             "photo" => ['nullable', 'string'],

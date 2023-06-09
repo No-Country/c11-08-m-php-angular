@@ -4,11 +4,20 @@ namespace App\Services;
 
 use App\Models\Schedule;
 use App\Models\Teacher;
+use App\Repositories\ScheduleRepository;
+use Carbon\Carbon;
 use Exception;
 use Illuminate\Support\Facades\DB;
 
 class ScheduleService
 {
+
+    private ScheduleRepository $repository;
+
+    public function __construct(ScheduleRepository $repository)
+    {
+        $this->repository = $repository;
+    }
 
     public function getSchedules()
     {
@@ -79,7 +88,7 @@ class ScheduleService
         }
     }
 
-    public function storeSchedulesByTeacher(array $array, int $teacher_id)
+    public function saveSchedulesByTeacher(array $array, int $teacher_id)
     {
         DB::beginTransaction();
         try {
@@ -87,6 +96,7 @@ class ScheduleService
             $schedules = $teacher->schedules;
             if($schedules->count() > 0){
                 foreach($schedules as $key => $schedule){
+                    $schedule->teacher_id = $teacher_id;
                     $array_schedule = $array['schedules'][$key];
                     $this->validateSchedules($array_schedule);
                     $this->updateSchedule($array['schedules'][$key], $schedule);
@@ -94,6 +104,7 @@ class ScheduleService
             }
             else{
                 foreach($array['schedules'] as $key => $schedule){
+                    $schedule['teacher_id'] = $teacher_id;
                     $array_schedule = $array['schedules'][$key];
                     $this->validateSchedules($array_schedule);
                     $this->createSchedule($schedule);
@@ -121,4 +132,64 @@ class ScheduleService
         }
     }
     
+    public function getUnreservedHoursByDayByTeacher(array $array)
+    {
+        $unreservedIntervals = [];
+        $intervals = $this->getIntervals($array);
+        foreach ($intervals as $turn => $value) {
+            foreach ($value as $key => $hour) {
+                $class = $this->repository->getClassByTeacherByDayByHour($array['teacher_id'], $array['date'], $hour['start'], $hour['end']);
+                if(!$class){
+                    $unreservedIntervals[$turn][] = $hour;
+                }
+            }
+        }
+        return $unreservedIntervals;
+    }
+
+    public function getIntervals(array $array)
+    {
+        $teacher_id = $array['teacher_id'];
+        $date = $array['date'];
+        $dateCarbon = new Carbon($date);
+        $day = $dateCarbon->dayOfWeek;
+
+        $schedule = $this->repository->getScheduleByTeacherByDay($day, $teacher_id);
+
+        if(!$schedule){
+            return [];
+        }
+
+        $morningIntervals = $this->getHoursIntervals($schedule->start_morning, $schedule->end_morning);
+        $afternoonIntervals = $this->getHoursIntervals($schedule->start_afternoon, $schedule->end_afternoon);
+        $nightIntervals = $this->getHoursIntervals($schedule->start_night, $schedule->end_night);
+    
+        $data = [];
+        $data['morning'] = $morningIntervals;
+        $data['afternoon'] = $afternoonIntervals;
+        $data['night'] = $nightIntervals;
+        return $data;
+    }
+    
+    private function getHoursIntervals($start, $end)
+    {
+        if(!$start && !$end){
+            return [];
+        }
+
+        $start = new Carbon($start);
+        $end = new Carbon($end);
+
+        $intervals = [];
+        while ($start < $end) {
+            $interval = [];
+            $interval['start'] = $start->format('H:i');
+            $start->addHour();
+            $interval['end'] = $start->format('H:i');
+            $intervals[] = $interval;
+        }
+
+        return $intervals;
+    }
+
 }

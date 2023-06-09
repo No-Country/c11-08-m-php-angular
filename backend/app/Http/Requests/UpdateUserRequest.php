@@ -29,7 +29,7 @@ class UpdateUserRequest extends FormRequest
             "first_name" => ['required', 'string', 'max:255'],
             "last_name" => ['required', 'string', 'max:255'],
             "email" => ['required','email', 'max:255', Rule::unique('users')->ignore($this->user)],
-            "birthdate" => ['nullable', 'date'],
+            "birthdate" => ['nullable', 'date', 'date_format:Y-m-d'],
             "identification" => ['nullable', 'string', 'max:20'],
             "phone" => ['nullable', 'string', 'max:20'],
             "photo" => ['nullable', 'string'],
