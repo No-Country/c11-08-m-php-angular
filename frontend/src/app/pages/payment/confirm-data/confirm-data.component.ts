@@ -27,7 +27,6 @@ export class ConfirmDataComponent implements OnInit {
   userPhone?: number;
   
   previsualizacion: string = '../../../../assets/images/subscription-page/nocountry (1).png';
-  archivos: any = [];
 
 
 
@@ -47,7 +46,7 @@ export class ConfirmDataComponent implements OnInit {
       last_name: '',
       email: '',
       birthdate: '',
-      photo: [this.previsualizacion],
+      photo: '',
       selectProvinces: '',
       phone: '',
       identification: '',
@@ -103,12 +102,6 @@ export class ConfirmDataComponent implements OnInit {
     this.extraerBase64(archivoCapturado).then((imagen: any) => {
       this.previsualizacion = imagen.base;
     })
-    this.archivos.push(archivoCapturado)
-    
-    
-    
-    // 
-    // console.log(event.target.files);
 
   }
 
