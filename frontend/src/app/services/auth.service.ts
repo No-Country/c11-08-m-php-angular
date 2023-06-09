@@ -36,7 +36,6 @@ export class AuthService {
   Login(creds: LoginData) {
     return this.http.post(`${this.apiUrl}/api/login`, creds, {
       observe: 'response'
-      observe: 'response'
     }).pipe(
       map((response: HttpResponse<any>) => {
         console.log('Login response:', response);
