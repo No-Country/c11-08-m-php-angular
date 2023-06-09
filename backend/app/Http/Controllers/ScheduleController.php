@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ListScheduleRequest;
 use App\Http\Requests\ScheduleRequest;
+use App\Http\Requests\UnreservedHoursRequest;
 use App\Http\Resources\ScheduleResource;
 use App\Models\Schedule;
 use App\Services\ScheduleService;
@@ -108,11 +109,21 @@ class ScheduleController extends Controller
         }
     }
 
-    public function storeSchedulesByTeacher(ListScheduleRequest $request, int $teacher_id)
+    public function saveSchedulesByTeacher(ListScheduleRequest $request, int $teacher_id)
     {
         try {
-            $schedules = $this->service->storeSchedulesByTeacher($request->all(), $teacher_id);
+            $schedules = $this->service->saveSchedulesByTeacher($request->all(), $teacher_id);
             return ScheduleResource::collection($schedules);
+        } catch (\Exception $e) {
+            return response()->json(['message' => $e->getMessage(), 'type' => 'error'],500);
+        }
+    }
+
+    public function getUnreservedHoursByDayByTeacher(UnreservedHoursRequest $request)
+    {
+        try {
+            $schedules = $this->service->getUnreservedHoursByDayByTeacher($request->all());
+            return response()->json($schedules);
         } catch (\Exception $e) {
             return response()->json(['message' => $e->getMessage(), 'type' => 'error'],500);
         }

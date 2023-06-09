@@ -35,7 +35,6 @@ class ListScheduleRequest extends FormRequest
             'schedules.*.end_afternoon' => ['nullable', 'date_format:H:i', Rule::notIn(['00:00']), 'different:start_afternoon'],
             'schedules.*.start_night' => ['nullable', 'date_format:H:i', Rule::notIn(['00:00'])],
             'schedules.*.end_night' => ['nullable', 'date_format:H:i', Rule::notIn(['00:00']), 'different:start_night'],
-            'schedules.*.teacher_id' => 'required|integer|exists:teachers,id',
         ];
     }
 }
