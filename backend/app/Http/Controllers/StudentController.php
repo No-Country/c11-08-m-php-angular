@@ -36,14 +36,14 @@ class StudentController extends Controller
         try {
             $data = $this->service->createStudent($request->all());
             //Enviar Mail
-            $student = User::find($request->user_id);
-            $mailData = [
-                'name' => $student->first_name,
-                'body' => 'Nos alegra que estes aqui. TuNexo tiene una
-                comunidad grande de profesionales para apoyarte según tus necesidades. No dudes en buscar
-                a tu profesor ideal.'
-            ];
-            Mail::to($student->email)->send(new StudentMailable($mailData));
+            // $student = User::find($request->user_id);
+            // $mailData = [
+            //     'name' => $student->first_name,
+            //     'body' => 'Nos alegra que estes aqui. TuNexo tiene una
+            //     comunidad grande de profesionales para apoyarte según tus necesidades. No dudes en buscar
+            //     a tu profesor ideal.'
+            // ];
+            // Mail::to($student->email)->send(new StudentMailable($mailData));
             return new StudentResource($data);
         } catch (\Exception $e) {
             return response()->json(['message' => $e->getMessage(), 'type' => 'error'],500);
