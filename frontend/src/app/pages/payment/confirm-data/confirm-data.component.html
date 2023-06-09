@@ -6,7 +6,7 @@
         <div class="" *ngIf="previsualizacion">
           <img [src]="previsualizacion" class="w-100" style="height: 20%!important;" alt="">
         </div>
-        <input class="input-file" style="display:none;" #fileInput (change)="capturarFile($event)" type="file">
+        <input class="input-file" style="display:none;" formControlName="photo" #fileInput (change)="capturarFile($event)" type="file">
         <button class="btn rounded-pill btn-payment m-2" (click)="fileInput.click()">Seleccionar archivo</button>
       </div>
       
