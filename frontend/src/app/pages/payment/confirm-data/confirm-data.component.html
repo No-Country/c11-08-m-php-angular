@@ -1,16 +1,13 @@
 <div class="container">
   <div class="row pt-5 pb-5 justify-content-center">
     <div class="col-12 col-md-5 col-lg-4 align-self-start mb-3">
-      <div class="flex align-items-center p-4 w-100 perfil-box">
-        <div class="text-center">
-          <span class="fw-bold fs-5 pb-3 mb-5">Tu foto de perfil</span>
-          <img [src]="imgTeacher" class="img-fluid" style="border-radius: 10px;">
+      <div class="flex align-items-center text-center p-4 w-100 perfil-box">
+        <span class="fw-bold fs-5 pb-3 mb-5">Tu foto de perfil</span>
+        <div class="">
+          <img [src]="previsualizacion" class="w-100" style="height: 20%!important;" alt="">
         </div>
-        <div class="text-center mt-2">
-          <button class="btn rounded-pill btn-payment m-2" type="button" aria-haspopup="true" aria-expanded="false">
-            Subir una foto
-          </button>
-        </div>
+        <input class="input-file" style="display:none;" formControlName="photo" #fileInput (change)="capturarFile($event)" type="file">
+        <button class="btn rounded-pill btn-payment m-2" (click)="fileInput.click()">Seleccionar archivo</button>
       </div>
     </div>
     <div class="col-sm-12 col-md-8 align-self-start">
@@ -39,7 +36,7 @@
                 <div class="col-md-6 col-sm-12">
                   <label class="form-label">Provincia / Ciudad</label>
                   <select class="form-select" id="selectProvinces" name="selectProvinces">
-                    <option *ngFor="let province of listProvinces">{{ province.city }}</option>
+                    <option *ngFor="let province of listProvinces">{{province.province}}</option>
                   </select>
                 </div>
                 <div class="col-md-6 col-sm-12">

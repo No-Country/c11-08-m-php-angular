@@ -27,7 +27,7 @@
             <p class="fs-3 fw-bold d-flex">${{teacher.price_one_class}}<span
                 class="m-auto ms-1 fs-6 fw-semibold transparent"> Hora</span></p>
           </div>
-          <div><a routerLink="/perfil" class="btn btn-contact py-2 px-4">Contactar</a></div>
+          <div><a (click)="contactar(teacher)" routerLink="['/perfil']"  [queryParams]="{ id: teacher.id, name: teacher.name,email: teacher.email,total_students: teacher.total_students, total_reviews: teacher.total_reviews,city_name: teacher.city_name,province_name: teacher.province_name,photo: teacher.photo,user_id: teacher.user_id,average: teacher.average }" queryParamsHandling="merge" class="btn btn-contact py-2 px-4">Contactar</a></div>
         </div>
       </div>
     </div>

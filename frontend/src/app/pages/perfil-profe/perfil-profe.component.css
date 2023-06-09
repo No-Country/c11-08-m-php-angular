@@ -12,6 +12,13 @@ body {
 
 }
 
+.btn-contact{
+  border-color: #019FA2;
+  border-radius: 1000px;
+  border-width: 1px!important;
+  background-color: #019FA2;
+  color: white;
+}
 
 h3 p {
 padding: 20px;
@@ -82,3 +89,6 @@ padding-top :15px;}
   display: none;
 }
 
+.faStarSolid{
+  color: #FA9744;
+}

@@ -11,16 +11,16 @@
     <div class="row">
      <div class="col-sm-12 col-lg-4 col-md-6 ">
         <div class=" card mt-4 p-3">
-          <img src="../../../assets/images/perfil-profe/Rectangle 6.png" class="card-img-top" [width]="320" [height]="255" alt="...">
+          <img [src]="photo" class="card-img-top" [width]="320" [height]="255" alt="...">
           <div class="col-lg-10 col-md-8 col-m-10 col-sm-6">
             <div class="card-body">
-              <h4 class="card-title fw-bold">ESTEBAN GONZALES</h4>
-              <br>
-              <br>
-              <p class="card-text gap-4 pb-2 ml-4 fw-normal"> <fa-icon [icon]="faLocationDot"> </fa-icon> San Isidro/Lima/Peru</p>
-              <p class="card-text gap-4 pb-2  fw-normal"> <fa-icon [icon]="faUser"> </fa-icon> 32 alumnos actuales</p>
-              <p class="card-text gap-4 fw-normal"> <fa-icon [icon]="faStar"> </fa-icon> 5(28)</p>
-              <button type="button" class="btn btn-dark btn-lg btn-block center" routerLink="/schedule">CONTACTAR PROFE</button>
+              <h4 class="card-title fw-bold">{{name}}</h4>
+              <p class="card-text mb-0  fw-normal"> <fa-icon [icon]="faLocationDot"> </fa-icon> {{city_name}}/{{province_name}}</p>
+              <p class="card-text mb-0  fw-normal"> <fa-icon [icon]="faUser"> </fa-icon> {{total_students}} alumnos actuales</p>
+              <p class="card-text  fw-normal"> <ng-container *ngFor="let star of [1, 2, 3, 4, 5]">
+                <fa-icon [icon]="star <= rating ? faStarSolid : faStar" class="faStarSolid"></fa-icon>
+              </ng-container> {{rating}}({{total_reviews}})</p>
+              <button type="button" class="btn-contact btn btn-dark btn-lg btn-block center" routerLink="/schedule" (click)="contactar()">Contactar profesor</button>
           </div>
         </div>
       </div>

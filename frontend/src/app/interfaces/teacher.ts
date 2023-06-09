@@ -24,6 +24,7 @@ export interface Teacher {
   schedules: string[];
   total_students: number;
   total_reviews: number;
+  email:string;
 }
 
 

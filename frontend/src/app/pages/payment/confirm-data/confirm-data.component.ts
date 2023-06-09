@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { DomSanitizer } from '@angular/platform-browser';
 import { Router, RouterLink } from '@angular/router';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { ProvincesCity } from 'src/app/interfaces/provincesCity';
 import { AuthService } from 'src/app/services/auth.service';
 import { EditUserService } from 'src/app/services/edit-user.service';
 import { ProvincesService } from 'src/app/services/provinces.service';
-import { NumericLiteral } from 'typescript';
 
 @Component({
   selector: 'app-confirm-data',
@@ -14,7 +14,7 @@ import { NumericLiteral } from 'typescript';
   styleUrls: ['./confirm-data.component.css']
 })
 export class ConfirmDataComponent implements OnInit {
-  imgTeacher = '../../../../assets/images/subscription-page/nocountry (1).png';
+  previsualizacion = '../../../../assets/images/subscription-page/nocountry (1).png';
   ruta: string = "/payment/finish-profile"
   confirmForm: FormGroup;
   user = localStorage.getItem('currentUser');
@@ -24,6 +24,7 @@ export class ConfirmDataComponent implements OnInit {
   userEmail: string = '';
   userProvince: string = '';
   userPhone?: number;
+  archivos: any = [];
 
 
 
@@ -32,7 +33,8 @@ export class ConfirmDataComponent implements OnInit {
     private formBuilder: FormBuilder,
     private authService: AuthService,
     private tService: EditUserService,
-    private router: Router
+    private router: Router,
+    private sanitizer: DomSanitizer,
   ) {
     this.confirmForm = this.formBuilder.group({
       /* name: ['', Validators.required],
@@ -91,12 +93,48 @@ export class ConfirmDataComponent implements OnInit {
   }
 
   
-  
+  capturarFile(event:any) {
+    const archivoCapturado = event.target.files[0]
+    this.extraerBase64(archivoCapturado).then((imagen: any) => {
+      this.previsualizacion = imagen.base;
+    })
+    this.archivos.push(archivoCapturado)
+    
+    
+    
+    // 
+    // console.log(event.target.files);
+
+  }
+  extraerBase64 = async ($event: any) => new Promise((resolve) => {
+    try {
+      const unsafeImg = window.URL.createObjectURL($event);
+      const image = this.sanitizer.bypassSecurityTrustUrl(unsafeImg);
+      const reader = new FileReader();
+      reader.readAsDataURL($event);
+      reader.onload = () => {
+        resolve({
+          base: reader.result
+        });
+      };
+      reader.onerror = error => {
+        resolve({
+          base: null
+        });
+      };
+
+    } catch (e) {
+      resolve({
+        base: null
+      });
+    }
+  });
 
   getProvinces(): void {
     this.provincesService.getProvinces().subscribe(
       res => {
         this.listProvinces = res;
+       
       },
       err => console.log(err)
     );

@@ -1,5 +1,6 @@
 import { Teacher } from './../../interfaces/teacher';
 import { Component, OnInit, Input, SimpleChanges, OnChanges } from '@angular/core';
+import { Router } from '@angular/router';
 import { faLocationDot, faStar } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -16,7 +17,7 @@ export class CardsComponent implements OnInit, OnChanges {
   public page!: number;
   filteredTeachers: Teacher[] = []; // Nueva propiedad para almacenar la lista de profesores filtrada
 
-  constructor() {}
+  constructor(private router :Router) {}
 
   ngOnInit(): void {
     // Inicialmente, ambas listas serán iguales
@@ -29,6 +30,22 @@ export class CardsComponent implements OnInit, OnChanges {
     }
   }
   
+  contactar(teacher: Teacher) {
+    this.router.navigate(['/perfil'], {
+      queryParams: { id: teacher.id,
+         name: teacher.name,
+          email: teacher.email,
+           total_students: teacher.total_students,
+            total_reviews: teacher.total_reviews,
+             city_name: teacher.city_name,
+              province_name: teacher.province_name,
+               photo: teacher.photo,
+                user_id: teacher.user_id,
+                average: teacher.average  },
+      queryParamsHandling: 'merge',
+      replaceUrl: true
+    });
+  }
 
   truncateText(text: string, maxLength: number): string {
     if (text.length > maxLength) {
