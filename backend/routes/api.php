@@ -92,4 +92,6 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('/subscription',[PaymentController::class,'getSubscriptionLink']);//Obtener link de Mercado Pago para pagar subscripción
 });
 
-
+Route::get('/payments',[PaymentController::class,'index']);//Todas los pagos
+Route::get('/payments/{payment}',[PaymentController::class,'show']);//Obtener un pago
+Route::apiResource('payments', PaymentController::class)->except(['index', 'show']);

@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Services;
-
+use App\Models\Payment;
 
 class PaymentService
 {
@@ -60,6 +60,61 @@ class PaymentService
 
             curl_close($ch);
             return $decoded;
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    public function getPayments()
+    {
+        try {
+            return Payment::all();
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    public function getPayment(Payment $payment)
+    {
+        try {
+            return $payment;
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    public function createPayment(array $request)
+    {
+        try {
+            $payment = Payment::create(
+                [
+                    'plan_id' => $request['plan_id'],
+                    'teacher_id' => $request['teacher_id'],
+                    'fee' => $request['fee'],
+                    'total_paid' => $request['total_paid'],
+                    'start_date' => $request['start_date'],
+                    'end_date' => $request['end_date'],
+                ]
+            );
+            return $payment;
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    public function updatePayment(array $request, Payment $payment)
+    {
+        try {
+            $payment->update($request);
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    public function deletePayment(Payment $payment)
+    {
+        try {
+            $payment->delete();
         } catch (\Exception $e) {
             throw $e;
         }
