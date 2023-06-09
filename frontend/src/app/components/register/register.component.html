@@ -7,7 +7,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <ng-template [ngIf]="!isLoggedIn">
-                <div class="modal-body">
+                <div class="modal-body pb-0 mb-0">
                     <div class="d-flex justify-content-center mb-3">
                         <img src="../../../assets/images/homePage/loginRegister.png" alt="Imagen" class="img-square">
                     </div>
@@ -64,7 +64,7 @@
                             </div>
                         </div>
 
-                        <div class="input-group">
+                        <div class="input-group ">
                             <input type="{{ tipoContrasena }}" class="form-control" id="contrasena-confirm"
                                 placeholder="***********" formControlName="password_confirmation">
                             <button class="btn btn-outline-secondary input-group-text" type="button" id="togglePassword"
@@ -82,10 +82,15 @@
                             <div class="loading__dot"></div>
                             <div class="loading__dot"></div>
                         </div>
+                        <div class="form-text d-flex justify-content-center " *ngIf="showError">
+                            <p class="text-danger form-text fs-6">
+                             Los campos no son validos.
+                            </p>
+                          </div>
                     </form>
                 </div>
 
-                <div class="d-flex flex-column align-items-center mb-2">
+                <div class="d-flex flex-column align-items-center mb-2 ">
                     <p class="font-small">Al continuar aceptas nuestra <ins>Politica de privacidad</ins> y <ins>Terminos
                             de uso.</ins></p>
                     <h5 class="fs-6 text-center m-0">¿Ya tenés una cuenta?</h5>

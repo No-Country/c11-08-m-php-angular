@@ -45,6 +45,11 @@
               <button type="submit" class="btn btn-dark w-100" [disabled]="loginForm.invalid || loading">Iniciar
                 sesión</button>
             </div>
+            <div class="form-text d-flex justify-content-center " *ngIf="showError">
+              <p class="text-danger form-text fs-6">
+               El Email o contraseña es incorrecto.
+              </p>
+            </div>
             <div *ngIf="loading" class="loading__dots d-flex justify-content-center my-2">
               <div class="loading__dot"></div>
               <div class="loading__dot"></div>

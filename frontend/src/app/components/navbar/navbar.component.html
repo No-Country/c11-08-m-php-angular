@@ -29,7 +29,7 @@
         <li class="nav-item">
           <button class="nav-link nav-register border px-4 py-2 tpm register-btn" data-bs-toggle="modal" data-bs-target="#registerModal" *ngIf="!(authService.isLoggedIn | async)">Registrate</button>
         </li>
-        <a class="nav-link custom" *ngIf="(authService.isLoggedIn | async)"  style="cursor:pointer">
+        <a class="nav-link custom" *ngIf="(authService.isLoggedIn | async)" (click)="logout()"  style="cursor:pointer">
           <i class="bi bi-box-arrow-in-left nav__icon"></i>Logout
         </a>
       </ul>
@@ -67,7 +67,7 @@
             <button class="nav-link border-none fw-bold" style=" color:#019FA2 !important; " data-bs-toggle="modal" data-bs-target="#loginModal">Inicia sesión</button>
           </li>
         </ul>
-        <a class="nav-link custom" *ngIf="(authService.isLoggedIn | async)"  style="cursor:pointer">
+        <a class="nav-link custom" *ngIf="(authService.isLoggedIn | async)" (click)="logout()"  style="cursor:pointer">
           <i class="bi bi-box-arrow-in-left nav__icon"></i>Logout
         </a>
       </div>

@@ -12,7 +12,7 @@ import { AuthService } from 'src/app/services/auth.service';
 export class LoginRegisterComponent  {
   isLoggedIn = false;
   showModal = false;
-
+  showError:boolean = false;
   mostrarContrasena: boolean = false;
   tipoContrasena: string = 'password';
   faEye = faEye;
@@ -74,6 +74,7 @@ export class LoginRegisterComponent  {
         error => {
           console.error(error);
           this.error = 'Error al iniciar sesión';
+          this.showError = true;
           this.loading = false;
         }
       );
