@@ -43,14 +43,14 @@ export class ConfirmDataComponent implements OnInit {
 
   ) {
     this.confirmForm = this.formBuilder.group({
-      first_name: [this.userName, Validators.required],
-      last_name: [this.userLastName, Validators.required],
-      email: [this.userEmail, [Validators.required, Validators.email]],
+      first_name: '',
+      last_name: '',
+      email: '',
       birthdate: '',
+      photo: [this.previsualizacion],
       selectProvinces: '',
       phone: '',
       identification: '',
-      photo: '',
       city_id: '',
     });
   }
@@ -67,6 +67,8 @@ export class ConfirmDataComponent implements OnInit {
       this.userPhone = user.phone;
       if (user.photo !== null) {
         this.previsualizacion = user.photo;
+        console.log('sera');
+        
       }
       console.log(this.userEmail);
     }
@@ -94,13 +96,12 @@ export class ConfirmDataComponent implements OnInit {
   get photo() {
     return this.confirmForm.get('photo');
   }
-
+  
   
   capturarFile(event:any) {
     const archivoCapturado = event.target.files[0]
     this.extraerBase64(archivoCapturado).then((imagen: any) => {
       this.previsualizacion = imagen.base;
-      this.confirmForm.patchValue({ photo: this.previsualizacion });
     })
     this.archivos.push(archivoCapturado)
     

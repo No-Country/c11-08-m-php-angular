@@ -1,4 +1,5 @@
 <div class="container">
+  <form [formGroup]="confirmForm" (ngSubmit)="Enviar()">
   <div class="row pt-5 pb-5 justify-content-center">
     <div class="col-12 col-md-8 col-lg-4 align-self-start mb-3">
       <div class="flex align-items-center text-center p-4 w-100 perfil-box">
@@ -19,7 +20,7 @@
           <div class="d-flex justify-content-start mb-4">
             <h5>Informacion Personal</h5>
           </div>
-          <form [formGroup]="confirmForm" (ngSubmit)="Enviar()">
+          
 
             <div class="row">
               <div class="col-lg-6 col-sm-12">
@@ -36,8 +37,8 @@
               </div>
               <div class="col-lg-6 col-sm-12">
                 <label class="form-label">Provincia / Ciudad</label>
-                <select class="form-select" id="selectProvinces" name="selectProvinces">
-                  <option *ngFor="let province of listProvinces">{{ province.city }}</option>
+                <select class="form-select" id="selectProvinces" name="selectProvinces" formControlName="selectProvinces">
+                  <option *ngFor="let province of listProvinces" [value]="province.city">{{ province.city }}</option>
                 </select>
               </div>
               <div class="col-lg-6 col-sm-12">
@@ -46,7 +47,7 @@
               </div>
               <div class="col-lg-6 col-sm-12">
                 <label class="form-label">Telefono móvil</label>
-                <input placeholder="Ej: 0000000000" type="text" class="form-control">
+                <input placeholder="Ej: 0000000000" type="text" class="form-control" formControlName="phone">
               </div>
             </div>
 
@@ -63,13 +64,13 @@
                 </button>
               </div>
             </div>
-          </form>
-
+            
+          </div>
+          
+          
         </div>
-
-
+        
       </div>
-
     </div>
-  </div>
+  </form>
 </div>
