@@ -3,89 +3,73 @@
 <div class="container pb-5">
 
   <div class="row">
-    <div class="col-4" style="padding: 20px 0;">
+    <div class="col-12 col-md-4" style="padding: 20px 0;">
       <div class="tpm w-100">
-        <h1 class="fs-3 fw-semibold">Encuentra a tu docente ideal en <span class="fs-2 fw-bold ">{{materiaSelectHomeNom}}</span></h1>
+        <h1 class="fs-3 fw-semibold">Encuentra a tu docente ideal en <span class="fs-2 fw-bold title-color">{{materiaSelectHomeNom}}</span></h1>
       </div>
     </div>
   </div>
 
-  <div class="row">
+  <div class="row align-items-center justify-content-center">
 
-    <div class="col-12 col-md-6 col-lg-4 col-xl-3 ">
+    <div class="col-12 col-md-6 col-lg-4 col-xl-3 borderleft">
       <p class="filtros mb-2">Quiero aprender</p>
-      <div>
-        <select class="form-select" (change)="getfilterTeachers()"
-          [(ngModel)]="materiaSelectHomeId">
-          <option *ngFor="let subject of listSubjects" [value]="subject.id">{{ subject.name }}</option>
-        </select>
+      <div class="border srccontainer tpm w-100 d-flex justify-content-between">
+      <div class="dropdown  d-flex">
+        <input type="text" class="btn dropdown-toggle rounded-pill w-100 text-start" id="selectSubjects"  name="selectSubjects" data-bs-toggle="dropdown" aria-expanded="false" [(ngModel)]="searchText" (ngModelChange)="filterSubjects()" placeholder="{{ selectedOption ? 'Aprende: ' + selectedOption.name : 'Que quieres aprender' }}" >
+        <ul class="dropdown-menu mt-1 flex-column">
+          <li *ngFor="let subject of filteredSubjects ">
+            <a class="dropdown-item" (click)="seleccionarOpcion(subject)">{{ subject?.name }}</a>
+          </li>
+        </ul>
       </div>
-      <!-- <div class="border srccontainer tpm w-100 d-flex justify-content-between">
-        <form class="d-flex rounded-pill w-100 text-start" role="search">
-          <input class="form-control input-border rounded-pill" (keydown.enter)="busqueda($event)" type="search"
-            [placeholder]="materiaSelectHomeNom" aria-label="Search">
-        </form>
-      </div> -->
     </div>
+    </div>
+   
 
-    <!-- <div class="col-12 col-md-6 col-lg-4 col-xl-3  borderleft">
-      <p class="filtros">Rango de precio</p>
+    <div class="col-12 col-md-6 col-lg-4 col-xl-3 borderleft">
+      <p class="filtros mb-2">Rango de precio</p>
       <div class="border srccontainer tpm w-100 d-flex justify-content-between">
         <button class="btn dropdown-toggle rounded-pill w-100 text-start" type="button" data-bs-toggle="dropdown"
           aria-expanded="false">
-          {{ precio }}
+          {{ precio || 'Seleccionar rango de precio' }}
         </button>
         <div class="dropdown-menu">
-          <button class="dropdown-item btn" (click)="precio = '0 - 2000 ARS'">0 - 2000 ARS</button>
-          <button class="dropdown-item btn" (click)="precio = '2000 ARS - 4000 ARS'">2000 ARS - 4000 ARS</button>
-          <button class="dropdown-item btn" (click)="precio = '4000 ARS - 6000 ARS'">4000 ARS - 6000 ARS</button>
-          <button class="dropdown-item btn" (click)="precio = '+6000 ARS'">+6000 ARS</button>
+          <button class="dropdown-item btn" (click)="selectedPrice(1000, 2000)">1000 - 2000 ARS</button>
+          <button class="dropdown-item btn" (click)="selectedPrice(2000, 4000)">2000 ARS - 4000 ARS</button>
+          <button class="dropdown-item btn" (click)="selectedPrice(4000, 6000)">4000 ARS - 6000 ARS</button>
+          <button class="dropdown-item btn" (click)="selectedPrice(6000, 6000)">+6000 ARS</button>
         </div>
       </div>
-    </div> -->
-
-    <div class="col-12 col-md-6 col-lg-4 col-xl-3 ">
-      <p class="filtros mb-2">Provincia</p>
-      <div>
-        <select class="form-select" (change)="getCitys();"
-          id="selectProvinces" name="selectProvinces">
-          <option value="">Seleccione una Provincia</option>
-          <option *ngFor="let province of listProvinces" [value]="province.id">{{ province.name }}</option>
-        </select>
-      </div>
     </div>
+    
 
-    <div class="col-12 col-md-6 col-lg-4 col-xl-3 ">
-      <p class="filtros mb-2">Ciudad</p>
-      <div>
-        <select class="form-select" (change)="getfilterTeachers()"
-          id="selectCitys" name="selectCitys">
-          <option value="">Seleccione una ciudad</option>
-          <option *ngFor="let city of listCitys" [value]="city.id">{{ city.name }}</option>
-        </select>
-      </div>
-    </div>
 
-    <!-- <div class="col-12 col-md-6 col-lg-4 col-xl-3  borderleft">
-      <p class="filtros">Provincia / Ciudad</p>
+
+    <div class="col-12 col-md-6 col-lg-4 col-xl-3 borderleft">
+      
+      <p class="filtros mb-2">Provincia / Ciudad</p>
       <div class="border srccontainer tpm w-100 d-flex justify-content-between">
-        <button class="btn dropdown-toggle rounded-pill w-100 text-start" type="button" id="dropdownMenuButton"
-          data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          {{ provincia }}
-        </button>
-        <div class="dropdown-menu scrollable-menu" aria-labelledby="dropdownMenuButton">
-          <button *ngFor="let prov of provinciasArgentina" class="dropdown-item" (click)="seleccionarProvincia(prov)">{{
-            prov }}</button>
-        </div>
+      <div class="dropdown  d-flex">
+        <input type="text" [formControl]="control" class="btn dropdown-toggle rounded-pill w-100 text-start" id="selectSubjects"  name="selectedProvinceCity.city" data-bs-toggle="dropdown" aria-expanded="false"  [placeholder]="selectedProvinceCity?.city ? 'Ingrese ciudad o provincia' : 'Ingrese ciudad o provincia'" >
+        <ul class="dropdown-menu mt-1 flex-column">
+          <li *ngFor="let provinceCity of listProvincesCity" [value]="provinceCity.id">
+            <a class="dropdown-item" (click)="selectProvinceCity(provinceCity)">{{ provinceCity?.city }}</a>
+          </li>
+        </ul>
       </div>
-    </div> -->
+      </div>
+    </div>
 
-    <!-- <div class="col-12 col-md-6 col-lg-4 col-xl-3  borderleft">
-      <p class="filtros">Disponibilidad</p>
+
+
+
+    <div class="col-12 col-md-6 col-lg-4 col-xl-3  borderleft">
+      <p class="filtros mb-2">Disponibilidad</p>
       <div class="border srccontainer tpm w-100 d-flex justify-content-between">
         <button class="btn dropdown-toggle rounded-pill w-100 text-start" type="button" data-bs-toggle="dropdown"
           aria-expanded="false">
-          {{ turno }}
+          {{ turno || 'Seleccionar disponibilidad' }}
         </button>
         <div class="dropdown-menu">
           <button class="dropdown-item btn" (click)="turno = 'Cualquiera'">Cualquiera</button>
@@ -94,7 +78,7 @@
           <button class="dropdown-item btn" (click)="turno = 'Noche'">Noche</button>
         </div>
       </div>
-    </div> -->
+    </div>
 
   </div>
 </div>

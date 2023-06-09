@@ -1,5 +1,5 @@
 import { Teacher } from './../../interfaces/teacher';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, SimpleChanges, OnChanges } from '@angular/core';
 import { faLocationDot, faStar } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -7,7 +7,7 @@ import { faLocationDot, faStar } from '@fortawesome/free-solid-svg-icons';
   templateUrl: './cards.component.html',
   styleUrls: ['./cards.component.css']
 })
-export class CardsComponent implements OnInit {
+export class CardsComponent implements OnInit, OnChanges {
 
   faStar = faStar;
   faLocationDot = faLocationDot;
@@ -16,11 +16,19 @@ export class CardsComponent implements OnInit {
   public page!: number;
   filteredTeachers: Teacher[] = []; // Nueva propiedad para almacenar la lista de profesores filtrada
 
-  constructor(
-  ) { }
+  constructor() { }
 
   ngOnInit(): void {
+    // Inicialmente, ambas listas serán iguales
+    this.filteredTeachers = this.teachers;
   }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['teachers'] && changes['teachers'].currentValue) {
+      this.filteredTeachers = changes['teachers'].currentValue;
+    }
+  }
+
 
   truncateText(text: string, maxLength: number): string {
     if (text.length > maxLength) {

@@ -4,9 +4,15 @@
     border-width: 1px!important;
 }
 
-select {
+.noneStyle {
   border: none;
   outline: none;
+  background-color:  white!important;
+}
+
+.dropdown-menu{
+    overflow: scroll;
+    height: 400px!important;
 }
 
 .btn-src{
@@ -33,6 +39,21 @@ circle{
         width: 100%!important;
     }
 }
+
+
+@media only screen and (max-width: 758px) {
+    .srccontainer{
+        width: 90%!important;
+        font-size:small!important;
+    }
+}
+@media only screen and (max-width: 1162px) {
+    .btn-src, .srccontainer{
+   
+        font-size:medium!important;
+    }
+}
+
 
 .navbar .dropdown-toggle:focus,
 .btn.dropdown-toggle:focus {
@@ -105,4 +126,10 @@ circle{
     0% { opacity: 0; transform: translateX(100%); }
     50% { opacity: 1; transform: translateX(50%); }
     100% { opacity: 1; transform: translateX(0); }
+}
+
+
+.information{
+    border: 1px solid black;
+    
 }

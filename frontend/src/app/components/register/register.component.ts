@@ -2,7 +2,8 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { AuthService } from 'src/app/services/auth.service';
-
+import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+import { LoginData } from 'src/app/interfaces/loginData';
 
 @Component({
   selector: 'app-register',
@@ -20,14 +21,14 @@ export class RegisterComponent {
   loading = false;
   submitted = false;
   error = '';
-  showError:boolean = false;
+  showError: boolean = false;
 
   togglePasswordVisibility() {
     this.mostrarContrasena = !this.mostrarContrasena;
     this.tipoContrasena = this.mostrarContrasena ? 'text' : 'password';
   }
 
- 
+
 
   constructor(
     private formBuilder: FormBuilder,
@@ -43,33 +44,38 @@ export class RegisterComponent {
     });
   }
 
-  get first_name(){
+  get first_name() {
     return this.registerForm.get('first_name')
   }
 
-  get last_name(){
+  get last_name() {
     return this.registerForm.get('last_name')
   }
 
-  get email()
-  {
-    return this.registerForm.get('email');
+  get email() {
+    const control = this.registerForm.get('email');
+    return control ? control.value : null;
   }
 
-  get role(){
+  get role() {
     return this.registerForm.get('role')
   }
 
-  get password()
-  {
-    return this.registerForm.get('password');
+  get password() {
+    const control = this.registerForm.get('password');
+    return control ? control.value : null;
   }
 
-  get password_confirmation(){
+  get password_confirmation() {
     return this.registerForm.get('password_confirmation')
   }
 
 
+
+  creds: LoginData = {
+    email: '',
+    password: ''
+  };
 
 
   onRegisterFormSubmit() {
@@ -78,21 +84,28 @@ export class RegisterComponent {
     if (this.registerForm.invalid) {
       return;
     }
-    this.loading = true;
-    this.authService.register(this.registerForm.value)
-    .subscribe({
-      next: (data: any) => {
-        console.log(data);
-        this.loading = false;
-        this.isLoggedIn = true;
-      },
-      error: (error) => {
-        console.log(error);
-        this.error = error;
-        this.showError = true;
-        this.loading = false;
-      }
-    });}
 
-  
+    this.loading = true;
+
+
+    this.creds.email = this.email;
+    this.creds.password = this.password;
+
+    this.authService.register(this.registerForm.value)
+      .subscribe({
+        next: (data: any) => {
+          console.log(data);
+          this.loading = false;
+          this.isLoggedIn = true;
+        },
+        error: (error) => {
+          console.log(error);
+          this.error = error;
+          this.showError = true;
+          this.loading = false;
+        }
+      });
+  }
+
+
 }

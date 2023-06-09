@@ -14,10 +14,14 @@ export class TeacherService {
   constructor(private http:HttpClient) { }
   private apiUrl = environment.URL;
 
+
   getfilterTeachers(filterTeacher: FilterTeacher): Observable<Teacher[]> {
+    console.log(filterTeacher, 'filterteacher')//el filtro del backend no funciona
+    filterTeacher.city = "";
     return this.http.post<any>(`${this.apiUrl}/api/teachers/search`, filterTeacher).pipe(
       map(response => response.data)
     );
+    
   }
 
   getTeachers(): Observable<Teacher[]> {

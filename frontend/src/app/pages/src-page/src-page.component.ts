@@ -6,10 +6,12 @@ import { ProvincesService } from './../../services/provinces.service';
 import { Subjects } from './../../interfaces/subjects';
 import { SubjectsService } from './../../services/subjects.service';
 import { TeacherService } from './../../services/teacher.service';
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { AfterViewInit, Component, ElementRef, OnInit, Query, ViewChild } from '@angular/core';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 import { faGraduationCap, faLocationDot, faCaretDown } from '@fortawesome/free-solid-svg-icons';
 import { Teacher } from 'src/app/interfaces/teacher';
+import { FormControl } from '@angular/forms';
+import { debounceTime } from 'rxjs';
 
 @Component({
   selector: 'app-src-page',
@@ -17,140 +19,168 @@ import { Teacher } from 'src/app/interfaces/teacher';
   styleUrls: ['./src-page.component.css']
 })
 export class SrcPageComponent implements OnInit {
+  faCaretDown = faCaretDown;
+  control = new FormControl();
+  precio: string = '';  //TODO:precio y turno por implementar
+  turno: string= '';
+  materiaSelectHomeNom = '';
+  materiaSelectHomeId: number = 0;
+  numTeachers: number = 0;
 
 
-  // precio: string = 'Cualquiera';
-  // turno: string = 'Cualquiera';
-  // provinciasArgentina: string[] = [
-  //   'Buenos Aires',
-  //   'Catamarca',
-  //   'Chaco',
-  //   'Chubut',
-  //   'Córdoba',
-  //   'Corrientes',
-  //   'Entre Ríos',
-  //   'Formosa',
-  //   'Jujuy',
-  //   'La Pampa',
-  //   'La Rioja',
-  //   'Mendoza',
-  //   'Misiones',
-  //   'Neuquén',
-  //   'Río Negro',
-  //   'Salta',
-  //   'San Juan',
-  //   'San Luis',
-  //   'Santa Cruz',
-  //   'Santa Fe',
-  //   'Santiago del Estero',
-  //   'Tierra del Fuego, Antártida e Islas del Atlántico Sur',
-  //   'Tucumán'
-  // ];
+  CopiaTeachers: Teacher[] = [];
+  teachers: Teacher[] = []; // arreglo de profesores filtrado por materia.
+  filteredTeachersByProvince: Teacher[] = [];
 
-  // provincia: string = 'Cualquiera';
+  filteredSubjects: Subjects[] = [];
 
-  // busqueda(valor: Event){
-  //   this.materiaSelectHomeNom = (<HTMLInputElement>event?.target).value;
-  // }
+  
+  listSubjects: Subjects[] = [];
+  selectedOption: Subjects | null = null;
+  cities: City[] = [];
+  listProvincesCity: ProvincesCity[] = [];
+  selectedProvinceCity: ProvincesCity | null = null;
+  filteredTeachers: Teacher[] = [];
+  searchText: string = '';
+  page: number = 1;
 
-  // seleccionarProvincia(prov: string) {
-  //   this.provincia = prov;
-  // }
-
-  // disponibilidad: string = 'Cualquiera';
-
-  // faGraduationCap = faGraduationCap;
-  // faLocationDot = faLocationDot;
-  faCaretDown = faCaretDown
-
+ 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private teacherService: TeacherService,
     private subjectsService: SubjectsService,
     private provincesService: ProvincesService,
     private cityService: CityService
-  ) { }
-
-  materiaSelectHomeNom= "";
-  materiaSelectHomeId: number= 0;
-  numTeachers: number = 0;
-  teachers: Teacher[]=[];
-  listSubjects: Subjects[]=[];
-  listProvinces: ProvincesCity[]=[];
-  listCitys: City[]=[];
+  ) {}
 
   ngOnInit(): void {
-    this.materiaSelectHomeNom = this.route.snapshot.queryParams['seleValue'];
 
-    this.getSubjects( this.route.snapshot.queryParams['seleId'] );
-    this.getfilterTeachers();
-    this.getProvinces();
+    this.materiaSelectHomeNom = this.route.snapshot.queryParams['seleValue'];
+    this.materiaSelectHomeId = Number(this.route.snapshot.queryParams['seleId']);
+    this.getSubjects();
+    this.filteredTeachers = this.teachers;
+    this.observarChangeSearch();
+    console.log(this.listSubjects);
+    console.log(this.materiaSelectHomeId)
+    console.log(this.teachers);
+  }
+
+  observarChangeSearch() {
+    this.control.valueChanges.pipe(debounceTime(500)).subscribe((query) => {
+      this.getProvinceCity(query);
+    });
+  }
+
+  getProvinceCity(query: string) {
+    this.cityService.getProvinceCityByQuery(query).subscribe((result) => {
+      this.listProvincesCity = result;
+     
+    });
+    
+  }
+
+  //separa la provincia de la ciudad y selecciona 
+  selectProvinceCity(provinceCity: ProvincesCity): void {
+    if (provinceCity && provinceCity.city) {
+      this.teachers = this.CopiaTeachers;
+      this.selectedProvinceCity = provinceCity;
+      const selectedCity = provinceCity.city.split(',')[1].trim();
+      this.filterTeachersByProvince(selectedCity);
+     this.teachers = this.teachers.filter((teacher)=>teacher.province_name== selectedCity)
+      console.log(this.filterTeachersByProvince, 'byprovince')
+    }
+  }
+  
+  selectedPrice(minPrice: number, maxPrice: number) {
+    this.teachers = this.filteredTeachers;
+    let filteredTeachers = this.teachers.filter((teacher) => {
+      console.log(teacher.price_one_class, 'precio clase')
+      const price = parseFloat(teacher.price_one_class.replace('.', ''));
+      console.log(price)
+      const condition = price >= minPrice && price <= maxPrice;
+      console.log(price, minPrice, maxPrice, condition);
+      return condition;
+    });
+    
+    //TODO: filtro para ordenar por valor
+    // filteredTeachers = filteredTeachers.sort((a, b) => a.price_one_class - b.price_one_class);
+  
+    this.teachers = filteredTeachers;
+    console.log(filteredTeachers, 'lista filtrada por precio');
+  }
+  
+  
+  
+  
+  
+
+  getSubjects(): void {
+    this.subjectsService.getSubjects().subscribe(
+      (res) => {
+        this.listSubjects = res;
+        this.selectedOption = this.listSubjects.find((subject) => subject.id === this.materiaSelectHomeId) || null;
+        this.searchText = this.selectedOption ? 'Aprende: ' + this.selectedOption.name : '';
+        this.filterSubjects();
+        this.getfilterTeachers();
+      },
+      (err) => console.log(err)
+    );
   }
 
   getfilterTeachers(): void {
-
-    const selectSubjects = document.getElementById('selectSubjects') as HTMLSelectElement;
-    const selectedOption = selectSubjects.options[selectSubjects.selectedIndex];
-    const selectedText = selectedOption ? selectedOption.textContent?.trim() : "";
-
-    const selectCitys = document.getElementById('selectCitys') as HTMLSelectElement;
-    const selectProvinces = document.getElementById('selectProvinces') as HTMLSelectElement;
+    const selectSubjects = this.selectedOption ? this.selectedOption.name : '';
+    const selectCity = this.selectedProvinceCity ? this.selectedProvinceCity.city.split(',')[0].trim() : '';
 
     const filterTeacher: FilterTeacher = {
-      subject: selectedText ? (selectedText) : "",
-      city: selectCitys.value !== "" ? (selectCitys.value) : "",
-      province: selectProvinces.value !== "" ? (selectProvinces.value) : "",
+      subject: selectSubjects,
+      city: selectCity,
       availability: [],
       price: [],
-      order: ""
+      order: '',
     };
-    // console.log(filterTeacher);
 
     this.teacherService.getfilterTeachers(filterTeacher).subscribe(
-      res =>{
+      (res) => {
         this.teachers = res;
+        this.filteredTeachersByProvince = res;
+        this.CopiaTeachers = res;
+        this.filteredTeachers = this.teachers; // Actualiza la lista de profesores filtrados
         this.numTeachers = res.length;
+        console.log(res, "arreglo actual")
       },
-      err=>{
-        this.teachers = [];
-        this.numTeachers = 0;
+      (err) => console.log(err)
+    );
+  }
+
+  filterTeachersByProvince(selectedCity: string): void {
+  if (selectedCity === '') {
+    this.filteredTeachers = this.teachers;
+  } else {
+    this.filteredTeachers = this.teachers.filter(
+      (teacher) => teacher.province_name.trim().toLowerCase() === selectedCity.toLowerCase()
+    );
+  }
+  this.numTeachers = this.filteredTeachers.length;
+}
+
+  filterSubjects(): void {
+    this.filteredSubjects = this.listSubjects.filter(subject =>
+      subject.name.toLowerCase().includes(this.searchText.toLowerCase())
+    );
+  }
+
+  seleccionarOpcion(subject?: Subjects): void {
+    if (subject) {
+      this.selectedOption = subject;
+      this.searchText = 'Aprende: ' + subject.name;
+    } else {
+      if (this.selectedOption) {
+        this.searchText = 'Aprende: ' + this.selectedOption.name;
       }
-    );
-  }
-
-  getSubjects( selectedIndex:number ): void {
-    this.subjectsService.getSubjects().subscribe(
-      res =>{
-        this.listSubjects = res;
-        this.materiaSelectHomeId = selectedIndex;
-      },
-      err=>console.log(err)
-    );
-  }
-  getProvinces(): void {
-    this.provincesService.getProvinces().subscribe(
-      res =>{
-        this.listProvinces = res;
-      },
-      err=>console.log(err)
-    );
-  }
-
-  getCitys() {
-    const selectProvinces = document.getElementById('selectProvinces') as HTMLSelectElement;
-    if( selectProvinces.value !== "" ){
-      this.cityService.getCitys( Number(selectProvinces.value) ).subscribe(
-        res => {
-          this.listCitys = res;
-        },
-        error => {
-        }
-      );
-    }else{
-      this.listCitys = [];
     }
+    this.filterSubjects();
     this.getfilterTeachers();
   }
 }
-
 

@@ -2,14 +2,13 @@ import { City } from "./city";
 import { Subjects } from "./subjects";
 
 export interface Teacher {
-
   id: number;
   user_id: number;
   photo: string;
   name: string;
+  city_name: City;
   province_name: string;
   title: string;
-
   subjects: Subjects[];
   about_me: string;
   about_class: string;
@@ -22,10 +21,9 @@ export interface Teacher {
   average: number;
   sample_class: number;
   deleted_at: null | string;
-  // created_at: string;
-  // updated_at: string;
   schedules: string[];
   total_students: number;
   total_reviews: number;
 }
+
 
