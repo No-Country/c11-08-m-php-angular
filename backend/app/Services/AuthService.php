@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Repositories\TeacherRepository;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\URL;
 
 use Mail;
 use App\Mail\TeacherMailable;
@@ -20,16 +21,12 @@ class AuthService
     {
         DB::beginTransaction();
         try {
-            // $name['first_name'] = explode(" ", $request['name'])[0];
-            // $name['last_name'] = explode(" ", $request['name'])[1];
             $user = User::create([
                 'role' => $request['role'],
-                // 'first_name' => $name['first_name'],
-                // 'last_name' => $name['last_name'],
                 'first_name' => $request['first_name'],
                 'last_name' => $request['last_name'],
                 'email' => $request['email'],
-                'password' => bcrypt($request['password'])
+                'password'=> Hash::make($request['password'])
             ]);
             if($user->role == "Profesor"){
                 $teacherService = new TeacherService(new TeacherRepository);
@@ -63,12 +60,13 @@ class AuthService
             if(Auth::attempt($request->all())){
                 $user = Auth::user();
                 $token = $user->createToken('main')->plainTextToken;
+                $user->photo = $user->photo ? URL::to($user->photo) : null;
                 return [
                     'user' => $user,
                     'token' => $token
                 ];
             }
-            return response()->json(['message' => 'Invalido email o password'], 422);
+            return response()->json(['message' => 'Inválido email o password'], 422);
         } catch (\Exception $th) {
             throw $th;
         }
@@ -112,8 +110,8 @@ class AuthService
     private function sendMailTeacher($email,$name){
         $mailData = [
             'name' => $name,
-            'body' => 'Nos alegra que estes aqui. TuNexo es un grán espacio en donde podras publicar
-             e impartir tus conocimientos a todas las personas. Tu decides el costo de tus clases.'
+            'body' => 'Nos alegra que estés aquí. TuNexo es un gran espacio en donde podrás publicar
+             e impartir tus conocimientos a todas las personas. Tú decides el costo de tus clases.'
         ];
         Mail::to($email)->send(new TeacherMailable($mailData));
     }
@@ -121,7 +119,7 @@ class AuthService
     private function sendMailStudent($email,$name){
         $mailData = [
             'name' => $name,
-            'body' => 'Nos alegra que estes aqui. TuNexo tiene una
+            'body' => 'Nos alegra que estés aquí. TuNexo tiene una
                 comunidad grande de profesionales para apoyarte según tus necesidades. No dudes en buscar
                 a tu profesor ideal.'
         ];

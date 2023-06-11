@@ -46,7 +46,7 @@ class ClaseService
                     'start_time' => $request['start_time'],
                     'end_time' => $request['end_time'],
                     'description' => $request['description'],
-                    'state' => $request['state'],
+                    'state' => 'Pendiente',
                 ]
             );
             return $clase;
