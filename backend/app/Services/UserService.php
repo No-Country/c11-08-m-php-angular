@@ -6,6 +6,7 @@ use App\Models\Teacher;
 use App\Models\User;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
 class UserService
 {
@@ -109,13 +110,9 @@ class UserService
             $dir = 'images/';
             $file = Str::random() . '.' . $type;
             $relativePath = $dir . $file;
-            $absolutePath = public_path($dir);
-            if(!File::exists($absolutePath)){
-                File::makeDirectory($absolutePath, 0755, true);
-            }
-            file_put_contents($relativePath, $image); //o $absolutePath
+            Storage::disk('public')->put($relativePath, $image);
             
-            return $relativePath;
+            return 'storage/'.$relativePath;
         }
         else{
             throw new \Exception('Uri no coincide con imagen en base 64');
